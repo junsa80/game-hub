@@ -1,0 +1,24 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>나만의 게임 선택기</title><meta name="theme-color" content="#0e0c18"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0e0c18;color:#eee;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;padding:16px 14px calc(24px + env(safe-area-inset-bottom))}
+h1{font-size:22px;margin:4px 0 12px}.sub{color:#999;font-size:13px;margin-top:-8px;margin-bottom:12px}
+#q{width:100%;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid #333;background:#1a1726;color:#fff}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0}.chip{flex:none;border:1px solid #444;background:#1a1726;color:#ddd;border-radius:999px;padding:9px 14px;font-size:14px;min-height:40px}
+.chip.on{background:#7b4fe0;border-color:#7b4fe0;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:#1a1726;border-radius:16px;overflow:hidden;position:relative;border:1px solid #2a2638}
+.card.off{opacity:.55;filter:grayscale(.6)}
+.thumb{height:150px;background-size:cover;background-position:center 25%;display:flex;align-items:center;justify-content:center;font-size:56px}
+.body{padding:12px 14px 14px}.t{font-weight:700;font-size:17px;margin:0 0 4px}.d{color:#aaa;font-size:13px;line-height:1.45;margin:0 0 8px}
+.tags span{display:inline-block;font-size:12px;background:#2a2638;color:#cbb;border-radius:6px;padding:3px 8px;margin:0 4px 4px 0}
+.play{display:block;text-align:center;margin-top:8px;background:#7b4fe0;color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:14px;font-size:16px}
+.badge{display:block;text-align:center;margin-top:8px;background:#2a2638;color:#999;border-radius:12px;padding:14px;font-size:14px}
+.star{position:absolute;top:8px;right:8px;width:48px;height:48px;border-radius:50%;border:0;background:rgba(0,0,0,.5);color:#fff;font-size:24px}
+.star.on{color:#ffd43b}.last{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.6);font-size:12px;padding:4px 8px;border-radius:8px}
+.empty{color:#888;text-align:center;padding:40px}
+</style></head><body>
+<h1>🎮 나만의 게임 선택기</h1><div class="sub">즐겨찾기·최근 플레이 순서는 이 기기에만 저장돼요</div>
+<input id="q" type="search" placeholder="게임 이름·장르 검색" aria-label="검색">
+<div class="chips" id="chips"></div><div class="grid" id="grid"></div>
+<script src="app.js?v=1.0.0"></script></body></html>

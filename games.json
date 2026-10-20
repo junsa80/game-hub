@@ -1,0 +1,14 @@
+[
+{"id":"hunt-now","title":"헌트 나우: 정화의 사냥꾼","desc":"몬헌 나우 감각의 모바일 3D 사냥 액션. 7종 무기, 부위 파괴, 정화로 동료 영입.","genre":["3D 액션","사냥"],"icon":"🗡️","color":"#e8590c","url":"https://junsa80.github.io/hunt-now/","thumb":"thumbs/hunt-now.webp","public":true},
+{"id":"beauty-deck","title":"미녀 덱: 밤의 여왕","desc":"히로인 카드로 덱을 짜는 덱빌딩 로그라이트.","genre":["덱빌딩","로그라이트"],"icon":"🃏","color":"#c2255c","url":"https://junsa80.github.io/beauty-deck/","thumb":"thumbs/beauty-deck.webp","public":true},
+{"id":"srpg-prototype","title":"SRPG 프로토타입","desc":"고전 파이어엠블렘 스타일 전술 RPG. 본편 1~27장 + 종장, 엔딩 3종.","genre":["전술 RPG","SRPG"],"icon":"🛡️","color":"#1971c2","url":"https://junsa80.github.io/srpg-prototype/","thumb":"thumbs/srpg-prototype.webp","public":true},
+{"id":"rose-spire","title":"장미의 첨탑 · ROSE SPIRE","desc":"덱빌딩 로그라이트.","genre":["덱빌딩","로그라이트"],"icon":"🌹","color":"#a61e4d","public":false},
+{"id":"aster-hunt","title":"아스터 헌트 · 정화의 사냥","desc":"모바일 싱글 액션.","genre":["액션"],"icon":"🏹","color":"#2b8a3e","public":false},
+{"id":"last-archive","title":"종말계승 · LAST ARCHIVE","desc":"개인용 육성 RPG.","genre":["육성 RPG"],"icon":"📜","color":"#5f3dc4","public":false},
+{"id":"companion-guild","title":"동료 길드 · Companion Guild","desc":"방치형 길드 운영 RPG.","genre":["방치형","RPG"],"icon":"🏰","color":"#e67700","public":false},
+{"id":"ember-tactics","title":"EMBER TACTICS","desc":"모바일 전술 RPG.","genre":["전술 RPG"],"icon":"🔥","color":"#c92a2a","public":false},
+{"id":"prism-muse","title":"PRISM MUSE","desc":"미녀 로그라이트 · 매치 퍼즐 RPG.","genre":["퍼즐","로그라이트"],"icon":"💎","color":"#0c8599","public":false},
+{"id":"muse-studio","title":"뮤즈 스튜디오","desc":"캐릭터 촬영과 성장 · 방치형 클리커.","genre":["클리커","방치형"],"icon":"📸","color":"#d6336c","public":false},
+{"id":"fogbound-tactics","title":"안개를 걷는 자들","desc":"독립 모바일 SRPG 리메이크.","genre":["SRPG"],"icon":"🌫️","color":"#495057","public":false},
+{"id":"world-breaker","title":"월드 브레이커","desc":"개인용 커서·터치 자동 작업 게임.","genre":["자동 작업"],"icon":"🌍","color":"#364fc7","public":false}
+]
