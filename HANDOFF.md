@@ -10,3 +10,8 @@
 ## 현재 상태 (v1.0.0, 2026-10-20)
 - 플레이 가능 3개: hunt-now, beauty-deck, srpg-prototype. 비공개 9개는 링크 없음.
 - 자동 검증: 헤드리스 Chromium 390x844. 실제 폰 터치 테스트는 안 함.
+
+## v1.1.0 (2026-10-20)
+- aster-hunt, last-archive, companion-guild, ember-tactics, fogbound-tactics: playable cards linking to ChatGPT-hosted URLs (`*.sajuyoon.chatgpt.site`). They return 401 unless logged into ChatGPT; card shows badge "ChatGPT 로그인 필요" (`login:"chatgpt"` in games.json).
+- Playable = has `url` (no longer requires `public`). rose-spire, prism-muse, muse-studio, world-breaker remain greyed (no link).
+- SW cache hub-v1.1.0; asset query ?v=1.1.0.
