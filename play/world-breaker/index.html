@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#0d1623"/>
+  <meta name="description" content="월드 브레이커: 커서/터치 중심 자동 벌목과 성장형 게임의 플레이 가능한 첫 버전"/>
+  <title>월드 브레이커 · Alpha 0.2 · 숲과 공명 광산</title>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand"><span class="brand-icon">✦</span><div><strong>WORLD BREAKER</strong><small id="world-title">STAGE 01 · 증식하는 숲</small></div></div>
+      <button id="settings-button" class="icon-button" aria-label="설정 열기" title="설정">⚙</button>
+    </header>
+    <section class="hud" aria-label="자원 및 상태">
+      <div class="hud-box"><span>◈ 자원</span><strong id="wood">0</strong></div>
+      <div class="hud-box"><span>🔮 정수</span><strong id="essence">0</strong></div>
+      <div class="hud-box"><span>⚒ 작업 / 초</span><strong id="power">0</strong></div>
+      <div class="hud-box"><span>🌱 생성 / 초</span><strong id="growth">0</strong></div>
+    </section>
+    <section class="game-card">
+      <div class="topline"><span id="stage-label">🌳 숲의 잔량 줄이기</span><span id="stage-progress">0%</span></div>
+      <div class="progress"><div id="progress-fill"></div></div>
+      <div class="field-wrap"><canvas id="field" width="900" height="550" tabindex="0" aria-label="나무가 자라는 숲 게임 필드"></canvas><div class="field-notice" id="field-notice">화면을 터치하면 주변을 자동 벌목해요</div></div>
+      <div class="field-footer"><span id="target-text">🎯 벌목 위치 고정 · 터치하여 변경</span><span id="field-stats">대상 0</span></div>
+    </section>
+    <div class="control-bar"><span id="shield">보호막 100</span><button id="combat-toggle">전투 / 채집 우선 전환</button><button id="next-stage" hidden>⛏ 공명 광산으로 →</button></div>
+    <div class="message-line" aria-live="polite"><span id="hint">이곳은 시작 지역입니다.</span></div>
+    <section class="upgrade-panel" aria-label="업그레이드">
+      <div class="panel-heading"><h2>업그레이드</h2><div class="mini"><span id="upgrades-owned">0</span><span>종 · 본편 240종 예정</span></div></div>
+      <div id="tabs" class="tabs" role="tablist" aria-label="업그레이드 계열"></div>
+      <div id="upgrade-list" class="upgrade-list"></div>
+    </section>
+    <p id="save-status" role="status">30초마다 자동 저장 · 설정에서 JSON 백업</p><details><summary>본편 진행표 · 6개 스테이지 / 240종 강화</summary><p id="campaign"></p><p>본편 목표 2~5시간. 현재 Alpha 0.2는 숲과 광산만 플레이 가능합니다. 외계인·다차원 세계는 본편 이후 개발합니다.</p></details><footer><span>ALPHA 0.2 · 숲 / 광산</span><span id="fps">60 FPS</span></footer>
+  </div>
+  <div class="modal-backdrop hidden" id="modal-backdrop" role="presentation">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">⚙ 설정</h2><p id="modal-subtitle">게임 진행 상태는 브라우저에 자동 저장됩니다.</p>
+      <div id="modal-body">
+        <button id="save-button" class="action">💾 지금 저장하기</button>
+        <button id="export-button" class="action">📦 저장 파일 내보내기</button>
+        <label class="action import-label">📂 저장 파일 가져오기<input type="file" id="import-file" accept="application/json,.json" hidden/></label>
+        <button id="reset-button" class="action danger">🔄 처음부터 다시 시작</button>
+      </div>
+      <div id="modal-error" class="modal-error" role="status"></div>
+      <button id="close-modal" class="close">닫기</button>
+    </section>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

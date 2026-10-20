@@ -15,3 +15,8 @@
 - aster-hunt, last-archive, companion-guild, ember-tactics, fogbound-tactics: playable cards linking to ChatGPT-hosted URLs (`*.sajuyoon.chatgpt.site`). They return 401 unless logged into ChatGPT; card shows badge "ChatGPT 로그인 필요" (`login:"chatgpt"` in games.json).
 - Playable = has `url` (no longer requires `public`). rose-spire, prism-muse, muse-studio, world-breaker remain greyed (no link).
 - SW cache hub-v1.1.0; asset query ?v=1.1.0.
+
+## v1.2.0 (2026-10-20)
+- Hosted static builds in this repo under `play/<name>/`: prism-muse (Next export, rebuilt with basePath `/game-hub/play/prism-muse` in /workspace/private-games/build-prism), muse-studio and world-breaker (relative paths, copied as-is). Original private repos untouched. Saves are local to this browser (not shared with ChatGPT versions).
+- rose-spire NOT hosted: images need a source check; card shows badge "이미지 출처 확인 중" (`note` field).
+- SW hub-v1.2.0 precaches only the hub shell and bypasses `/play/` entirely.

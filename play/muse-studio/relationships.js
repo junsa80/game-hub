@@ -1,0 +1,22 @@
+'use strict';
+(function(root){
+const day=(date=new Date())=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Berlin',year:'numeric',month:'2-digit',day:'2-digit'}).format(date);
+const safe=(v,max=1e6)=>Number.isFinite(v)?Math.max(0,Math.min(max,Math.floor(v))):0;
+class Relationships{
+constructor(game,size=100){this.game=game;this.size=size;const old=game.s.relationships||{};game.s.relationships={bonds:Array.from({length:size},(_,i)=>safe(old.bonds?.[i])),unlocks:[...new Set((Array.isArray(old.unlocks)?old.unlocks:[]).filter(i=>Number.isInteger(i)&&i>=0&&i<30))],fragments:safe(old.fragments),tutorial:safe(old.tutorial,3),daily:old.daily&&typeof old.daily.date==='string'?{date:old.daily.date,found:!!old.daily.found,crits:safe(old.daily.crits,3),claimed:!!old.daily.claimed}:{date:'',found:false,crits:0,claimed:false},choice:old.choice&&Number.isInteger(old.choice.stage)?{stage:old.choice.stage,key:String(old.choice.key)}:{stage:-1,key:'elite'},lastImage:String(old.lastImage||'')};this.seconds=0;this.point=0;this.found=false;this.buff=0;this.crits=0;this.awarded=false;this.slot=game.s.stage%size;this.rotate(true);this.ensureDay();}
+get data(){return this.game.s.relationships;}
+ensureDay(date=day()){if(this.data.daily.date!==date)this.data.daily={date,found:false,crits:0,claimed:false};return this.data.daily;}
+rotate(initial=false){this.seconds=0;this.point=initial?Math.floor(Math.random()*4):(this.point+1+Math.floor(Math.random()*3))%4;this.found=false;this.buff=0;this.crits=0;this.awarded=false;}
+setStage(){const slot=this.game.s.stage%this.size;if(slot!==this.slot){this.slot=slot;this.rotate();}}
+tick(seconds){this.ensureDay();this.seconds+=Math.max(0,Math.min(2,seconds));this.buff=Math.max(0,this.buff-seconds);if(this.seconds>=60)this.rotate();}
+addBond(amount,slot=this.slot){this.data.bonds[slot]=safe(this.data.bonds[slot]+amount);const world=this.game.stageStats(slot).world,thresholds=[5,25,60],newImages=[];thresholds.forEach((v,i)=>{const id=world*3+i;if(this.data.bonds[slot]>=v&&!this.data.unlocks.includes(id)){this.data.unlocks.push(id);newImages.push(id);}});return newImages;}
+discover(){if(this.found)return false;this.found=true;this.buff=15;this.crits=0;this.data.daily.found=true;this.addBond(2);if(this.data.tutorial===1)this.data.tutorial=2;return true;}
+beforeTap(hit){this.ensureDay();this.setStage();const discovered=hit?this.discover():false;return {discovered,guaranteed:this.data.tutorial===2&&this.buff>0,chanceBonus:this.buff>0?.35:0};}
+afterTap(out){let images=[],bond=0;const daily=this.ensureDay();if(this.data.tutorial===0){this.data.tutorial=1;this.game.applyDamage(this.game.stageStats().hp);}if(this.buff>0&&out.crit){this.crits++;daily.crits=Math.min(3,daily.crits+1);if(this.crits>=3&&!this.awarded){this.awarded=true;bond=3;images=this.addBond(bond);if(this.data.tutorial===2)this.data.tutorial=3;}}return {images,bond};}
+canClaim(){const d=this.ensureDay();return d.found&&d.crits>=3&&!d.claimed;}
+claim(){if(!this.canClaim())return {ok:false};const d=this.data.daily;d.claimed=true;const credits=Math.max(this.game.stageStats().reward*20,this.game.rate()*600);this.game.s.money=Math.min(1e280,this.game.s.money+credits);this.game.s.lifetime=Math.min(1e280,this.game.s.lifetime+credits);this.game.s.runEarned=Math.min(1e280,this.game.s.runEarned+credits);this.data.fragments++;const images=this.addBond(8);return {ok:true,credits,images};}
+exchange(random=Math.random()){if(this.data.fragments<3)return {ok:false};const locked=Array.from({length:30},(_,i)=>i).filter(i=>!this.data.unlocks.includes(i));if(!locked.length)return {ok:false};const id=locked[Math.min(locked.length-1,Math.floor(random*locked.length))];this.data.fragments-=3;this.data.unlocks.push(id);return {ok:true,id};}
+chooseArt(stage){if(stage<300)return stage>=this.size?'elite':'normal';if(this.data.choice.stage===stage&&['normal','elite',...this.data.unlocks.map(i=>'bonus:'+i)].includes(this.data.choice.key))return this.data.choice.key;const pool=['normal','elite',...this.data.unlocks.map(i=>'bonus:'+i)],eligible=pool.filter(k=>k!==this.data.lastImage);const key=eligible[Math.floor(Math.random()*eligible.length)]||pool[0];this.data.choice={stage,key};this.data.lastImage=key;return key;}
+}
+const api={Relationships,day};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.MuseRelationships=api;
+})(typeof window!=='undefined'?window:globalThis);

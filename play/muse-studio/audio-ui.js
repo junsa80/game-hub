@@ -1,0 +1,15 @@
+'use strict';
+let soundStatus='paused';
+const soundtrack=new window.MuseAudio.Soundtrack(()=>game.s.studio.audio,{hidden:()=>document.hidden,onStatus:status=>{soundStatus=status;renderAudio();}});
+window.museSound=soundtrack;
+function renderAudio(){const s=game.s.studio.audio;$('audio-toggle').classList.toggle('playing',s.enabled&&soundStatus==='playing');$('audio-toggle').setAttribute('aria-pressed',String(s.enabled));$('audio-toggle').setAttribute('aria-label',s.enabled?'소리 끄기':'소리 켜기');$('audio-toggle').title=s.enabled?'소리 끄기 · 볼륨은 설정에서':'소리 켜기';$('audio-photo-toggle').classList.toggle('playing',s.enabled&&soundStatus==='playing');$('audio-photo-toggle').setAttribute('aria-pressed',String(s.enabled));$('audio-photo-toggle').setAttribute('aria-label',s.enabled?'소리 끄기':'소리 켜기');$('audio-photo-toggle').title=s.enabled?'소리 끄기':'소리 켜기';$('audio-enabled').checked=s.enabled;$('music-track').value=s.track;$('music-volume').value=Math.round(s.music*100);$('sfx-volume').value=Math.round(s.sfx*100);$('music-value').textContent=Math.round(s.music*100)+'%';$('sfx-value').textContent=Math.round(s.sfx*100)+'%';$('audio-status').textContent=soundStatus==='unsupported'?'이 브라우저에서는 소리를 사용할 수 없어요':soundStatus==='blocked'?'♫ 버튼을 눌러 소리를 다시 시작해주세요':!s.enabled?'상단 ♫를 누르면 음악이 시작돼요':soundStatus==='playing'?window.MuseAudio.TRACKS[s.track].description:'화면을 터치하면 소리가 이어져요';}
+async function enableSound(enabled){game.s.studio.audio.enabled=enabled;save();if(enabled)await soundtrack.unlock();else soundtrack.pause();renderAudio();}
+$('audio-toggle').onclick=()=>enableSound(!game.s.studio.audio.enabled);$('audio-photo-toggle').onclick=()=>enableSound(!game.s.studio.audio.enabled);$('audio-enabled').onchange=()=>enableSound($('audio-enabled').checked);
+$('music-track').onchange=async()=>{game.s.studio.audio.track=$('music-track').value;game.s.studio.audio.enabled=true;await soundtrack.unlock();soundtrack.update();renderAudio();save();};
+for(const [id,key]of [['music-volume','music'],['sfx-volume','sfx']]){const input=$(id);input.oninput=()=>{game.s.studio.audio[key]=Math.max(0,Math.min(100,Number(input.value)))/100;soundtrack.update();renderAudio();};input.onchange=()=>save();}
+$('sound-preview').onclick=async()=>{await enableSound(true);if(game.s.studio.audio.sfx===0)toast('효과음 볼륨을 올려주세요');else soundtrack.play('critical');};
+// Resuming a saved audio preference requires a browser-recognized user gesture.
+document.addEventListener('click',event=>{if(['audio-toggle','audio-photo-toggle','audio-enabled'].includes(event.target?.id))return;if(game.s.studio.audio.enabled&&(!soundtrack.ctx||soundtrack.ctx.state!=='running'||soundtrack.paused))soundtrack.unlock();},true);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)soundtrack.pause();else if(game.s.studio.audio.enabled&&soundtrack.unlocked)soundtrack.unlock();});
+window.addEventListener('pagehide',()=>soundtrack.pause());window.addEventListener('pageshow',()=>{if(game.s.studio.audio.enabled&&soundtrack.unlocked&&!document.hidden)soundtrack.unlock();});
+renderAudio();

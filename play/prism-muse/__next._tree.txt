@@ -1,0 +1,2 @@
+:HL["/game-hub/play/prism-muse/_next/static/chunks/39b9jxmr_1k-k.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"ZmX3t3Bumk_UetEbVuMWf"}
