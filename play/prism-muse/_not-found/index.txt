@@ -13,4 +13,4 @@ c:I[68027,["/game-hub/play/prism-muse/_next/static/chunks/3fntmmi971322.js"],"de
 9:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 d:I[27201,["/game-hub/play/prism-muse/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
 6:null
-b:[["$","title","0",{"children":"PRISM MUSE · 미녀 로그라이트"}],["$","meta","1",{"name":"description","content":"미녀 파티와 시너지로 도전하는 세 가지 3매치 로그라이트"}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/prism-muse/favicon.svg"}],["$","link","4",{"rel":"icon","href":"/prism-muse/favicon.svg"}],["$","$Ld","5",{}]]
+b:[["$","title","0",{"children":"PRISM MUSE · 미녀 로그라이트"}],["$","meta","1",{"name":"description","content":"미녀 파티와 시너지로 도전하는 세 가지 3매치 로그라이트"}],["$","meta","2",{"name":"codex-preview","content":"development"}],["$","link","3",{"rel":"shortcut icon","href":"/game-hub/play/prism-muse/favicon.svg"}],["$","link","4",{"rel":"icon","href":"/game-hub/play/prism-muse/favicon.svg"}],["$","$Ld","5",{}]]
