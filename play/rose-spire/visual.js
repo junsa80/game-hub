@@ -1,0 +1,2 @@
+/* Reattach the persistent save control when a game redraws its header. */
+(()=>{let cloud=null;const update=()=>{const header=document.querySelector('header');if(header){header.classList.add('visual-utility');cloud=cloud||document.getElementById('cloud-toolbar');if(cloud&&cloud.parentNode!==header)header.append(cloud);}};update();const observer=new MutationObserver(update);observer.observe(document.body,{childList:true,subtree:true});})();

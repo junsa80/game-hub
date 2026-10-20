@@ -20,3 +20,14 @@
 - Hosted static builds in this repo under `play/<name>/`: prism-muse (Next export, rebuilt with basePath `/game-hub/play/prism-muse` in /workspace/private-games/build-prism), muse-studio and world-breaker (relative paths, copied as-is). Original private repos untouched. Saves are local to this browser (not shared with ChatGPT versions).
 - rose-spire NOT hosted: images need a source check; card shows badge "이미지 출처 확인 중" (`note` field).
 - SW hub-v1.2.0 precaches only the hub shell and bypasses `/play/` entirely.
+
+## v1.2.1 fixes (2026-10-20)
+- `053b69d` added `.nojekyll` at repo root so GitHub Pages serves `_next/` folders (prism-muse).
+- `baec038` fixed prism-muse asset paths under `/game-hub/play/prism-muse/`.
+
+## v1.3.0 (2026-10-20)
+- rose-spire hosted at `play/rose-spire/` — static copy of `junsa80/rose-spire` main `6bf8f6f` (`public/`). Image review passed after GPT replaced all art (`cab10a5`): painted fantasy characters, no photo-realistic people, no 0-byte files.
+- Hosting-only edits (game code untouched): absolute `/visual.*` paths made relative (index.html, visual.css); `cloud-save.js` removed and its `cloud-pending` script gate replaced by plain `<script>` tags.
+- **Saves are local-only** (this browser's localStorage). No account sync, not shared with the ChatGPT-site version. Card desc says so.
+- Badge "이미지 출처 확인 중" removed. SW hub-v1.3.0, ?v=1.3.0. rose-spire repo never pushed to.
+- To update: re-copy rose-spire `public/` and reapply the edits above.

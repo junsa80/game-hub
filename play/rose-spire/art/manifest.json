@@ -1,0 +1,1335 @@
+{
+  "version": 2,
+  "generated_characters": 25,
+  "new_characters_this_pass": 21,
+  "existing_original_characters_retained": 4,
+  "image_files": 147,
+  "generation": "ImageGen; text-only fictional adult designs; no real-person input images or celebrity-name references",
+  "framing": "eye-level waist-up; opaque fantasy clothing; no body-part emphasis",
+  "scope": "Current tree only; prior Git commits and backups are unchanged",
+  "files": [
+    {
+      "image": "art/full-01.webp",
+      "character": "belita",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "belita.png",
+      "sha256": "558962ebb3725ee2d81e4d5b04af56b079e33b4a4ae8c542b30008b03803eb84",
+      "bytes": 101422,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-02.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-03.webp",
+      "character": "celeste",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "celeste.png",
+      "sha256": "2ab9e4dfb00b5d853fe4b35f24db04c95b18c23907a1755ab3c4f0cd04d03b6d",
+      "bytes": 118336,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-04.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-05.webp",
+      "character": "isabel",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "isabel.png",
+      "sha256": "2a83a90da49d361c36324da38a240e6d63ede3624bcfd6df16386716531277c1",
+      "bytes": 116916,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-06.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-07.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-08.webp",
+      "character": "kaira",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "kaira.png",
+      "sha256": "b6508e812796b27e85407e72c0c8d27ee987ddcd004683bdedc4684385e220fd",
+      "bytes": 121358,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-09.webp",
+      "character": "sion",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sion.png",
+      "sha256": "af77fc4d70f1546ac31a7f6143024e8a407cebfa43ecca75c850628b5ffa5eda",
+      "bytes": 126726,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-10.webp",
+      "character": "elena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "elena.png",
+      "sha256": "7d90ebc8367a3c6f596df1062820f510b85fa291a74c0d13aefde9c4cd96f55e",
+      "bytes": 112342,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-11.webp",
+      "character": "pio",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "pio.png",
+      "sha256": "537279d273fdbf0b1407ace2059e1a57d431827b9a6f939beeef550d7dab7172",
+      "bytes": 135306,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-12.webp",
+      "character": "mir",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "mir.png",
+      "sha256": "32f78e5e002ad664829717ebf376065b0bb9536d741ee79398f565564d74beb4",
+      "bytes": 136874,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-13.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-14.webp",
+      "character": "daon",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "daon.png",
+      "sha256": "163e1c1234811896bbbcb351557eeed6f82c92e84776293699410a0e544ab977",
+      "bytes": 112814,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-15.webp",
+      "character": "lyra",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "lyra.png",
+      "sha256": "b0805fdfb7c0bed6e4c699951a69bbf26ff9e0e35819f25504137ced9a8519d6",
+      "bytes": 141064,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-16.webp",
+      "character": "slime",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "slime.png",
+      "sha256": "333315108fdbe29a6fc7db14c7068d402b4b63da892fdf2a49db9d196b85d03d",
+      "bytes": 147108,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-17.webp",
+      "character": "bat",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bat.png",
+      "sha256": "ccf3d8ee98a60ea663f08e87e41c1a7ae6ebff54bfe92e316ba56855063fd776",
+      "bytes": 112866,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-18.webp",
+      "character": "karin",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "karin.png",
+      "sha256": "c195133d48133c30d5ca20e8c5ecd5a62c49c67a0cefe24ad21f5097945a834c",
+      "bytes": 121528,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-19.webp",
+      "character": "rosa",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "rosa.png",
+      "sha256": "a4abadc6a9c335f24dfbc141440d773e236b2c72bfa3d005dcabdfd41ed0a9fe",
+      "bytes": 167470,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/full-20.webp",
+      "character": "knox",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "knox.png",
+      "sha256": "11eaa418bf77b2436997cbcc024fe8095f74b9313362f184585eeb0174bed8d3",
+      "bytes": 115628,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-01.webp",
+      "character": "belita",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "belita.png",
+      "sha256": "558962ebb3725ee2d81e4d5b04af56b079e33b4a4ae8c542b30008b03803eb84",
+      "bytes": 101422,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-02.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-03.webp",
+      "character": "celeste",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "celeste.png",
+      "sha256": "2ab9e4dfb00b5d853fe4b35f24db04c95b18c23907a1755ab3c4f0cd04d03b6d",
+      "bytes": 118336,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-04.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-05.webp",
+      "character": "isabel",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "isabel.png",
+      "sha256": "2a83a90da49d361c36324da38a240e6d63ede3624bcfd6df16386716531277c1",
+      "bytes": 116916,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-06.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-07.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-08.webp",
+      "character": "kaira",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "kaira.png",
+      "sha256": "b6508e812796b27e85407e72c0c8d27ee987ddcd004683bdedc4684385e220fd",
+      "bytes": 121358,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-09.webp",
+      "character": "sion",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sion.png",
+      "sha256": "af77fc4d70f1546ac31a7f6143024e8a407cebfa43ecca75c850628b5ffa5eda",
+      "bytes": 126726,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-10.webp",
+      "character": "elena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "elena.png",
+      "sha256": "7d90ebc8367a3c6f596df1062820f510b85fa291a74c0d13aefde9c4cd96f55e",
+      "bytes": 112342,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-11.webp",
+      "character": "pio",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "pio.png",
+      "sha256": "537279d273fdbf0b1407ace2059e1a57d431827b9a6f939beeef550d7dab7172",
+      "bytes": 135306,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-12.webp",
+      "character": "mir",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "mir.png",
+      "sha256": "32f78e5e002ad664829717ebf376065b0bb9536d741ee79398f565564d74beb4",
+      "bytes": 136874,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-13.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-14.webp",
+      "character": "daon",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "daon.png",
+      "sha256": "163e1c1234811896bbbcb351557eeed6f82c92e84776293699410a0e544ab977",
+      "bytes": 112814,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-15.webp",
+      "character": "lyra",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "lyra.png",
+      "sha256": "b0805fdfb7c0bed6e4c699951a69bbf26ff9e0e35819f25504137ced9a8519d6",
+      "bytes": 141064,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-16.webp",
+      "character": "slime",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "slime.png",
+      "sha256": "333315108fdbe29a6fc7db14c7068d402b4b63da892fdf2a49db9d196b85d03d",
+      "bytes": 147108,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-17.webp",
+      "character": "bat",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bat.png",
+      "sha256": "ccf3d8ee98a60ea663f08e87e41c1a7ae6ebff54bfe92e316ba56855063fd776",
+      "bytes": 112866,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-18.webp",
+      "character": "karin",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "karin.png",
+      "sha256": "c195133d48133c30d5ca20e8c5ecd5a62c49c67a0cefe24ad21f5097945a834c",
+      "bytes": 121528,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-19.webp",
+      "character": "rosa",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "rosa.png",
+      "sha256": "a4abadc6a9c335f24dfbc141440d773e236b2c72bfa3d005dcabdfd41ed0a9fe",
+      "bytes": 167470,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/portrait-20.webp",
+      "character": "knox",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "knox.png",
+      "sha256": "11eaa418bf77b2436997cbcc024fe8095f74b9313362f184585eeb0174bed8d3",
+      "bytes": 115628,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-001.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-002.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-003.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-004.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-005.webp",
+      "character": "kaira",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "kaira.png",
+      "sha256": "b6508e812796b27e85407e72c0c8d27ee987ddcd004683bdedc4684385e220fd",
+      "bytes": 121358,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-006.webp",
+      "character": "sion",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sion.png",
+      "sha256": "af77fc4d70f1546ac31a7f6143024e8a407cebfa43ecca75c850628b5ffa5eda",
+      "bytes": 126726,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-007.webp",
+      "character": "elena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "elena.png",
+      "sha256": "7d90ebc8367a3c6f596df1062820f510b85fa291a74c0d13aefde9c4cd96f55e",
+      "bytes": 112342,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-008.webp",
+      "character": "pio",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "pio.png",
+      "sha256": "537279d273fdbf0b1407ace2059e1a57d431827b9a6f939beeef550d7dab7172",
+      "bytes": 135306,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-009.webp",
+      "character": "mir",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "mir.png",
+      "sha256": "32f78e5e002ad664829717ebf376065b0bb9536d741ee79398f565564d74beb4",
+      "bytes": 136874,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-010.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-011.webp",
+      "character": "daon",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "daon.png",
+      "sha256": "163e1c1234811896bbbcb351557eeed6f82c92e84776293699410a0e544ab977",
+      "bytes": 112814,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-012.webp",
+      "character": "lyra",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "lyra.png",
+      "sha256": "b0805fdfb7c0bed6e4c699951a69bbf26ff9e0e35819f25504137ced9a8519d6",
+      "bytes": 141064,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-013.webp",
+      "character": "slime",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "slime.png",
+      "sha256": "333315108fdbe29a6fc7db14c7068d402b4b63da892fdf2a49db9d196b85d03d",
+      "bytes": 147108,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-014.webp",
+      "character": "bat",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bat.png",
+      "sha256": "ccf3d8ee98a60ea663f08e87e41c1a7ae6ebff54bfe92e316ba56855063fd776",
+      "bytes": 112866,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-015.webp",
+      "character": "mia",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "mia.png",
+      "sha256": "496e9de75ea500d0caa82e14027e73c09e0d9dbb19eee3f9c32b83e8599c0ac3",
+      "bytes": 107168,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-016.webp",
+      "character": "karin",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "karin.png",
+      "sha256": "c195133d48133c30d5ca20e8c5ecd5a62c49c67a0cefe24ad21f5097945a834c",
+      "bytes": 121528,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-017.webp",
+      "character": "rosa",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "rosa.png",
+      "sha256": "a4abadc6a9c335f24dfbc141440d773e236b2c72bfa3d005dcabdfd41ed0a9fe",
+      "bytes": 167470,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-018.webp",
+      "character": "knox",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "knox.png",
+      "sha256": "11eaa418bf77b2436997cbcc024fe8095f74b9313362f184585eeb0174bed8d3",
+      "bytes": 115628,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-019.webp",
+      "character": "veronica",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "veronica.png",
+      "sha256": "c403a42878f3fe9b08901593e78162c70af16ecf284852fe538ca541b3305d95",
+      "bytes": 112332,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-020.webp",
+      "character": "isabel",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "isabel.png",
+      "sha256": "2a83a90da49d361c36324da38a240e6d63ede3624bcfd6df16386716531277c1",
+      "bytes": 116916,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-021.webp",
+      "character": "rena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "rena.png",
+      "sha256": "649f8ab6b7bc6bb12a89fbf898b663b423681b445a9757267b567a70e2fd99f0",
+      "bytes": 126250,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-022.webp",
+      "character": "rina",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "rina.png",
+      "sha256": "d0af1bd68b05e15d2d6f66abf12be489957ed0db5c31158fabbdced4993b5f34",
+      "bytes": 92162,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-023.webp",
+      "character": "belita",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "belita.png",
+      "sha256": "558962ebb3725ee2d81e4d5b04af56b079e33b4a4ae8c542b30008b03803eb84",
+      "bytes": 101422,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-024.webp",
+      "character": "camellia",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "camellia.png",
+      "sha256": "3bb40d6a091d0f81664bfa00200e1ee8c7df35811c339667514917a96e82ea3d",
+      "bytes": 130852,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-025.webp",
+      "character": "celeste",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "celeste.png",
+      "sha256": "2ab9e4dfb00b5d853fe4b35f24db04c95b18c23907a1755ab3c4f0cd04d03b6d",
+      "bytes": 118336,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-026.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-027.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-028.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-029.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-030.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-031.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-032.webp",
+      "character": "kaira",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "kaira.png",
+      "sha256": "b6508e812796b27e85407e72c0c8d27ee987ddcd004683bdedc4684385e220fd",
+      "bytes": 121358,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-033.webp",
+      "character": "kaira",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "kaira.png",
+      "sha256": "b6508e812796b27e85407e72c0c8d27ee987ddcd004683bdedc4684385e220fd",
+      "bytes": 121358,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-034.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-035.webp",
+      "character": "kaira",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "kaira.png",
+      "sha256": "b6508e812796b27e85407e72c0c8d27ee987ddcd004683bdedc4684385e220fd",
+      "bytes": 121358,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-036.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-037.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-038.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-039.webp",
+      "character": "kaira",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "kaira.png",
+      "sha256": "b6508e812796b27e85407e72c0c8d27ee987ddcd004683bdedc4684385e220fd",
+      "bytes": 121358,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-040.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-041.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-042.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-043.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-044.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-045.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-046.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-047.webp",
+      "character": "sion",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sion.png",
+      "sha256": "af77fc4d70f1546ac31a7f6143024e8a407cebfa43ecca75c850628b5ffa5eda",
+      "bytes": 126726,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-048.webp",
+      "character": "sion",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sion.png",
+      "sha256": "af77fc4d70f1546ac31a7f6143024e8a407cebfa43ecca75c850628b5ffa5eda",
+      "bytes": 126726,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-049.webp",
+      "character": "elena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "elena.png",
+      "sha256": "7d90ebc8367a3c6f596df1062820f510b85fa291a74c0d13aefde9c4cd96f55e",
+      "bytes": 112342,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-050.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-051.webp",
+      "character": "elena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "elena.png",
+      "sha256": "7d90ebc8367a3c6f596df1062820f510b85fa291a74c0d13aefde9c4cd96f55e",
+      "bytes": 112342,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-052.webp",
+      "character": "pio",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "pio.png",
+      "sha256": "537279d273fdbf0b1407ace2059e1a57d431827b9a6f939beeef550d7dab7172",
+      "bytes": 135306,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-053.webp",
+      "character": "pio",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "pio.png",
+      "sha256": "537279d273fdbf0b1407ace2059e1a57d431827b9a6f939beeef550d7dab7172",
+      "bytes": 135306,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-054.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-055.webp",
+      "character": "elena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "elena.png",
+      "sha256": "7d90ebc8367a3c6f596df1062820f510b85fa291a74c0d13aefde9c4cd96f55e",
+      "bytes": 112342,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-056.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-057.webp",
+      "character": "sion",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sion.png",
+      "sha256": "af77fc4d70f1546ac31a7f6143024e8a407cebfa43ecca75c850628b5ffa5eda",
+      "bytes": 126726,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-058.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-059.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-060.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-061.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-062.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-063.webp",
+      "character": "mir",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "mir.png",
+      "sha256": "32f78e5e002ad664829717ebf376065b0bb9536d741ee79398f565564d74beb4",
+      "bytes": 136874,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-064.webp",
+      "character": "mir",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "mir.png",
+      "sha256": "32f78e5e002ad664829717ebf376065b0bb9536d741ee79398f565564d74beb4",
+      "bytes": 136874,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-065.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-066.webp",
+      "character": "daon",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "daon.png",
+      "sha256": "163e1c1234811896bbbcb351557eeed6f82c92e84776293699410a0e544ab977",
+      "bytes": 112814,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-067.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-068.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-069.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-070.webp",
+      "character": "daon",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "daon.png",
+      "sha256": "163e1c1234811896bbbcb351557eeed6f82c92e84776293699410a0e544ab977",
+      "bytes": 112814,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-071.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-072.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-073.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-074.webp",
+      "character": "lyra",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "lyra.png",
+      "sha256": "b0805fdfb7c0bed6e4c699951a69bbf26ff9e0e35819f25504137ced9a8519d6",
+      "bytes": 141064,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-075.webp",
+      "character": "elena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "elena.png",
+      "sha256": "7d90ebc8367a3c6f596df1062820f510b85fa291a74c0d13aefde9c4cd96f55e",
+      "bytes": 112342,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-076.webp",
+      "character": "daon",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "daon.png",
+      "sha256": "163e1c1234811896bbbcb351557eeed6f82c92e84776293699410a0e544ab977",
+      "bytes": 112814,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-077.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-078.webp",
+      "character": "lyra",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "lyra.png",
+      "sha256": "b0805fdfb7c0bed6e4c699951a69bbf26ff9e0e35819f25504137ced9a8519d6",
+      "bytes": 141064,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-079.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-080.webp",
+      "character": "celeste",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "celeste.png",
+      "sha256": "2ab9e4dfb00b5d853fe4b35f24db04c95b18c23907a1755ab3c4f0cd04d03b6d",
+      "bytes": 118336,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-081.webp",
+      "character": "celeste",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "celeste.png",
+      "sha256": "2ab9e4dfb00b5d853fe4b35f24db04c95b18c23907a1755ab3c4f0cd04d03b6d",
+      "bytes": 118336,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-082.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-083.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-084.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-085.webp",
+      "character": "kaira",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "kaira.png",
+      "sha256": "b6508e812796b27e85407e72c0c8d27ee987ddcd004683bdedc4684385e220fd",
+      "bytes": 121358,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-086.webp",
+      "character": "sion",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sion.png",
+      "sha256": "af77fc4d70f1546ac31a7f6143024e8a407cebfa43ecca75c850628b5ffa5eda",
+      "bytes": 126726,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-087.webp",
+      "character": "elena",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "elena.png",
+      "sha256": "7d90ebc8367a3c6f596df1062820f510b85fa291a74c0d13aefde9c4cd96f55e",
+      "bytes": 112342,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-088.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-089.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-090.webp",
+      "character": "daon",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "daon.png",
+      "sha256": "163e1c1234811896bbbcb351557eeed6f82c92e84776293699410a0e544ab977",
+      "bytes": 112814,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-091.webp",
+      "character": "bell",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "bell.png",
+      "sha256": "bb5d9b367a80c967d3c6156d7f8742f3d15b93ac61a334cbaa046f6666f64e7f",
+      "bytes": 104878,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-092.webp",
+      "character": "lyra",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "lyra.png",
+      "sha256": "b0805fdfb7c0bed6e4c699951a69bbf26ff9e0e35819f25504137ced9a8519d6",
+      "bytes": 141064,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-093.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-094.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-095.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-096.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-097.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-098.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-099.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-100.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-101.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-102.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-103.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-104.webp",
+      "character": "sera",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "sera.png",
+      "sha256": "89bdfe3cda8b5ed8d1e14aa6dc07d0f4311ed5ef341bbd2794f87c06638ef9e4",
+      "bytes": 140788,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-105.webp",
+      "character": "luna",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "luna.png",
+      "sha256": "851dcfe90a15621b08b290bfc74288f54915e49fc131121cc69ca48610db597c",
+      "bytes": 131904,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-106.webp",
+      "character": "yuki",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "yuki.png",
+      "sha256": "d4f414a76fc8dbbbf99b10036e5edcb5edc75978b2d73aa1496a4781b1e16775",
+      "bytes": 93240,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    },
+    {
+      "image": "art/unique-107.webp",
+      "character": "aria",
+      "source_kind": "text-generated-fictional-adult",
+      "source_file": "aria.png",
+      "sha256": "ab586c8a6311f879a7f4dfca145eb87ea7f2cd72bb36d1a8f6d7f4f2d3b974f5",
+      "bytes": 116586,
+      "reuse": "character portrait reused for matching cards/legacy exports"
+    }
+  ]
+}

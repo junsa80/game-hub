@@ -1,0 +1,22 @@
+(()=>{
+const D=BD_DATA;D.TITLE='ROSE SPIRE · 장미의 첨탑';
+Object.values(D.HEROINES).forEach(h=>h.age=Math.min(25,Math.max(22,h.age)));
+Object.assign(D.ENEMIES.slime,{name:'정원 수호자 모모',glyph:'모',age:23,kind:'rival',desc:'장미 정원의 문을 지키는 장난꾸러기 수호자.'});
+Object.assign(D.ENEMIES.bat,{name:'달빛 시녀 나리',glyph:'나',age:22,kind:'rival',desc:'여왕의 달빛 시녀. 빠른 연타와 회복을 사용한다.'});
+Object.assign(D.ENEMIES.knox,{name:'은빛 기사 녹시아',glyph:'녹',age:24,kind:'rival',desc:'방패와 대검으로 성문을 지키는 기사.'});
+Object.values(D.ENEMIES).forEach(h=>h.age=Math.min(25,Math.max(22,h.age||24)));
+D.ENEMIES.camellia={name:'가시의 공주 카멜리아',kind:'boss',boss:true,age:24,hp:[95,95],colors:['#ef779b','#40182a'],glyph:'카',desc:'공격과 방어를 번갈아 사용하는 정원의 공주. 가시가 피면 연타에 주의.',intro:'장미를 꺾으러 왔어? 먼저 나를 넘어 봐.',moves:{petal:{name:'꽃잎의 검',dmg:9},bloom:{name:'가시 개화',block:12,selfSt:{thorns:1}},dance:{name:'장미의 왈츠',dmg:5,hits:2},root:{name:'뿌리 결계',block:8,selfSt:{str:1}}},phases:[{ai:{type:'cycle',order:['petal','bloom','dance','root']}},{at:.5,enter:{say:'이제 진짜 꽃을 피울 시간이야.',st:{str:1}},ai:{type:'cycle',order:['dance','petal','root']}}]};
+D.ENEMIES.celeste={name:'별의 마녀 셀레스테',kind:'boss',boss:true,age:23,hp:[130,130],colors:['#afa0ff','#251943'],glyph:'셀',desc:'마력과 화상으로 덱을 압박한다. 후반부 별빛 연타를 대비하자.',intro:'별이 네 결말을 알려 줬어. 바꿀 수 있을까?',moves:{nova:{name:'별빛 폭발',dmg:11},hex:{name:'기억의 균열',playerSt:{weak:1},addCards:[{id:'burn',n:1,to:'discard'}],block:8},stars:{name:'삼중성',dmg:4,hits:3},charge:{name:'달의 축복',selfSt:{str:2},block:10}},phases:[{ai:{type:'cycle',order:['nova','hex','stars','charge']}},{at:.5,enter:{say:'이 별자리는 처음 보는데… 재밌어.',clearDebuffs:true},ai:{type:'cycle',order:['stars','nova','charge']}}]};
+const add=(id,name,cls,type,cost,hero,effects,up,rarity='uncommon')=>D.CARDS[id]={name,cls,type,cost,hero,effects,up,rarity,quote:'내 방식으로, 끝까지.'};
+add('s_crimson','혈화의 서약','sword','skill',0,'sera',[{t:'loseHp',v:3},{t:'self',s:'str',v:2}],{effects:[{t:'loseHp',v:2},{t:'self',s:'str',v:3}]});
+add('s_guarddance','성벽의 춤','sword','skill',1,'aria',[{t:'block',v:8},{t:'draw',v:1}],{effects:[{t:'block',v:11},{t:'draw',v:1}]});
+add('s_lastrose','마지막 장미','sword','attack',2,'kaira',[{t:'dmg',v:4,hits:4}],{effects:[{t:'dmg',v:5,hits:4}]},'rare');
+add('m_starlight','별빛 연산','magic','skill',0,'sion',[{t:'draw',v:1},{t:'energy',v:1}],{effects:[{t:'draw',v:2},{t:'energy',v:1}]});D.CARDS.m_starlight.exhaust=true;
+add('m_orbit','궤도의 수호','magic','skill',1,'elena',[{t:'block',v:6},{t:'draw',v:2}],{effects:[{t:'block',v:9},{t:'draw',v:2}]});
+add('m_prism','프리즘 연쇄','magic','attack',2,'luna',[{t:'dmgRandom',v:4,hits:5}],{effects:[{t:'dmgRandom',v:5,hits:5}]},'rare');
+add('n_nightbloom','밤에 피는 독','ninja','skill',1,'bell',[{t:'apply',s:'poison',v:4},{t:'block',v:5}],{effects:[{t:'apply',s:'poison',v:6},{t:'block',v:7}]});
+add('n_silk','비단의 그림자','ninja','skill',0,'daon',[{t:'add',id:'shiv',n:2,to:'hand'}],{effects:[{t:'add',id:'shiv',n:3,to:'hand'}]});D.CARDS.n_silk.exhaust=true;
+add('n_silent','고요한 처형','ninja','skill',2,'bell',[{t:'multiplyPoison',v:2},{t:'draw',v:2}],{effects:[{t:'multiplyPoison',v:3},{t:'draw',v:2}]},'rare');D.CARDS.n_silent.exhaust=true;
+add('x_oath','동료의 약속','neutral','skill',1,'lyra',[{t:'block',v:5},{t:'draw',v:2}],{effects:[{t:'block',v:8},{t:'draw',v:2}]},'common');
+D.EVENTS.rose={name:'장미의 거래',hero:'bell',text:'벨이 세 송이의 장미를 내민다. “대가는 네가 정해.”',options:[{label:'힘이 담긴 장미',hint:'최대 체력 -4 · 무작위 유물',fx:{maxHp:-4,relic:'random'},text:'작은 대가로 오래가는 힘을 얻었다.'},{label:'기억을 정리한다',hint:'카드 1장 제거',fx:{remove:1},text:'불필요한 기억을 내려놓았다.'},{label:'따뜻한 차를 마신다',hint:'체력 12 회복',fx:{heal:12},text:'조금 쉬어 가도 괜찮아.'}]};
+})();
