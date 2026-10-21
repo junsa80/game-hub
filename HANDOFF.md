@@ -59,3 +59,27 @@
 | muse-studio | junsa80/muse-studio | `d400d25` | 선택기 안 복사본(public/) | 로컬 전용(localStorage) · 계정 저장 제거됨 |
 | fogbound-tactics | junsa80/fogbound-tactics | `5de3a77` | 링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준) | 미확인 |
 | world-breaker | junsa80/world-breaker | `5bb0b6c` | 선택기 안 복사본 | 로컬 저장(localStorage) |
+
+## v1.4.1 (2026-10-21) — 인수인계 정리 (문서만, 화면 변경 없음)
+- `AI_START.md`(읽는 순서·협업 규칙·배포·제약), `docs/BUILD_PLAY_COPIES.md`(play/ 복사본 재생성 명령), `tools/make_static_copy.py`, `tools/patches/prism-muse-static.patch`, `docs/game-bookmarks.html`(즐겨찾기 가져오기 파일) 추가.
+- 이유: 이 저장소의 play/ 복사본은 Grok Bot 작업 상자에서 만들었고, 그 상자는 2026-10-28쯤 사라짐. 이제 빌드 절차가 전부 저장소 안에 있음.
+
+## 전체 게임 표 (2026-10-21 기준, main HEAD는 이날 GitHub API로 확인)
+| 게임 | 저장소 (공개 여부) | 담당 AI | 플레이 링크 | 호스팅 방식 | 저장 방식 |
+|---|---|---|---|---|---|
+| 나만의 게임 선택기 | junsa80/game-hub (공개) | Grok 계열 | https://junsa80.github.io/game-hub/ | GitHub Pages (main /) | 즐겨찾기·최근 플레이 localStorage |
+| 헌트 나우 | junsa80/hunt-now (공개) | Grok 계열 | https://junsa80.github.io/hunt-now/ | GitHub Pages (main /) | localStorage + JSON 백업 |
+| 미녀 덱 | junsa80/beauty-deck (공개) | Grok 계열 | https://junsa80.github.io/beauty-deck/ | GitHub Pages (main /) | localStorage + JSON 백업/복원 |
+| SRPG 프로토타입 | junsa80/srpg-prototype (공개) | SRPG 개발봇 | https://junsa80.github.io/srpg-prototype/ | GitHub Pages | IndexedDB(브라우저) |
+| 장미의 첨탑 | junsa80/rose-spire (비공개) | GPT | https://junsa80.github.io/game-hub/play/rose-spire/ (원본 Sites: https://rose-spire-deck.sajuyoon.chatgpt.site) | 선택기 안 복사본(원본 `6bf8f6f`) / ChatGPT Sites | 복사본: localStorage만 · Sites: ChatGPT 계정 저장 |
+| PRISM MUSE | junsa80/prism-muse (비공개) | GPT | https://junsa80.github.io/game-hub/play/prism-muse/ | 선택기 안 정적 빌드(원본 `a479cdd`=`5f7e28e`) | 복사본: localStorage만 |
+| 뮤즈 스튜디오 | junsa80/muse-studio (비공개) | GPT | https://junsa80.github.io/game-hub/play/muse-studio/ | 선택기 안 복사본(원본 `d400d25`=`cd1f379`) | 복사본: localStorage + 백업 파일 |
+| 월드 브레이커 | junsa80/world-breaker (비공개) | GPT | https://junsa80.github.io/game-hub/play/world-breaker/ | 선택기 안 복사본(원본 `5bb0b6c`) | localStorage |
+| 아스터 헌트 | junsa80/aster-hunt (비공개) | GPT | https://aster-hunt.sajuyoon.chatgpt.site | ChatGPT Sites (로그인 필요) | localStorage |
+| 종말계승 | junsa80/last-archive (비공개) | GPT | https://last-archive-alpha.sajuyoon.chatgpt.site | ChatGPT Sites (로그인 필요) | 미확인 |
+| 동료 길드 | junsa80/companion-guild (비공개) | GPT | https://companion-guild.sajuyoon.chatgpt.site | ChatGPT Sites (로그인 필요) | ChatGPT 계정 저장 + 로컬 |
+| EMBER TACTICS | junsa80/ember-tactics (비공개) | GPT | https://ember-tactics.sajuyoon.chatgpt.site | ChatGPT Sites (로그인 필요) | ChatGPT 계정 저장 + 로컬 |
+| 안개를 걷는 자들 | junsa80/fogbound-tactics (비공개) | GPT (Grok Bot 모바일 화면 수정 `grokbot/mobile-fit`은 main에 병합 완료) | https://fogbound-tactics-remake.sajuyoon.chatgpt.site | ChatGPT Sites (로그인 필요) | 미확인 |
+
+- 복사본 4개는 원본 main과 내용이 같은 상태(2026-10-21 확인: rose-spire main `de7cbf4`는 `6bf8f6f` 이후 문서만 바뀜).
+- GPT 게임이 GitHub Pages로 옮겨 가는 건 저장 내보내기/가져오기가 생긴 뒤(사용자 규칙).
