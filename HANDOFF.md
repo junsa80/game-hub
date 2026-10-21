@@ -14,7 +14,7 @@
 
 ## v1.1.0 (2026-10-20)
 - aster-hunt, last-archive, companion-guild, ember-tactics, fogbound-tactics: playable cards linking to ChatGPT-hosted URLs (`*.sajuyoon.chatgpt.site`). They return 401 unless logged into ChatGPT; card shows badge "ChatGPT 로그인 필요" (`login:"chatgpt"` in games.json).
-- Playable = has `url` (no longer requires `public`). rose-spire, prism-muse, muse-studio, world-breaker remain greyed (no link).
+- Playable = has `url`. 장미의 첨탑·프리즘 뮤즈·뮤즈 스튜디오의 바로 플레이는 Sites 주소다. github.io 복사본은 계정 저장이 없어 기록이 따로다.
 - SW cache hub-v1.1.0; asset query ?v=1.1.0.
 
 ## v1.2.0 (2026-10-20)
