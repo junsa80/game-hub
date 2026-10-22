@@ -1,3 +1,13 @@
+## v1.4.11 (2026-10-22) — 방문 공개, 편집 권한 유지
+- 사용자 목표: 13개 게임을 주소만으로 비로그인 플레이. 편집은 소유자와 소유자가 허용한 AI만. GitHub 원본 공개/비공개 상태는 변경하지 않음.
+- 목록의 Sites 8개는 실제로 owner-only custom 설정이었음. 네이티브 Sites 도구로 각각 public으로 변경했고 추가 editor는 없음. public은 방문 권한이지 편집 권한이 아님.
+- 기존 URL과 저장 키를 유지. 다른 호스트로 옮기거나 기존 로컬/계정 세이브를 이관하지 않음.
+- games.json의 login:chatgpt 제거, playAccess:anonymous 추가. public 필드는 이전 원본 공개 여부 데이터라 그대로 두며 방문 권한과 혼동하지 말 것.
+- PRISM MUSE: 익명 API 401 때 준비 화면에 머무는 문제 수정. GitHub PR #2 main 병합 `4bb9341`, Sites 소스 `37d8ea4`, Sites v14 배포 succeeded. 비로그인 로컬 저장, 로그인 계정 저장 유지. 기존 41개+익명 시작·플레이·재접속/로그인 저장/오프라인 백업 3개 검사와 빌드 통과.
+- 다른 계정 저장 게임 4개는 API 401 후에도 data-cloud-src 스크립트를 실행하는 구조와 사용자별 API 인증을 소스 확인. 기존 계정 저장 데이터와 권한 유지.
+- 검증 범위: GitHub Pages 5개 HTML은 쿠키/인증 없는 GET 200. Sites 8개 public/추가 editor 없음은 네이티브 응답 확인. 외부 자동 GET은 Cloudflare error 1010(403)으로 차단되어 실제 방문·전체 게임 화면·스테이지 클리어는 미검증. 내부 브라우저 미리보기도 URL 정책으로 차단됨. 이를 실제 전체 플레이 통과라고 보고하지 말 것.
+- Grok/다른 AI: GitHub main에서 이어서 수정하고 해당 호스트에 배포할 것. GitHub 푸시만으로 Sites가 갱신되지는 않음. .openai/hosting.json project_id와 기존 주소·세이브를 유지. 방문 권한은 공개 상태를 유지하고 임의의 editor를 추가하지 않음.
+
 # HANDOFF — game-hub
 
 ## v1.4.2 (2026-10-21) — 룬 영토 추가
@@ -92,3 +102,4 @@
 
 - 복사본 4개는 원본 main과 내용이 같은 상태(2026-10-21 확인: rose-spire main `de7cbf4`는 `6bf8f6f` 이후 문서만 바뀜).
 - GPT 게임이 GitHub Pages로 옮겨 가는 건 저장 내보내기/가져오기가 생긴 뒤(사용자 규칙).
+

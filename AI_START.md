@@ -3,7 +3,7 @@
 다른 AI가 이어받을 때 가장 먼저 읽는 문서. Read this first.
 
 - 라이브 / Live: https://junsa80.github.io/game-hub/ · 저장소: https://github.com/junsa80/game-hub (public, Pages = main /)
-- 담당 / Owner: Grok 계열. 현재 hub v1.4.10 (`sw.js` `V='hub-v1.4.10'`, `?v=1.4.10`).
+- 담당 / Owner: Grok 계열. 현재 hub v1.4.11 (`sw.js` `V='hub-v1.4.11'`, `?v=1.4.11`).
 
 ## 읽는 순서 / Read order
 1. 이 파일 → 2. `HANDOFF.md`(전체 게임 표, 버전 기록) → 3. `docs/BUILD_PLAY_COPIES.md`(play/ 복사본 다시 만드는 정확한 명령) → 4. `games.json`(게임 목록의 유일한 원본) → 5. `app.js`, `index.html`, `sw.js`.
@@ -41,3 +41,10 @@ prism-muse, muse-studio, world-breaker, rose-spire 는 비공개 저장소라, �
 2. `game-hub/docs/BUILD_PLAY_COPIES.md` 의 명령대로 다시 만든다 (rose-spire·muse-studio: `tools/make_static_copy.py`, world-breaker: 파일 복사, prism-muse: `tools/patches/prism-muse-static.patch` 적용 후 Next 정적 빌드).
 3. `games.json`의 `commit` 값을 복사한 원본 커밋으로 갱신, 허브 `sw.js` 버전과 `?v=` 올림, `[GrokBot]`/`[Grok]` 커밋, 라이브 확인.
 4. 새 그림이 들어왔으면 성인·단정한 복장·실사 인물 아님을 먼저 확인하고 올린다.
+
+## 현재 방문 권한 (2026-10-22)
+- 사용자는 13개 게임 모두 비로그인 플레이를 원함. Sites 8개의 방문 권한을 public으로 변경했고 추가 편집자는 없음. GitHub 원본 저장소 공개 여부는 바꾸지 않음.
+- games.json: playAccess=anonymous는 방문 권한. public 필드와 원본 저장소 공개 여부를 혼동하지 말 것. 자세한 변경과 미검증 범위는 HANDOFF v1.4.11 참조.
+- 기존 URL 유지. 비로그인 로컬 저장, 로그인 사용자 기존 계정 저장 유지. PRISM MUSE v14는 비로그인 준비 화면 문제를 수정함.
+- Grok은 같은 GitHub main을 수정할 수 있는 기존 연결을 이용. Sites 배포는 별도 단계. GitHub 푸시/백업을 라이브 반영 완료로 보고하지 말 것.
+
