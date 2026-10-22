@@ -21,13 +21,13 @@ function render(){
   <div class="tags">${g.genre.map(x=>`<span>${esc(x)}</span>`).join('')}</div>
   <p class="save-note">${g.cloudSave==='supported'?'💾 기기 저장 · ☁ ChatGPT 계정 저장 지원':'💾 기기 저장 · 계정 저장 추가 예정'}</p>
   ${g.src?`<details class="dev-info"><summary>개발 정보</summary><dl class="meta"><dt>원본 저장소</dt><dd>${esc(g.src)}</dd><dt>반영 커밋</dt><dd><code>${esc(g.commit)}</code> · ${esc(g.commitKind)}</dd><dt>저장 상세</dt><dd>${esc(g.save)}</dd></dl></details>`:''}
-  ${p?`${g.playAccess==='anonymous'?'<span class="lg">로그인 없이 플레이</span>':g.login==='chatgpt'?'<span class="lg">ChatGPT 로그인 필요</span>':''}<a class="play" href="${g.url}" data-p="${g.id}">▶ 바로 플레이</a>`:`<span class="badge">${g.note?'🔍 '+g.note:'🔒 비공개 · 링크 없음'}</span>`}</div></div>`}).join(''):'<div class="empty">조건에 맞는 게임이 없어요</div>';
+  ${p?`<a class="play" href="${g.url}" data-p="${g.id}">▶ 바로 플레이</a>`:`<span class="badge">${g.note?'🔍 '+g.note:'🔒 비공개 · 링크 없음'}</span>`}</div></div>`}).join(''):'<div class="empty">조건에 맞는 게임이 없어요</div>';
 }
 document.addEventListener('click',e=>{const t=e.target.closest('[data-c],[data-f],[data-p]');if(!t)return;
  if(t.dataset.c){filter=t.dataset.c;render()}
  else if(t.dataset.f){const i=st.fav.indexOf(t.dataset.f);i<0?st.fav.push(t.dataset.f):st.fav.splice(i,1);save();render()}
  else if(t.dataset.p){st.recent[t.dataset.p]=Date.now();save()}});
 document.getElementById('q').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();render()});
-fetch('games.json?v=1.4.12').then(r=>r.json()).then(g=>{games=g;render()});
+fetch('games.json?v=1.4.13').then(r=>r.json()).then(g=>{games=g;render()});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
 
