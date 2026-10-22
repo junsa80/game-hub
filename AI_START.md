@@ -3,7 +3,7 @@
 다른 AI가 이어받을 때 가장 먼저 읽는 문서. Read this first.
 
 - 라이브 / Live: https://junsa80.github.io/game-hub/ · 저장소: https://github.com/junsa80/game-hub (public, Pages = main /)
-- 담당 / Owner: Grok 계열. 현재 hub v1.4.9 (`sw.js` `V='hub-v1.4.9'`, `?v=1.4.9`).
+- 담당 / Owner: Grok 계열. 현재 hub v1.4.10 (`sw.js` `V='hub-v1.4.10'`, `?v=1.4.10`).
 
 ## 읽는 순서 / Read order
 1. 이 파일 → 2. `HANDOFF.md`(전체 게임 표, 버전 기록) → 3. `docs/BUILD_PLAY_COPIES.md`(play/ 복사본 다시 만드는 정확한 명령) → 4. `games.json`(게임 목록의 유일한 원본) → 5. `app.js`, `index.html`, `sw.js`.
