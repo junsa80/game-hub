@@ -4,8 +4,8 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <meta name="theme-color" content="#0d1623"/>
-  <meta name="description" content="월드 브레이커: 커서/터치 중심 자동 벌목과 성장형 게임의 플레이 가능한 첫 버전"/>
-  <title>월드 브레이커 · Alpha 0.2 · 숲과 공명 광산</title>
+  <meta name="description" content="월드 브레이커: 커서·터치로 채집하고 몬스터를 격파하는 성장형 액션 게임"/>
+  <title>월드 브레이커 · Alpha 0.7 · 연구 도전</title>
   <link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
@@ -14,26 +14,55 @@
       <div class="brand"><span class="brand-icon">✦</span><div><strong>WORLD BREAKER</strong><small id="world-title">STAGE 01 · 증식하는 숲</small></div></div>
       <button id="settings-button" class="icon-button" aria-label="설정 열기" title="설정">⚙</button>
     </header>
+    <div class="trial-entry"><button id="trial-open">⚗ 연구 도전 · 편성과 유물</button><span id="trial-entry-note">본편과 별도 진행 · 고정 예산으로 조합 연구</span></div>
+    <section id="trial-menu" class="trial-menu" hidden aria-label="연구 도전 편성">
+      <div class="panel-heading"><h2>연구 도전</h2><button id="trial-back" class="icon-button">본편으로</button></div>
+      <p class="trial-intro">채집 두 구간 → 지역 보스. 보호막이 깨지면 실패하며 자동 회복은 없습니다. 강화 예산과 유물 2칸 안에서 조합을 연구하세요. 본편의 자원과 강화는 별도로 보존됩니다.</p>
+      <div class="trial-settings"><label>도전 지역<select id="trial-stage"></select></label><label>난이도<select id="trial-level"></select></label><label>시작 특성<select id="trial-style"></select></label></div>
+      <p id="trial-rules" class="trial-rules"></p><p id="trial-style-help" class="round-help"></p>
+      <div class="trial-settings"><label>스킬 1<select id="trial-skill-0"></select></label><label>스킬 2<select id="trial-skill-1"></select></label></div>
+      <div class="trial-budget"><strong id="trial-budget"></strong><button id="trial-build-clear" class="icon-button">편성 비우기</button></div>
+      <div id="trial-cards" class="trial-cards"></div>
+      <h3>유물 · 최대 2개</h3><div id="trial-relics" class="trial-relics"></div>
+      <p id="trial-error" role="status" class="modal-error"></p>
+      <div class="trial-start"><button id="trial-resume" hidden>진행 중인 도전 이어하기</button><button id="trial-discard" hidden>진행 도전 종료 · 새 편성</button><button id="trial-start">이 편성으로 도전</button></div>
+      <details><summary id="trial-research-count">연구 해금 현황</summary><div id="trial-research"></div></details>
+      <details><summary>최근 도전 기록 · 최대 30개</summary><div id="trial-history"></div></details>
+    </section>
+    <section id="trial-status" class="trial-status" hidden aria-label="연구 도전 현황"><div class="panel-heading"><strong id="trial-heading"></strong><button id="trial-abandon" class="icon-button">편성으로 · 도전 종료</button></div><p id="trial-metrics"></p><details><summary>현재 편성과 유물</summary><p id="trial-loadout"></p></details><p id="trial-tell">붉은 표식 밖을 터치해 회피 · 채집 위치도 함께 이동</p><div id="trial-result" hidden><p id="trial-analysis"></p><p id="trial-unlocks"></p><div id="trial-boons" class="trial-boons"></div><button id="trial-rebuild" class="action">결과를 보며 다시 편성</button></div></section>
     <section class="hud" aria-label="자원 및 상태">
-      <div class="hud-box"><span>◈ 자원</span><strong id="wood">0</strong></div>
+      <div class="hud-box"><span id="resource-label">🪵 목재</span><strong id="wood">0</strong></div>
       <div class="hud-box"><span>🔮 정수</span><strong id="essence">0</strong></div>
       <div class="hud-box"><span>⚒ 작업 / 초</span><strong id="power">0</strong></div>
       <div class="hud-box"><span>🌱 생성 / 초</span><strong id="growth">0</strong></div>
     </section>
     <section class="game-card">
       <div class="topline"><span id="stage-label">🌳 숲의 잔량 줄이기</span><span id="stage-progress">0%</span></div>
+      <div class="round-status"><strong id="round-clock">75초</strong><span id="tempo">생성 1.0/초 ↔ 처리 0.5/초</span></div><div id="round-help" class="round-help"></div>
       <div class="progress"><div id="progress-fill"></div></div>
-      <div class="field-wrap"><canvas id="field" width="900" height="550" tabindex="0" aria-label="나무가 자라는 숲 게임 필드"></canvas><div class="field-notice" id="field-notice">화면을 터치하면 주변을 자동 벌목해요</div></div>
-      <div class="field-footer"><span id="target-text">🎯 벌목 위치 고정 · 터치하여 변경</span><span id="field-stats">대상 0</span></div>
+      <div class="field-wrap"><canvas id="field" width="200" height="150" tabindex="0" aria-label="나무가 자라는 숲 게임 필드"></canvas><div class="field-notice" id="field-notice">화면을 터치하면 주변을 자동 벌목해요</div></div>
+      <div class="field-footer"><span id="worker-status">작업 도끼 0/1</span><span id="map-size">공터 4×3</span><span id="target-text">🎯 벌목 위치 고정 · 터치하여 변경</span><span id="field-stats">대상 0</span></div>
     </section>
-    <div class="control-bar"><span id="shield">보호막 100</span><button id="combat-toggle">전투 / 채집 우선 전환</button><button id="next-stage" hidden>⛏ 공명 광산으로 →</button></div>
+    <div class="control-bar"><span id="shield">보호막 100</span><button id="sound-toggle" aria-label="소리 켜기 또는 끄기">🔊 소리 켜짐</button><button id="combat-toggle">전투 / 채집 우선 전환</button><button id="round-next" hidden>다음 레벨 →</button><button id="round-retry" hidden>↻ 강화 유지 재도전</button><button id="next-stage" hidden>⛏ 공명 광산으로 →</button></div>
+    <p id="city-status" class="city-status" hidden></p>
+    <p id="swamp-status" class="swamp-status" hidden></p>
+    <p id="enemy-guide" class="enemy-guide" hidden></p>
+    <section id="skill-panel" class="skill-panel" aria-label="전투 스킬" hidden>
+      <div class="skill-heading"><strong>전술 스킬 · 2개 조합</strong><span id="skill-energy"></span></div>
+      <div class="skill-actions"><div class="skill-option"><button id="cast-0"></button><small id="skill-desc-0"></small></div><div class="skill-option"><button id="cast-1"></button><small id="skill-desc-1"></small></div></div>
+      <div id="skill-loadout" class="skill-loadout"><label>스킬 1<select id="skill-slot-0"></select></label><label>스킬 2<select id="skill-slot-1"></select></label><small>휴식 때 조합 변경 · 회전 참격: 순간 처리 / 시간 봉인: 생성·공격·재가동 정지 / 작업 폭주: 지속 위력 증가</small></div>
+    </section>
+    <p id="content-end" class="content-end" hidden>기계도시까지 정화 완료! 현재 버전은 4스테이지까지입니다. 5~6스테이지는 개발 중입니다.</p>
     <div class="message-line" aria-live="polite"><span id="hint">이곳은 시작 지역입니다.</span></div>
-    <section class="upgrade-panel" aria-label="업그레이드">
-      <div class="panel-heading"><h2>업그레이드</h2><div class="mini"><span id="upgrades-owned">0</span><span>종 · 본편 240종 예정</span></div></div>
+    <button id="open-upgrades" class="upgrade-open" type="button">⚒ 강화와 설비</button><dialog id="upgrade-dialog" aria-label="강화와 설비"><button id="close-upgrades" type="button">닫고 필드로 ×</button><section class="upgrade-panel" aria-label="업그레이드">
+      <div class="panel-heading"><h2>업그레이드</h2><div class="mini"><span id="upgrades-owned">0</span><span> · 클리어하면 새 강화 해금</span></div></div>
+      <p id="upgrade-phase" class="round-help">강화는 라운드 종료 후 가능합니다</p>
+      <div class="upgrade-filters" role="group" aria-label="강화 표시 필터"><button id="filter-all" aria-pressed="true">전체</button><button id="filter-available" aria-pressed="false">구매 가능만 (0)</button></div>
       <div id="tabs" class="tabs" role="tablist" aria-label="업그레이드 계열"></div>
       <div id="upgrade-list" class="upgrade-list"></div>
-    </section>
-    <p id="save-status" role="status">30초마다 자동 저장 · 설정에서 JSON 백업</p><details><summary>본편 진행표 · 6개 스테이지 / 240종 강화</summary><p id="campaign"></p><p>본편 목표 2~5시간. 현재 Alpha 0.2는 숲과 광산만 플레이 가능합니다. 외계인·다차원 세계는 본편 이후 개발합니다.</p></details><footer><span>ALPHA 0.2 · 숲 / 광산</span><span id="fps">60 FPS</span></footer>
+      <p id="upgrade-empty" class="upgrade-empty" role="status" hidden></p>
+    </section></dialog>
+    <p id="save-status" role="status">30초마다 자동 저장 · 설정에서 JSON 백업</p><details><summary>본편 진행표 · 6개 스테이지 / 240종 강화</summary><p id="campaign"></p><p>본편 목표 2~5시간.현재 Alpha 0.7는 숲·광산·오염된 늪·기계도시까지 플레이 가능합니다. 외계인·다차원 세계는 본편 이후 개발합니다.</p></details><footer><span>ALPHA 0.7 · 소리는 첫 터치 후 재생</span><span id="fps">60 FPS</span></footer>
   </div>
   <div class="modal-backdrop hidden" id="modal-backdrop" role="presentation">
     <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
