@@ -34,7 +34,7 @@
 - 원본은 비공개 `junsa80/rune-territories` `8a1f3f5`. 실행본은 공개 `junsa80/rune-territories-play` `48fe0b1`. 선택기 안에 복사하지 않고 링크로 연다.
 - 저장 키 `rune-territories.save.v1`은 `junsa80.github.io` 공통이라 선택기에서 열어도 공개 주소와 기록이 같다. JSON 백업 가능.
 - 썸네일 `thumbs/rune-territories.webp` (480×270). SW `hub-v1.4.3`, `?v=1.4.3`.
-- 2026-10-22 추가 반영: 원본 `4849ec4`, 실행본 `51723fc` (UI 0.1.45: 4인 시범 + 시범 보상). 직전 `390aa94` / `5245f67` (UI 0.1.44). SW `hub-v1.4.10`.
+- 2026-10-22 추가 반영: 원본 `5b827cd`, 실행본 `5738e4e` (UI 0.1.47: 타이틀 키아트·칸 글자, GPT 0.1.46 주사위 수정 포함). 표지 `thumbs/rune-territories-cover-v1.webp`. 직전 `4849ec4` / `51723fc` (UI 0.1.45).
 - 자동 검증: `games.json` JSON 파싱. 실제 폰에서 카드 탭은 안 함.
 
 ## 게임 추가 방법
@@ -108,7 +108,7 @@
 | 헌트 나우 | junsa80/hunt-now (공개) | Grok 계열 | https://junsa80.github.io/hunt-now/ | GitHub Pages (main /) | localStorage + JSON 백업 |
 | 미녀 덱 | junsa80/beauty-deck (공개) | Grok 계열 | https://junsa80.github.io/beauty-deck/ | GitHub Pages (main /) | localStorage + JSON 백업/복원 |
 | SRPG 프로토타입 | junsa80/srpg-prototype (공개) | SRPG 개발봇 | https://junsa80.github.io/srpg-prototype/ | GitHub Pages | IndexedDB(브라우저) |
-| 룬 영토 | junsa80/rune-territories (비공개) | Grok 계열 | https://junsa80.github.io/rune-territories-play/ | 공개 실행본 Pages (`51723fc`) | localStorage (github.io 공통) + JSON 백업 |
+| 룬 영토 | junsa80/rune-territories (비공개) | Grok 계열 | https://junsa80.github.io/rune-territories-play/ | 공개 실행본 Pages (`5738e4e`) | localStorage (github.io 공통) + JSON 백업 |
 | 장미의 첨탑 | junsa80/rose-spire (비공개) | GPT | https://junsa80.github.io/game-hub/play/rose-spire/ (원본 Sites: https://rose-spire-deck.sajuyoon.chatgpt.site) | 선택기 안 복사본(원본 `6bf8f6f`) / ChatGPT Sites | 복사본: localStorage만 · Sites: ChatGPT 계정 저장 |
 | PRISM MUSE | junsa80/prism-muse (비공개) | GPT | https://junsa80.github.io/game-hub/play/prism-muse/ | 선택기 안 정적 빌드(원본 `a479cdd`=`5f7e28e`) | 복사본: localStorage만 |
 | 뮤즈 스튜디오 | junsa80/muse-studio (비공개) | GPT | https://junsa80.github.io/game-hub/play/muse-studio/ | 선택기 안 복사본(원본 `d400d25`=`cd1f379`) | 복사본: localStorage + 백업 파일 |
