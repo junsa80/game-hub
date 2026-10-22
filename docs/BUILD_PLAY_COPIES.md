@@ -26,6 +26,7 @@ python3 tools/make_static_copy.py ../src-muse-studio/public play/muse-studio
 rm -rf play/world-breaker && mkdir -p play/world-breaker
 cp ../src-world-breaker/index.html ../src-world-breaker/styles.css play/world-breaker/
 cp -r ../src-world-breaker/src play/world-breaker/src
+cp -r ../src-world-breaker/visual play/world-breaker/visual   # 타이틀 키아트 (0.7 UI 이후)
 ```
 (2026-10-21 검증: 현재 복사본과 main `5bb0b6c` 파일이 모두 같음.)
 

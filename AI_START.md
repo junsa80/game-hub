@@ -3,7 +3,7 @@
 다른 AI가 이어받을 때 가장 먼저 읽는 문서. Read this first.
 
 - 라이브 / Live: https://junsa80.github.io/game-hub/ · 저장소: https://github.com/junsa80/game-hub (public, Pages = main /)
-- 담당 / Owner: Grok 계열. 현재 hub v1.5.0 (`sw.js` `V='hub-v1.5.0'`, `?v=1.5.0`).
+- 담당 / Owner: Grok 계열. 현재 hub v1.5.1 (`sw.js` `V='hub-v1.5.1'`, `?v=1.5.1`).
 
 ## 읽는 순서 / Read order
 1. 이 파일 → 2. `HANDOFF.md`(전체 게임 표, 버전 기록) → 3. `docs/BUILD_PLAY_COPIES.md`(play/ 복사본 다시 만드는 정확한 명령) → 4. `games.json`(게임 목록의 유일한 원본) → 5. `app.js`, `index.html`, `sw.js`.
@@ -44,11 +44,11 @@ prism-muse, muse-studio, world-breaker, rose-spire 는 비공개 저장소라, �
 
 ## 현재 방문 권한 (2026-10-22)
 - 사용자는 13개 게임 모두 비로그인 플레이를 원함. Sites 8개의 방문 권한을 public으로 변경했고 추가 편집자는 없음. GitHub 원본 저장소 공개 여부는 바꾸지 않음.
-- games.json: playAccess=anonymous는 방문 권한. public 필드와 원본 저장소 공개 여부를 혼동하지 말 것. 자세한 변경과 미검증 범위는 HANDOFF v1.5.0 참조.
+- games.json: playAccess=anonymous는 방문 권한. public 필드와 원본 저장소 공개 여부를 혼동하지 말 것. 자세한 변경과 미검증 범위는 HANDOFF v1.5.1 참조.
 - 기존 URL 유지. 비로그인 로컬 저장, 로그인 사용자 기존 계정 저장 유지. PRISM MUSE v14는 비로그인 준비 화면 문제를 수정함.
 - Grok은 같은 GitHub main을 수정할 수 있는 기존 연결을 이용. Sites 배포는 별도 단계. GitHub 푸시/백업을 라이브 반영 완료로 보고하지 말 것.
 
 
-## 목록 표지/안내 v1.5.0
+## 목록 표지/안내 v1.5.1
 - 9개 신규 cover-v1.webp와 13개 초보 안내. 프롬프트/사용 경로는 docs/COVER_ART.md.
 - games.json tagline/steps/controls/tip이 안내 원본. coverType=illustration인 표지는 실제 캡처가 아니므로 해당 라벨 유지.
