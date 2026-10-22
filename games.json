@@ -41,7 +41,7 @@
     "thumb": "thumbs/beauty-deck.webp",
     "public": true,
     "src": "junsa80/beauty-deck",
-    "commit": "1b5c6c7",
+    "commit": "d185d9d",
     "commitKind": "링크(확인 시점 main)",
     "save": "로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능",
     "playAccess": "anonymous",

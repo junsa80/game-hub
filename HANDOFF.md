@@ -85,7 +85,7 @@
 | id | 원본 저장소 | 반영 커밋 | 종류 | 저장 방식 |
 |---|---|---|---|---|
 | hunt-now | junsa80/hunt-now | `040e11e` | 링크(확인 시점 main) | 로컬 저장(이 브라우저 localStorage) |
-| beauty-deck | junsa80/beauty-deck | `1b5c6c7` | 링크(확인 시점 main) | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
+| beauty-deck | junsa80/beauty-deck | `d185d9d` | 링크(확인 시점 main) | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
 | srpg-prototype | junsa80/srpg-prototype | `394a6d6` | 링크(확인 시점 main) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
 | aster-hunt | junsa80/aster-hunt | `25836fb` | 링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준) | 로컬 저장(저장소에 서버 저장 코드 없음) |
