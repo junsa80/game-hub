@@ -28,5 +28,5 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-c],[data-f
  else if(t.dataset.f){const i=st.fav.indexOf(t.dataset.f);i<0?st.fav.push(t.dataset.f):st.fav.splice(i,1);save();render()}
  else if(t.dataset.p){st.recent[t.dataset.p]=Date.now();save()}});
 document.getElementById('q').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();render()});
-fetch('games.json?v=1.4.3').then(r=>r.json()).then(g=>{games=g;render()});
+fetch('games.json?v=1.4.4').then(r=>r.json()).then(g=>{games=g;render()});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
