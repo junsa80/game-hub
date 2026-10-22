@@ -16,7 +16,8 @@
     "commit": "040e11e",
     "commitKind": "링크(확인 시점 main)",
     "save": "로컬 저장(이 브라우저 localStorage)",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "planned"
   },
   {
     "id": "beauty-deck",
@@ -35,7 +36,8 @@
     "commit": "1b5c6c7",
     "commitKind": "링크(확인 시점 main)",
     "save": "로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "planned"
   },
   {
     "id": "srpg-prototype",
@@ -54,7 +56,8 @@
     "commit": "394a6d6",
     "commitKind": "링크(확인 시점 main)",
     "save": "로컬 저장(브라우저 IndexedDB) · 클라우드 미지원",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "planned"
   },
   {
     "id": "rune-territories",
@@ -73,7 +76,8 @@
     "commit": "4849ec4",
     "commitKind": "링크(공개 실행본 rune-territories-play 51723fc)",
     "save": "로컬 저장(junsa80.github.io 공통 localStorage) · JSON 백업 가능",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "planned"
   },
   {
     "id": "rose-spire",
@@ -91,8 +95,8 @@
     "commit": "029feaa",
     "commitKind": "링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준)",
     "save": "비로그인: 이 브라우저에 저장 · 로그인: 기존 계정 저장",
-    "saveWarn": "기존 Sites 주소를 유지합니다. 비로그인 기록은 이 브라우저에 저장되며, 다른 기기에서 이어하려면 계정 저장을 이용하세요.",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "supported"
   },
   {
     "id": "aster-hunt",
@@ -109,7 +113,8 @@
     "commit": "25836fb",
     "commitKind": "링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준)",
     "save": "로컬 저장(저장소에 서버 저장 코드 없음)",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "planned"
   },
   {
     "id": "last-archive",
@@ -126,7 +131,8 @@
     "commit": "5f24ceb",
     "commitKind": "링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준)",
     "save": "미확인",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "planned"
   },
   {
     "id": "companion-guild",
@@ -144,7 +150,8 @@
     "commit": "32a8aff",
     "commitKind": "링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준)",
     "save": "비로그인: 이 브라우저에 저장 · 로그인: 기존 계정 저장",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "supported"
   },
   {
     "id": "ember-tactics",
@@ -161,7 +168,8 @@
     "commit": "9ad14cd",
     "commitKind": "링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준)",
     "save": "비로그인: 이 브라우저에 저장 · 로그인: 기존 계정 저장",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "supported"
   },
   {
     "id": "prism-muse",
@@ -179,8 +187,8 @@
     "commit": "4bb9341",
     "commitKind": "Sites v14 · GitHub main 반영, Sites 소스 37d8ea4",
     "save": "비로그인: 이 브라우저에 저장 · 로그인: 기존 계정 저장",
-    "saveWarn": "기존 Sites 주소를 유지합니다. 비로그인 기록은 이 브라우저에 저장되며, 다른 기기에서 이어하려면 계정 저장을 이용하세요.",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "supported"
   },
   {
     "id": "muse-studio",
@@ -198,8 +206,8 @@
     "commit": "db5cd8a",
     "commitKind": "링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준)",
     "save": "비로그인: 이 브라우저에 저장 · 로그인: 기존 계정 저장",
-    "saveWarn": "기존 Sites 주소를 유지합니다. 비로그인 기록은 이 브라우저에 저장되며, 다른 기기에서 이어하려면 계정 저장을 이용하세요.",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "supported"
   },
   {
     "id": "fogbound-tactics",
@@ -216,7 +224,8 @@
     "commit": "5de3a77",
     "commitKind": "링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준)",
     "save": "미확인",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "planned"
   },
   {
     "id": "world-breaker",
@@ -233,7 +242,7 @@
     "commit": "5bb0b6c",
     "commitKind": "선택기 안 복사본",
     "save": "로컬 저장(localStorage)",
-    "playAccess": "anonymous"
+    "playAccess": "anonymous",
+    "cloudSave": "planned"
   }
 ]
-
