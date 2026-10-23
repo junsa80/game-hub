@@ -164,3 +164,7 @@
 - 2026-10-23: hub srpg-prototype 표기 「잿빛 왕관: 새벽의 서약」 + commit `9afee37`.
 - 2026-10-23: SRPG 개발봇이 표지를 `thumbs/srpg-prototype-cover-v1.webp`(960×540, coverType=illustration)로 교체. 커밋 `c0c44a5`. 제목/커밋 라벨은 그대로.
 - 2026-10-23: rune-territories `6e8b5ac` / play `d08b178` (UI 0.1.52 판 안 그림). GrokBot only touched the rune-territories entry.
+
+## fantasy-collab
+- tip source `b22f881` · play `https://junsa80.github.io/fantasy-collab-play/` (a6afae6)
+- 환상 콜라보 1차 허브 카드 추가 (GrokBot)

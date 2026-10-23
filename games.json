@@ -85,6 +85,35 @@
     "coverType": "illustration"
   },
   {
+    "id": "fantasy-collab",
+    "title": "환상 콜라보",
+    "desc": "각 작품의 아군과 적이 한 무대에 뒤섞인 무쌍 오로치식 턴제 JRPG. 필살기를 보면 원작이 보인다.",
+    "genre": [
+      "JRPG",
+      "콜라보"
+    ],
+    "icon": "✨",
+    "color": "#9b59b6",
+    "url": "https://junsa80.github.io/fantasy-collab-play/",
+    "thumb": "thumbs/fantasy-collab-cover-v1.webp",
+    "public": true,
+    "src": "junsa80/fantasy-collab",
+    "commit": "b22f881",
+    "commitKind": "GrokBot 환상 콜라보 1차 · play a6afae6",
+    "save": "로컬 저장(브라우저) · 클라우드 미지원",
+    "playAccess": "anonymous",
+    "cloudSave": "none",
+    "tagline": "필살기를 보면, 어느 세계에서 왔는지 알 수 있다.",
+    "steps": [
+      "균열의 연회장에서 동료를 모으세요.",
+      "전투에서 원작 시그니처 필살기를 쓰세요.",
+      "다른 세계의 적 게스트와 맞서세요."
+    ],
+    "controls": "클릭·터치로 이동과 전투 명령을 선택하세요.",
+    "tip": "파티에 여러 세계 동료를 섞어 시너지를 보세요.",
+    "coverType": "illustration"
+  },
+  {
     "id": "rune-territories",
     "title": "룬 영토",
     "desc": "주사위로 보드를 돌며 영토를 확보하고 침략과 방어를 고민하는 카드 보드 게임.",
