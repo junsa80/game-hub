@@ -23,6 +23,11 @@
 - 처음부터 다시 만들지 않는다. Never rebuild from scratch; continue from main.
 - 검증 보고는 자동 테스트와 실제 폰 테스트를 나눠 쓰고, 안 한 확인을 했다고 쓰지 않는다. Report automated vs real-phone tests separately; never claim unverified checks.
 
+## 게임별 방향과 공통 편의성 (2026-10-23)
+- 기능을 고르기 전에 [GAME_DIRECTIONS.md](GAME_DIRECTIONS.md)를 읽는다. 전체 13개 게임의 중심 재미·성장·플레이 방향은 서로 다르게 키운다.
+- 조작·가독성·저장·안내·안정성 개선은 다른 게임에서도 검토하되, 게임의 판단·긴장·화풍에 맞게 적용하고 실제 적용/미적용 상태를 구분한다.
+- 문서의 진화 방향은 개발 기준이며 해당 기능의 구현 완료 선언이 아니다.
+
 ## 핵심 제약 / Key constraints
 - 모든 캐릭터는 성인(20대 이상), 단정한 복장, 성적 콘텐츠 없음. 실존 인물과 닮은 그림 금지. Adults only, fully clothed, no sexual content, no real-person likeness.
 - rose-spire의 숙련 문턱 기준 0 / 16 / 40 / 80 / 140 은 rose-spire 전용 메모다. 1·4·9 문턱이나 "18KB 패치"는 적용하지 않는다. 다른 게임에 이 숫자를 옮기지 않는다. (Rose-spire-only note; don't apply elsewhere.)
