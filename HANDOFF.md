@@ -141,3 +141,4 @@
 - 2026-10-23: hunt-now `82cedb4` (v5.6 몬스터 아이콘·동료 HUD). GrokBot only touched the hunt-now entry.
 
 - 2026-10-23: hunt-now `82cedb4` (v5.7 정화 동료 2D 초상). GrokBot only touched the hunt-now entry.
+- 2026-10-23: beauty-deck `27cb3aa` (v1.4.2 손패 겹침 잔선). GrokBot only touched the beauty-deck entry.
