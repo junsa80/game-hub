@@ -11,7 +11,7 @@
 - 브라우저 미리보기 연결 거부로 실제 390×844 높이·폰 터치 검증은 미완료. Pages 반영은 workflow/live GET으로 별도 확인할 것.
 
 ## v1.5.0 — 9개 표지와 13개 초보 안내 (2026-10-22)
-- 이미지 없는 GPT 게임 9개에 장르별 신규 표지 일러스트. 기존 4개 대표 이미지는 유지. thumb 경로는 thumbs/<id>-cover-v1.webp, 제작 프롬프트/출처는 docs/COVER_ART.md.
+- 이미지 없는 GPT 게임 9개에 장르별 신규 표지 일러스트. 기존 대표 이미지 중 hunt-now·beauty-deck는 유지. srpg-prototype은 이후 일러스트 표지로 교체됨(아래 2026-10-23). thumb 경로는 thumbs/<id>-cover-v1.webp, 제작 프롬프트/출처는 docs/COVER_ART.md.
 - 전체 13개: 한 줄 매력 소개, 설명, 첫 3단계/조작/팁을 접힌 안내로 추가. 표지를 눌러 게임 실행, 즐겨찾기와 기존 플레이 버튼 유지.
 - 이미지 960×540 WebP, 지연 로드. 생성 이미지는 실제 게임 화면이 아니므로 표지 일러스트 라벨. 카드 320px 화면 폭 넘침 방지.
 - 범위는 게임 목록의 표지/안내이며 게임 본체 타이틀/전투/저장·기존 URL은 변경하지 않음. 계정 저장 5/13 상태 유지.
@@ -143,4 +143,5 @@
 - 2026-10-23: hunt-now `82cedb4` (v5.7 정화 동료 2D 초상). GrokBot only touched the hunt-now entry.
 - 2026-10-23: beauty-deck `27cb3aa` (v1.4.2 손패 겹침 잔선). GrokBot only touched the beauty-deck entry.
 - 2026-10-23: hunt-now `2d4e264` (v5.8 전투 3D·타격감). GrokBot only touched the hunt-now entry.
-- 2026-10-23: hub srpg-prototype 표기만 「잿빛 왕관: 새벽의 서약」 + commit `437c64f` (표지 경로는 SRPG 개발봇이 교체 예정). GrokBot only touched the srpg-prototype entry.
+- 2026-10-23: hub srpg-prototype 표기 「잿빛 왕관: 새벽의 서약」 + commit `437c64f`.
+- 2026-10-23: SRPG 개발봇이 표지를 `thumbs/srpg-prototype-cover-v1.webp`(960×540, coverType=illustration)로 교체. 커밋 `c0c44a5`. 제목/커밋 라벨은 그대로.
