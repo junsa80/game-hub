@@ -57,8 +57,8 @@
   },
   {
     "id": "srpg-prototype",
-    "title": "SRPG 프로토타입",
-    "desc": "아군을 움직이고 공격 순서를 계획하며 이야기를 따라가는 고전 스타일 전술 RPG.",
+    "title": "잿빛 왕관: 새벽의 서약",
+    "desc": "동료를 전장에 배치하고 턴을 짜 가며 이야기의 끝을 여는 고전 스타일 전술 RPG.",
     "genre": [
       "전술 RPG",
       "SRPG"
@@ -69,8 +69,8 @@
     "thumb": "thumbs/srpg-prototype.webp",
     "public": true,
     "src": "junsa80/srpg-prototype",
-    "commit": "394a6d6",
-    "commitKind": "링크(확인 시점 main)",
+    "commit": "437c64f",
+    "commitKind": "GrokBot 허브 표기(잿빛 왕관 · tip)",
     "save": "로컬 저장(브라우저 IndexedDB) · 클라우드 미지원",
     "playAccess": "anonymous",
     "cloudSave": "planned",

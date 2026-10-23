@@ -101,7 +101,7 @@
 |---|---|---|---|---|
 | hunt-now | junsa80/hunt-now | `2d4e264` | GrokBot v5.8 전투감 | 로컬 저장(이 브라우저 localStorage) |
 | beauty-deck | junsa80/beauty-deck | `27cb3aa` | 링크(확인 시점 main) | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
-| srpg-prototype | junsa80/srpg-prototype | `394a6d6` | 링크(확인 시점 main) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
+| srpg-prototype | junsa80/srpg-prototype | `437c64f` | GrokBot 허브 표기(잿빛 왕관) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
 | aster-hunt | junsa80/aster-hunt | `25836fb` | 링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준) | 로컬 저장(저장소에 서버 저장 코드 없음) |
 | last-archive | junsa80/last-archive | `5f24ceb` | 링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준) | 미확인 |
@@ -122,7 +122,7 @@
 | 나만의 게임 선택기 | junsa80/game-hub (공개) | Grok 계열 | https://junsa80.github.io/game-hub/ | GitHub Pages (main /) | 즐겨찾기·최근 플레이 localStorage |
 | 헌트 나우 | junsa80/hunt-now (공개) | Grok 계열 | https://junsa80.github.io/hunt-now/ | GitHub Pages (main /) | localStorage + JSON 백업 |
 | 미녀 덱 | junsa80/beauty-deck (공개) | Grok 계열 | https://junsa80.github.io/beauty-deck/ | GitHub Pages (main /) | localStorage + JSON 백업/복원 |
-| SRPG 프로토타입 | junsa80/srpg-prototype (공개) | SRPG 개발봇 | https://junsa80.github.io/srpg-prototype/ | GitHub Pages | IndexedDB(브라우저) |
+| 잿빛 왕관: 새벽의 서약 | junsa80/srpg-prototype (공개) | SRPG 개발봇 | https://junsa80.github.io/srpg-prototype/ | GitHub Pages | IndexedDB(브라우저) |
 | 룬 영토 | junsa80/rune-territories (비공개) | Grok 계열 | https://junsa80.github.io/rune-territories-play/ | 공개 실행본 Pages (`94fdadc`) | localStorage (github.io 공통) + JSON 백업 |
 | 장미의 첨탑 | junsa80/rose-spire (비공개) | GPT | https://junsa80.github.io/game-hub/play/rose-spire/ (원본 Sites: https://rose-spire-deck.sajuyoon.chatgpt.site) | 선택기 안 복사본(원본 `6bf8f6f`) / ChatGPT Sites | 복사본: localStorage만 · Sites: ChatGPT 계정 저장 |
 | PRISM MUSE | junsa80/prism-muse (비공개) | GPT | https://junsa80.github.io/game-hub/play/prism-muse/ | 선택기 안 정적 빌드(원본 `a479cdd`=`5f7e28e`) | 복사본: localStorage만 |
@@ -143,3 +143,4 @@
 - 2026-10-23: hunt-now `82cedb4` (v5.7 정화 동료 2D 초상). GrokBot only touched the hunt-now entry.
 - 2026-10-23: beauty-deck `27cb3aa` (v1.4.2 손패 겹침 잔선). GrokBot only touched the beauty-deck entry.
 - 2026-10-23: hunt-now `2d4e264` (v5.8 전투 3D·타격감). GrokBot only touched the hunt-now entry.
+- 2026-10-23: hub srpg-prototype 표기만 「잿빛 왕관: 새벽의 서약」 + commit `437c64f` (표지 경로는 SRPG 개발봇이 교체 예정). GrokBot only touched the srpg-prototype entry.
