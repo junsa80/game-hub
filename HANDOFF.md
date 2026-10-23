@@ -101,7 +101,7 @@
 |---|---|---|---|---|
 | hunt-now | junsa80/hunt-now | `2d4e264` | GrokBot v5.8 전투감 | 로컬 저장(이 브라우저 localStorage) |
 | beauty-deck | junsa80/beauty-deck | `27cb3aa` | 링크(확인 시점 main) | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
-| srpg-prototype | junsa80/srpg-prototype | `437c64f` | GrokBot 허브 표기(잿빛 왕관) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
+| srpg-prototype | junsa80/srpg-prototype | `9afee37` | GrokBot 허브 표기(잿빛 왕관) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
 | aster-hunt | junsa80/aster-hunt | `25836fb` | 링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준) | 로컬 저장(저장소에 서버 저장 코드 없음) |
 | last-archive | junsa80/last-archive | `5f24ceb` | 링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준) | 미확인 |
@@ -143,6 +143,6 @@
 - 2026-10-23: hunt-now `82cedb4` (v5.7 정화 동료 2D 초상). GrokBot only touched the hunt-now entry.
 - 2026-10-23: beauty-deck `27cb3aa` (v1.4.2 손패 겹침 잔선). GrokBot only touched the beauty-deck entry.
 - 2026-10-23: hunt-now `2d4e264` (v5.8 전투 3D·타격감). GrokBot only touched the hunt-now entry.
-- 2026-10-23: hub srpg-prototype 표기 「잿빛 왕관: 새벽의 서약」 + commit `437c64f`.
+- 2026-10-23: hub srpg-prototype 표기 「잿빛 왕관: 새벽의 서약」 + commit `9afee37`.
 - 2026-10-23: SRPG 개발봇이 표지를 `thumbs/srpg-prototype-cover-v1.webp`(960×540, coverType=illustration)로 교체. 커밋 `c0c44a5`. 제목/커밋 라벨은 그대로.
 - 2026-10-23: rune-territories `6e8b5ac` / play `d08b178` (UI 0.1.52 판 안 그림). GrokBot only touched the rune-territories entry.
