@@ -66,7 +66,7 @@
     "icon": "🛡️",
     "color": "#1971c2",
     "url": "https://junsa80.github.io/srpg-prototype/",
-    "thumb": "thumbs/srpg-prototype.webp",
+    "thumb": "thumbs/srpg-prototype-cover-v1.webp",
     "public": true,
     "src": "junsa80/srpg-prototype",
     "commit": "437c64f",
@@ -81,7 +81,8 @@
       "아군의 행동을 마친 뒤 턴을 종료하세요."
     ],
     "controls": "전장과 메뉴를 클릭하거나 터치해 아군의 행동을 선택하세요.",
-    "tip": "한 명을 멀리 보내기보다 서로 도울 수 있는 간격을 유지하세요."
+    "tip": "한 명을 멀리 보내기보다 서로 도울 수 있는 간격을 유지하세요.",
+    "coverType": "illustration"
   },
   {
     "id": "rune-territories",

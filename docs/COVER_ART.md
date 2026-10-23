@@ -5,7 +5,7 @@
 - 표지는 플레이 화면 캡처가 아닌 홍보 일러스트이며 카드에 표지 일러스트로 표시.
 - 인물은 성인, 일반 복장/갑옷, 성적 연출 없음. 원본 게임/실존 인물 참조 없음.
 - 런타임 자산: thumbs/<게임 id>-cover-v1.webp. 생성 원본은 프로젝트 작업 사본에 보존하고 웹에는 최적화 WebP만 업로드.
-- 기존 4개 표지(hunt-now, beauty-deck, srpg-prototype, rune-territories)는 유지.
+- 기존 표지 중 hunt-now, beauty-deck는 유지. srpg-prototype은 2026-10-23 일러스트 표지(`srpg-prototype-cover-v1.webp`)로 교체. rune-territories는 cover-v1 유지.
 - 초보 안내: 한 줄 매력 소개, 첫 3단계, 조작, 첫 도전 팁. 실제 게임에 없는 멀티플레이/클라우드/기능을 약속하지 않음.
 
 ## 공통 프롬프트
@@ -57,3 +57,10 @@ Wide landscape game cover illustration, 16:9. Strong focal characters in central
 
 - 경로: `thumbs/world-breaker-cover-v1.webp`
 - 프롬프트: A touch-driven resource gathering and monster combat incremental game. A determined adult female explorer in practical workwear raises a mining pick at a floating island's glowing blue crystal seam, timber camp and verdant forest nearby, distant worlds fractured into the sky beyond. Warm daylight and saturated sapphire crystals, painterly charming adventure key art. No high-tech weapons.
+
+### srpg-prototype (잿빛 왕관: 새벽의 서약)
+
+- 경로: `thumbs/srpg-prototype-cover-v1.webp`
+- 제작: 2026-10-23 GrokBot. 기존 빈 픽셀 성 홀(`thumbs/srpg-prototype.webp`)을 일러스트 표지로 교체.
+- 원본: `art/covers/srpg-prototype-cover-v1-src.jpg` (작업 사본).
+- 프롬프트: Ashen Crown dawn-oath tactical RPG. Adult young male lord in navy-and-gold armor with brown hair stands on ash-grey battlements between an adult healer in white-teal robes and an adult grey-haired mercenary, faded crimson banners, vast ashen fortress under cool dawn sky, faint crown-shaped light above the keep, ash motes. Ash grey, steel blue, soft dawn gold. Cinematic painterly fantasy key art. No text.
