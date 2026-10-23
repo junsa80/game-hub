@@ -99,7 +99,7 @@
 
 | id | 원본 저장소 | 반영 커밋 | 종류 | 저장 방식 |
 |---|---|---|---|---|
-| hunt-now | junsa80/hunt-now | `82cedb4` | 링크(확인 시점 main) | 로컬 저장(이 브라우저 localStorage) |
+| hunt-now | junsa80/hunt-now | `2d4e264` | GrokBot v5.8 전투감 | 로컬 저장(이 브라우저 localStorage) |
 | beauty-deck | junsa80/beauty-deck | `27cb3aa` | 링크(확인 시점 main) | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
 | srpg-prototype | junsa80/srpg-prototype | `394a6d6` | 링크(확인 시점 main) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
@@ -142,4 +142,4 @@
 
 - 2026-10-23: hunt-now `82cedb4` (v5.7 정화 동료 2D 초상). GrokBot only touched the hunt-now entry.
 - 2026-10-23: beauty-deck `27cb3aa` (v1.4.2 손패 겹침 잔선). GrokBot only touched the beauty-deck entry.
-- hunt-now  GrokBot v5.8 전투 3D·타격감 (SW hunt-now-v5.8)
+- 2026-10-23: hunt-now `2d4e264` (v5.8 전투 3D·타격감). GrokBot only touched the hunt-now entry.
