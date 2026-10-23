@@ -99,7 +99,7 @@
 
 | id | 원본 저장소 | 반영 커밋 | 종류 | 저장 방식 |
 |---|---|---|---|---|
-| hunt-now | junsa80/hunt-now | `448633f` | 링크(확인 시점 main) | 로컬 저장(이 브라우저 localStorage) |
+| hunt-now | junsa80/hunt-now | `82cedb4` | 링크(확인 시점 main) | 로컬 저장(이 브라우저 localStorage) |
 | beauty-deck | junsa80/beauty-deck | `6937ea4` | 링크(확인 시점 main) | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
 | srpg-prototype | junsa80/srpg-prototype | `394a6d6` | 링크(확인 시점 main) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
@@ -138,4 +138,6 @@
 - GPT 게임이 GitHub Pages로 옮겨 가는 건 저장 내보내기/가져오기가 생긴 뒤(사용자 규칙).
 
 
-- 2026-10-23: hunt-now `448633f` (v5.6 몬스터 아이콘·동료 HUD). GrokBot only touched the hunt-now entry.
+- 2026-10-23: hunt-now `82cedb4` (v5.6 몬스터 아이콘·동료 HUD). GrokBot only touched the hunt-now entry.
+
+- 2026-10-23: hunt-now `82cedb4` (v5.7 정화 동료 2D 초상). GrokBot only touched the hunt-now entry.
