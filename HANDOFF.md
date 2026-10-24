@@ -1,3 +1,9 @@
+## 2026-10-24 — 경계의 서약 동료 연계 던전 α0.7 (hub-v1.5.12)
+- Source 6070e5f851904c6d9a85e1364096d9b8b5f1a577. Four optional 3-room dungeons, each with information dialogue, clue investigation, guardian combat and epilogue. Karin → 돌아오지 않은 신호 → Veronica → 이름 없는 귀환자들; Chloe → 꺼지지 않는 재의 우물 → Sera → 마지막 진료소의 등불. Existing owners qualify; briefing completion and prior dungeon completion gate routes; informants need not be in party. Home/party/journal expose paths and requirements.
+- Unchanged save schema/namespace/cover/URLs/audience. Additive flags retain route discoveries/checkpoints/clues/defeated guardians/claimed endings; interrupted epilogues resume without duplicate combat or reward. Main campaign seals are separate.
+- 52 checks/build passed (9 new chain/real-combat/reload/reward/defeat checks). Actual cloud browser360×640: info → discovery → intro → room; 16px prose, no overflow360×582 dialogue/360×516room. Empowered battle tests prove flow, not difficulty. No physical-phone/full campaign balance claim.
+- Dist copied from same source build; only root /assets/ paths changed to relative. Catalog/guide/cache updated; other concurrent changes preserved. Main/Pages live verification follows commit.
+
 ## 2026-10-24 — 경계의 서약 새 일러스트 표지 (hub-v1.5.11)
 - Source ee64b2ff9eda8a43fae4e784ef4ceaf76a1e31eb. New original built-in imagegen cover: adult Elena/Karin/Veronica/Chloe at fractured-world gateway. Thumb thumbs/chronicle-crossing-cover-v3.svg (embedded WebP + Korean typography); title play/chronicle-crossing/cover-art-v3.webp (1600×900 / 357890 bytes). Prior cover retained. Label remains illustration, not gameplay screenshot. In-game SVG portraits/scenery remain unchanged.
 - 43 checks/build passed. Actual browser 360×640 title image loaded, screen client=scroll360×640, no overflow; wide card inspected for Korean title/characters. Save/gameplay/URLs/audience unchanged. Same current stage 2–5 content, no new battle synergy implemented in this cover task.

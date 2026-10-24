@@ -402,7 +402,7 @@
   {
     "id": "chronicle-crossing",
     "title": "경계의 서약",
-    "desc": "터치로 이동하는 모바일 파티 JRPG. 2~5 스테이지의 숲·서리·잿불·수로를 탐험하고, 동료의 사정과 선택을 풀어 함께 여행하세요.",
+    "desc": "동료의 정보로 숨겨진 던전을 발견하는 모바일 파티 JRPG. 카린·베로니카와 클로에·세라의 연계 퀘스트 4개를 탐험하세요.",
     "genre": [
       "JRPG",
       "턴제 RPG",
@@ -413,8 +413,8 @@
     "url": "https://junsa80.github.io/game-hub/play/chronicle-crossing/",
     "public": false,
     "src": "ChatGPT Sites / chronicle-crossing",
-    "commit": "ee64b2f",
-    "commitKind": "α0.6 · 새 일러스트 표지·모바일 타이틀",
+    "commit": "6070e5f",
+    "commitKind": "α0.7 · 동료 정보·연계 스토리 던전 4개",
     "save": "로컬 저장 · 수동 3칸/자동 저장 · JSON 백업/복원. Sites판과 자동 연동되지 않음.",
     "playAccess": "anonymous",
     "cloudSave": "none",
@@ -425,7 +425,7 @@
       "수호자에게 승리한 뒤 동료와 재회해 합류를 제안하고 다음 지역으로 향하세요."
     ],
     "controls": "장소·물품·행동·전투 대상을 직접 터치하세요. 하단 메뉴에서 모험·동료·가방·기록을 엽니다.",
-    "tip": "각 동료의 이야기를 해결해야 영입할 수 있습니다. 클로에는 지하 수호자, 세라는 구호 물자가 필요합니다. 음악은 화면 상단에서 켜세요.",
+    "tip": "영입한 동료의 새 정보를 모험·동료·기록에서 들으세요. 첫 던전에서 찾은 기록을 다음 동료가 해석하면 후속 던전이 열립니다. 정보 제공자의 전투 편성은 자유입니다.",
     "thumb": "thumbs/chronicle-crossing-cover-v3.svg",
     "coverType": "illustration"
   }
