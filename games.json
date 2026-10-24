@@ -87,9 +87,10 @@
   {
     "id": "fantasy-collab",
     "title": "환상 콜라보",
-    "desc": "각 작품의 아군과 적이 한 무대에 모인 무쌍 오로치식 모바일 턴제 배틀. 필살기 컷인으로 원작이 보인다.",
+    "desc": "각 작품의 아군과 적이 한 무대에 모인 무쌍 오로치식 모바일 턴제 배틀. 6층 방을 골라 내려가며 싸우고, 필살기 컷인으로 원작이 보인다.",
     "genre": [
       "배틀",
+      "로그라이트",
       "콜라보"
     ],
     "icon": "✨",
@@ -98,8 +99,8 @@
     "thumb": "thumbs/fantasy-collab-cover-v1.webp",
     "public": true,
     "src": "junsa80/fantasy-collab-battle",
-    "commit": "2db7f24",
-    "commitKind": "SRPG봇 모바일 배틀 1차 · play 511d430",
+    "commit": "87a0ec1",
+    "commitKind": "SRPG봇 방 선택 런 통합 · play 9f282d9",
     "save": "로컬 저장(브라우저) · 클라우드 미지원",
     "playAccess": "anonymous",
     "cloudSave": "none",
