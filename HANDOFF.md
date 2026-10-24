@@ -166,5 +166,5 @@
 - 2026-10-23: rune-territories `6e8b5ac` / play `d08b178` (UI 0.1.52 판 안 그림). GrokBot only touched the rune-territories entry.
 
 ## fantasy-collab
-- tip source `b22f881` · play `https://junsa80.github.io/fantasy-collab-play/` (a6afae6)
+- 2026-10-24 모바일 배틀로 선회: source `junsa80/fantasy-collab-battle` 2db7f24 · play `https://junsa80.github.io/fantasy-collab-battle-play/` (511d430). 구 fantasy-collab-play는 레거시
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
