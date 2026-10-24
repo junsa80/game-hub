@@ -226,4 +226,5 @@
 - 2026-10-24 컨텐츠 (GrokBot): 모닥불 대화·유물 4·강적 변종 5·균열 거울 (성장 저장일 때만). source ba007cc · play 7570b09
 - 2026-10-24 동료 조합 12 (GrokBot, SYNERGY.md): 출전 고르기 미리보기·전투 🔗 배지. 시작 셋은 조합 없음. source b586da5 · play db82ba3
 - 2026-10-24 세라 없는 회복 (GrokBot, SYNERGY.md 13·14): 조합 군영의 붕대·생명의 칸(세라 없을 때) + 가렌·오데트·노엘 Lv6 회복 갈래. 시작 셋 시뮬 그대로. source 981278d · play 3c65f48
+- 2026-10-24 동료 의뢰 (GrokBot, QUESTS.md): 영입 동료 단서로 열리는 연계 퀘스트 던전 4 (오데트→마리엘, 노엘→노엘·카엘), fcb-quest-v1. 본편 시뮬 그대로. source 1826d2b · play a3b8d2c
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
