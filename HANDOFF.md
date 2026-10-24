@@ -197,4 +197,5 @@
 - 2026-10-24 스테이지 5 왕좌 너머 (GrokBot): source 51534e4 · play 0ef5040. 보스 아르, 표식 동료(가렌·마리엘·레오)·BGM·배경. 스테이지 2~5 모두 열림
 - 2026-10-24 표지 한 줄·커버·스테이지 1 층 한 줄 (GrokBot, STORY.md): source d060f57 · play d00bd85
 - 2026-10-24 하드 모드 (GrokBot): 타이틀 보통/하드, 적 HP×1.25·공격×1.1만. source 2f57c34 · play 25267f7
+- 2026-10-24 승패 한 줄 다듬기 (GrokBot): 스테이지 1 STORY.md, 2~5 인물 대사. source a072b71 · play be93f4f
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
