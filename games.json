@@ -413,8 +413,8 @@
     "url": "https://junsa80.github.io/game-hub/play/chronicle-crossing/",
     "public": false,
     "src": "ChatGPT Sites / chronicle-crossing",
-    "commit": "bf6eb1b",
-    "commitKind": "α0.9 · 유물4·장비9·랜덤 보수·유니크5·입수 도감",
+    "commit": "016177f",
+    "commitKind": "α0.10 · 장비102종·신규45종·부위 지정 탐색",
     "save": "로컬 저장 · 수동 3칸/자동 저장 · JSON 백업/복원. Sites판과 자동 연동되지 않음.",
     "playAccess": "anonymous",
     "cloudSave": "none",
@@ -425,7 +425,7 @@
       "수호자에게 승리한 뒤 동료와 재회해 합류를 제안하고 다음 지역으로 향하세요."
     ],
     "controls": "장소·물품·행동·전투 대상을 직접 터치하세요. 하단 메뉴에서 모험·동료·가방·기록을 엽니다.",
-    "tip": "가방·기록의 입수 도감에서 유물·장비의 입수 조건을 확인하세요. 랜덤 추가 보수는 전투15%, 수호자60%, 상자30%. 유물은 두 개까지 활성화하며, 유니크는 한 여정에 한 번 지급됩니다. 이전 완료 기록도 도감에서 수령할 수 있어요.",
+    "tip": "장비102종. 도감에서 입수처·부위를 고르고 랜덤 장비 탐색 목표를 지정하세요. 각 성장 구간 상점에 새 장비4종, 지역 지하 수호자에 유니크5종을 추가했습니다. 자동 장착과 기존 저장도 유지됩니다.",
     "thumb": "thumbs/chronicle-crossing-cover-v3.svg",
     "coverType": "illustration"
   }
