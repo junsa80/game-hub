@@ -413,8 +413,8 @@
     "url": "https://junsa80.github.io/game-hub/play/chronicle-crossing/",
     "public": false,
     "src": "ChatGPT Sites / chronicle-crossing",
-    "commit": "6070e5f",
-    "commitKind": "α0.7 · 동료 정보·연계 스토리 던전 4개",
+    "commit": "5c5668c",
+    "commitKind": "α0.8 · 승리 회복 장비3종·파티 최강 자동 장착",
     "save": "로컬 저장 · 수동 3칸/자동 저장 · JSON 백업/복원. Sites판과 자동 연동되지 않음.",
     "playAccess": "anonymous",
     "cloudSave": "none",
@@ -425,7 +425,7 @@
       "수호자에게 승리한 뒤 동료와 재회해 합류를 제안하고 다음 지역으로 향하세요."
     ],
     "controls": "장소·물품·행동·전투 대상을 직접 터치하세요. 하단 메뉴에서 모험·동료·가방·기록을 엽니다.",
-    "tip": "영입한 동료의 새 정보를 모험·동료·기록에서 들으세요. 첫 던전에서 찾은 기록을 다음 동료가 해석하면 후속 던전이 열립니다. 정보 제공자의 전투 편성은 자유입니다.",
+    "tip": "동료·가방의 장비 메뉴에서 현재 파티 최강 장비를 자동 배분하세요. 보급소의 새싹 붕대 투구는 승리 후HP3%를 회복합니다. 영입한 동료의 정보로 연계 던전도 발견할 수 있습니다.",
     "thumb": "thumbs/chronicle-crossing-cover-v3.svg",
     "coverType": "illustration"
   }
