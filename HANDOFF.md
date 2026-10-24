@@ -1,3 +1,11 @@
+## 2026-10-24 — 경계의 서약 α0.2 목록·실행본 추가 (hub-v1.5.4)
+- 사용자 요청: 현재 대화에서 만든 게임을 게임 목록에도 배포. 기존 fantasy-collab와 별도 chronicle-crossing 카드 추가. 다른 게임/저장 키/원본 저장소 공개 여부와 Sites 방문 권한 유지.
+- 실행본: play/chronicle-crossing, https://junsa80.github.io/game-hub/play/chronicle-crossing/ . 원본 Sites source commit 088c581ff6bdc806fff55e237669512b96cd0b3f, 기존 URL https://chronicle-crossing.sajuyoon.chatgpt.site . Sites 소스는 아직 별도 junsa80 저장소에 미러링되지 않음.
+- 원본 /workspace/sites/chronicle-crossing에서 pnpm build 후 dist/ 전체 복사. 호스팅 수정은 index.html의 /assets/ → ./assets/뿐. 새 업데이트도 동일하게 재생성. Phaser/게임 JS, CSS, LICENSE, credits 함께 보관. 기반 osisdie/phaser-rpg-game MIT; AI 자산 미포함.
+- 목적지 선택형 필드 4방+동굴 2방 공통 초안. 거리별 조우→기존 턴제 전투→남은 이동 재개. 마을 주민/시설 직접 선택. 게임 전체 완주와 실제 폰 검증 완료를 주장하지 않음.
+- GitHub Pages판은 해당 origin의 로컬 저장; Sites판 진행과 자동 공유되지 않음. 원본 JSON 백업/복원으로 수동 이전 가능, 클라우드 저장 미지원. 기존 Sites 이용자는 이전 백업을 보관할 것.
+- 목록/캐시 버전 1.5.4. 계정 저장 지원 수는 실제 games.json에서 계산. 공개 main 배포/라이브 응답 확인은 아래 작업 결과를 따름.
+
 ## 2026-10-23 — 대형 멧돼지 부위 애니메이션·공격 타이밍
 - 기존 field-preview.html의 가시 멧돼지 1종에 먼저 적용. 몸통·머리·다리·꼬리 + 먼지 타일 5종을 최초 한 번 일반/피격 2세트로 그려 캐시하고 매 프레임 재사용. 외부 이미지 요청 없음.
 - 진입→대기→공격 준비→돌진/내려찍기→회복→다음 패턴. 준비 동작과 피해 발생은 같은 상태 머신. 각 공격은 정확히 1회 판정. 회복 중 피해 24, 보통 12, 공격 준비/공격 중 4. 체력 144, 처치 정수 18(이 시제품 멧돼지만).

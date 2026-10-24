@@ -398,5 +398,33 @@
     "tip": "강화 비용과 해금 조건을 비교해 다음 목표에 필요한 자원을 먼저 준비하세요.",
     "thumb": "thumbs/world-breaker-cover-v1.webp",
     "coverType": "illustration"
+  },
+  {
+    "id": "chronicle-crossing",
+    "title": "경계의 서약",
+    "desc": "상자와 출구를 선택해 방을 탐험하고, 이동 거리만큼 무작위 조우를 판정하는 파티 JRPG. 직접 걷는 조작 없이 전투와 성장에 집중하세요.",
+    "genre": [
+      "JRPG",
+      "턴제 RPG",
+      "탐험"
+    ],
+    "icon": "🧭",
+    "color": "#264d4c",
+    "url": "https://junsa80.github.io/game-hub/play/chronicle-crossing/",
+    "public": false,
+    "src": "ChatGPT Sites / chronicle-crossing",
+    "commit": "088c581",
+    "commitKind": "Sites α0.2 실행본 · 선택기 안 복사본",
+    "save": "로컬 저장 · 수동 3칸/자동 저장 · JSON 백업/복원. Sites판과 자동 연동되지 않음.",
+    "playAccess": "anonymous",
+    "cloudSave": "none",
+    "tagline": "걷는 대신 목적지를 고르는 JRPG.",
+    "steps": [
+      "새 여정을 시작하고 이름을 정한 뒤 피난처에 들어가세요.",
+      "마을에서 주민·시설을 선택하고 성문 밖 탐험을 시작하세요.",
+      "상자·출구를 눌러 이동하고 갈림길 → 봉인 앞뜰의 수호자에게 도전하세요."
+    ],
+    "controls": "상자·출구·주민을 터치하세요. 이동 중 적과 조우하면 공격·기술·아이템을 직접 선택합니다.",
+    "tip": "출구의 걸음 수와 조우 확률을 비교하세요. 기존 Sites 기록은 기록 백업에서 내보낸 뒤 이 실행본에 가져올 수 있습니다."
   }
 ]
