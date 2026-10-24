@@ -218,4 +218,5 @@
 - 2026-10-24 스테이지 1 방 한 줄 STORY.md (GrokBot): source 73c8c6c · play 52e6d9b
 - 2026-10-24 영구 동료 명단 + 출전 고르기 (GrokBot, fcb-meta-v1): source 1cbd7e9 · play feedfc2. 새 저장은 이전과 동일
 - 2026-10-24 동료 성장 (GrokBot): 경험치(져도)·Lv1~8·Lv3/Lv6 갈림길·결과 화면 전후 비교. source 58bf921 · play 0e93149
+- 2026-10-24 컨텐츠 (GrokBot): 모닥불 대화·유물 4·강적 변종 5·균열 거울 (성장 저장일 때만). source ba007cc · play 7570b09
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
