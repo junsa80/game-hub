@@ -1,3 +1,7 @@
+## 2026-10-24 — 경계의 서약 Stage 4 (hub-v1.5.9)
+- Source 348d92661da869382d6dd85809ff0968da200f3c. Ash-town art, vent/resonance choices, Chloe story with Veronica-dependent dialogue. Recruitment additionally requires underground guardian. Chapter-specific guardian SVGs/names added to stages 2–4. 38 automated checks; actual 390×844 Chloe choices/reply/ash visual check. Empowered combat in story tests, not balance proof.
+- Same URL/save/cover; stage 3 release verified live before stage 4 edits.
+
 ## 2026-10-24 — 경계의 서약 Stage 3 (hub-v1.5.8)
 - Source 1553fe5f7fe521fda4b6c1ff9cefed56d717a82a. Frost four-room art, two protection/hearth choice events, Veronica story and Karin-dependent conversation. Opt-in regional music. 33 automated checks pass; actual 390×844 dialogue → choices → selected reply visually verified. Empowered stats in story tests; balance/physical phone/audio listening not verified.
 - Same URL/save/cover; stage 2 release was verified live before stage 3 edits.
