@@ -1,3 +1,7 @@
+## 2026-10-24 — 경계의 서약 Stage 3 (hub-v1.5.8)
+- Source 1553fe5f7fe521fda4b6c1ff9cefed56d717a82a. Frost four-room art, two protection/hearth choice events, Veronica story and Karin-dependent conversation. Opt-in regional music. 33 automated checks pass; actual 390×844 dialogue → choices → selected reply visually verified. Empowered stats in story tests; balance/physical phone/audio listening not verified.
+- Same URL/save/cover; stage 2 release was verified live before stage 3 edits.
+
 ## 2026-10-24 — 경계의 서약 Stage 2 (hub-v1.5.7)
 - Source 20d3c692bf46e6738d97ef008dfc8455c87b23fa. Forest rooms/art, signal tower choices, Karin reunion, original opt-in synthesized BGM. 31 automated checks pass, actual 390×844 introduction/music-toggle/exploration visual check. Combat story test uses empowered stats, not balance proof; physical phone/audio listening not tested. Old completed-save recruitment preserved, quest reactivation fixed.
 - Same URLs/save namespace/cover. Stage-by-stage releases continue next.
