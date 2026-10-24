@@ -67,3 +67,6 @@ Wide landscape game cover illustration, 16:9. Strong focal characters in central
 
 ## 2026-10-24 경계의 서약
 - thumbs/chronicle-crossing-cover-v2.svg: native mobile game SVG art composed into a 960×540 catalog cover. Original scenery/Elena/Karin art from Site source src/native/art.ts, tools/export-native-cover.mjs. No third-party image or imagegen asset. Label as cover illustration.
+
+## 2026-10-24 경계의 서약 v3
+- thumbs/chronicle-crossing-cover-v3.svg: original generated fantasy JRPG key art of four adult companions Elena/Karin/Veronica/Chloe. Built-in image generation, no external/upstream assets; generated prompt and production spec preserved in Site source art/covers/COVER_V3.md. Embedded 960×540 WebP + native Korean title. Title shares play/chronicle-crossing/cover-art-v3.webp. Previous geometric v2 retained; catalog references v3, coverType=illustration.
