@@ -206,6 +206,7 @@
 - 2026-10-23: rune-territories `6e8b5ac` / play `d08b178` (UI 0.1.52 판 안 그림). GrokBot only touched the rune-territories entry.
 
 ## fantasy-collab
+- 2026-10-24 표지 v2: thumbs/fantasy-collab-cover-v2.webp (960×540). 게임 실제 아트 재사용 합성 — 배경 img/cover.jpg(균열 왕좌 홀) 가로 크롭, 카드 초상 아린·세레나·아리아·레오·가렌(img/), 제목 Black Han Sans·부제 Noto Serif CJK KR. 생성 이미지 없음. v1(구 godot-jrpg 텍스트 슬라이드)은 파일만 보존.
 - 2026-10-24 모바일 배틀로 선회: source `junsa80/fantasy-collab-battle` 2db7f24 · play `https://junsa80.github.io/fantasy-collab-battle-play/` (511d430). 구 fantasy-collab-play는 레거시
 - 2026-10-24 실험판 방 이동+조우를 본편에 통합(사용자 확정, 담당 SRPG봇): source 87a0ec1(게임 26b428e) · play 9f282d9. 6층 방 선택→조우→전투→보스 런
 - 2026-10-24 스테이지 2 뒤집힌 홀 (GrokBot, 이슈 #4): source 47011ac · play afcc5bc. 타이틀 스테이지 목록(1·2 열림), 미녀 덱 동료·BGM·배경, 소리 토글
