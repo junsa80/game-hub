@@ -402,7 +402,7 @@
   {
     "id": "chronicle-crossing",
     "title": "경계의 서약",
-    "desc": "가상패드 없이 목적지를 터치하는 캠페인 JRPG. 던전에서 만난 동료의 사연과 기록을 확인하고 봉인을 복구해 합류를 제안하세요.",
+    "desc": "스마트폰을 위해 새로 구성한 터치 파티 JRPG. 일러스트 거점과 던전을 탐험하고, 동료의 이야기를 해결해 함께 여행하세요.",
     "genre": [
       "JRPG",
       "턴제 RPG",
@@ -413,18 +413,20 @@
     "url": "https://junsa80.github.io/game-hub/play/chronicle-crossing/",
     "public": false,
     "src": "ChatGPT Sites / chronicle-crossing",
-    "commit": "40d4555",
-    "commitKind": "Sites α0.3 모바일 터치 · 고정 동료 조우",
+    "commit": "efff38a",
+    "commitKind": "모바일 오리지널 α0.4 · 독립 실행본",
     "save": "로컬 저장 · 수동 3칸/자동 저장 · JSON 백업/복원. Sites판과 자동 연동되지 않음.",
     "playAccess": "anonymous",
     "cloudSave": "none",
-    "tagline": "걷는 대신 목적지를 고르는 JRPG.",
+    "tagline": "균열 너머, 다시 만난 우리.",
     "steps": [
       "새 여정을 시작하고 이름을 정한 뒤 피난처에 들어가세요.",
       "마을에서 주민·시설을 선택하고 성문 밖 탐험을 시작하세요.",
       "상자·출구를 눌러 이동하고 갈림길 → 봉인 앞뜰의 수호자에게 도전하세요."
     ],
-    "controls": "방 지도·목적지·주민·메뉴·전투 대상을 직접 터치하세요. 방향키나 가상 A/B 버튼은 필요하지 않습니다.",
-    "tip": "동료는 보스 처치로 자동 지급되지 않습니다. 던전 보급고의 대화·기록 회수·봉인 복구를 마친 뒤 다시 합류를 제안하세요."
+    "controls": "장소·물품·행동·전투 대상을 직접 터치하세요. 하단 메뉴에서 모험·동료·가방·기록을 엽니다.",
+    "tip": "동료는 보스 처치로 자동 지급되지 않습니다. 던전 보급고의 대화·기록 회수·봉인 복구를 마친 뒤 다시 합류를 제안하세요.",
+    "thumb": "thumbs/chronicle-crossing-cover-v2.svg",
+    "coverType": "illustration"
   }
 ]

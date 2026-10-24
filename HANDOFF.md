@@ -1,3 +1,11 @@
+## 2026-10-24 — 경계의 서약 모바일 오리지널 α0.4 + 표지 (hub-v1.5.6)
+- Source efff38a0266617b3d97a39c3731d1e28b7668b8e. Existing /play/chronicle-crossing/ and save namespace unchanged. Old generated assets removed from active tree; prior commits remain in Git history. Other games/data unchanged.
+- New native HTML/CSS/SVG app replaces the Phaser scene wrapper. Dist has one 157.62 KB JS / 53.82 KB gzip +31.06 KB CSS /7.73 KB gzip, no Phaser/WebGL chunk or key-event bridge. No canvas exists in actual UI. Headless data/calculation/save modules retained with MIT attribution.
+- Illustrated title/home/characters/scenery, native touch travel, battle commands/targets/rewards, party/gear, inventory/use/sell/shop/rest, quest/save journal, dialogue and ending. Fixed recruitment requirements kept. Current 4+2 room templates remain shared; full campaign not playtested.
+- Catalog cover thumbs/chronicle-crossing-cover-v2.svg (original native SVG art, Elena/Karin/scenery/title) with coverType=illustration. Reproduce from Site source via tools/export-native-cover.mjs; same asset also shipped as native-cover.svg. It is not a screenshot. No external image assets used.
+- Source 29 checks passed (7 new native state/controller checks). Actual 360×640 room screen fits with no overflow, old QA autosave resume/home/party and 390×844 attack/HP change verified. Not physical phone/full campaign proof. Source README/AGENTS point future work to src/native, not archived scenes.
+- JSON backup and per-name auto+3 manual slots retained. New-game name collision cannot overwrite an older record silently. Sites/Pages remain separate origins with manual backup transfer.
+
 ## 2026-10-24 — 경계의 서약 모바일 진화 α0.3 (hub-v1.5.5)
 - Sites source 40d455513054f892c9637d7d7e624954d213d77a 실행본 갱신, 기존 /play/chronicle-crossing/ 주소와 로컬 저장 키 유지. 다른 게임 카드는 그대로.
 - 가상패드/합성 키 이벤트 제거. native 방 지도/목적지, 마을 시설, 전투 대상/계속 버튼. 360×640, 20px 입구 화면에서 가로·세로 넘침 없음 확인. 실제 공격→대상 선택→피해와 베로니카 첫 대화→카린 반응 확인. physical phone/full campaign not validated.

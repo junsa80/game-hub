@@ -64,3 +64,6 @@ Wide landscape game cover illustration, 16:9. Strong focal characters in central
 - 제작: 2026-10-23 GrokBot. 기존 빈 픽셀 성 홀(`thumbs/srpg-prototype.webp`)을 일러스트 표지로 교체.
 - 원본: `art/covers/srpg-prototype-cover-v1-src.jpg` (작업 사본).
 - 프롬프트: Ashen Crown dawn-oath tactical RPG. Adult young male lord in navy-and-gold armor with brown hair stands on ash-grey battlements between an adult healer in white-teal robes and an adult grey-haired mercenary, faded crimson banners, vast ashen fortress under cool dawn sky, faint crown-shaped light above the keep, ash motes. Ash grey, steel blue, soft dawn gold. Cinematic painterly fantasy key art. No text.
+
+## 2026-10-24 경계의 서약
+- thumbs/chronicle-crossing-cover-v2.svg: native mobile game SVG art composed into a 960×540 catalog cover. Original scenery/Elena/Karin art from Site source src/native/art.ts, tools/export-native-cover.mjs. No third-party image or imagegen asset. Label as cover illustration.
