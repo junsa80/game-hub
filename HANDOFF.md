@@ -1,3 +1,10 @@
+## 2026-10-24 — 경계의 서약 모바일 진화 α0.3 (hub-v1.5.5)
+- Sites source 40d455513054f892c9637d7d7e624954d213d77a 실행본 갱신, 기존 /play/chronicle-crossing/ 주소와 로컬 저장 키 유지. 다른 게임 카드는 그대로.
+- 가상패드/합성 키 이벤트 제거. native 방 지도/목적지, 마을 시설, 전투 대상/계속 버튼. 360×640, 20px 입구 화면에서 가로·세로 넘침 없음 확인. 실제 공격→대상 선택→피해와 베로니카 첫 대화→카린 반응 확인. physical phone/full campaign not validated.
+- 기존 7명 지역별 고정 조우, 만남 대화+기록 회수+봉인 복구 후 수락 영입. 보스 자동 영입 제거, 이미 영입한 기록 유지. 같은 원작 출신 반응은 새 각색 대사이며 특정 원작 친분은 미확인.
+- 원본 22 검사와 빌드 통과. 초기 GameState/원본 게임·서버 저장 구현을 바꾼 것이 아님. Sites와 Pages판 자동 동기화 없음/JSON 백업 유지.
+- 사용자 재활용 비용 원칙을 AGENTS에 기록. 원본 설계/참조 이력 docs/MOBILE_EVOLUTION.md (Sites source).
+
 ## 2026-10-24 — 경계의 서약 α0.2 목록·실행본 추가 (hub-v1.5.4)
 - 사용자 요청: 현재 대화에서 만든 게임을 게임 목록에도 배포. 기존 fantasy-collab와 별도 chronicle-crossing 카드 추가. 다른 게임/저장 키/원본 저장소 공개 여부와 Sites 방문 권한 유지.
 - 실행본: play/chronicle-crossing, https://junsa80.github.io/game-hub/play/chronicle-crossing/ . 원본 Sites source commit 088c581ff6bdc806fff55e237669512b96cd0b3f, 기존 URL https://chronicle-crossing.sajuyoon.chatgpt.site . Sites 소스는 아직 별도 junsa80 저장소에 미러링되지 않음.
