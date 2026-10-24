@@ -1,3 +1,8 @@
+## 2026-10-24 — 경계의 서약 Stage 5 / α0.6 (hub-v1.5.10)
+- Source a275c6abbf8afb1135ec2f3c90d0d7cf88b02c3c. Stage 5 canal rooms/art, sluice and relief choices, Sera reunion with Chloe-specific conversation. Costs 2 potions or 80 G, deferred choices/reload safe, party healed. Stages 2–5 now have 7 choice events, regional synthesized music, original scenery/guardian SVGs and 4 fixed recruitment stories. Existing saves/cover/URLs preserved. Other 8 regions/cave layouts still use initial content.
+- 43 automated checks pass. Browser actual 360×640, 16px prose, no overflow on choice screen (360×582), 80 G choice → replies → currency 200→120/event disabled. Five-target room scrolls vertically, no horizontal overflow. Earlier 390×844 stage 2–4 checks below. Chapter combat tests use empowered stats, not campaign balance/physical phone/audio listening proof.
+- Each stage was individually tested and published before next: source 20d3c69 → 1553fe5 → 348d926 → a275c6a. Earlier 3 Pages releases completed successfully and live hashes matched. Catalog source commit/description/tips updated; native runtime still no Phaser/canvas.
+
 ## 2026-10-24 — 경계의 서약 Stage 4 (hub-v1.5.9)
 - Source 348d92661da869382d6dd85809ff0968da200f3c. Ash-town art, vent/resonance choices, Chloe story with Veronica-dependent dialogue. Recruitment additionally requires underground guardian. Chapter-specific guardian SVGs/names added to stages 2–4. 38 automated checks; actual 390×844 Chloe choices/reply/ash visual check. Empowered combat in story tests, not balance proof.
 - Same URL/save/cover; stage 3 release verified live before stage 4 edits.
