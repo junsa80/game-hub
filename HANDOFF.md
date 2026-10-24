@@ -198,4 +198,5 @@
 - 2026-10-24 표지 한 줄·커버·스테이지 1 층 한 줄 (GrokBot, STORY.md): source d060f57 · play d00bd85
 - 2026-10-24 하드 모드 (GrokBot): 타이틀 보통/하드, 적 HP×1.25·공격×1.1만. source 2f57c34 · play 25267f7
 - 2026-10-24 승패 한 줄 다듬기 (GrokBot): 스테이지 1 STORY.md, 2~5 인물 대사. source a072b71 · play be93f4f
+- 2026-10-24 스테이지 1 방 한 줄 STORY.md (GrokBot): source 73c8c6c · play 52e6d9b
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
