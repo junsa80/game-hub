@@ -207,4 +207,5 @@
 - 2026-10-24 하드 모드 (GrokBot): 타이틀 보통/하드, 적 HP×1.25·공격×1.1만. source 2f57c34 · play 25267f7
 - 2026-10-24 승패 한 줄 다듬기 (GrokBot): 스테이지 1 STORY.md, 2~5 인물 대사. source a072b71 · play be93f4f
 - 2026-10-24 스테이지 1 방 한 줄 STORY.md (GrokBot): source 73c8c6c · play 52e6d9b
+- 2026-10-24 영구 동료 명단 + 출전 고르기 (GrokBot, fcb-meta-v1): source 1cbd7e9 · play feedfc2. 새 저장은 이전과 동일
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
