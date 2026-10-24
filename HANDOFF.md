@@ -196,4 +196,5 @@
 - 2026-10-24 스테이지 4 성문 잔해 (GrokBot): source a3cf17e · play ea89d9e. 잿빛 왕관 동료(가렌·아서·카엘)·BGM·배경
 - 2026-10-24 스테이지 5 왕좌 너머 (GrokBot): source 51534e4 · play 0ef5040. 보스 아르, 표식 동료(가렌·마리엘·레오)·BGM·배경. 스테이지 2~5 모두 열림
 - 2026-10-24 표지 한 줄·커버·스테이지 1 층 한 줄 (GrokBot, STORY.md): source d060f57 · play d00bd85
+- 2026-10-24 하드 모드 (GrokBot): 타이틀 보통/하드, 적 HP×1.25·공격×1.1만. source 2f57c34 · play 25267f7
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
