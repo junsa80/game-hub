@@ -1,3 +1,7 @@
+## 2026-10-24 — 경계의 서약 Stage 2 (hub-v1.5.7)
+- Source 20d3c692bf46e6738d97ef008dfc8455c87b23fa. Forest rooms/art, signal tower choices, Karin reunion, original opt-in synthesized BGM. 31 automated checks pass, actual 390×844 introduction/music-toggle/exploration visual check. Combat story test uses empowered stats, not balance proof; physical phone/audio listening not tested. Old completed-save recruitment preserved, quest reactivation fixed.
+- Same URLs/save namespace/cover. Stage-by-stage releases continue next.
+
 ## 2026-10-24 — 경계의 서약 모바일 오리지널 α0.4 + 표지 (hub-v1.5.6)
 - Source efff38a0266617b3d97a39c3731d1e28b7668b8e. Existing /play/chronicle-crossing/ and save namespace unchanged. Old generated assets removed from active tree; prior commits remain in Git history. Other games/data unchanged.
 - New native HTML/CSS/SVG app replaces the Phaser scene wrapper. Dist has one 157.62 KB JS / 53.82 KB gzip +31.06 KB CSS /7.73 KB gzip, no Phaser/WebGL chunk or key-event bridge. No canvas exists in actual UI. Headless data/calculation/save modules retained with MIT attribution.

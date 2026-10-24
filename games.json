@@ -413,8 +413,8 @@
     "url": "https://junsa80.github.io/game-hub/play/chronicle-crossing/",
     "public": false,
     "src": "ChatGPT Sites / chronicle-crossing",
-    "commit": "efff38a",
-    "commitKind": "모바일 오리지널 α0.4 · 독립 실행본",
+    "commit": "20d3c69",
+    "commitKind": "α0.5 · 2스테이지 이야기·숲·음악",
     "save": "로컬 저장 · 수동 3칸/자동 저장 · JSON 백업/복원. Sites판과 자동 연동되지 않음.",
     "playAccess": "anonymous",
     "cloudSave": "none",
@@ -425,7 +425,7 @@
       "상자·출구를 눌러 이동하고 갈림길 → 봉인 앞뜰의 수호자에게 도전하세요."
     ],
     "controls": "장소·물품·행동·전투 대상을 직접 터치하세요. 하단 메뉴에서 모험·동료·가방·기록을 엽니다.",
-    "tip": "동료는 보스 처치로 자동 지급되지 않습니다. 던전 보급고의 대화·기록 회수·봉인 복구를 마친 뒤 다시 합류를 제안하세요.",
+    "tip": "동료마다 필요한 사건을 해결하고 기록과 봉인을 되찾은 뒤 다시 만나세요. 음악은 화면 상단에서 켤 수 있습니다.",
     "thumb": "thumbs/chronicle-crossing-cover-v2.svg",
     "coverType": "illustration"
   }
