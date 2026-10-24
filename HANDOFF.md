@@ -224,4 +224,5 @@
 - 2026-10-24 영구 동료 명단 + 출전 고르기 (GrokBot, fcb-meta-v1): source 1cbd7e9 · play feedfc2. 새 저장은 이전과 동일
 - 2026-10-24 동료 성장 (GrokBot): 경험치(져도)·Lv1~8·Lv3/Lv6 갈림길·결과 화면 전후 비교. source 58bf921 · play 0e93149
 - 2026-10-24 컨텐츠 (GrokBot): 모닥불 대화·유물 4·강적 변종 5·균열 거울 (성장 저장일 때만). source ba007cc · play 7570b09
+- 2026-10-24 동료 조합 12 (GrokBot, SYNERGY.md): 출전 고르기 미리보기·전투 🔗 배지. 시작 셋은 조합 없음. source b586da5 · play db82ba3
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
