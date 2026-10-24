@@ -191,4 +191,5 @@
 ## fantasy-collab
 - 2026-10-24 모바일 배틀로 선회: source `junsa80/fantasy-collab-battle` 2db7f24 · play `https://junsa80.github.io/fantasy-collab-battle-play/` (511d430). 구 fantasy-collab-play는 레거시
 - 2026-10-24 실험판 방 이동+조우를 본편에 통합(사용자 확정, 담당 SRPG봇): source 87a0ec1(게임 26b428e) · play 9f282d9. 6층 방 선택→조우→전투→보스 런
+- 2026-10-24 스테이지 2 뒤집힌 홀 (GrokBot, 이슈 #4): source 47011ac · play afcc5bc. 타이틀 스테이지 목록(1·2 열림), 미녀 덱 동료·BGM·배경, 소리 토글
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
