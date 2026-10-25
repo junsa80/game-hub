@@ -202,7 +202,7 @@
 
 | id | 원본 저장소 | 반영 커밋 | 종류 | 저장 방식 |
 |---|---|---|---|---|
-| hunt-now | junsa80/hunt-now | `2d4e264` | GrokBot v5.8 전투감 | 로컬 저장(이 브라우저 localStorage) |
+| hunt-now | junsa80/hunt-now | `76db4f4` | GrokBot v6.0 사냥 Lv 선택·긴급 의뢰 | 로컬 저장(이 브라우저 localStorage) |
 | beauty-deck | junsa80/beauty-deck | `19a913a` | GrokBot v1.5.0 · 링크 | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
 | srpg-prototype | junsa80/srpg-prototype | `9afee37` | GrokBot 허브 표기(잿빛 왕관) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
@@ -273,4 +273,5 @@
 - 2026-10-25 자동 장착 값 표 · 권장 레벨 표지 (GrokBot, GEAR.md · STAGES.md): 시뮬로 맞춘 장비 값 표(보통 세라 없는 셋 7.4→10.9%), 스테이지 1~5 · 의뢰 ①~④ · 출전 고르기에 「권장 Lv N」(평균 레벨 비교 색). 시작 셋 시뮬 그대로. source 3400593 · play 5fa0884
 - 2026-10-25 난이도 곡선 · 승천 1–10 · 반복 동기 (GrokBot, STAGES.md · GROWTH.md ⑤): 스테이지별 적 배율(1 그대로, 시작 셋 보통 58·35·16·10·9%) · 권장 Lv 다시 잼 · 승천 10단계(단계마다 규칙 하나) · 조각(져도)→제작/강화 · 오늘의 런 · 업적 15/칭호. 이슈 #1 보류는 이 배율 둘만 해제. source dba95eb · play 946e648
 - 2026-10-25 미녀 덱 v1.5.0 (GrokBot, beauty-deck HANDOFF): 아리아 우위 축소(Lv1 승천0 58→36%, 7명 34~37%) · 오늘의 원정(날짜 시드·최고 기록·+40/+80 XP) · 승천 4단계 절벽·8~9 평탄 보정 + 권장 레벨 힌트. 링크라 허브 복사본 없음. source 19a913a
+- 2026-10-25 헌트 나우 v6.0 (GrokBot, hunt-now HANDOFF): 사냥 Lv 직접 선택(HR은 상한)·장비 적정 표시 · 긴급 의뢰 보스 사다리 4단계(HR 3/6/9/10)+종장 · 적 체력 Lv당 +40→22%, 공격 +20→16% (봇 표: 장비 +5가 Lv7 6/6). 링크라 허브 복사본 없음. source 76db4f4
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
