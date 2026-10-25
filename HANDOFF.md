@@ -298,3 +298,5 @@
 - Hub catalog only Arcana entry edited; other games preserved. Cache/query1.5.21. Sites and Pages publication checked separately; save origins remain separate.
 
 - Publication state: Sites Alpha0.3 deployed; GitHub main merge/push blocked by automatic approval review pending explicit user confirmation. Local review branch gpt/arcana-ui-cover-alpha03. Narrow-board stat wrapping fixed after 360x640 QA; screenshot docs/qa/arcana-mobile-alpha03.jpg.
+
+- User approved main publication. Published via GitHub connector (shell push had no credentials); final source tree verified byte-for-byte. Bumped Pages asset queries0.3.1/hub1.5.22 to bypass cached incomplete first upload. Sites remains Alpha0.3; Pages query-only changes do not affect saves/rules.
