@@ -272,11 +272,11 @@ export function playCard(st, side, handIdx, slot) {
   if (spellTarget(pid) && !spellTargets(st, side, pid).includes(slot)) return false;
   const id = S.hand.splice(handIdx, 1)[0]; const c = CARD[id];
   S.mana -= c.cost;
-  if (c.type === 'spell') { castSpell(st, side, c, slot); checkWin(st); frame(st); return true; }
+  if (c.type === 'spell') { fx(st, side, 'board', 0, 'spell'); castSpell(st, side, c, slot); checkWin(st); frame(st); return true; }
   if (slot == null || S.field[slot]) slot = S.field.findIndex(f => !f);
   const rush = c.tag === '야생';
   S.field[slot] = { uid: uidSeq++, id, atk: c.atk, hp: c.hp, maxHp: c.hp, ready: rush, fresh: true };
-  log(st, `${S.name}: ${c.name} 소환${rush ? ' (🐾돌진)' : ''}`);
+  log(st, `${S.name}: ${c.name} 소환${rush ? ' (🐾돌진)' : ''}`); fx(st, side, slot, 0, 'summon');
   if (c.tag === '화염' && RULES.burnOnSummon) {
     E.hp -= RULES.burnOnSummon; fx(st, other(side), 'hero', RULES.burnOnSummon);
     log(st, `🔥 ${c.name}: ${E.name}에게 ${RULES.burnOnSummon} 피해`);
@@ -355,7 +355,7 @@ export function legalTargets(st, side, from) {
 export function attack(st, side, from, target) {
   if (!legalTargets(st, side, from).includes(target)) return false;
   const S = st[side], E = st[other(side)]; const u = S.field[from];
-  u.ready = false;
+  u.ready = false; fx(st, side, from, 0, 'attack');
   const es = other(side), name = CARD[u.id].name;
   if (target === 'hero') { E.hp -= u.atk; fx(st, es, 'hero', u.atk); log(st, `${name} → ${E.name} ${u.atk} 피해`); }
   else {

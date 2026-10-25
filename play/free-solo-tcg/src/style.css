@@ -1,109 +1,151 @@
+/* 무료 싱글 TCG — 4차 스타일 (모바일 우선: 글자 ≥14px, 터치 ≥48px, 대비 AA 이상)
+   색 토큰: 배경은 너무 어둡지 않게 겹 톤, 글자 #fff / 보조 #e4def5 (배경 대비 7:1 이상) */
+:root{--bg1:#302a52;--bg2:#221d3b;--panel:#3d3566;--panel2:#4a4178;--line:#6d63a0;--text:#fff;--muted:#e4def5;--accent:#ffa94d;--accent-ink:#2a1500;--good:#5ee08a;--bad:#ff6b6b;--gold:#ffd166;--sel:#fff36b}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;background:#14111f;color:#eee;font-family:system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;font-size:15px;overscroll-behavior:none}
+html,body{margin:0;min-height:100%;color:var(--text);font-family:system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;font-size:16px;overscroll-behavior:none}
+body{background:radial-gradient(120% 60% at 50% 0%,#463d78 0%,transparent 60%),linear-gradient(180deg,var(--bg1),var(--bg2));background-attachment:fixed}
 #app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding:10px 10px calc(10px + env(safe-area-inset-bottom))}
-h1{font-size:24px;margin:8px 0}h2{font-size:19px;margin:6px 0}
-p{margin:6px 0;line-height:1.45}
-.muted{color:#b9b3cc;font-size:13px}
-button{font:inherit;min-height:44px;min-width:44px;border:0;border-radius:12px;padding:8px 14px;background:#3a3157;color:#fff;font-weight:600;cursor:pointer;touch-action:manipulation}
-button:disabled{opacity:.4}
-button.primary{background:#d9822b;color:#1b1206}
-button.ghost{background:transparent;border:1px solid #5a4f7c}
+h1{font-size:26px;margin:6px 0}h2{font-size:20px;margin:4px 0}
+p{margin:6px 0;line-height:1.45}b{font-weight:800}
+.muted{color:var(--muted);font-size:14px}
+button{font:inherit;font-size:16px;min-height:48px;min-width:48px;border:1px solid #7a70b0;border-radius:14px;padding:8px 14px;background:var(--panel2);color:#fff;font-weight:700;cursor:pointer;touch-action:manipulation;transition:transform .08s,background .15s}
+button:active:not(:disabled){transform:scale(.97)}
+button:disabled{opacity:.45}
+button:focus-visible{outline:3px solid var(--sel);outline-offset:2px}
+button.primary{background:linear-gradient(180deg,#ffb867,#f08c2b);color:var(--accent-ink);border-color:#ffd29b}
+button.ghost{background:rgba(255,255,255,.06);border:1px solid var(--line)}
 .row{display:flex;gap:8px;align-items:center}.wrap{flex-wrap:wrap}.grow{flex:1}
 .stack{display:flex;flex-direction:column;gap:10px}
-.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0}
-.pill{background:#2a2340;border-radius:999px;padding:4px 10px;font-size:13px;white-space:nowrap}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 0}
+.pill{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:14px;white-space:nowrap}
 .big{width:100%;min-height:56px;font-size:18px}
-.hero-title{text-align:center;padding:24px 0 8px}
-.hero-title .logo{font-size:56px}
+.err{color:#ffb4a6;font-size:14px}
+.hero-title{text-align:center;padding:18px 0 6px}.hero-title .logo{font-size:52px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
-.stats div{background:#221c35;border-radius:12px;padding:10px 4px}.stats b{display:block;font-size:20px}
-/* 카드 프레임 (CSS만 사용) */
-.card{position:relative;width:100%;aspect-ratio:3/4;min-height:96px;border-radius:10px;padding:5px;background:linear-gradient(160deg,var(--c) 0%,#1d1830 75%);border:2px solid #8f86ad;display:flex;flex-direction:column;justify-content:space-between;color:#fff;overflow:hidden}
-.card.rare{border-color:#f0c24b;box-shadow:0 0 8px #f0c24b66}
-.card .cost{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#2b6fd6;display:grid;place-items:center;font-weight:800;font-size:14px;border:2px solid #cfe0ff}
-.card .icon{text-align:center;font-size:24px;margin-top:14px}
-.card .name{text-align:center;font-weight:700;font-size:13px;line-height:1.1}
-.card .tag{text-align:center;font-size:12px;color:#ddd}
-.card .st{display:flex;justify-content:space-between;font-weight:800;font-size:15px}
-.card .atk{background:#c9572e;border-radius:8px;padding:0 6px}.card .hp{background:#2f8f4e;border-radius:8px;padding:0 6px}
-.card .hp.hurt{background:#a32a2a}
-.card .badge{position:absolute;top:3px;right:3px;background:#000a;border-radius:8px;padding:1px 6px;font-size:12px}
-/* 덱 편성 / 상점 목록 */
-.list{display:flex;flex-direction:column;gap:8px;overflow-y:auto;flex:1;padding-bottom:8px}
-.item{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center;background:#1e1830;border-radius:12px;padding:6px}
-.item .card{min-height:84px;padding:3px}.item .card .icon{font-size:18px;margin-top:12px}.item .card .name{font-size:12px}
-.item .info{font-size:13px;line-height:1.4}.item .info b{font-size:15px}
-.ctrl{display:flex;gap:6px;align-items:center}.ctrl .n{min-width:36px;text-align:center;font-weight:800}
-.sticky{position:sticky;bottom:0;background:#14111f;padding-top:8px}
-.err{color:#ff9d8a;font-size:13px}
-/* 대전 */
-.battle{display:flex;flex-direction:column;gap:6px;flex:1}
-.herobar{display:flex;align-items:center;gap:8px;background:#221c35;border-radius:12px;padding:6px 10px;min-height:52px;border:2px solid transparent}
-.herobar.target{border-color:#ff5d5d;box-shadow:0 0 10px #ff5d5d88;cursor:pointer}
-.herobar .hpv{font-size:22px;font-weight:800;color:#ff8080}
-.mana{color:#8cc0ff;font-weight:700}
-.field{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.slot{min-height:120px;border-radius:12px;border:2px dashed #3a3157;display:flex;align-items:stretch;justify-content:center;padding:0;background:none}
-.slot .card{height:100%}
-.slot.ready .card{border-color:#7dff9a;box-shadow:0 0 8px #7dff9a88}
-.slot.sel .card{outline:3px solid #fff;transform:translateY(-4px)}
-.slot.target .card{border-color:#ff5d5d;box-shadow:0 0 10px #ff5d5d}
-.slot.sick .card{filter:saturate(.6)}
-.logline{font-size:13px;color:#cfc8e6;text-align:center;min-height:20px}
-.hand{display:flex;gap:6px;overflow-x:auto;padding:4px 0}
-.hand button{padding:0;flex:0 0 78px;background:none;border-radius:10px}
-.hand button .card{min-height:104px}
-.hand button.playable .card{border-color:#7dff9a}
-.hand button:disabled{opacity:.45}
-.hint{font-size:13px;color:#ffd28a;text-align:center;min-height:18px}
-/* 팩 */
-.pack{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
-.pack .reveal{animation:pop .45s ease-out both}
-.pack .reveal:nth-child(2){animation-delay:.15s}.pack .reveal:nth-child(3){animation-delay:.3s}
-@keyframes pop{from{transform:scale(.6) rotateY(90deg);opacity:0}to{transform:none;opacity:1}}
-.dup{font-size:13px;text-align:center;color:#f0c24b;margin-top:4px}.new{font-size:13px;text-align:center;color:#7dff9a;margin-top:4px}
-.overlay{position:fixed;inset:0;background:#000b;display:grid;place-items:center;z-index:5}
-.overlay .box{background:#221c35;border-radius:16px;padding:20px;width:min(340px,90vw);text-align:center}
-.toast{pointer-events:none;position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#000d;padding:8px 14px;border-radius:10px;font-size:14px;z-index:9}
-/* 2차: 주문 카드·보너스 표시·피해 팝업·전투 기록 */
-.card.spell{background:linear-gradient(160deg,var(--c) 0%,#2a1d48 80%);border-style:dashed}
-.card .st.spl{justify-content:center;font-size:12px;font-weight:700;color:#ffe6a8}
+.stats div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:8px 4px;font-size:14px}.stats b{display:block;font-size:22px}
 .bonus{display:flex;flex-direction:column;gap:6px;margin:8px 0}
-.bonus div{border-radius:10px;padding:8px 10px;font-size:13px;text-align:center}
-.bonus .on{background:#3b2f12;color:#ffd77a;border:1px solid #8a6a1f}
-.bonus .off{background:#221c35;color:#9f97b8}
-.logline{display:flex;flex-direction:column;gap:1px;min-height:36px;justify-content:center}
-.logline div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.logbox{max-height:80vh;display:flex;flex-direction:column;gap:10px;text-align:left}
-.loglist{overflow-y:auto;font-size:13px;line-height:1.5;display:flex;flex-direction:column;gap:2px}
-.pop{position:fixed;transform:translate(-50%,-50%);font-size:22px;font-weight:900;pointer-events:none;z-index:8;text-shadow:0 2px 3px #000,0 0 6px #000;animation:floatup 1s ease-out both}
-.pop.dmg{color:#ff6b6b}.pop.heal{color:#7dff9a}
-@keyframes floatup{0%{opacity:0;transform:translate(-50%,-30%) scale(.7)}15%{opacity:1;transform:translate(-50%,-60%) scale(1.15)}100%{opacity:0;transform:translate(-50%,-160%) scale(1)}}
-@media (prefers-reduced-motion:reduce){.pop{animation-duration:.01s}}
-.herobar>span:first-child{min-width:0;flex-shrink:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.herobar .hpv,.herobar .mana{white-space:nowrap;flex-shrink:0}
-/* 3차: 필터·덱 통계·단계 선택·도감·설정·대상 지정·타격 연출 */
-.filters,.tiers{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0}
-.chip{min-width:44px;padding:6px 10px;border-radius:999px;background:#2a2340;border:1px solid #4a4068;font-size:14px}
-.chip.on{background:#d9822b;color:#1b1206;border-color:#f0a95a}
-.chip.hard{border-color:#ff6b6b}
-.tiers{justify-content:center}
-.dstats{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end;background:#1e1830;border-radius:12px;padding:6px 10px}
-.curve{display:flex;gap:4px;align-items:flex-end;height:64px}
+.bonus div{border-radius:12px;padding:8px 10px;font-size:14px;text-align:center}
+.bonus .on{background:#5a4512;color:#ffe7a3;border:1px solid #c9982d}
+.bonus .off{background:var(--panel);color:var(--muted);border:1px solid var(--line)}
+.chip{min-width:48px;padding:6px 10px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:16px;display:inline-flex;align-items:center;justify-content:center}
+.chip .ti{width:22px;height:22px}
+.chip.on{background:var(--accent);color:var(--accent-ink);border-color:#ffd29b;box-shadow:0 0 0 2px #ffd29b55}
+.chip.hard{border-color:var(--bad)}
+.filters,.tiers{display:flex;gap:6px;margin:4px 0}.tiers{justify-content:center;flex-wrap:wrap}
+.filters{justify-content:space-between}.filters .chip{flex:1;max-width:60px}
+.fnote{margin:0 0 4px;text-align:center}
+/* ---------- 카드 앞면 ---------- */
+.card{--frame:#c9c3e3;container-type:inline-size;position:relative;width:100%;aspect-ratio:3/4;min-height:100px;border-radius:12px;padding:4px;background:linear-gradient(170deg,var(--c) 0%,color-mix(in srgb,var(--c) 45%,#2a2446) 55%,#2a2446 100%);border:3px solid var(--frame);display:flex;flex-direction:column;align-items:stretch;color:#fff;overflow:hidden;box-shadow:inset 0 0 0 1px #0006,0 2px 6px #0005}
+.card.rare{--frame:var(--gold);box-shadow:inset 0 0 0 1px #0006,inset 0 0 12px #ffd16666,0 0 8px #ffd16677}
+.card.rare::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,#fff3 50%,transparent 65%);pointer-events:none}
+.card.spell{--frame:#d6a6ff;border-radius:16px;border-style:double;border-width:4px;background:linear-gradient(170deg,var(--c) 0%,#3b2a66 60%,#2a1f4d 100%)}
+.card.spell.rare{--frame:var(--gold)}
+.card .top{display:flex;align-items:center;justify-content:space-between;gap:2px}
+.card .cost{width:26px;height:26px;border-radius:50%;background:#1f5fcc;display:grid;place-items:center;font-weight:900;font-size:16px;border:2px solid #d8e6ff;flex:none}
+.card .gem{color:var(--gold);font-size:14px;line-height:1;text-shadow:0 0 4px #000}
+.card .tbadge{width:24px;height:24px;border-radius:50%;background:#0006;display:grid;place-items:center;flex:none}
+.card .tbadge .ti{width:16px;height:16px;color:#fff}
+.card .art{flex:1 1 0;display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden}
+.card .art .big{height:100%;max-height:36px;width:auto;aspect-ratio:1;color:#ffffffd9;filter:drop-shadow(0 2px 2px #0008)}
+@container (max-width:84px){.card .art .big{display:none}}
+.card .name{text-align:center;font-weight:800;font-size:14px;line-height:1.1;word-break:keep-all;overflow-wrap:anywhere;text-shadow:0 1px 2px #000}
+.card .kw{align-self:center;margin:2px 0;font-size:14px;line-height:1.15;padding:0 6px;border-radius:8px;background:#000a;color:#fff3c4;white-space:nowrap}
+.card .kw.blank{background:none;min-height:16px}
+.card .st{display:flex;justify-content:space-between;font-weight:900;font-size:17px;line-height:1}
+.card .st.spl{justify-content:center;font-size:14px;color:#f3e0ff}
+.card .atk,.card .hp{min-width:26px;text-align:center;border-radius:9px;padding:3px 5px;border:2px solid #0006}
+.card .atk{background:#b84a1a}.card .atk.up{background:#ffb627;color:#2a1500}
+.card .hp{background:#1d7a42}.card .hp.hurt{background:#b02a2a}
+.card .badge{position:absolute;top:32px;left:50%;transform:translateX(-50%);background:#000c;border-radius:8px;padding:1px 6px;font-size:14px;white-space:nowrap;z-index:1}
+/* ---------- 목록 (덱·상점·도감) ---------- */
+.list{display:flex;flex-direction:column;gap:8px;overflow-y:auto;flex:1;padding-bottom:8px;scroll-snap-type:y proximity}
+.item{display:grid;grid-template-columns:76px 1fr auto;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px;scroll-snap-align:start}
+.item .card{min-height:100px}
+.item .info{font-size:14px;line-height:1.4;min-width:0}.item .info b{font-size:16px}
+.ctrl{display:flex;gap:4px;align-items:center}.ctrl .n{min-width:28px;text-align:center;font-weight:900;font-size:18px}
+.sticky{position:sticky;bottom:0;background:linear-gradient(180deg,transparent,var(--bg2) 30%);padding-top:10px}
+.listhead{position:sticky;top:0;z-index:2;background:var(--bg1);padding-bottom:2px}
+.dstats{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px 10px}
+.curve{display:flex;gap:3px;align-items:flex-end;height:70px}
 .cbar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:22px;height:100%}
-.cbar i{display:block;width:14px;background:#2b6fd6;border-radius:3px 3px 0 0;min-height:2px}
-.cbar .cn,.cbar .cl{font-size:12px;color:#cfc8e6;line-height:16px}
-.tagsum{display:flex;flex-direction:column;gap:4px;font-size:13px}
-.tagprog{display:flex;gap:6px;flex-wrap:wrap}.pill.done{background:#2f5a35}
+.cbar i{display:block;width:14px;background:linear-gradient(#7fb2ff,#2f7bf0);border-radius:3px 3px 0 0;min-height:2px}
+.cbar .cn,.cbar .cl{font-size:14px;color:var(--muted);line-height:18px}
+.tagsum{display:flex;flex-direction:column;gap:4px;font-size:14px}
+.tagprog{display:flex;gap:6px;flex-wrap:wrap}.pill.done{background:#2f6b3f;border-color:#5ee08a}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;overflow-y:auto;flex:1;padding-bottom:8px}
-.gcell{text-align:center}.gcell .card{min-height:96px}.gcell.missing .card{filter:grayscale(1) brightness(.5)}
-.setting{display:flex;gap:12px;align-items:center;justify-content:space-between;background:#1e1830;border-radius:12px;padding:12px;font-size:14px}
-.toggle{min-width:72px;background:#3a3157}.toggle.on{background:#2f8f4e}
-.slot.aim .card{border-color:#ffd54a;box-shadow:0 0 12px #ffd54a}
-.hand button.aiming .card{outline:3px solid #ffd54a;transform:translateY(-6px)}
-.pop.buff{color:#ffd54a}
-.hit{animation:shake .38s ease-out}
-.hit .card,.herobar.hit{box-shadow:0 0 0 3px #ff4d4d,0 0 14px #ff4d4d}
-.glow .card,.herobar.glow{box-shadow:0 0 0 3px #7dff9a,0 0 14px #7dff9a}
-@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
-@media (prefers-reduced-motion:reduce){.hit{animation:none}}
+.gcell{text-align:center;font-size:14px}.gcell.missing .card{filter:grayscale(1) brightness(.6)}
+.setting{display:flex;gap:12px;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;font-size:16px}
+.toggle{min-width:76px}.toggle.on{background:#2b9b57;border-color:#8ff0b1}
+/* ---------- 대전 ---------- */
+.battle{display:flex;flex-direction:column;gap:6px;flex:1}
+.herobar{display:flex;align-items:center;gap:6px;background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:4px 10px;min-height:52px;font-size:16px}
+.herobar.me{background:#3a4a7a;border-color:#7d93d6}
+.herobar .who{font-weight:800;white-space:nowrap}
+.herobar.target{border-color:var(--bad);box-shadow:0 0 0 3px #ff6b6b66,0 0 14px var(--bad);cursor:pointer}
+.herobar .hpv{font-size:22px;font-weight:900;color:#ff9b9b;white-space:nowrap}
+.mana{color:#9fd0ff;font-weight:800;white-space:nowrap}
+.field{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot{min-height:126px;border-radius:14px;display:flex;align-items:stretch;justify-content:center;padding:0;background:none;border:2px dashed #6d63a088}
+.slot.unit{border:0;min-width:0}
+.slot .card{height:100%}
+.slot.unit .card{animation:summon .38s cubic-bezier(.2,1.4,.4,1) both}
+.slot.ready .card{border-color:var(--good);box-shadow:0 0 0 2px #5ee08a88,0 0 10px var(--good)}
+.slot.sel .card{border-color:var(--sel);box-shadow:0 0 0 4px var(--sel),0 0 18px var(--sel);transform:translateY(-6px) scale(1.03)}
+.slot.target .card{border-color:var(--bad);box-shadow:0 0 0 3px #ff6b6b99,0 0 14px var(--bad)}
+.slot.aim .card{border-color:var(--sel);box-shadow:0 0 0 4px #fff36baa,0 0 16px var(--sel);animation:pulse 1s ease-in-out infinite}
+.slot.sick .card{filter:saturate(.7) brightness(.92)}
+.logline{display:flex;flex-direction:column;gap:1px;min-height:40px;justify-content:center;font-size:14px;color:var(--muted);text-align:center}
+.logline div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hint{font-size:14px;color:#ffe2a8;text-align:center;min-height:20px}
+.hand{display:flex;gap:6px;overflow-x:auto;padding:8px 2px 4px;scroll-snap-type:x proximity}
+.hand button{padding:0;flex:0 0 84px;background:none;border:0;border-radius:12px;scroll-snap-align:start}
+.hand button .card{min-height:112px;transition:transform .12s}
+.hand button.playable .card{border-color:var(--good);box-shadow:0 0 0 2px #5ee08a77}
+.hand button.aiming .card{border-color:var(--sel);box-shadow:0 0 0 4px var(--sel),0 0 18px var(--sel);transform:translateY(-6px)}
+.hand button:disabled{opacity:.55}
+.battle.aiturn .hand,.battle.aiturn .field:last-of-type{filter:saturate(.8)}
+.overlay{position:fixed;inset:0;background:#120f22cc;display:grid;place-items:center;z-index:5;animation:fade .2s both}
+.overlay .box{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;width:min(340px,92vw);text-align:center}
+.logbox{max-height:80vh;display:flex;flex-direction:column;gap:10px;text-align:left}
+.loglist{overflow-y:auto;font-size:14px;line-height:1.5;display:flex;flex-direction:column;gap:2px}
+/* ---------- 팩·결과 ---------- */
+.pack{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.pack .reveal{animation:flip .5s ease-out both}
+.pack .reveal:nth-child(2){animation-delay:.15s}.pack .reveal:nth-child(3){animation-delay:.3s}
+.dup{font-size:14px;text-align:center;color:var(--gold);margin-top:4px}.new{font-size:14px;text-align:center;color:var(--good);margin-top:4px;font-weight:800}
+.result{animation:resultIn .5s cubic-bezier(.2,1.3,.4,1) both}
+.result.win .logo{filter:drop-shadow(0 0 16px var(--gold));animation:bob 1.6s ease-in-out infinite}
+.result.win h1{color:var(--gold);text-shadow:0 0 12px #ffd16688}
+.result.lose{filter:saturate(.75)}.result.lose h1{color:#cfc7ea}
+.toast{pointer-events:none;position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top));transform:translateX(-50%);background:#111c;border:1px solid var(--line);padding:10px 14px;border-radius:12px;font-size:15px;z-index:9;max-width:92vw;text-align:center}
+/* ---------- 연출 ---------- */
+.pop{position:fixed;transform:translate(-50%,-50%);font-size:28px;font-weight:900;pointer-events:none;z-index:8;-webkit-text-stroke:1.5px #000;text-shadow:0 3px 4px #000a;animation:floatup 1s ease-out both}
+.pop.dmg{color:#ff5b5b}.pop.heal{color:#6dffa0}.pop.buff{color:#ffd54a}
+.banner{position:fixed;left:50%;top:42%;transform:translate(-50%,-50%);z-index:7;pointer-events:none;font-size:28px;font-weight:900;padding:12px 28px;border-radius:16px;white-space:nowrap;animation:bannerIn 1.2s ease-out both;box-shadow:0 6px 24px #0008}
+.banner.me{background:linear-gradient(180deg,#ffb867,#f08c2b);color:var(--accent-ink)}
+.banner.ai{background:linear-gradient(180deg,#7b6bd6,#4b3fa0);color:#fff}
+.hit{animation:shake .4s ease-out}
+.hit .card,.herobar.hit{box-shadow:0 0 0 4px var(--bad),0 0 18px var(--bad)!important}
+.hit .card::before{content:"";position:absolute;inset:0;background:#ff3b3b;opacity:0;animation:flash .4s ease-out;pointer-events:none;z-index:2}
+.glow .card,.herobar.glow{box-shadow:0 0 0 4px var(--good),0 0 18px var(--good)!important}
+.lunge-up .card{animation:lungeUp .3s ease-out}.lunge-down .card{animation:lungeDown .3s ease-out}
+.battle.cast{animation:castFlash .45s ease-out}
+@keyframes summon{from{transform:scale(.4) translateY(20px);opacity:0}to{transform:none;opacity:1}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+@keyframes flash{0%{opacity:.55}100%{opacity:0}}
+@keyframes lungeUp{50%{transform:translateY(-16px) scale(1.06)}}
+@keyframes lungeDown{50%{transform:translateY(16px) scale(1.06)}}
+@keyframes castFlash{0%{box-shadow:inset 0 0 0 0 #d6a6ff00}30%{box-shadow:inset 0 0 60px 10px #d6a6ff88}100%{box-shadow:inset 0 0 0 0 #d6a6ff00}}
+@keyframes pulse{50%{box-shadow:0 0 0 6px #fff36b66,0 0 22px var(--sel)}}
+@keyframes floatup{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}15%{opacity:1;transform:translate(-50%,-60%) scale(1.25)}100%{opacity:0;transform:translate(-50%,-170%) scale(1)}}
+@keyframes bannerIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.7)}15%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}25%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0}}
+@keyframes flip{from{transform:scale(.6) rotateY(90deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes resultIn{from{transform:scale(.85);opacity:0}to{transform:none;opacity:1}}
+@keyframes bob{50%{transform:translateY(-6px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes fadeOnly{0%{opacity:0}15%{opacity:1}80%{opacity:1}100%{opacity:0}}
+/* 움직임 줄이기: 이동·흔들림·확대 없음. 숫자·배너는 제자리에서 나타났다 사라짐, 강조 테두리는 유지 */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .pop,.banner{animation:fadeOnly 1s linear both!important}
+}

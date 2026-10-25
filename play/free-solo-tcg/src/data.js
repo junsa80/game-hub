@@ -22,24 +22,24 @@ export const CARDS = [
   { id: 'ember', name: '불씨 정령', cost: 2, atk: 2, hp: 2, rarity: 'common', tag: '화염' },
   { id: 'shade', name: '그림자 도적', cost: 2, atk: 2, hp: 3, rarity: 'common', tag: '암흑' },
   { id: 'boar', name: '멧돼지', cost: 3, atk: 3, hp: 3, rarity: 'common', tag: '야생' },
-  { id: 'cogknight', name: '태엽 기사', cost: 4, atk: 3, hp: 4, rarity: 'rare', tag: '기계', fx: { summonDraw: 1 }, text: '소환 시 카드 1장 드로우' },
+  { id: 'cogknight', kw: '드로우 1', name: '태엽 기사', cost: 4, atk: 3, hp: 4, rarity: 'rare', tag: '기계', fx: { summonDraw: 1 }, text: '소환 시 카드 1장 드로우' },
   { id: 'lich', name: '밤의 군주', cost: 5, atk: 4, hp: 6, rarity: 'rare', tag: '암흑' },
   // GrokBot 2차: 주문 3장 (필드 칸을 쓰지 않고 사용 후 사라짐)
-  { id: 'fireblast', name: '화염 폭발', type: 'spell', cost: 3, rarity: 'rare', tag: '화염', effect: { aoe: 2 }, power: 7, text: '상대 유닛 전체에 2 피해' },
-  { id: 'mend', name: '수호 회복', type: 'spell', cost: 2, rarity: 'common', tag: '수호', effect: { healAll: 2 }, power: 4, text: '내 유닛 전체 체력 +2 (최대 체력까지)' },
-  { id: 'geardraw', name: '기계 드로우', type: 'spell', cost: 2, rarity: 'common', tag: '기계', effect: { draw: 2 }, power: 5, text: '카드 2장 드로우' },
+  { id: 'fireblast', kw: '전체 2', name: '화염 폭발', type: 'spell', cost: 3, rarity: 'rare', tag: '화염', effect: { aoe: 2 }, power: 7, text: '상대 유닛 전체에 2 피해' },
+  { id: 'mend', kw: '전체 +2', name: '수호 회복', type: 'spell', cost: 2, rarity: 'common', tag: '수호', effect: { healAll: 2 }, power: 4, text: '내 유닛 전체 체력 +2 (최대 체력까지)' },
+  { id: 'geardraw', kw: '드로우 2', name: '기계 드로우', type: 'spell', cost: 2, rarity: 'common', tag: '기계', effect: { draw: 2 }, power: 5, text: '카드 2장 드로우' },
   // GrokBot 3차: 대상 지정 주문 2장 (레어 1, 일반 1). target: 'enemy' | 'ally' = 사용 시 유닛 1기를 골라야 함
-  { id: 'darkbolt', name: '암흑 화살', type: 'spell', cost: 2, rarity: 'rare', tag: '암흑', target: 'enemy', effect: { dmgUnit: 4 }, power: 6, text: '상대 유닛 1기에 4 피해' },
-  { id: 'roar', name: '야성의 포효', type: 'spell', cost: 2, rarity: 'common', tag: '야생', target: 'ally', effect: { buffAtk: 2 }, power: 3, text: '내 유닛 1기 공격력 +2 (이번 턴)' }
+  { id: 'darkbolt', kw: '단일 4', name: '암흑 화살', type: 'spell', cost: 2, rarity: 'rare', tag: '암흑', target: 'enemy', effect: { dmgUnit: 4 }, power: 6, text: '상대 유닛 1기에 4 피해' },
+  { id: 'roar', kw: '공격 +2', name: '야성의 포효', type: 'spell', cost: 2, rarity: 'common', tag: '야생', target: 'ally', effect: { buffAtk: 2 }, power: 3, text: '내 유닛 1기 공격력 +2 (이번 턴)' }
 ];
 
-// 태그 효과 (유닛만). 수치는 RULES의 burnOnSummon / lifesteal 참고.
+// 태그 효과 (유닛만). 수치는 RULES의 burnOnSummon / lifesteal 참고. kw = 카드 앞면에 보이는 한 단어 (카드에 kw가 있으면 그것 우선)
 export const TAGS = {
-  '화염': { icon: '🔥', color: '#b8432f', text: '화염: 소환 시 상대 영웅에게 1 피해' },
-  '수호': { icon: '🛡️', color: '#3d6fa8', text: '수호: 상대는 수호 유닛부터 공격해야 합니다.' },
-  '야생': { icon: '🐾', color: '#3f8a4a', text: '야생(돌진): 소환한 턴에도 유닛을 공격할 수 있음' },
-  '암흑': { icon: '🌑', color: '#5b3f8a', text: '암흑(흡혈): 공격할 때마다 내 영웅 체력 +1' },
-  '기계': { icon: '⚙️', color: '#7a6a45', text: '기계(정비): 소환 후 손패가 2장 이하면 1장 드로우' }
+  '화염': { kw: '점화', icon: '🔥', color: '#b8432f', text: '화염: 소환 시 상대 영웅에게 1 피해' },
+  '수호': { kw: '수호', icon: '🛡️', color: '#3d6fa8', text: '수호: 상대는 수호 유닛부터 공격해야 합니다.' },
+  '야생': { kw: '돌진', icon: '🐾', color: '#3f8a4a', text: '야생(돌진): 소환한 턴에도 유닛을 공격할 수 있음' },
+  '암흑': { kw: '흡혈', icon: '🌑', color: '#5b3f8a', text: '암흑(흡혈): 공격할 때마다 내 영웅 체력 +1' },
+  '기계': { kw: '정비', icon: '⚙️', color: '#7a6a45', text: '기계(정비): 소환 후 손패가 2장 이하면 1장 드로우' }
 };
 
 // 중복(보유 상한 초과) 카드 1장당 포인트 — 초기 커밋 값 유지

@@ -12,16 +12,30 @@ const STEP_MS = 520; // AI 턴 단계별 보기: 행동 사이 간격
 function persist() { P.seed = rng.state(); saveProfile(P); }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+// 태그 아이콘 (인라인 SVG, 이모지는 텍스트 설명에만 남김)
+const SVG = {
+  '화염': '<path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-3 2-4 2-7 2 1 3 3 3 5 1-1 1-3 0-9z"/>',
+  '수호': '<path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/>',
+  '야생': '<circle cx="6.5" cy="9" r="2.3"/><circle cx="12" cy="5.8" r="2.3"/><circle cx="17.5" cy="9" r="2.3"/><path d="M12 11c3.2 0 6.5 4.2 6.5 6.8 0 2.6-3.3 3.2-6.5 1.8-3.2 1.4-6.5.8-6.5-1.8C5.5 15.2 8.8 11 12 11z"/>',
+  '암흑': '<path d="M15.5 2.5a9.5 9.5 0 1 0 6 16.5A8 8 0 0 1 15.5 2.5z"/>',
+  '기계': '<path d="M10.5 1h3l.6 3a8 8 0 0 1 2.3 1l2.6-1.7 2.1 2.1-1.7 2.6a8 8 0 0 1 1 2.3l3 .6v3l-3 .6a8 8 0 0 1-1 2.3l1.7 2.6-2.1 2.1-2.6-1.7a8 8 0 0 1-2.3 1l-.6 3h-3l-.6-3a8 8 0 0 1-2.3-1l-2.6 1.7-2.1-2.1 1.7-2.6a8 8 0 0 1-1-2.3l-3-.6v-3l3-.6a8 8 0 0 1 1-2.3L3.4 5.5l2.1-2.1 2.6 1.7a8 8 0 0 1 2.3-1zM12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/>',
+  spell: '<path d="M12 1.5l2.4 7.1 7.1 2.4-7.1 2.4-2.4 7.1-2.4-7.1L2.5 11l7.1-2.4z"/>'
+};
+const icon = (k, cls = 'ti') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">${SVG[k] || ''}</svg>`;
+
+// 카드 앞면: 위(비용·태그) / 그림 / 이름 / 키워드 / 아래(공격·체력 또는 주문)
 function cardHTML(id, unit, extra = '') {
-  const c = G.CARD[id]; const t = TAGS[c.tag] || { icon: '❔', color: '#555' };
+  const c = G.CARD[id]; const t = TAGS[c.tag] || { color: '#555' };
   const spell = c.type === 'spell';
   const hp = unit ? unit.hp : c.hp; const atk = unit ? unit.atk : c.atk;
-  const st = spell ? `<div class="st spl">✨ 주문</div>`
-    : `<div class="st"><span class="atk">${atk}</span><span class="hp${unit && hp < unit.maxHp ? ' hurt' : ''}">${hp}</span></div>`;
+  const kw = c.kw || (spell ? '' : t.kw);
+  const st = spell ? `<div class="st spl">주문</div>`
+    : `<div class="st"><span class="atk${unit && unit.buff ? ' up' : ''}" aria-label="공격 ${atk}">${atk}</span><span class="hp${unit && hp < unit.maxHp ? ' hurt' : ''}" aria-label="체력 ${hp}">${hp}</span></div>`;
   return `<div class="card ${c.rarity}${spell ? ' spell' : ''}" style="--c:${t.color}" title="${esc(c.name)}">
-    <span class="cost">${c.cost}</span>${extra}
-    <div class="icon" aria-hidden="true">${spell ? '✨' : t.icon}</div>
-    <div><div class="name">${esc(c.name)}</div><div class="tag">${esc(c.tag)}${c.rarity === 'rare' ? ' · 레어' : ''}</div></div>
+    <div class="top"><span class="cost" aria-label="비용 ${c.cost}">${c.cost}</span>${c.rarity === 'rare' ? '<span class="gem" aria-label="레어">★</span>' : ''}<span class="tbadge">${icon(c.tag)}</span></div>${extra}
+    <div class="art">${icon(spell ? 'spell' : c.tag, 'big')}</div>
+    <div class="name">${esc(c.name)}</div>
+    ${kw ? `<div class="kw">${esc(kw)}</div>` : '<div class="kw blank"></div>'}
     ${st}</div>`;
 }
 // 목록용 설명 한 줄: 주문 효과 / 카드 고유 효과 / 태그 효과
@@ -34,10 +48,11 @@ function cardDesc(id) {
 const rewardText = r => r.kind === 'complete' ? `📖 도감 완성! 보너스 팩 +${r.packs}` : `📖 ${TAGS[r.tag].icon}${r.tag} ${COLLECTION_BONUS.tagDistinct}종 수집: +${r.points}P`;
 function announce(rewards) { if (rewards && rewards.length) toast(rewards.map(rewardText).join(' · ')); }
 // 필터: 'all' | 태그 이름 | 'spell'
-const FILTERS = [['all', '전체'], ...Object.entries(TAGS).map(([t, v]) => [t, v.icon]), ['spell', '✨']];
+const FILTERS = [...Object.keys(TAGS).map(t => [t, icon(t)]), ['spell', icon('spell')]]; // 같은 칩을 다시 누르면 전체
 const passFilter = id => ui.filter === 'all' || (ui.filter === 'spell' ? G.isSpell(id) : G.CARD[id].tag === ui.filter);
 const filterBar = () => `<div class="filters" role="group" aria-label="태그 필터">${FILTERS.map(([k, label]) =>
-  `<button class="chip${ui.filter === k ? ' on' : ''}" data-act="filter" data-id="${k}" aria-pressed="${ui.filter === k}" aria-label="${k === 'all' ? '전체' : k === 'spell' ? '주문' : k} 필터">${label}</button>`).join('')}</div>`;
+  `<button class="chip${ui.filter === k ? ' on' : ''}" data-act="filter" data-id="${k}" aria-pressed="${ui.filter === k}" aria-label="${k === 'spell' ? '주문' : k} 필터">${label}</button>`).join('')}</div>
+  <p class="muted fnote" data-id="fnote">${ui.filter === 'all' ? '태그를 누르면 그 카드만 · 다시 누르면 전체' : `${ui.filter === 'spell' ? '주문' : esc(ui.filter)}만 보는 중 · 같은 칩을 다시 누르면 전체`}</p>`;
 // 덱 비용 분포(1~6+) + 태그 요약
 function deckStats(deck) {
   const curve = Array(RULES.maxMana).fill(0); const tags = {}; let spells = 0;
@@ -142,31 +157,31 @@ function battleScreen() {
   const aimT = aimId ? G.spellTargets(st, 'p', aimId) : [];
   const targets = !locked && ui.sel != null ? G.legalTargets(st, 'p', ui.sel) : [];
   const slot = (u, i, side) => {
-    if (!u) return `<div class="slot" data-fx="${side}-${i}" aria-label="빈 칸"></div>`;
+    if (!u) return `<div class="slot empty" data-k="e${side}${i}" data-fx="${side}-${i}" aria-label="빈 칸"></div>`;
     const aimed = aimSide && ((aimSide === 'enemy' && side === 'a') || (aimSide === 'ally' && side === 'p')) && aimT.includes(i);
     const cls = aimed ? 'aim' : locked ? '' : side === 'p'
       ? (ui.sel === i ? 'sel' : (u.ready && G.legalTargets(st, 'p', i).length ? 'ready' : (u.ready ? '' : 'sick')))
       : (targets.includes(i) ? 'target' : '');
-    const rush = u.buff ? `<span class="badge">💪+${u.buff}</span>` : u.fresh && u.ready ? '<span class="badge">🐾돌진</span>' : '';
-    return `<button class="slot ${cls}" data-fx="${side}-${i}" data-act="${side === 'p' ? 'selunit' : 'hit'}" data-i="${i}" aria-label="${esc(G.CARD[u.id].name)}">${cardHTML(u.id, u, rush)}</button>`;
+    const rush = u.buff ? `<span class="badge">+${u.buff}공</span>` : u.fresh && u.ready ? '<span class="badge">돌진</span>' : '';
+    return `<button class="slot unit ${cls}" data-k="u${u.uid}" data-fx="${side}-${i}" data-act="${side === 'p' ? 'selunit' : 'hit'}" data-i="${i}" aria-label="${esc(G.CARD[u.id].name)}">${cardHTML(u.id, u, rush)}</button>`;
   };
   let hint = '카드를 터치해 소환·주문, 초록 테두리 유닛으로 공격하세요.';
   if (locked) hint = `🤖 ${esc(ai.name)}의 턴… (${ui.replay.i + 1}/${ui.replay.frames.length})`;
   else if (aimId) hint = `✨${esc(G.CARD[aimId].name)}: ${aimSide === 'enemy' ? '상대' : '내'} 유닛을 터치해 대상 선택 (노란 테두리)`;
   else if (ui.sel != null) hint = targets.length ? '빨간 테두리 대상을 터치해 공격' : '공격할 수 있는 대상이 없어요';
-  return `<div class="battle">
+  return `<div class="battle${locked ? ' aiturn' : ''}" data-fx="p-board">
     <div class="herobar ${targets.includes('hero') ? 'target' : ''}" data-fx="a-hero" data-act="hit" data-i="hero" role="button" aria-label="상대 영웅">
-      <span>🤖 ${esc(ai.name)}</span><span class="hpv" data-id="aihp">♥ ${ai.hp}</span><span class="grow"></span>
-      <span class="pill">손패 ${ai.hand.length}</span><span class="pill">덱 ${ai.deck.length}</span><span class="mana">💧${ai.maxMana}</span></div>
+      <span class="who">${esc(ai.name)}</span><span class="hpv" data-id="aihp" aria-label="상대 체력 ${ai.hp}">♥${ai.hp}</span><span class="grow"></span>
+      <span class="pill" aria-label="상대 손패 ${ai.hand.length}">✋${ai.hand.length}</span><span class="pill" aria-label="상대 덱 ${ai.deck.length}">🂠${ai.deck.length}</span><span class="mana" aria-label="상대 마나">💧${ai.maxMana}</span></div>
     <div class="field">${ai.field.map((u, i) => slot(u, i, 'a')).join('')}</div>
     <div class="logline" data-id="log">${st.log.slice(-2).map(l => `<div>${esc(l)}</div>`).join('')}</div>
     <div class="field">${me.field.map((u, i) => slot(u, i, 'p')).join('')}</div>
-    <div class="herobar" data-fx="p-hero"><span>🙂 나</span><span class="hpv" data-id="php">♥ ${me.hp}</span><span class="grow"></span>
-      <span class="pill">턴 ${st.turn}</span><span class="pill">덱 ${me.deck.length}</span><span class="mana" data-id="mana">💧${me.mana}/${me.maxMana}</span></div>
+    <div class="herobar me" data-fx="p-hero"><span class="who">나</span><span class="hpv" data-id="php" aria-label="내 체력 ${me.hp}">♥${me.hp}</span><span class="grow"></span>
+      <span class="pill">턴 ${st.turn}</span><span class="pill" aria-label="내 덱 ${me.deck.length}">🂠${me.deck.length}</span><span class="mana" data-id="mana" aria-label="마나 ${me.mana}/${me.maxMana}">💧${me.mana}/${me.maxMana}</span></div>
     <div class="hint" data-id="hint">${hint}</div>
     <div class="hand">${me.hand.map((id, i) => {
       const ok = !locked && G.canPlay(st, 'p', i);
-      return `<button class="${ok ? 'playable' : ''}${ui.aim === i ? ' aiming' : ''}" data-act="play" data-i="${i}" ${ok ? '' : 'disabled'} aria-label="${esc(G.CARD[id].name)} ${G.isSpell(id) ? '사용' : '소환'}">${cardHTML(id)}</button>`;
+      return `<button class="${ok ? 'playable' : ''}${ui.aim === i ? ' aiming' : ''}" data-k="h${i}${id}" data-act="play" data-i="${i}" ${ok ? '' : 'disabled'} aria-label="${esc(G.CARD[id].name)} ${G.isSpell(id) ? '사용' : '소환'}">${cardHTML(id)}</button>`;
     }).join('') || '<p class="muted">손패 없음</p>'}</div>
     <div class="row">${locked ? '<button class="primary grow" data-act="skip">⏭ 건너뛰기</button>'
       : aimId ? '<button class="grow" data-act="cancelaim">✖ 주문 취소</button>'
@@ -179,7 +194,7 @@ function battleScreen() {
 function resultScreen() {
   const r = ui.lastResult;
   const bonus = r.won && r.bonuses.length ? `<div class="bonus" data-id="resbonus">${r.bonuses.map(b => `<div class="on">${esc(bonusText(b))}</div>`).join('')}</div>` : '';
-  return `<div class="hero-title"><div class="logo">${r.won ? '🏆' : '💫'}</div><h1>${r.won ? '승리!' : '패배'}</h1>
+  return `<div class="hero-title result ${r.won ? 'win' : 'lose'}"><div class="logo">${r.won ? '🏆' : '💫'}</div><h1>${r.won ? '승리!' : '패배'}</h1>
     <p>${r.won ? `보상 팩 <b data-id="respacks">${r.packs}</b>개${r.points ? ` · 보너스 <b>+${r.points}P</b>` : ''}` : `${r.points ? `위로 포인트 +${r.points}. ` : ''}덱을 바꿔 다시 도전해 보세요.`}</p></div>
     ${bonus}
     <div class="stack" style="margin-top:auto">
@@ -191,7 +206,7 @@ function resultScreen() {
 function packScreen() {
   const pk = ui.lastPack;
   return `<h2 style="text-align:center">팩 개봉</h2>
-    <div class="pack">${pk.cards.map(r => `<div class="reveal">${cardHTML(r.id)}<div class="${r.dup ? 'dup' : 'new'}">${r.dup ? `중복 → +${r.points}P` : '획득!'}</div></div>`).join('')}</div>
+    <div class="pack" data-k="pk${P.packsOpened}">${pk.cards.map(r => `<div class="reveal">${cardHTML(r.id)}<div class="${r.dup ? 'dup' : 'new'}">${r.dup ? `중복 → +${r.points}P` : '획득!'}</div></div>`).join('')}</div>
     <p style="text-align:center">${pk.points ? `중복 카드가 <b>${pk.points} 포인트</b>로 바뀌었어요.` : '모두 컬렉션에 추가됐어요.'} 보유 포인트: <b data-id="points">${P.points}</b></p>
     <div class="stack" style="margin-top:auto">
       ${P.pendingPacks > 0 ? `<button class="primary big" data-act="openpack">🎁 다음 팩 열기 (${P.pendingPacks}개 남음)</button>` : '<button class="primary big" data-act="battle">⚔️ 다시 대전</button>'}
@@ -201,16 +216,54 @@ function packScreen() {
 
 function render() {
   const views = { home, deck: deckScreen, shop: shopScreen, battle: battleScreen, result: resultScreen, pack: packScreen, collection: collectionScreen, settings: settingsScreen };
-  app.dataset.screen = ui.screen;
-  app.innerHTML = views[ui.screen]();
+  const html = views[ui.screen]();
+  if (ui.screen !== 'battle') document.querySelectorAll('.banner').forEach(e => e.remove());
+  if (app.dataset.screen !== ui.screen) { app.dataset.screen = ui.screen; app.innerHTML = html; window.scrollTo(0, 0); }
+  else patch(app, html);
+  renders++;
   if (ui.replay) { const f = ui.replay.frames[ui.replay.i]; if (f.fx && f.fx.length && !f.shown) { f.shown = true; showFx(f.fx); } }
   else if (ui.battle && ui.battle.fx && ui.battle.fx.length) showFx(ui.battle.fx.splice(0));
 }
 
+// ---------- 부분 갱신 (작은 DOM 비교) ----------
+// 화면 전체를 innerHTML로 다시 만들지 않고, 바뀐 속성·글자·노드만 고침 → 스크롤 위치·애니메이션 유지, 레이아웃 비용 감소.
+// data-k가 다른 노드는 통째로 교체 (새로 소환된 유닛·새 팩 → 등장 애니메이션이 자연스럽게 재생)
+let renders = 0, patchedNodes = 0;
+const tpl = document.createElement('template');
+function patch(root, html) { tpl.innerHTML = html; patchChildren(root, tpl.content); }
+function patchChildren(a, b) {
+  const an = a.childNodes, bn = [...b.childNodes];
+  for (let i = 0; i < bn.length; i++) {
+    const x = an[i], y = bn[i];
+    if (!x) { a.appendChild(y); patchedNodes++; continue; }
+    patchNode(x, y);
+  }
+  while (an.length > bn.length) { a.removeChild(a.lastChild); patchedNodes++; }
+}
+function patchNode(x, y) {
+  if (x.nodeType !== y.nodeType || x.nodeName !== y.nodeName || (x.nodeType === 1 && x.getAttribute('data-k') !== y.getAttribute('data-k'))) {
+    x.replaceWith(y); patchedNodes++; return;
+  }
+  if (x.nodeType === 3 || x.nodeType === 8) { if (x.nodeValue !== y.nodeValue) { x.nodeValue = y.nodeValue; patchedNodes++; } return; }
+  if (x.nodeType !== 1) return;
+  for (const { name } of [...x.attributes]) if (!y.hasAttribute(name)) { x.removeAttribute(name); patchedNodes++; }
+  for (const { name, value } of [...y.attributes]) if (x.getAttribute(name) !== value) { x.setAttribute(name, value); patchedNodes++; }
+  if ('disabled' in x && x.disabled !== y.hasAttribute('disabled')) x.disabled = y.hasAttribute('disabled');
+  patchChildren(x, y);
+}
+
+// 턴 배너 (화면 가운데에 잠깐, 터치는 통과)
+function banner(text, kind = 'me') {
+  document.querySelectorAll('.banner').forEach(e => e.remove());
+  const d = document.createElement('div'); d.className = `banner ${kind}`; d.textContent = text; d.setAttribute('role', 'status');
+  document.body.append(d); setTimeout(() => d.remove(), 1300);
+}
+const myTurnBanner = () => { if (ui.screen === 'battle' && ui.battle && !ui.battle.winner) banner(`내 턴 ${ui.battle.turn}`, 'me'); };
+
 // AI 턴 단계별 재생: 규칙은 이미 끝난 상태(ui.battle)이고, 기록된 프레임만 순서대로 보여 줌
 let replayTimer;
 function startReplay(frames) {
-  ui.replay = { frames, i: 0 }; render();
+  ui.replay = { frames, i: 0 }; render(); banner('상대 턴', 'ai');
   const step = () => {
     if (!ui.replay) return;
     if (ui.replay.i >= ui.replay.frames.length - 1) return endReplay();
@@ -221,17 +274,20 @@ function startReplay(frames) {
 function endReplay() {
   clearTimeout(replayTimer); ui.replay = null;
   if (ui.battle) ui.battle.fx.length = 0;
-  if (ui.battle && ui.battle.winner) finishBattle();
+  if (ui.battle && ui.battle.winner) finishBattle(); else myTurnBanner();
   render();
 }
 
 // 피해(빨강 −n)·회복(초록 +n) 숫자 팝업. 같은 대상의 여러 이벤트는 조금씩 늦춰 겹치지 않게.
+function restartClass(el, c) { el.classList.remove(c); void el.offsetWidth; el.classList.add(c); }
 function showFx(events) {
   const seen = {};
   for (const e of events) {
-    const key = `${e.side}-${e.at}`; const el = app.querySelector(`[data-fx="${key}"]`); if (!el) continue;
+    const key = e.at === 'board' ? 'p-board' : `${e.side}-${e.at}`; const el = app.querySelector(`[data-fx="${key}"]`); if (!el) continue;
+    if (e.kind === 'summon') continue; // 등장은 CSS(새 노드)로 처리
+    if (e.kind === 'attack' || e.kind === 'spell') { restartClass(el, e.kind === 'attack' ? (e.side === 'p' ? 'lunge-up' : 'lunge-down') : 'cast'); continue; }
     const k = seen[key] = (seen[key] || 0) + 1;
-    el.classList.add(e.kind === 'dmg' ? 'hit' : 'glow');
+    restartClass(el, e.kind === 'dmg' ? 'hit' : 'glow');
     const rc = el.getBoundingClientRect();
     const d = document.createElement('div');
     d.className = `pop ${e.kind}`; d.textContent = (e.kind === 'dmg' ? '−' : '+') + e.amount + (e.kind === 'buff' ? '⚔' : '');
@@ -267,7 +323,7 @@ app.addEventListener('click', e => {
     case 'buy': if (G.buyCard(P, id)) { persist(); toast(`${G.CARD[id].name} 구매!`); announce(P.lastRewards); delete P.lastRewards; } break;
     case 'battle':
       if (!G.validateDeck(P.deck, P.collection).ok) { ui.screen = 'deck'; break; }
-      ui.battle = G.newBattle(P.deck, P, rng); ui.sel = null; ui.aim = null; ui.replay = null; ui.screen = 'battle'; persist(); break;
+      ui.battle = G.newBattle(P.deck, P, rng); ui.sel = null; ui.aim = null; ui.replay = null; ui.screen = 'battle'; persist(); setTimeout(myTurnBanner, 30); break;
     case 'play': {
       const k = Number(i); ui.sel = null;
       if (G.spellTarget(st.p.hand[k])) { ui.aim = ui.aim === k ? null : k; break; }
@@ -289,9 +345,10 @@ app.addEventListener('click', e => {
         const frames = st.frames; delete st.frames;
         if (frames.length) { frames.push(JSON.parse(JSON.stringify({ ...st, fx: [] }))); startReplay(frames); return; }
       } else G.endTurn(st);
+      if (!st.winner) setTimeout(myTurnBanner, 0);
       break;
     case 'skip': endReplay(); return;
-    case 'filter': ui.filter = id; break;
+    case 'filter': ui.filter = ui.filter === id ? 'all' : id; break;
     case 'picktier': P.pickTier = Number(i) === G.aiTier(P) ? null : Number(i); persist(); break;
     case 'toggle': P.settings[id] = !P.settings[id]; persist(); break;
     case 'forfeit': st.forfeit = true; st.winner = 'a'; break;
@@ -307,7 +364,7 @@ app.addEventListener('click', e => {
 window.__fst = {
   get profile() { return P; }, get ui() { return ui; }, SAVE_KEY, loadStatus: status,
   forceWin() { if (ui.battle) { endReplayQuiet(); G.debugWin(ui.battle); finishBattle(); render(); } },
-  render, save: () => persist()
+  render, save: () => persist(), CARD: G.CARD, get stats() { return { renders, patchedNodes }; }
 };
 
 function endReplayQuiet() { clearTimeout(replayTimer); ui.replay = null; }
