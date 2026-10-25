@@ -1,3 +1,8 @@
+## 2026-10-25 — 게임별 사운드 보강 (hub-v1.5.17)
+- 8개 기존 Sites 배포, 잿빛 왕관·룬 영토 Pages, 월드 브레이커/경계의 서약 허브 복사본 갱신. 게임별 원본 main 병합 완료. 기존 저장·주소·권한 보존.
+- 새 BGM: 멜로디/화음/저음과 별도 켜기·음량. 기존 좋은 음원·효과음은 유지. 숨김 재생/타이머 중복/캐시된 구 음악 중첩 보강. 허브도 숨김 시 정지.
+- 실제 결과·배포 경로·테스트·권한 제한·청취 미검증 범위: docs/AUDIO_ROLLOUT_20261025.md. 환상 콜라보 비공개 원본은 연결 허용 목록 누락으로 이번 변경 제외.
+
 ## 2026-10-24 — 경계의 서약 α0.10 장비45종 확장 (hub-v1.5.15)
 - Source016177fcb4df4228bef42ad5f0cda095415f6456. Total equipment57→102: five growth bands×8gear families (spear/axe/bow/staff/circlet/coat/shield/boots)=40rare plus5cave uniques. Same weapon slot/battle rules, distinct stat tradeoffs; no range/action-mechanics claim. Four new shop pieces per band; all40 in regional random bonuses. Icons distinguish families/slots.
 - New one-per-journey cave uniques from elf/treant/beast/merfolk/undead guardian flags; old completions qualify for book claims. Bonus trigger15/60/30% retained, conditional gear75%/relic25%, uniformly within selected category. Each region10gear+2relics. Saved target slot narrows gear only; bag/shop/book display filters independent. Existing auto-equip, unique protection, relic rules, saves/cover/URLs/access unchanged.
