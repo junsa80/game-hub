@@ -1,3 +1,7 @@
+## 2026-10-25 — 아르카나 포켓 목록 표시 검증 (hub-v1.5.20)
+- Prior Pages deployment dba9175 succeeded. Live browser catalog search found Arcana Pocket; direct /play/arcana-pocket/ showed Alpha0.2 and20-card rules.
+- Corrected none cloudSave labels to explicitly unsupported instead of planned. Account-save count now computed from catalog instead of stale5/15. App games.json query/cache/index all1.5.20. No game code/save changes.
+
 ## 2026-10-25 — 아르카나 포켓 α0.2 신규 등록 (hub-v1.5.19)
 - User requested this conversation's TCG in the game list. Dist copied byte-for-byte from Sites source67d8d3b to play/arcana-pocket; same files plus runnable tests/HANDOFF persisted in GitHub. Existing free-solo-tcg is unrelated and preserved. New native SVG cover, no external assets.
 - 20-card decks, 2 copies, 10-card hand, 5-unit board; both AI decks obey limits. Existing12-card saves migrate without resetting currency/collection/records/battle. First actual defeat: choose2 nova/knight/oracle → exact deck-swap preview → apply → same-opponent retry. Old losses qualify once. Every3 non-conceded defeats grants pack; defeat5P remains. Concede only5P.
