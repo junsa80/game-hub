@@ -129,8 +129,8 @@
     "coverType": "illustration",
     "public": true,
     "src": "junsa80/rune-territories",
-    "commit": "fa09e0ec694a80b7d73ed1e3405874720a2b0935",
-    "commitKind": "오디오 재생 안정화 · public dc04ede",
+    "commit": "1d7546af4776ad96d3ba0c3cf06cd7d4f8fa0fdc",
+    "commitKind": "UI0.1.53 성장 덱·S4/S6 난이도 · public eb245ac",
     "save": "로컬 저장(junsa80.github.io 공통 localStorage) · JSON 백업 가능",
     "playAccess": "anonymous",
     "cloudSave": "planned",
@@ -141,7 +141,7 @@
       "카드와 자원을 관리하며 영토를 강화하세요."
     ],
     "controls": "화면의 주사위·카드·행동 버튼을 클릭하거나 터치하세요.",
-    "tip": "눈앞의 전투뿐 아니라 다음 이동에 쓸 자원도 남겨 두세요."
+    "tip": "이전 장에서 얻은 카드로 덱을 보강하세요. 4장은 방어형 비의 현자, 6장은 수입 주문을 쓰므로 영토 확보와 배치 자금을 함께 준비하세요."
   },
   {
     "id": "rose-spire",
@@ -413,8 +413,8 @@
     "url": "https://junsa80.github.io/game-hub/play/chronicle-crossing/",
     "public": false,
     "src": "junsa80/chronicle-crossing",
-    "commit": "92cacce2754b5a772f058c5a68c03b1e754cba54",
-    "commitKind": "원본 저장소 이관 (Sites dfed4b7 실행본 · 사운드 보강)",
+    "commit": "e7315fa498e914bfe7aff4ada65774ae2ace35a9",
+    "commitKind": "TypeScript 원본 전체 이관 완료 · 기존 실행본 동일",
     "save": "로컬 저장 · 수동 3칸/자동 저장 · JSON 백업/복원. Sites판과 자동 연동되지 않음.",
     "playAccess": "anonymous",
     "cloudSave": "none",

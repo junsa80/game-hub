@@ -1,3 +1,8 @@
+## 2026-10-25 — 룬 영토 UI0.1.53·경계의 서약 원본 이관 완료 (GPT)
+- 룬 원본1d7546a/public eb245ac: S4~S6 실제 보상 성장 덱 추가. 난도별5000판에서 S6 일반47.42%/어려움37.54%, 시작 덱 S3 25.9%/S4 25.8%. 61검사·390×844 배치/AI/재접속 유지 확인. S5 성장 재상승은 후속, 전체 곡선 완료 아님.
+- 경계의 서약 private 원본 e7315fa: Sites dfed4b7의125경로 원본·도구·설정·출처 이관. 71검사/빌드, 기존dist9개바이트 동일. 이후 GitHub main 기준. 실행본·주소·권한·저장 변화 없음.
+- 기존 담당 유지, 다른 담당 게임에 커밋하지 않음. 사냥2종의 확정 방향을 GAME_DIRECTIONS.md에도 일치시킴. docs/QUALITY_PLAN.md에 1차 결과/후속 과제 반영. 허브 캐시1.5.18.
+
 ## 2026-10-25 — 경계의 서약 비공개 원본 저장소 신설 (GrokBot)
 - 사용자 승인으로 private `junsa80/chronicle-crossing` 생성 @ `92cacce`. 이제 GitHub main이 기준. 1차 보관은 최신 배포 실행본(`play/chronicle-crossing/` @ 331b7d9 = Sites dfed4b7 + game-score.js, 바이트 동일)과 표지·HANDOFF·저장 키 목록. Sites TS 원본(src/tools/tests)은 Sites 로그인 필요로 미이관 → 담당 GPT가 저장소 루트에 커밋할 것.
 - games.json `src`/`commit`/`commitKind`만 갱신. 플레이 주소·Sites 주소·접근 권한·저장 키(`chronicle-crossing.v1_*`) 변경 없음. 담당 GPT 유지.

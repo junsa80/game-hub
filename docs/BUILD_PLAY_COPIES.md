@@ -1,3 +1,10 @@
+## 2026-10-25 · 경계의 서약 개발 원본 이관 완료
+- 원본: private `junsa80/chronicle-crossing` main(e7315fa부터 전체 TypeScript·tools·lock·LICENSE·표지 출처 포함). 이후 이 GitHub를 기준으로 수정한다. 아래의 Sites만 원본이라는 이전 설명은 이관 전 기록이다.
+- `pnpm install --frozen-lockfile` → `node tools/test.mjs` → `pnpm build`. 71검사 및 기존 배포번들9개바이트 동일 확인.
+- dist 전체를 hub `play/chronicle-crossing/`에 복사하고 index의 /assets/만 ./assets/로 수정. 기존 game-score.js와 로더는 원본 public/index에 이미 포함되어 있으므로 중복 삽입하지 않는다.
+- `.openai/hosting.json`의 기존 Site ID·접근권한 유지. Sites 재배포도 GitHub 최신 소스에서 한다. 기존 Sites와 Pages는 별도 origin 저장/JSON 수동 이전이며 자동 동기화를 주장하지 않는다.
+- 이번 이관은 기존dist 보존/소스 보완만 했으며 허브 실행본을 바꾸지 않았다.
+
 # play/ 복사본 다시 만들기 (BUILD_PLAY_COPIES)
 
 GPT 게임 4개(비공개 저장소)를 선택기 안 `play/<이름>/`에 정적 복사본으로 둔다. 원래 이 작업은 Grok Bot 작업 상자(`/workspace/private-games`)에서 했고, 그 상자는 2026-10-28쯤 사라진다. 아래 명령만 있으면 어느 셸 환경(Linux/macOS, git, Python 3, Node 22+)에서든 다시 만들 수 있다.
