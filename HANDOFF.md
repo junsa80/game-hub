@@ -1,3 +1,7 @@
+## 2026-10-25 — 무료 싱글 TCG 등록·games.json 복구 (GrokBot)
+- `6e8c1be`/`ae10646`([Grok])에서 games.json 전체가 `PLACEHOLDER…` 문자열로 덮여 허브 목록이 비었음 → `748106b`에서 `41f4ebb` 기준 15개 복원 + `free-solo-tcg` 추가. games.json은 항상 기존 목록 위에 엔트리만 추가할 것.
+- private `junsa80/free-solo-tcg` @ `8df769b` 실행본(index.html + src/*.js, style.css)을 `play/free-solo-tcg/`에 복사. `public: false`, 저장 키 `freeSoloTcg.save.v1`. 갱신 절차는 그 레포 HANDOFF.md "허브 배포".
+
 ## 2026-10-25 — 룬 영토 UI0.1.53·경계의 서약 원본 이관 완료 (GPT)
 - 룬 원본1d7546a/public eb245ac: S4~S6 실제 보상 성장 덱 추가. 난도별5000판에서 S6 일반47.42%/어려움37.54%, 시작 덱 S3 25.9%/S4 25.8%. 61검사·390×844 배치/AI/재접속 유지 확인. S5 성장 재상승은 후속, 전체 곡선 완료 아님.
 - 경계의 서약 private 원본 e7315fa: Sites dfed4b7의125경로 원본·도구·설정·출처 이관. 71검사/빌드, 기존dist9개바이트 동일. 이후 GitHub main 기준. 실행본·주소·권한·저장 변화 없음.
