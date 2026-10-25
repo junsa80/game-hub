@@ -1,6 +1,7 @@
 // 카드·규칙 데이터 (로직 없음). 밸런스/카드 추가는 이 파일만 고치면 됩니다.
-// 카드 필드: id, name, cost(마나), atk, hp, rarity('common'|'rare'), tag
-// tag 효과는 TAGS 참고 (현재 효과가 있는 태그: 수호 = 도발)
+// 유닛 카드 필드: id, name, cost(마나), atk, hp, rarity('common'|'rare'), tag, (선택) fx
+// 주문 카드 필드: type:'spell', effect: { aoe: n | healAll: n | draw: n }, power(자동 편성 점수용 체감 가치), text
+// 태그 효과는 유닛에만 적용 (TAGS 참고). fx.summonDraw: 소환 시 카드 n장 드로우.
 
 export const CARDS = [
   // 기존 8장 (초기 커밋 그대로)
@@ -16,14 +17,25 @@ export const CARDS = [
   { id: 'archer', name: '궁수', cost: 2, atk: 2, hp: 2, rarity: 'common', tag: '야생' },
   { id: 'knight', name: '기사', cost: 4, atk: 3, hp: 5, rarity: 'common', tag: '수호' },
   { id: 'ogre', name: '오우거', cost: 5, atk: 5, hp: 5, rarity: 'rare', tag: '야생' },
-  { id: 'phoenix', name: '불사조', cost: 6, atk: 6, hp: 5, rarity: 'rare', tag: '화염' }
+  { id: 'phoenix', name: '불사조', cost: 6, atk: 6, hp: 5, rarity: 'rare', tag: '화염' },
+  // GrokBot 2차: 태그 시너지 유닛 5장 (일반 3, 레어 2)
+  { id: 'ember', name: '불씨 정령', cost: 2, atk: 2, hp: 2, rarity: 'common', tag: '화염' },
+  { id: 'shade', name: '그림자 도적', cost: 2, atk: 2, hp: 3, rarity: 'common', tag: '암흑' },
+  { id: 'boar', name: '멧돼지', cost: 3, atk: 3, hp: 3, rarity: 'common', tag: '야생' },
+  { id: 'cogknight', name: '태엽 기사', cost: 4, atk: 3, hp: 4, rarity: 'rare', tag: '기계', fx: { summonDraw: 1 }, text: '소환 시 카드 1장 드로우' },
+  { id: 'lich', name: '밤의 군주', cost: 5, atk: 4, hp: 6, rarity: 'rare', tag: '암흑' },
+  // GrokBot 2차: 주문 3장 (필드 칸을 쓰지 않고 사용 후 사라짐)
+  { id: 'fireblast', name: '화염 폭발', type: 'spell', cost: 3, rarity: 'rare', tag: '화염', effect: { aoe: 2 }, power: 7, text: '상대 유닛 전체에 2 피해' },
+  { id: 'mend', name: '수호 회복', type: 'spell', cost: 2, rarity: 'common', tag: '수호', effect: { healAll: 2 }, power: 4, text: '내 유닛 전체 체력 +2 (최대 체력까지)' },
+  { id: 'geardraw', name: '기계 드로우', type: 'spell', cost: 2, rarity: 'common', tag: '기계', effect: { draw: 2 }, power: 5, text: '카드 2장 드로우' }
 ];
 
+// 태그 효과 (유닛만). 수치는 RULES의 burnOnSummon / lifesteal 참고.
 export const TAGS = {
-  '화염': { icon: '🔥', color: '#b8432f', text: '' },
+  '화염': { icon: '🔥', color: '#b8432f', text: '화염: 소환 시 상대 영웅에게 1 피해' },
   '수호': { icon: '🛡️', color: '#3d6fa8', text: '수호: 상대는 수호 유닛부터 공격해야 합니다.' },
-  '야생': { icon: '🐾', color: '#3f8a4a', text: '' },
-  '암흑': { icon: '🌑', color: '#5b3f8a', text: '' },
+  '야생': { icon: '🐾', color: '#3f8a4a', text: '야생(돌진): 소환한 턴에도 유닛을 공격할 수 있음' },
+  '암흑': { icon: '🌑', color: '#5b3f8a', text: '암흑(흡혈): 공격할 때마다 내 영웅 체력 +1' },
   '기계': { icon: '⚙️', color: '#7a6a45', text: '' }
 };
 
@@ -36,7 +48,7 @@ export const BUY_COST = { common: 30, rare: 90 };
 export const RULES = {
   deckSize: 16,       // 덱 장수 (정확히)
   maxCopies: 3,       // 덱·보유 모두 카드당 최대 3장. 보유 3장 초과분은 포인트로 전환
-  startHp: 16,       // 폰에서 한 판 5분 안쪽이 되도록 20→16
+  startHp: 14,        // 20→16(1차)→14(2차, 평균 경기 길이 단축)
   startHand: 4,
   handMax: 7,
   maxMana: 6,         // 턴마다 최대 마나 +1 (1→6)
@@ -45,8 +57,23 @@ export const RULES = {
   packSize: 3,
   rareChance: 0.25,   // 팩 1장이 레어일 확률
   lossPoints: 5,      // 패배해도 받는 위로 포인트
-  winPoints: 0
+  winPoints: 0,
+  // 태그 효과 수치
+  burnOnSummon: 1,    // 화염 유닛 소환 시 상대 영웅 피해
+  lifesteal: 1,       // 암흑 유닛 공격 시 내 영웅 회복 (시작 HP를 넘지 않음)
+  rushHitsHero: false // 야생 돌진: 소환한 턴에는 유닛만 공격 (true면 영웅도 가능)
 };
+
+// 반복 동기 보상
+// 단계별 첫 승: 그 단계 상대를 처음 이겼을 때 1회 (index = AI 단계)
+export const FIRST_WIN_BONUS = [
+  { packs: 1, points: 20 },
+  { packs: 1, points: 40 },
+  { packs: 1, points: 60 },
+  { packs: 2, points: 90 }
+];
+// 일일 첫 승: 기기 날짜(로컬) 기준 하루 첫 승리에 팩 추가
+export const DAILY_FIRST_WIN = { packs: 1 };
 
 // 시작 보유 카드 (18장 → 16장 덱을 고를 여지가 있음)
 export const STARTER = {
@@ -54,9 +81,11 @@ export const STARTER = {
 };
 
 // AI 덱: 승수에 따라 단계 상승 (tier = min(floor(wins / 2), 마지막))
+// 선택 필드: hp(상대 영웅 HP, 기본 RULES.startHp), extraCard(후공 보정 손패, 기본 1)
+// 2차 조정(GrokBot): 태그 효과 도입 후 단계2>단계3 역전 해소 — 측정 조건은 HANDOFF.md "난이도 측정" 참고
 export const AI_DECKS = [
-  { name: '견습 소환사', deck: { imp: 3, spirit: 3, wolf: 3, golem: 3, archer: 2, guardian: 2 } },
-  { name: '숲의 수호자', deck: { imp: 2, spirit: 2, wolf: 3, archer: 3, golem: 2, guardian: 3, knight: 1 } },
-  { name: '화염 술사', deck: { imp: 3, wolf: 2, archer: 2, blaze: 3, guardian: 2, drake: 2, knight: 1, phoenix: 1 } },
-  { name: '용의 군주', deck: { imp: 2, wolf: 2, golem: 2, blaze: 2, vamp: 2, drake: 2, ogre: 2, phoenix: 2 } }
+  { name: '견습 소환사', hp: 13, deck: { imp: 2, spirit: 2, wolf: 2, golem: 2, archer: 3, guardian: 2, geardraw: 2, ember: 1 } },
+  { name: '숲의 수호자', deck: { imp: 3, spirit: 2, wolf: 3, archer: 2, golem: 2, guardian: 3, boar: 1 } },
+  { name: '화염 술사', deck: { imp: 3, wolf: 2, archer: 2, blaze: 3, guardian: 2, drake: 2, knight: 1, fireblast: 1 } },
+  { name: '용의 군주', hp: 19, deck: { guardian: 3, knight: 2, wolf: 2, drake: 2, phoenix: 2, lich: 1, ogre: 1, fireblast: 1, golem: 2 } }
 ];
