@@ -1,3 +1,7 @@
+## 2026-10-25 — 경계의 서약 비공개 원본 저장소 신설 (GrokBot)
+- 사용자 승인으로 private `junsa80/chronicle-crossing` 생성 @ `92cacce`. 이제 GitHub main이 기준. 1차 보관은 최신 배포 실행본(`play/chronicle-crossing/` @ 331b7d9 = Sites dfed4b7 + game-score.js, 바이트 동일)과 표지·HANDOFF·저장 키 목록. Sites TS 원본(src/tools/tests)은 Sites 로그인 필요로 미이관 → 담당 GPT가 저장소 루트에 커밋할 것.
+- games.json `src`/`commit`/`commitKind`만 갱신. 플레이 주소·Sites 주소·접근 권한·저장 키(`chronicle-crossing.v1_*`) 변경 없음. 담당 GPT 유지.
+
 ## 2026-10-25 — 전 게임 퀄리티 업그레이드 설계안 (GrokBot)
 - 난이도 곡선·성장·반복 동기 P0/P1/P2 설계안: docs/QUALITY_PLAN.md (GrokBot Page 사본). 문서만 추가, 게임·허브 동작 변경 없음.
 
