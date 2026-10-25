@@ -432,7 +432,7 @@
   {
     "id": "free-solo-tcg",
     "title": "무료 싱글 TCG · FREE SOLO TCG",
-    "desc": "카드를 골라 덱을 짜고 AI와 대전하세요. 주문·태그 효과(돌진·화염·흡혈) 카드 20종, 이기면 카드팩과 단계·일일 첫 승 보너스, 중복 카드는 포인트로 바꿔 원하는 카드를 구매합니다.",
+    "desc": "카드를 골라 덱을 짜고 AI와 대전하세요. 대상 주문·태그 효과 카드 22종, 5단계 하드 상대와 재도전, 도감 보상, 단계·일일 첫 승 보너스 팩. 중복 카드는 포인트로 바꿔 원하는 카드를 구매합니다.",
     "genre": [
       "TCG",
       "카드 대전"
@@ -442,7 +442,7 @@
     "public": false,
     "url": "https://junsa80.github.io/game-hub/play/free-solo-tcg/",
     "src": "junsa80/free-solo-tcg",
-    "commit": "3657e80ec4937cc7c9e8b8770f64ea99591129dd",
+    "commit": "a6462de41a6fd3307ce77d306f4ce4339e469202",
     "commitKind": "최소 프로토타입 (덱→대전→팩→중복 포인트→구매) · 허브 사본",
     "save": "로컬 저장 (이 브라우저)",
     "playAccess": "anonymous",

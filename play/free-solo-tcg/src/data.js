@@ -27,7 +27,10 @@ export const CARDS = [
   // GrokBot 2차: 주문 3장 (필드 칸을 쓰지 않고 사용 후 사라짐)
   { id: 'fireblast', name: '화염 폭발', type: 'spell', cost: 3, rarity: 'rare', tag: '화염', effect: { aoe: 2 }, power: 7, text: '상대 유닛 전체에 2 피해' },
   { id: 'mend', name: '수호 회복', type: 'spell', cost: 2, rarity: 'common', tag: '수호', effect: { healAll: 2 }, power: 4, text: '내 유닛 전체 체력 +2 (최대 체력까지)' },
-  { id: 'geardraw', name: '기계 드로우', type: 'spell', cost: 2, rarity: 'common', tag: '기계', effect: { draw: 2 }, power: 5, text: '카드 2장 드로우' }
+  { id: 'geardraw', name: '기계 드로우', type: 'spell', cost: 2, rarity: 'common', tag: '기계', effect: { draw: 2 }, power: 5, text: '카드 2장 드로우' },
+  // GrokBot 3차: 대상 지정 주문 2장 (레어 1, 일반 1). target: 'enemy' | 'ally' = 사용 시 유닛 1기를 골라야 함
+  { id: 'darkbolt', name: '암흑 화살', type: 'spell', cost: 2, rarity: 'rare', tag: '암흑', target: 'enemy', effect: { dmgUnit: 4 }, power: 6, text: '상대 유닛 1기에 4 피해' },
+  { id: 'roar', name: '야성의 포효', type: 'spell', cost: 2, rarity: 'common', tag: '야생', target: 'ally', effect: { buffAtk: 2 }, power: 3, text: '내 유닛 1기 공격력 +2 (이번 턴)' }
 ];
 
 // 태그 효과 (유닛만). 수치는 RULES의 burnOnSummon / lifesteal 참고.
@@ -36,7 +39,7 @@ export const TAGS = {
   '수호': { icon: '🛡️', color: '#3d6fa8', text: '수호: 상대는 수호 유닛부터 공격해야 합니다.' },
   '야생': { icon: '🐾', color: '#3f8a4a', text: '야생(돌진): 소환한 턴에도 유닛을 공격할 수 있음' },
   '암흑': { icon: '🌑', color: '#5b3f8a', text: '암흑(흡혈): 공격할 때마다 내 영웅 체력 +1' },
-  '기계': { icon: '⚙️', color: '#7a6a45', text: '' }
+  '기계': { icon: '⚙️', color: '#7a6a45', text: '기계(정비): 소환 후 손패가 2장 이하면 1장 드로우' }
 };
 
 // 중복(보유 상한 초과) 카드 1장당 포인트 — 초기 커밋 값 유지
@@ -61,7 +64,15 @@ export const RULES = {
   // 태그 효과 수치
   burnOnSummon: 1,    // 화염 유닛 소환 시 상대 영웅 피해
   lifesteal: 1,       // 암흑 유닛 공격 시 내 영웅 회복 (시작 HP를 넘지 않음)
-  rushHitsHero: false // 야생 돌진: 소환한 턴에는 유닛만 공격 (true면 영웅도 가능)
+  rushHitsHero: false, // 야생 돌진: 소환한 턴에는 유닛만 공격 (true면 영웅도 가능)
+  mechDrawHand: 2     // 기계(정비): 소환 후 손패가 이 값 이하면 1장 드로우. 카드 고유 fx.summonDraw가 있으면 대신 그것만 적용(중복 없음)
+};
+
+// 도감(컬렉션) 보상 — 1회씩. 완성 = CARDS 전체(주문 포함) 각 1장 이상 보유
+export const COLLECTION_BONUS = {
+  complete: { packs: 1 },
+  tagDistinct: 3,     // 같은 태그 카드를 서로 다른 종류로 이만큼 보유하면
+  tagPoints: 15       // 태그마다 1회 포인트
 };
 
 // 반복 동기 보상
@@ -70,7 +81,8 @@ export const FIRST_WIN_BONUS = [
   { packs: 1, points: 20 },
   { packs: 1, points: 40 },
   { packs: 1, points: 60 },
-  { packs: 2, points: 90 }
+  { packs: 2, points: 90 },
+  { packs: 2, points: 150 }
 ];
 // 일일 첫 승: 기기 날짜(로컬) 기준 하루 첫 승리에 팩 추가
 export const DAILY_FIRST_WIN = { packs: 1 };
@@ -85,7 +97,10 @@ export const STARTER = {
 // 2차 조정(GrokBot): 태그 효과 도입 후 단계2>단계3 역전 해소 — 측정 조건은 HANDOFF.md "난이도 측정" 참고
 export const AI_DECKS = [
   { name: '견습 소환사', hp: 13, deck: { imp: 2, spirit: 2, wolf: 2, golem: 2, archer: 3, guardian: 2, geardraw: 2, ember: 1 } },
-  { name: '숲의 수호자', deck: { imp: 3, spirit: 2, wolf: 3, archer: 2, golem: 2, guardian: 3, boar: 1 } },
+  // 3차: 시작 덱으로 2단계 진입 완화 — 영웅 HP 14→12, 골렘 1장 → 정령·그림자 도적 (시작 덱 승률 5.0%→약 13%)
+  { name: '숲의 수호자', hp: 12, deck: { imp: 3, spirit: 3, wolf: 3, archer: 1, golem: 1, guardian: 3, boar: 1, shade: 1 } },
   { name: '화염 술사', deck: { imp: 3, wolf: 2, archer: 2, blaze: 3, guardian: 2, drake: 2, knight: 1, fireblast: 1 } },
-  { name: '용의 군주', hp: 19, deck: { guardian: 3, knight: 2, wolf: 2, drake: 2, phoenix: 2, lich: 1, ogre: 1, fireblast: 1, golem: 2 } }
+  { name: '용의 군주', hp: 19, deck: { guardian: 3, knight: 2, wolf: 2, drake: 2, phoenix: 2, lich: 1, ogre: 1, fireblast: 1, golem: 2 } },
+  // 5단계(하드): 4단계 첫 승 후 해금. 큰 수치 대신 화염 견제 + 암흑 흡혈 + 대상 주문 조합
+  { name: '심연의 마녀왕', hard: true, hp: 15, deck: { imp: 3, shade: 3, blaze: 2, darkbolt: 2, phoenix: 2, boar: 1, fireblast: 2, knight: 1 } }
 ];

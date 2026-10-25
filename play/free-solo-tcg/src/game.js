@@ -3,10 +3,11 @@
 // 유닛은 소환된 턴에 공격 불가(야생=돌진 예외), 공격은 턴당 1회, 수호 유닛이 있으면 수호부터 공격,
 // 화염 유닛 소환 시 상대 영웅 1 피해, 암흑 유닛 공격 시 내 영웅 +1. 주문은 필드 칸을 쓰지 않음.
 // 승리 시 팩 1개(3장) + 단계 첫 승·일일 첫 승 보너스 팩, 보유 3장 초과분은 포인트로 전환, 포인트로 카드 구매.
-import { CARDS, POINT_VALUES, BUY_COST, RULES, STARTER, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN } from './data.js';
+import { CARDS, TAGS, POINT_VALUES, BUY_COST, RULES, STARTER, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS } from './data.js';
 
 export const CARD = Object.fromEntries(CARDS.map(c => [c.id, c]));
 export const isSpell = id => CARD[id] && CARD[id].type === 'spell';
+export const spellTarget = id => (isSpell(id) && CARD[id].target) || null; // 'enemy' | 'ally' | null
 
 // ---------- 난수 (시드 고정 가능: mulberry32) ----------
 export function makeRng(seed) {
@@ -37,7 +38,8 @@ export const expand = (counts) => Object.entries(counts).flatMap(([id, n]) => Ar
 export function newProfile(seed = Date.now()) {
   const collection = { ...STARTER };
   return { collection, deck: autoDeck(collection), points: 0, wins: 0, losses: 0, seed: seed >>> 0, packsOpened: 0,
-    pendingPacks: 0, tierFirstWins: AI_DECKS.map(() => false), lastDailyWin: '' };
+    pendingPacks: 0, tierFirstWins: AI_DECKS.map(() => false), lastDailyWin: '',
+    pickTier: null, settings: { aiStep: true }, collectionRewards: { complete: false, tags: {} } };
 }
 
 export function validateDeck(deck, collection) {
@@ -94,7 +96,8 @@ export function openPack(profile, rng) {
     results.push(addCard(profile, pool[Math.floor(rng() * pool.length)].id));
   }
   profile.packsOpened = (profile.packsOpened || 0) + 1;
-  return { cards: results, points: results.reduce((a, r) => a + r.points, 0) };
+  const pts = results.reduce((a, r) => a + r.points, 0);
+  return { cards: results, points: pts, rewards: checkCollection(profile) };
 }
 
 export const buyCost = id => BUY_COST[CARD[id].rarity];
@@ -105,10 +108,49 @@ export function buyCard(profile, id) {
   if (!canBuy(profile, id)) return false;
   profile.points -= buyCost(id);
   profile.collection[id] = (profile.collection[id] || 0) + 1;
+  profile.lastRewards = checkCollection(profile);
   return true;
 }
 
-export function aiTier(profile) { return Math.min(Math.floor(profile.wins / 2), AI_DECKS.length - 1); }
+// 도달(해금)한 최고 단계: 승수 2승마다 +1. 마지막 단계(5단계 하드)는 4단계 첫 승을 해야 열림.
+export function aiTier(profile) {
+  const last = AI_DECKS.length - 1;
+  const cap = (profile.tierFirstWins || [])[last - 1] ? last : last - 1;
+  return Math.min(Math.floor(profile.wins / 2), cap);
+}
+// 이번 대전 상대 단계: 재도전 선택(pickTier)이 해금 범위 안이면 그것, 아니면 최고 단계
+export function battleTier(profile) {
+  const max = aiTier(profile); const t = profile.pickTier;
+  return Number.isInteger(t) && t >= 0 && t <= max ? t : max;
+}
+
+// ---------- 도감 보상 ----------
+export function collectionStatus(profile) {
+  const owned = CARDS.filter(c => (profile.collection[c.id] || 0) > 0).length;
+  const tags = {};
+  for (const t of Object.keys(TAGS)) {
+    const all = CARDS.filter(c => c.tag === t);
+    tags[t] = { have: all.filter(c => (profile.collection[c.id] || 0) > 0).length, total: all.length };
+  }
+  return { owned, total: CARDS.length, tags };
+}
+// 새로 달성한 도감 보상을 1회 지급하고 목록 반환 (플래그는 profile.collectionRewards에 저장)
+export function checkCollection(profile) {
+  const cr = profile.collectionRewards = profile.collectionRewards || { complete: false, tags: {} };
+  cr.tags = cr.tags || {};
+  const st = collectionStatus(profile); const out = [];
+  for (const [t, v] of Object.entries(st.tags)) {
+    if (!cr.tags[t] && v.total >= COLLECTION_BONUS.tagDistinct && v.have >= COLLECTION_BONUS.tagDistinct) {
+      cr.tags[t] = true; profile.points += COLLECTION_BONUS.tagPoints;
+      out.push({ kind: 'tag', tag: t, points: COLLECTION_BONUS.tagPoints, packs: 0 });
+    }
+  }
+  if (!cr.complete && st.owned === st.total) {
+    cr.complete = true; profile.pendingPacks = (profile.pendingPacks || 0) + COLLECTION_BONUS.complete.packs;
+    out.push({ kind: 'complete', packs: COLLECTION_BONUS.complete.packs, points: 0 });
+  }
+  return out;
+}
 
 // 로컬 날짜 문자열 (일일 첫 승 판정용, 기기 시간대 기준)
 export function localDay(d = new Date()) {
@@ -121,7 +163,7 @@ export const tierFirstAvailable = (profile, tier = aiTier(profile)) => !(profile
 // 대전 결과 기록. 승리: 기본 팩 1개 + 보너스 팩은 pendingPacks에 쌓임(새로고침해도 유지) → openPack으로 개봉.
 // 패배: 위로 포인트. 항복(forfeit)은 위로 포인트 없음 (포인트 파밍 방지).
 // tier: 대전 시작 시점의 AI 단계 (승리로 승수가 올라 단계가 바뀌기 전 값)
-export function recordResult(profile, won, forfeit = false, tier = aiTier(profile), day = localDay()) {
+export function recordResult(profile, won, forfeit = false, tier = battleTier(profile), day = localDay()) {
   if (won) {
     const r = { points: RULES.winPoints, packs: 1, bonuses: [] };
     if (!Array.isArray(profile.tierFirstWins)) profile.tierFirstWins = AI_DECKS.map(() => false);
@@ -159,8 +201,8 @@ function makeSide(deckIds, rng, name) {
 }
 
 export function newBattle(playerDeck, profile, rng) {
-  const tier = AI_DECKS[aiTier(profile)];
-  const st = { turn: 0, active: 'p', winner: null, log: [], fx: [], aiName: tier.name, tier: aiTier(profile),
+  const ti = battleTier(profile); const tier = AI_DECKS[ti];
+  const st = { turn: 0, active: 'p', winner: null, log: [], fx: [], aiName: tier.name, tier: ti,
     p: makeSide(playerDeck, rng, '나'), a: makeSide(expand(tier.deck), rng, tier.name) };
   // 후공 보정: AI 손패 +extraCard장 (기본 1), 단계별 영웅 HP는 hp (기본 RULES.startHp) — data.js AI_DECKS
   st.a.hand.push(...st.a.deck.splice(0, tier.extraCard ?? 1));
@@ -173,6 +215,13 @@ const other = s => (s === 'p' ? 'a' : 'p');
 function log(st, msg) { st.log.push(msg); if (st.log.length > 30) st.log.shift(); }
 // 피해/회복 연출용 이벤트 (UI가 읽고 비움). at: 'hero' | 슬롯 번호
 function fx(st, side, at, amount, kind = 'dmg') { if (st.fx) { st.fx.push({ side, at, amount, kind }); if (st.fx.length > 40) st.fx.shift(); } }
+// AI 턴 단계별 보기: st.recording이 켜져 있으면 행동마다 화면용 스냅샷(프레임)을 남김. 규칙에는 영향 없음.
+function frame(st) {
+  if (!st.recording) return;
+  const { frames, recording, ...rest } = st;
+  const snap = JSON.parse(JSON.stringify(rest)); snap.fx = st.fx.splice(0);
+  st.frames.push(snap);
+}
 function heroHeal(st, side, n) {
   const S = st[side]; const before = S.hp; S.hp = Math.min(S.maxHp || RULES.startHp, S.hp + n);
   if (S.hp > before) fx(st, side, 'hero', S.hp - before, 'heal');
@@ -191,6 +240,8 @@ function startTurn(st, side) {
   const S = st[side];
   S.maxMana = Math.min(S.maxMana + 1, RULES.maxMana); S.mana = S.maxMana;
   for (const u of S.field) if (u) { u.ready = true; u.fresh = false; }
+  // 이번 턴 한정 버프(야성의 포효) 해제: 어느 쪽 턴이 시작되든 양쪽 모두 정리
+  for (const X of [st.p, st.a]) for (const u of X.field) if (u && u.buff) { u.atk -= u.buff; u.buff = 0; }
   if (!(side === 'p' && st.turn === 1)) draw(st, side);
 }
 
@@ -201,15 +252,27 @@ function checkWin(st) {
 
 export function canPlay(st, side, handIdx) {
   const S = st[side]; const id = S.hand[handIdx];
-  return !st.winner && st.active === side && !!id && CARD[id].cost <= S.mana && (isSpell(id) || S.field.some(f => !f));
+  if (st.winner || st.active !== side || !id || CARD[id].cost > S.mana) return false;
+  if (!isSpell(id)) return S.field.some(f => !f);
+  const tg = spellTarget(id);
+  return !tg || spellTargets(st, side, id).length > 0;
+}
+// 대상 지정 주문의 고를 수 있는 슬롯 (수호와 무관하게 아무 유닛)
+export function spellTargets(st, side, id) {
+  const tg = spellTarget(id); if (!tg) return [];
+  const X = tg === 'enemy' ? st[other(side)] : st[side];
+  return X.field.map((u, i) => (u ? i : null)).filter(i => i != null);
 }
 
+// slot: 유닛이면 놓을 칸, 대상 지정 주문이면 대상 유닛 슬롯
 export function playCard(st, side, handIdx, slot) {
   if (!canPlay(st, side, handIdx)) return false;
   const S = st[side], E = st[other(side)];
+  const pid = S.hand[handIdx];
+  if (spellTarget(pid) && !spellTargets(st, side, pid).includes(slot)) return false;
   const id = S.hand.splice(handIdx, 1)[0]; const c = CARD[id];
   S.mana -= c.cost;
-  if (c.type === 'spell') { castSpell(st, side, c); checkWin(st); return true; }
+  if (c.type === 'spell') { castSpell(st, side, c, slot); checkWin(st); frame(st); return true; }
   if (slot == null || S.field[slot]) slot = S.field.findIndex(f => !f);
   const rush = c.tag === '야생';
   S.field[slot] = { uid: uidSeq++, id, atk: c.atk, hp: c.hp, maxHp: c.hp, ready: rush, fresh: true };
@@ -219,13 +282,25 @@ export function playCard(st, side, handIdx, slot) {
     log(st, `🔥 ${c.name}: ${E.name}에게 ${RULES.burnOnSummon} 피해`);
   }
   if (c.fx && c.fx.summonDraw) { for (let k = 0; k < c.fx.summonDraw && !st.winner; k++) draw(st, side); log(st, `⚙️ ${c.name}: ${c.fx.summonDraw}장 드로우`); }
-  checkWin(st);
+  else if (c.tag === '기계' && S.hand.length <= RULES.mechDrawHand && S.deck.length) { draw(st, side); log(st, `⚙️ ${c.name} 정비: 1장 드로우`); }
+  checkWin(st); frame(st);
   return true;
 }
 
 // 주문 효과 (사용 후 사라짐, 필드 칸 사용 안 함)
-function castSpell(st, side, c) {
+function castSpell(st, side, c, slot) {
   const S = st[side], E = st[other(side)]; const ef = c.effect || {};
+  if (ef.dmgUnit) {
+    const u = E.field[slot]; const n = CARD[u.id].name;
+    u.hp -= ef.dmgUnit; fx(st, other(side), slot, ef.dmgUnit);
+    const dead = u.hp <= 0; if (dead) E.field[slot] = null;
+    log(st, `${S.name}: ✨${c.name} → ${n} ${ef.dmgUnit} 피해${dead ? ' (처치)' : ''}`);
+  }
+  if (ef.buffAtk) {
+    const u = S.field[slot];
+    u.atk += ef.buffAtk; u.buff = (u.buff || 0) + ef.buffAtk; fx(st, side, slot, ef.buffAtk, 'buff');
+    log(st, `${S.name}: ✨${c.name} → ${CARD[u.id].name} 공격력 +${ef.buffAtk} (이번 턴)`);
+  }
   if (ef.aoe) {
     let kills = 0;
     E.field.forEach((u, i) => {
@@ -303,7 +378,7 @@ export function attack(st, side, from, target) {
 // 플레이어 턴 종료 → AI 턴 자동 진행 → 플레이어 턴 시작
 export function endTurn(st) {
   if (st.winner || st.active !== 'p') return;
-  startTurn(st, 'a');
+  startTurn(st, 'a'); frame(st);
   if (!st.winner) aiTurn(st, 'a');
   if (!st.winner) startTurn(st, 'p');
 }
@@ -318,6 +393,8 @@ export function aiTurn(st, side) {
   };
   // 0) 광역 주문: 상대 유닛을 충분히 정리할 때만
   castIf(ef => ef.aoe, 4);
+  // 0-2) 단일 피해 주문: 처치 가능한 가장 비싼 유닛 (비용 2 이상), 없으면 수호 때문에 막혔을 때 수호 유닛
+  aiBolt(st, side);
   // 1) 소환: 낼 수 있는 가장 비싼 유닛부터 (주문 제외)
   for (let guard = 0; guard < 10 && !st.winner; guard++) {
     const idx = S.hand.map((id, i) => i).filter(i => !isSpell(S.hand[i]) && canPlay(st, side, i))
@@ -334,6 +411,9 @@ export function aiTurn(st, side) {
       playCard(st, side, idx);
     }
   }
+  if (st.winner) return;
+  // 1-3) 버프 주문: 치명타가 되거나, +2로 새로 잡을 수 있는 유닛이 생길 때
+  aiBuff(st, side);
   if (st.winner) return;
   // 2) 공격
   for (let from = 0; from < S.field.length; from++) {
@@ -360,9 +440,44 @@ export function aiTurn(st, side) {
       }
     }
     attack(st, side, from, pick);
+    frame(st);
   }
   // 3) 공격 후 다친 유닛이 많으면 회복 주문
   if (!st.winner) castIf(ef => ef.healAll, 3);
+}
+
+function aiBolt(st, side) {
+  const S = st[side], E = st[other(side)];
+  for (let i = 0; i < S.hand.length; i++) {
+    const id = S.hand[i]; const ef = isSpell(id) && CARD[id].effect;
+    if (!ef || !ef.dmgUnit || !canPlay(st, side, i)) continue;
+    const opts = spellTargets(st, side, id).filter(k => E.field[k].hp <= ef.dmgUnit);
+    const taunted = E.field.some(u => u && CARD[u.id].tag === '수호');
+    const val = k => CARD[E.field[k].id].cost + E.field[k].atk + (taunted && CARD[E.field[k].id].tag === '수호' ? 2 : 0);
+    const pick = opts.sort((a, b) => val(b) - val(a))[0];
+    if (pick != null && val(pick) >= 4) { playCard(st, side, i, pick); return true; }
+  }
+  return false;
+}
+
+function aiBuff(st, side) {
+  const S = st[side], E = st[other(side)];
+  const idx = S.hand.findIndex((id, i) => isSpell(id) && (CARD[id].effect || {}).buffAtk && canPlay(st, side, i));
+  if (idx < 0) return false;
+  const n = CARD[S.hand[idx]].effect.buffAtk;
+  const ready = S.field.map((u, i) => i).filter(i => S.field[i] && legalTargets(st, side, i).length);
+  if (!ready.length) return false;
+  const faceDmg = ready.filter(i => legalTargets(st, side, i).includes('hero')).reduce((a, i) => a + S.field[i].atk, 0);
+  const anyFace = ready.find(i => legalTargets(st, side, i).includes('hero'));
+  if (anyFace != null && faceDmg < E.hp && faceDmg + n >= E.hp) { playCard(st, side, idx, anyFace); return true; }
+  for (const i of ready) {
+    const u = S.field[i];
+    const newKill = legalTargets(st, side, i).filter(t => t !== 'hero').find(t => {
+      const e = E.field[t]; return e.hp > u.atk && e.hp <= u.atk + n && e.atk < u.hp;
+    });
+    if (newKill != null) { playCard(st, side, idx, i); return true; }
+  }
+  return false;
 }
 
 // 디버그/테스트용: 상대 HP를 0으로 (UI 테스트에서만 사용)

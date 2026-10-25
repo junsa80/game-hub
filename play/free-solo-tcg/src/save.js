@@ -7,7 +7,8 @@ export const SAVE_KEY = 'freeSoloTcg.save.v1';
 export const LEGACY_KEYS = ['fstcg'];
 // v2 (GrokBot 2차): pendingPacks(미개봉 보상 팩), tierFirstWins(단계별 첫 승), lastDailyWin(YYYY-MM-DD) 추가.
 // 키는 그대로 v1 이름을 씀. v1 저장은 기본값으로 채워 그대로 이어짐.
-export const SAVE_VERSION = 2;
+// v3 (GrokBot 3차): settings{aiStep}, collectionRewards{complete, tags{}}, pickTier(재도전 상대 단계 | null) 추가.
+export const SAVE_VERSION = 3;
 
 function sanitize(raw) {
   if (!raw || typeof raw !== 'object') return null;
@@ -35,6 +36,13 @@ function sanitize(raw) {
   // v2 필드: 단계 첫 승 기록 (배열 길이는 현재 AI 단계 수에 맞춤), 일일 첫 승 날짜
   p.tierFirstWins = AI_DECKS.map((_, t) => Array.isArray(raw.tierFirstWins) ? raw.tierFirstWins[t] === true : false);
   p.lastDailyWin = typeof raw.lastDailyWin === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(raw.lastDailyWin) ? raw.lastDailyWin : '';
+  // v3 필드
+  const rs = raw.settings && typeof raw.settings === 'object' ? raw.settings : {};
+  p.settings = { aiStep: typeof rs.aiStep === 'boolean' ? rs.aiStep : true };
+  const cr = raw.collectionRewards && typeof raw.collectionRewards === 'object' ? raw.collectionRewards : {};
+  p.collectionRewards = { complete: cr.complete === true, tags: {} };
+  if (cr.tags && typeof cr.tags === 'object') for (const [t, v] of Object.entries(cr.tags)) if (v === true) p.collectionRewards.tags[t] = true;
+  p.pickTier = Number.isInteger(raw.pickTier) && raw.pickTier >= 0 && raw.pickTier < AI_DECKS.length ? raw.pickTier : null;
   p.deck = Array.isArray(raw.deck) ? raw.deck.filter(id => CARD[id]) : [];
   if (!validateDeck(p.deck, p.collection).ok) p.deck = autoDeck(p.collection);
   return p;
@@ -47,8 +55,10 @@ function migrate(raw) {
   if (!(raw.version >= 2)) {
     const wins = Number.isFinite(raw.wins) ? raw.wins : 0;
     raw = { ...raw, version: 2, pendingPacks: 0, lastDailyWin: '',
-      tierFirstWins: AI_DECKS.map((_, t) => wins >= 2 * t + 1) };
+      tierFirstWins: AI_DECKS.map((_, t) => wins >= 2 * t + 1 && t < 4) }; // v1엔 5단계가 없었음
   }
+  // v2 → v3: 설정 기본값, 도감 보상은 플래그 없이 시작 → 다음 checkCollection()에서 조건 충족분 1회 지급
+  if (raw.version < 3) raw = { ...raw, version: 3, settings: { aiStep: true }, collectionRewards: { complete: false, tags: {} }, pickTier: null };
   return raw;
 }
 

@@ -82,3 +82,28 @@ button.ghost{background:transparent;border:1px solid #5a4f7c}
 @media (prefers-reduced-motion:reduce){.pop{animation-duration:.01s}}
 .herobar>span:first-child{min-width:0;flex-shrink:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .herobar .hpv,.herobar .mana{white-space:nowrap;flex-shrink:0}
+/* 3차: 필터·덱 통계·단계 선택·도감·설정·대상 지정·타격 연출 */
+.filters,.tiers{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0}
+.chip{min-width:44px;padding:6px 10px;border-radius:999px;background:#2a2340;border:1px solid #4a4068;font-size:14px}
+.chip.on{background:#d9822b;color:#1b1206;border-color:#f0a95a}
+.chip.hard{border-color:#ff6b6b}
+.tiers{justify-content:center}
+.dstats{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:end;background:#1e1830;border-radius:12px;padding:6px 10px}
+.curve{display:flex;gap:4px;align-items:flex-end;height:64px}
+.cbar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;width:22px;height:100%}
+.cbar i{display:block;width:14px;background:#2b6fd6;border-radius:3px 3px 0 0;min-height:2px}
+.cbar .cn,.cbar .cl{font-size:12px;color:#cfc8e6;line-height:16px}
+.tagsum{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.tagprog{display:flex;gap:6px;flex-wrap:wrap}.pill.done{background:#2f5a35}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;overflow-y:auto;flex:1;padding-bottom:8px}
+.gcell{text-align:center}.gcell .card{min-height:96px}.gcell.missing .card{filter:grayscale(1) brightness(.5)}
+.setting{display:flex;gap:12px;align-items:center;justify-content:space-between;background:#1e1830;border-radius:12px;padding:12px;font-size:14px}
+.toggle{min-width:72px;background:#3a3157}.toggle.on{background:#2f8f4e}
+.slot.aim .card{border-color:#ffd54a;box-shadow:0 0 12px #ffd54a}
+.hand button.aiming .card{outline:3px solid #ffd54a;transform:translateY(-6px)}
+.pop.buff{color:#ffd54a}
+.hit{animation:shake .38s ease-out}
+.hit .card,.herobar.hit{box-shadow:0 0 0 3px #ff4d4d,0 0 14px #ff4d4d}
+.glow .card,.herobar.glow{box-shadow:0 0 0 3px #7dff9a,0 0 14px #7dff9a}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+@media (prefers-reduced-motion:reduce){.hit{animation:none}}
