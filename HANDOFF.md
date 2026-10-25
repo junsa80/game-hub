@@ -1,3 +1,10 @@
+## 2026-10-25 — 아르카나 포켓 α0.2 신규 등록 (hub-v1.5.19)
+- User requested this conversation's TCG in the game list. Dist copied byte-for-byte from Sites source67d8d3b to play/arcana-pocket; same files plus runnable tests/HANDOFF persisted in GitHub. Existing free-solo-tcg is unrelated and preserved. New native SVG cover, no external assets.
+- 20-card decks, 2 copies, 10-card hand, 5-unit board; both AI decks obey limits. Existing12-card saves migrate without resetting currency/collection/records/battle. First actual defeat: choose2 nova/knight/oracle → exact deck-swap preview → apply → same-opponent retry. Old losses qualify once. Every3 non-conceded defeats grants pack; defeat5P remains. Concede only5P.
+- Combat + migration/rewards/claim-once/deck-swap/concede tests and300 full AI games pass. Actual browser old game → defeat → reward choice → nova2 replacing study2 → new20-card same-opponent battle verified. Not human-win-rate/physical phone validation.
+- Save key arcana-pocket-v1 unchanged; Sites/Pages are different origins. Import backup to continue Sites progress. No cloud sync.
+- games.json append only; other16 entries preserved. Hub cache/query1.5.19. Source sync docs below. Pages/live verification after push.
+
 ## 2026-10-25 — 무료 싱글 TCG 등록·games.json 복구 (GrokBot)
 - `6e8c1be`/`ae10646`([Grok])에서 games.json 전체가 `PLACEHOLDER…` 문자열로 덮여 허브 목록이 비었음 → `748106b`에서 `41f4ebb` 기준 15개 복원 + `free-solo-tcg` 추가. games.json은 항상 기존 목록 위에 엔트리만 추가할 것.
 - private `junsa80/free-solo-tcg` @ `8df769b` 실행본(index.html + src/*.js, style.css)을 `play/free-solo-tcg/`에 복사. `public: false`, 저장 키 `freeSoloTcg.save.v1`. 갱신 절차는 그 레포 HANDOFF.md "허브 배포".

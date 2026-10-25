@@ -70,3 +70,8 @@ git add -A && git commit -m "[GrokBot] refresh play/<name> from <repo>@<sha>" &&
 ## 원래 작업 상자에서 쓰던 경로 (참고, 상자 종료 후 없음)
 - `/workspace/private-games/build-prism` (prism-muse 패치된 작업 트리), `/workspace/private-games/rose`, `/workspace/private-games/src/*`
 - 헤드리스 검사: `NODE_PATH=/tmp/pt/node_modules` (puppeteer-core 24.43.1), Chrome `/usr/bin/google-chrome`. 새 환경에선 `npm i puppeteer-core@24` 후 그 `node_modules` 경로를 `NODE_PATH`로.
+
+## 아르카나 포켓 (2026-10-25)
+- Source Site project_id appgprj_6adde2e8fb888191b33534e61105f710, local source /workspace/sites/arcana-pocket. Sites source commit67d8d3bc4fff7c46738f70d5a81e828d157c0079.
+- Copy dist/index.html, engine.js, progression.js, app.js, style.css byte-for-byte to play/arcana-pocket/. No root asset path adjustments needed. Pure source is preserved in this GitHub folder as well; tests/test.cjs runs with node.
+- Keep localStorage key arcana-pocket-v1; JSON export/import moves data between origins. Do not replace the unrelated play/free-solo-tcg. Update catalog source commit and cache on refresh.

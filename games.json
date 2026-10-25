@@ -455,5 +455,34 @@
     ],
     "controls": "카드와 대상을 터치하세요.",
     "tip": "수호 카드가 있으면 상대는 수호부터 공격해야 합니다."
+  },
+  {
+    "id": "arcana-pocket",
+    "title": "아르카나 포켓",
+    "desc": "20장 덱으로 군단·비전 시너지를 연구하는 수집형 싱글 TCG. 첫 패배에도 대응 카드를 해금하고 덱을 바꿔 재도전합니다.",
+    "genre": [
+      "TCG",
+      "카드 수집"
+    ],
+    "icon": "✦",
+    "color": "#7c865a",
+    "public": true,
+    "url": "https://junsa80.github.io/game-hub/play/arcana-pocket/",
+    "thumb": "thumbs/arcana-pocket-cover-v1.svg",
+    "coverType": "illustration",
+    "src": "junsa80/game-hub · play/arcana-pocket (Sites 원본 사본 포함)",
+    "commit": "67d8d3bc4fff7c46738f70d5a81e828d157c0079",
+    "commitKind": "아르카나 포켓 Alpha 0.2 · Sites 원본에서 정적 실행본 복사",
+    "save": "로컬 자동저장 + JSON 백업. Sites판과 저장 자동 연동 없음.",
+    "playAccess": "anonymous",
+    "cloudSave": "none",
+    "tagline": "패배에서 찾은 한 장으로, 다음 승리를 준비하세요.",
+    "steps": [
+      "20장 덱을 확인하고 AI 상대를 선택하세요.",
+      "유닛과 주문을 사용해 상대 체력 25를 0으로 만드세요.",
+      "승리 팩 또는 첫 패배 대응 카드를 받고, 교체 전후를 확인한 뒤 재도전하세요."
+    ],
+    "controls": "손패를 눌러 사용합니다. 공격할 아군과 적을 차례로 누릅니다. 수호 유닛이 있으면 먼저 공격해야 합니다.",
+    "tip": "첫 패배는 유성우·황혼 기사·새벽 예언자 중 2장 선택 해금. 패배 3회마다 추가 팩(항복 제외). 동일 카드 2장, 손패 10장, 전장 5장 제한입니다."
   }
 ]

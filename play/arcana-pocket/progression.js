@@ -1,0 +1,10 @@
+(function(root){
+const G=root.TCG||(typeof require!=='undefined'?require('./engine.js'):null);
+const choices=['nova','knight','oracle'];
+function migrate(s){if((s.rulesVersion||1)<2){for(const id of G.starter)s.owned[id]=Math.max(s.owned[id]||0,2);if(s.deck.length===12){for(const id of G.starter){if(s.deck.length>=G.rules.deck)break;if(s.deck.filter(x=>x===id).length<s.owned[id])s.deck.push(id)}}s.rulesVersion=2}if(!s.progress)s.progress={firstDefeat: s.losses>0?'pending':'locked',defeats:0,lossMeter:0};s.lastOpponent=s.lastOpponent===1?1:0;return s}
+function complete(s,w,conceded=false){let out={pack:0,points:0,first:false};if(w===0){s.wins++;s.packs++;out.pack=1}else if(w===1){s.losses++;s.points+=5;out.points=5;if(!conceded){s.progress.defeats++;s.progress.lossMeter++;if(s.progress.firstDefeat==='locked'){s.progress.firstDefeat='pending';out.first=true}if(s.progress.lossMeter>=3){s.progress.lossMeter=0;s.packs++;out.pack=1}}}return out}
+function claim(s,id){if(s.progress.firstDefeat!=='pending'||!choices.includes(id))return false;const missing=2-s.owned[id];s.owned[id]=2;const duplicate=2-missing;s.points+=duplicate*15;s.progress.firstDefeat='claimed';s.newReward=id;return true}
+function plan(s,id){if(!G.by[id]||!s.owned[id])return null;let deck=[...s.deck],remove=[],add=[];while(deck.filter(x=>x===id).length<Math.min(s.owned[id],2)){if(deck.length>=G.rules.deck){let drop=['study','renew','wolf','medic','scout','guard','spark','sentinel','mage','captain'].find(x=>x!==id&&deck.includes(x));if(!drop)drop=deck.find(x=>x!==id);if(!drop)break;deck.splice(deck.indexOf(drop),1);remove.push(drop)}deck.push(id);add.push(id)}return {deck,remove,add}}
+function apply(s,id){if(s.battle)return false;const p=plan(s,id);if(!p||!p.add.length)return false;s.deck=p.deck;s.newReward=null;return p}
+root.Progress={migrate,complete,claim,plan,apply,choices};if(typeof module!=='undefined')module.exports=root.Progress;
+})(typeof window!=='undefined'?window:globalThis);
