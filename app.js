@@ -29,18 +29,22 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-c],[data-f
  else if(t.dataset.f){const i=st.fav.indexOf(t.dataset.f);i<0?st.fav.push(t.dataset.f):st.fav.splice(i,1);save();render()}
  else if(t.dataset.p){st.recent[t.dataset.p]=Date.now();save()}});
 document.getElementById('q').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();render()});
-fetch('games.json?v=1.5.16').then(r=>r.json()).then(g=>{games=g;render()});
+fetch('games.json?v=1.5.17').then(r=>r.json()).then(g=>{games=g;render()});
+let hubTouched=false;
 let musicOn=localStorage.getItem('gamehub.snd')!=='off', bgmEl;
 function hubBgm(){
  const b=document.getElementById('snd'); if(b) b.textContent=musicOn?'소리 켬':'소리 끔';
  try{
   if(!bgmEl){bgmEl=new Audio('sfx/bgm.mp3');bgmEl.loop=true;bgmEl.volume=.28;}
-  if(!musicOn){bgmEl.pause();return;}
+  if(!musicOn||document.hidden){bgmEl.pause();return;}
   if(!bgmEl.paused)return;
   const p=bgmEl.play(); if(p&&p.catch)p.catch(()=>{});
  }catch(e){}
 }
 document.getElementById('snd').addEventListener('click',()=>{musicOn=!musicOn;localStorage.setItem('gamehub.snd',musicOn?'on':'off');hubBgm();});
-addEventListener('pointerdown',()=>hubBgm(),{passive:true});
+addEventListener('pointerdown',()=>{hubTouched=true;hubBgm();},{passive:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)bgmEl?.pause();else if(hubTouched&&musicOn)hubBgm();});
+addEventListener('pagehide',()=>bgmEl?.pause());
+addEventListener('pageshow',()=>{if(hubTouched&&musicOn)hubBgm();});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
 

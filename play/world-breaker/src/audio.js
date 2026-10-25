@@ -39,16 +39,6 @@ export class GameAudio {
   else if(kind==='skill'){this.noise(.22,1800,.6);this.tone(110,.2,'triangle',.55);this.tone(740,.25,'sine',.2,.08);}
   else {this.tone(105,.1,'triangle',.65);this.tone(230,.045,'square',.18,.008);this.noise(.075,1350,.55);}
  }
- tick(dt,game){
-  if(!this.enabled||game.roundState!=='active'||game.finished)return;
-  this.musicTime+=dt;
-  if(this.musicTime>=.4){this.musicTime%=.4;
-   const forest=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
-   const mine=[220,261.63,329.63,392,196,246.94,293.66,369.99];
-   const swamp=[196,233.08,293.66,349.23,174.61,220,261.63,329.63];
-   const city=[164.81,220,246.94,329.63,146.83,196,246.94,293.66];
-   const seq=game.stage===4?city:game.stage===3?swamp:game.stage===2?mine:forest;this.tone(seq[this.note++%seq.length],.35,'sine',.045);
-  }
- }
+ tick(dt,game){} // The independent GameScore handles BGM.
  toggle(){this.enabled=!this.enabled;if(!this.enabled&&this.master)this.master.gain.value=0;if(this.enabled&&this.master)this.master.gain.value=.16;return this.enabled;}
 }
