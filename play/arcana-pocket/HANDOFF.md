@@ -27,3 +27,12 @@ Observe human play before adding content. Prioritize meaningful attack/tempo dec
 - Pure progression module: dist/progression.js. node test.cjs covers old migration/idempotence, same limits for AI, single claim, swap quantity, inventory preservation, defeat meter/concession exclusion + combat/300 full games.
 - Actual browser: old ongoing game preserved, defeat → choice → nova2 → study2 removal preview → apply → retry CTA confirmed. Not human win-rate/physical phone validation.
 - Hub copy published separately under play/arcana-pocket; origins do not auto-sync. JSON backup imports old/new saves, migrates old rules. Existing free-solo-tcg is a different game and must not be replaced.
+
+## 2026-10-25 Alpha 0.3 — graphics, touch flow, cover
+- New original vector illustrations for all 16 cards (art.js), faction colors plus spell double borders and rarity framing. Original generated adult knight/oracle cover (cover-art-v2.webp), hub thumb v2; cover explicitly labeled illustration, not gameplay.
+- Compact 5-slot boards with larger ATK/HP and ready/guard states; abilities available through detail dialogs. Horizontal hand independent of hand count; tap opens readable card details before explicit use. Custom simultaneous-damage confirmation; legal target outlines, mana pips, HP tracks. Reduced-motion and keyboard focus/leader activation.
+- Collection filters (all/unit/spell/owned), 44px edit buttons. Home reports actual deck size and incomplete-deck fix CTA. Retry remains available on home/results/collection after editing and already-decked reward choices. Pack-grant results link to packs.
+- Scroll resets on tab/battle transitions only. Original save key/rules unchanged. Invalid saves are preserved verbatim with explicit warning and raw export; recovery imports replace only after validation/confirmation. Normal saves/battle reload remain compatible.
+- Automated engine/progression suite incl 300 AI games; added tests/ui-smoke.cjs for corrupt-save protection, deck guidance, retry, card use, victory pack CTA, reward edge case, reload and legacy active-battle migration.
+- Browser QA in 360x640 iframe viewport: title, battle, hand detail -> summon -> mana deduction, AI turn and leader attack. Actual phone, human balance and full campaign not tested. Existing cards, opponent balance and reward economy unchanged.
+- Sources: custom card glyphs and game UI patterns adapted within this game's theme; no other game's mechanics imported. These readability/retry/save patterns are candidates for other games, not already applied elsewhere.
