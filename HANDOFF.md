@@ -217,7 +217,7 @@
 
 | id | 원본 저장소 | 반영 커밋 | 종류 | 저장 방식 |
 |---|---|---|---|---|
-| hunt-now | junsa80/hunt-now | `76db4f4` | GrokBot v6.0 사냥 Lv 선택·긴급 의뢰 | 로컬 저장(이 브라우저 localStorage) |
+| hunt-now | junsa80/hunt-now | `debb582` | GrokBot v6.0.1 QA (PR #1) | 로컬 저장(이 브라우저 localStorage) |
 | beauty-deck | junsa80/beauty-deck | `19a913a` | GrokBot v1.5.0 · 링크 | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
 | srpg-prototype | junsa80/srpg-prototype | `9afee37` | GrokBot 허브 표기(잿빛 왕관) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
@@ -290,6 +290,8 @@
 - 2026-10-25 미녀 덱 v1.5.0 (GrokBot, beauty-deck HANDOFF): 아리아 우위 축소(Lv1 승천0 58→36%, 7명 34~37%) · 오늘의 원정(날짜 시드·최고 기록·+40/+80 XP) · 승천 4단계 절벽·8~9 평탄 보정 + 권장 레벨 힌트. 링크라 허브 복사본 없음. source 19a913a
 - 2026-10-25 헌트 나우 v6.0 (GrokBot, hunt-now HANDOFF): 사냥 Lv 직접 선택(HR은 상한)·장비 적정 표시 · 긴급 의뢰 보스 사다리 4단계(HR 3/6/9/10)+종장 · 적 체력 Lv당 +40→22%, 공격 +20→16% (봇 표: 장비 +5가 Lv7 6/6). 링크라 허브 복사본 없음. source 76db4f4
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
+- 2026-10-26 헌트 나우 v6.0.1 QA (GrokBot, PR #1, hunt-now WORKLOG HN-QA-01): 360px 사냥 탭 넘침 수정 · 앞에서 머리 부위 맞음(마녀·비룡) · 여우 귀 앵커 · 옛 저장 이관 보완. source debb582
+- 2026-10-26 환상 콜라보 QA 1차 (GrokBot, PR #5, WORKLOG FCB-QA-01·02·FX-01): 타격감(히트스톱·넉백) · 스모크 360×800·412×915 · 저장 엣지 테스트. source 7a5f01f · play 7576952
 
 ## 2026-10-25 — 아르카나 포켓 Alpha 0.3 (hub-v1.5.21)
 - Source Sites f7f0c8a2f121baef0a82699be511512ba354db3d. Compact mobile battle, horizontal hand/details/explicit use, 16 original vector card illustrations, HP/mana/target states, collection filters. New generated knight/oracle cover and thumb v2; illustration label retained.
