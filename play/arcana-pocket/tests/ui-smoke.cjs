@@ -10,3 +10,47 @@ x.run("S.progress.firstDefeat='pending';S.owned.nova=2;S.deck.splice(0,2,'nova',
 const y=boot(x.stored());assert.equal(y.run('S.wins'),1);assert.equal(y.run('S.packs'),2);
 const G=require('../engine.js');const old={v:1,owned:Object.fromEntries(G.cards.map(c=>[c.id,['scout','guard','wolf','medic','spark','study'].includes(c.id)?2:0])),deck:['scout','guard','wolf','medic','spark','study'].flatMap(id=>[id,id]),points:17,packs:2,wins:2,losses:1,battle:G.create(G.starter,G.decks[1])};let z=boot(JSON.stringify(old));assert.equal(z.run('S.deck.length'),20);assert.equal(z.run('S.points'),17);assert.equal(JSON.stringify(z.run('S.battle')),JSON.stringify(old.battle));
 console.log('UI/save regression checks passed: corrupt-save preservation, incomplete deck guidance, retry, deliberate card use, victory pack CTA, already-decked reward retry, reload, legacy migration.');
+
+// Structurally valid JSON can still be unsafe to resume or import.
+const baseline=JSON.parse(boot().stored());baseline.battle=G.create(G.starter,G.decks[0],()=>0.5);
+const corruptions=[
+ ['missing log',s=>delete s.battle.log],
+ ['invalid mana',s=>s.battle.p[0].mana='1'],
+ ['missing fatigue',s=>delete s.battle.p[0].fatigue],
+ ['missing winner',s=>delete s.battle.winner],
+ ['missing round',s=>delete s.battle.round],
+ ['invalid uid',s=>s.battle.uid=-1],
+ ['oversized board',s=>s.battle.p[0].board=Array.from({length:6},(_,i)=>({id:'scout',uid:i+1,hp:1,ready:true}))],
+ ['spell on board',s=>{s.battle.uid=1;s.battle.p[0].board=[{id:'spark',uid:1,hp:1,ready:true}]}],
+ ['duplicate uid',s=>{s.battle.uid=1;s.battle.p.forEach(p=>p.board=[{id:'scout',uid:1,hp:1,ready:true}])}],
+ ['prototype card',s=>s.battle.p[0].hand=['toString']],
+ ['invalid growth',s=>s.progress.lossMeter='2'],
+ ['invalid reward',s=>s.newReward='missing'],
+ ['invalid readiness',s=>{s.battle.uid=1;s.battle.p[0].board=[{id:'scout',uid:1,hp:1,ready:'yes'}]}],
+ ['non-string log',s=>s.battle.log=[{}]],
+];
+for(const [name,mutate] of corruptions){
+ const data=structuredClone(baseline);mutate(data);const raw=JSON.stringify(data);
+ const recovered=boot(raw);assert.equal(recovered.stored(),raw,name+' preserves original');
+ assert.equal(recovered.run('storageOK'),false,name+' recovery mode');
+ assert.match(recovered.el('#app').innerHTML,/원본은 보존/,name);
+ recovered.run('save()');assert.equal(recovered.stored(),raw,name+' prevents overwrite');
+ const normal=boot(),before=normal.stored();
+ assert.throws(()=>normal.run('validate('+raw+')'),name+' import rejected');
+ assert.equal(normal.stored(),before,name+' import leaves current save intact');
+}
+let states=0,seed=26026;
+const seeded=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);
+for(let match=0;match<20;match++){
+ const data=structuredClone(baseline);data.battle=G.create(G.starter,G.decks[match%2],seeded);
+ while(data.battle.winner===null&&data.battle.round<250){
+  const raw=JSON.stringify(data),restored=boot(raw);
+  assert.equal(restored.run('storageOK'),true);
+  assert.equal(JSON.stringify(restored.run('S.battle')),JSON.stringify(data.battle));
+  states++;G.ai(data.battle);
+ }
+}
+const logSave=structuredClone(baseline);logSave.battle.log=['<img src=x onerror=alert(1)> & test'];
+const safeLog=boot(JSON.stringify(logSave)).el('#app').innerHTML;
+assert.ok(!safeLog.includes('<img src=x'));assert.ok(safeLog.includes('&lt;img'));
+console.log('Structured-save recovery: '+corruptions.length+' corruptions rejected; '+states+' engine-generated active states preserved; imported log escaped.');

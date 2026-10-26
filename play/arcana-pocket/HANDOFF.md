@@ -36,3 +36,9 @@ Observe human play before adding content. Prioritize meaningful attack/tempo dec
 - Automated engine/progression suite incl 300 AI games; added tests/ui-smoke.cjs for corrupt-save protection, deck guidance, retry, card use, victory pack CTA, reward edge case, reload and legacy active-battle migration.
 - Browser QA in 360x640 iframe viewport: title, battle, hand detail -> summon -> mana deduction, AI turn and leader attack. Actual phone, human balance and full campaign not tested. Existing cards, opponent balance and reward economy unchanged.
 - Sources: custom card glyphs and game UI patterns adapted within this game's theme; no other game's mechanics imported. These readability/retry/save patterns are candidates for other games, not already applied elsewhere.
+
+## 2026-10-26 — AP-01 손상 대전 저장 보호 (Alpha 0.3.2 / hub 1.5.24)
+- 실제 재현: JSON 파싱은 성공하지만 battle.log가 없으면 battleView의 join에서 부팅 중단. 이전 validate가 통과시켜 시작 시 저장도 수행됨.
+- 저장/가져오기 공통 validate에서 대전 기록, 자원, 피로, 턴/승자, 유닛 종류·체력·UID·준비 상태, 전장/손패 상한, 성장 보상을 검사. 잘못된 값은 기존 원본 보존·복구 안내 경로로 처리. 전투 기록은 HTML이 아닌 텍스트로 표시.
+- 자동검사: 손상14종 거절/원문 보존, 고정 시드 실제 엔진 활성 대전376개 동일 복원, 기존12장 저장 이관·미완성 덱·보상·재도전 회귀 통과. 규칙/성장 및 AI300판 종료 통과. 사람 승률 자료가 아님.
+- 저장 키/버전/카드 능력/보상/정상 데이터는 변경하지 않음. 실물 폰 및 이번 변경의 실제 브라우저 복구 조작은 미검증.

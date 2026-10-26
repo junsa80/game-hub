@@ -1,13 +1,13 @@
 # MASTER_BACKLOG — 2026-10-26
 
-우선순위는 확인된 영향/위험/의존성 기준. P0 실행·저장 손실은 아직 확정하지 않았으며 가정으로 만들지 않는다.
+우선순위는 확인된 영향/위험/의존성 기준. P0는 재현한 실행·저장·진행 장애에만 부여한다.
 
 |ID|대상|우선|실제 근거/영향|난도·규모|수정 파일/시스템|완료 기준|상태/커밋|
 |---|---|---|---|---|---|---|---|
 |CACHE-01|game-hub|P1|sw.js activate가 다른 게임 캐시 삭제; 허브 업데이트가 여러 게임 오프라인 실행에 영향|낮음/소|sw.js, index.html, tools/test-cache-isolation.cjs|자기 구버전만 삭제; 다른 캐시 내용/세이브 불변; 설치 캐시 버전 갱신·라이브 확인|수정·자동검사·라이브 파일 확인 완료 `7b6988d`; 실기 오프라인 미검증|
 |CACHE-02|hunt-now|P1|sw.js의 k!==C만으로 전체 캐시 삭제|낮음/소|sw.js, index.html, test/cache-isolation.cjs|자기 구버전 정리·타 게임 보존, 테스트 및 라이브 확인|수정·자동검사·라이브 파일 확인 완료 `4b8f083`; 실기 오프라인 미검증|
 |CACHE-03|beauty-deck|P1|sw.js의 k!==CACHE만으로 전체 캐시 삭제|낮음/소|sw.js, index.html, test/cache-isolation.cjs|자기 구버전 정리·타 게임 보존, 캐시 CORE 쿼리 일치·라이브 확인|수정·자동검사·라이브 파일 확인 완료 `81322d5`; 실기 오프라인 미검증|
-|AP-01|Arcana Pocket|P1|validate가 battle.log/uid/board 최대수 등을 검사하지 않음; 손상 JSON 상세 재현 필요|중간/소|play/arcana-pocket/app.js, tests/ui-smoke.cjs|손상 active battle 부팅/가져오기 실패를 원본 보존으로 처리; 정상/legacy 세이브 유지|코드 확인, 결함 영향 재현 미검증|
+|AP-01|Arcana Pocket|P0|손상 active battle의 log 누락이 검증 통과 후 부팅 TypeError 발생; 정상 저장 재작성까지 진행됨|중간/소|play/arcana-pocket/app.js, tests/ui-smoke.cjs|손상 active battle 부팅/가져오기 실패를 원본 보존으로 처리; 정상/legacy 세이브 유지|수정·자동검증 완료(본 커밋); 손상14종/정상376상태/legacy 통과; 공개 반영 확인 예정|
 |RT-01|룬 영토|P1|과거 모바일 증거 이후 현 요청 3크기 회귀 미실행|중간/중|tools/mobile-regression.cjs, src/app.js/style.css|360×800/390×844/412×915 주사위·한 화면·자동스크롤·터치·저장 통과|61개 단위 통과; 브라우저 미검증|
 |RT-02|룬 영토|P1|성장 fixture는 검증되나 공략 덱 효과 재측정 필요|중간/중|tools/compare-hints.mjs, progression-model.mjs|동일 소유 카드/held-out paired seeds로 S4/S6 일반·어려움 비교; 사람 승률로 오인 금지|대기|
 |JR-01|경계의 서약|P1|자동장비·유니크·연계 던전 코드 확인, 최신 통합 실전 미검증|중간/중|src/native/, systems/EquipmentSystem.ts, tools/test-game.ts|실제 전투→보상→자동장비→영입정보 던전→저장 재로드; 유니크 재지급 없음|자동검사 환경 보완 중|
@@ -20,4 +20,4 @@
 
 이번 실행 순서: CACHE-01 → CACHE-02 → CACHE-03. 공유 origin 결함이므로 세 곳 모두 수정해야 재발하지 않는다. 같은 게임의 동시 변경은 원격 HEAD 검사로 충돌 감지하며, 강제 푸시하지 않는다.
 
-다음 3개: AP-01 손상 대전 저장 재현/보호 → RT-01 모바일 3규격 → JR-01 장비/연계던전 통합 회귀. 사용량 확인 전 새 개발 작업은 시작하지 않음.
+다음 3개: AP-01 손상 대전 저장 재현/보호 → RT-01 모바일 3규격 → JR-01 장비/연계던전 통합 회귀. 사용자가 사용량 확인 중단 조건을 해제함. 다음 실행: RT-01 → JR-01 → RT-02.
