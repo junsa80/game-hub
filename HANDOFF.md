@@ -217,7 +217,7 @@
 
 | id | 원본 저장소 | 반영 커밋 | 종류 | 저장 방식 |
 |---|---|---|---|---|
-| hunt-now | junsa80/hunt-now | `debb582` | GrokBot v6.0.1 QA (PR #1) | 로컬 저장(이 브라우저 localStorage) |
+| hunt-now | junsa80/hunt-now | `15df7e2` | GrokBot v6.0.2 (PR #2) | 로컬 저장(이 브라우저 localStorage) |
 | beauty-deck | junsa80/beauty-deck | `19a913a` | GrokBot v1.5.0 · 링크 | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
 | srpg-prototype | junsa80/srpg-prototype | `9afee37` | GrokBot 허브 표기(잿빛 왕관) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
@@ -292,6 +292,8 @@
 - 환상 콜라보 1차 허브 카드 추가 (GrokBot)
 - 2026-10-26 헌트 나우 v6.0.1 QA (GrokBot, PR #1, hunt-now WORKLOG HN-QA-01): 360px 사냥 탭 넘침 수정 · 앞에서 머리 부위 맞음(마녀·비룡) · 여우 귀 앵커 · 옛 저장 이관 보완. source debb582
 - 2026-10-26 환상 콜라보 QA 1차 (GrokBot, PR #5, WORKLOG FCB-QA-01·02·FX-01): 타격감(히트스톱·넉백) · 스모크 360×800·412×915 · 저장 엣지 테스트. source 7a5f01f · play 7576952
+- 2026-10-26 헌트 나우 v6.0.2 (GrokBot, PR #2, WORKLOG HN-QA-02): 첫 실행 마무리 콤보 오류 수정 · three.js 압축본(gzip 263→166KB) · perf 테스트. source 15df7e2
+- 2026-10-26 환상 콜라보 성능·에셋 (GrokBot, PR #7, WORKLOG FCB-PERF-01·ASSET-01): 표지 webp(첫 로드 1241→842KB), 안 쓰는 에셋 없음. source 8dcc65e · play ddddb4c
 
 ## 2026-10-25 — 아르카나 포켓 Alpha 0.3 (hub-v1.5.21)
 - Source Sites f7f0c8a2f121baef0a82699be511512ba354db3d. Compact mobile battle, horizontal hand/details/explicit use, 16 original vector card illustrations, HP/mana/target states, collection filters. New generated knight/oracle cover and thumb v2; illustration label retained.
