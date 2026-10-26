@@ -432,7 +432,7 @@
   {
     "id": "free-solo-tcg",
     "title": "무료 싱글 TCG · FREE SOLO TCG",
-    "desc": "카드를 골라 덱을 짜고 AI와 대전하세요. 큰 글씨·한눈에 읽히는 카드, 카드마다 그림, 대상 주문·태그 효과 카드 27종, 덱 슬롯 3개와 덱 코드 공유, 5단계 하드(영리한 AI)와 매일 하드 보너스, 단계별 최고 기록·연승·도전 과제, 도감·첫 승 보너스 팩. 중복 카드는 포인트로 바꿔 원하는 카드를 구매합니다.",
+    "desc": "카드를 골라 덱을 짜고 AI와 대전하세요. 카드마다 그림, 효과음·배경음, 대상 주문·태그 효과 카드 27종, 덱 슬롯 3개와 덱 코드, 5단계 하드와 매일 하드 보너스, 단계별 기록·연승·도전 과제, 도감에서 그림을 크게. 중복 카드는 포인트로 바꿔 원하는 카드를 구매합니다.",
     "genre": [
       "TCG",
       "카드 대전"
@@ -442,8 +442,8 @@
     "public": false,
     "url": "https://junsa80.github.io/game-hub/play/free-solo-tcg/",
     "src": "junsa80/free-solo-tcg",
-    "commit": "53ec82e6054d94e13e21dc69a65deaae30997df0",
-    "commitKind": "최소 프로토타입 (덱→대전→팩→중복 포인트→구매) · 허브 사본",
+    "commit": "649ca97ba2138d968a97e0ee18b1cdc0c7f19b05",
+    "commitKind": "카드 그림 27·효과음·배경음·도감 크게 보기 · 허브 사본",
     "save": "로컬 저장 (이 브라우저)",
     "playAccess": "anonymous",
     "cloudSave": "none",

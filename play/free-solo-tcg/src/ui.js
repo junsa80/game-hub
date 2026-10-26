@@ -1,15 +1,15 @@
 // 화면(DOM) 담당. 규칙은 game.js, 데이터는 data.js, 저장은 save.js.
 import { CARDS, TAGS, RULES, POINT_VALUES, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS, HARD_DAILY_BONUS } from './data.js';
-import { artSVG } from './art.js';
 import { encodeDeck, importDeckCode } from './deckcode.js';
 import { challengeStatus } from './challenges.js';
 import * as G from './game.js';
 import { loadProfile, saveProfile, SAVE_KEY } from './save.js';
+import { sfx, music, soundOn, toggleSound } from './sound.js';
 
 const app = document.getElementById('app');
 const { profile: P, status, retro = [] } = loadProfile();
 let rng = G.makeRng(P.seed);
-const ui = { screen: 'home', battle: null, sel: null, aim: null, replay: null, filter: 'all', lastPack: null, lastResult: null, deckErr: [], showLog: false };
+const ui = { screen: 'home', battle: null, sel: null, aim: null, replay: null, filter: 'all', lastPack: null, lastResult: null, deckErr: [], showLog: false, zoom: null };
 const STEP_MS = 520; // AI 턴 단계별 보기: 행동 사이 간격
 
 function persist() { P.seed = rng.state(); saveProfile(P); }
@@ -36,7 +36,7 @@ function cardHTML(id, unit, extra = '') {
     : `<div class="st"><span class="atk${unit && unit.buff ? ' up' : ''}" aria-label="공격 ${atk}">${atk}</span><span class="hp${unit && hp < unit.maxHp ? ' hurt' : ''}" aria-label="체력 ${hp}">${hp}</span></div>`;
   return `<div class="card ${c.rarity}${spell ? ' spell' : ''}" style="--c:${t.color}" title="${esc(c.name)}">
     <div class="top"><span class="cost" aria-label="비용 ${c.cost}">${c.cost}</span>${c.rarity === 'rare' ? '<span class="gem" aria-label="레어">★</span>' : ''}<span class="tbadge">${icon(c.tag)}</span></div>${extra}
-    <div class="art">${artSVG(id, c.tag, spell, `<g class="m" transform="translate(14 6) scale(.83)">${SVG[spell ? 'spell' : c.tag] || ''}</g>`)}</div>
+    <div class="art"><img class="paint" src="art/${id}.jpg" alt=""></div>
     <div class="name">${esc(c.name)}</div>
     ${kw ? `<div class="kw">${esc(kw)}</div>` : '<div class="kw blank"></div>'}
     ${st}</div>`;
@@ -127,16 +127,34 @@ function collectionScreen() {
     ${filterBar()}
     <div class="grid">${CARDS.filter(c => passFilter(c.id)).map(c => {
       const have = P.collection[c.id] || 0;
-      return `<div class="gcell${have ? '' : ' missing'}">${cardHTML(c.id)}<div class="muted">${have ? `${have}장` : '미보유'}</div></div>`;
+      return `<button class="gcell${have ? '' : ' missing'}" data-act="zoom" data-id="${c.id}" aria-label="${esc(c.name)} 크게 보기">${cardHTML(c.id)}<div class="muted">${have ? `${have}장` : '미보유'}</div></button>`;
     }).join('')}</div>
+    ${zoomBox()}
     <div class="sticky"><button class="big" data-act="go" data-to="home">돌아가기</button></div>`;
+}
+
+function zoomBox() {
+  const id = ui.zoom;
+  const c = id && G.CARD[id];
+  if (!c) return '';
+  const have = P.collection[id] || 0;
+  return `<div class="overlay" data-act="zoomclose" data-k="zoom"><div class="box zoombox" role="dialog" aria-label="${esc(c.name)}">
+    <img class="zoomart" src="art/${id}.jpg" alt="">
+    <h2>${esc(c.name)}</h2>
+    <p>${cardDesc(id)}</p>
+    <p class="muted">${have ? `보유 ${have}장` : '미보유'}</p>
+    <button class="big" data-act="zoomclose">닫기</button>
+  </div></div>`;
 }
 
 function settingsScreen() {
   const on = P.settings.aiStep;
+  const snd = soundOn();
   return `<div class="bar"><h2>설정</h2></div>
     <div class="setting"><div><b>AI 턴 단계별 보기</b><br><span class="muted">상대가 카드를 내고 공격하는 과정을 하나씩 보여 줘요. 끄면 바로 결과만.</span></div>
     <button class="toggle${on ? ' on' : ''}" data-act="toggle" data-id="aiStep" role="switch" aria-checked="${on}" aria-label="AI 턴 단계별 보기">${on ? '켬' : '끔'}</button></div>
+    <div class="setting"><div><b>소리</b><br><span class="muted">효과음과 배경음. 이 기기에만 저장되고 덱 저장과는 따로입니다.</span></div>
+    <button class="toggle${snd ? ' on' : ''}" data-act="sound" role="switch" aria-checked="${snd}" aria-label="소리">${snd ? '켬' : '끔'}</button></div>
     <div class="sticky" style="margin-top:auto"><button class="big" data-act="go" data-to="home">돌아가기</button></div>`;
 }
 
@@ -257,7 +275,10 @@ function resultRecord(r) {
 
 function packScreen() {
   const pk = ui.lastPack;
+  const nRare = pk.cards.filter(r => G.CARD[r.id].rarity === 'rare').length;
   return `<h2 style="text-align:center">팩 개봉</h2>
+    <img class="packart" src="art/pack.jpg" alt="">
+    ${nRare ? `<p class="rarehit">레어 ${nRare}장</p>` : ''}
     <div class="pack" data-k="pk${P.packsOpened}">${pk.cards.map(r => `<div class="reveal">${cardHTML(r.id)}<div class="${r.dup ? 'dup' : 'new'}">${r.dup ? `중복 → +${r.points}P` : '획득!'}</div></div>`).join('')}</div>
     <p style="text-align:center">${pk.points ? `중복 카드가 <b>${pk.points} 포인트</b>로 바뀌었어요.` : '모두 컬렉션에 추가됐어요.'} 보유 포인트: <b data-id="points">${P.points}</b></p>
     <div class="stack" style="margin-top:auto">
@@ -272,6 +293,7 @@ function render() {
   if (ui.screen !== 'battle') document.querySelectorAll('.banner').forEach(e => e.remove());
   if (app.dataset.screen !== ui.screen) { app.dataset.screen = ui.screen; app.innerHTML = html; window.scrollTo(0, 0); }
   else patch(app, html);
+  document.body.classList.toggle('felt', ui.screen === 'home' || ui.screen === 'battle');
   renders++;
   if (ui.replay) { const f = ui.replay.frames[ui.replay.i]; if (f.fx && f.fx.length && !f.shown) { f.shown = true; showFx(f.fx); } }
   else if (ui.battle && ui.battle.fx && ui.battle.fx.length) showFx(ui.battle.fx.splice(0));
@@ -357,6 +379,7 @@ function finishBattle() {
   ui.showLog = false;
   ui.battle = null; ui.sel = null; ui.screen = 'result';
   persist();
+  sfx(won ? 'win' : 'lose');
 }
 
 // ---------- 입력 (터치/클릭 공용) ----------
@@ -365,8 +388,9 @@ app.addEventListener('click', e => {
   const act = el.dataset.act, id = el.dataset.id, i = el.dataset.i;
   if (ui.replay && act !== 'skip') return; // AI 턴 재생 중엔 건너뛰기만
   const st = ui.battle;
+  let cue = null;
   switch (act) {
-    case 'go': ui.screen = el.dataset.to; break;
+    case 'go': ui.screen = el.dataset.to; ui.zoom = null; break;
     case 'howto':
       toast('마나 매 턴 +1(최대 6). 유닛은 다음 턴부터 공격(🐾야생은 소환 턴에 유닛 공격). 🛡️수호부터 공격. 🔥소환 시 1 피해, 🌑공격 시 체력 +1, ⚙️손패 2장 이하면 소환 후 1장 드로우.'); return;
     case 'inc': if (G.canAddToDeck(P, id)) { P.deck.push(id); P.deck.sort((a, b) => G.CARD[a].cost - G.CARD[b].cost); persist(); } break;
@@ -404,20 +428,32 @@ app.addEventListener('click', e => {
     case 'buy': if (G.buyCard(P, id)) { persist(); toast(`${G.CARD[id].name} 구매!`); announce(P.lastRewards); delete P.lastRewards; } break;
     case 'battle':
       if (!G.validateDeck(P.deck, P.collection).ok) { ui.screen = 'deck'; break; }
-      ui.battle = G.newBattle(P.deck, P, rng); ui.sel = null; ui.aim = null; ui.replay = null; ui.screen = 'battle'; persist(); setTimeout(myTurnBanner, 30); break;
+      ui.battle = G.newBattle(P.deck, P, rng); ui.sel = null; ui.aim = null; ui.replay = null; ui.screen = 'battle'; persist(); setTimeout(myTurnBanner, 30); cue = 'draw'; break;
     case 'play': {
-      const k = Number(i); ui.sel = null;
-      if (G.spellTarget(st.p.hand[k])) { ui.aim = ui.aim === k ? null : k; break; }
-      ui.aim = null; G.playCard(st, 'p', k); break;
+      const k = Number(i); const cid = st.p.hand[k]; ui.sel = null;
+      if (G.spellTarget(cid)) { ui.aim = ui.aim === k ? null : k; cue = 'click'; break; }
+      ui.aim = null; G.playCard(st, 'p', k);
+      cue = G.isSpell(cid) && G.CARD[cid].effect && G.CARD[cid].effect.healAll ? 'heal' : G.isSpell(cid) ? 'spell' : 'summon';
+      break;
     }
-    case 'cancelaim': ui.aim = null; break;
+    case 'cancelaim': ui.aim = null; cue = 'click'; break;
     case 'selunit':
-      if (ui.aim != null) { if (G.spellTarget(st.p.hand[ui.aim]) === 'ally' && G.playCard(st, 'p', ui.aim, Number(i))) ui.aim = null; break; }
-      ui.sel = ui.sel === Number(i) ? null : Number(i); break;
+      if (ui.aim != null) {
+        const cid = st.p.hand[ui.aim];
+        if (G.spellTarget(cid) === 'ally' && G.playCard(st, 'p', ui.aim, Number(i))) {
+          ui.aim = null; cue = G.CARD[cid].effect && G.CARD[cid].effect.healAll ? 'heal' : 'spell';
+        }
+        break;
+      }
+      ui.sel = ui.sel === Number(i) ? null : Number(i); cue = 'click'; break;
     case 'hit':
-      if (ui.aim != null) { if (i !== 'hero' && G.spellTarget(st.p.hand[ui.aim]) === 'enemy' && G.playCard(st, 'p', ui.aim, Number(i))) ui.aim = null; break; }
+      if (ui.aim != null) {
+        const cid = st.p.hand[ui.aim];
+        if (i !== 'hero' && G.spellTarget(cid) === 'enemy' && G.playCard(st, 'p', ui.aim, Number(i))) { ui.aim = null; cue = 'spell'; }
+        break;
+      }
       if (ui.sel == null) return;
-      if (G.attack(st, 'p', ui.sel, i === 'hero' ? 'hero' : Number(i))) { ui.sel = null; if (navigator.vibrate) navigator.vibrate(20); }
+      if (G.attack(st, 'p', ui.sel, i === 'hero' ? 'hero' : Number(i))) { ui.sel = null; cue = 'hit'; if (navigator.vibrate) navigator.vibrate(20); }
       break;
     case 'end':
       ui.sel = null; ui.aim = null;
@@ -429,15 +465,21 @@ app.addEventListener('click', e => {
       if (!st.winner) setTimeout(myTurnBanner, 0);
       break;
     case 'skip': endReplay(); return;
-    case 'filter': ui.filter = ui.filter === id ? 'all' : id; break;
+    case 'filter': ui.filter = ui.filter === id ? 'all' : id; ui.zoom = null; break;
     case 'picktier': P.pickTier = Number(i) === G.aiTier(P) ? null : Number(i); persist(); break;
-    case 'toggle': P.settings[id] = !P.settings[id]; persist(); break;
+    case 'toggle': P.settings[id] = !P.settings[id]; persist(); cue = 'click'; break;
+    case 'sound': toggleSound(); cue = 'click'; break;
+    case 'zoom': ui.zoom = id; cue = 'click'; break;
+    case 'zoomclose': if (e.target.closest('.box') && el.classList.contains('overlay')) return; ui.zoom = null; cue = 'click'; break;
     case 'forfeit': st.forfeit = true; st.winner = 'a'; break;
-    case 'openpack': { const pk = G.openPendingPack(P, rng); if (pk) { ui.lastPack = pk; ui.screen = 'pack'; persist(); announce(pk.rewards); } else ui.screen = 'home'; break; }
+    case 'openpack': { const pk = G.openPendingPack(P, rng); if (pk) { ui.lastPack = pk; ui.screen = 'pack'; persist(); announce(pk.rewards); cue = 'pack'; if (pk.cards.some(r => G.CARD[r.id].rarity === 'rare')) setTimeout(() => sfx('rare'), 280); } else ui.screen = 'home'; break; }
     case 'log': ui.showLog = true; break;
     case 'closelog': if (e.target.closest('.box') && el.classList.contains('overlay')) return; ui.showLog = false; break;
   }
   if (ui.battle && ui.battle.winner && !ui.replay) finishBattle();
+  else if (cue) sfx(cue);
+  else if (act !== 'howto' && act !== 'skip') sfx('click');
+  music();
   render();
 });
 

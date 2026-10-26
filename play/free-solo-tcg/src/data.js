@@ -118,8 +118,8 @@ export const AI_DECKS = [
   { name: '견습 소환사', hp: 13, deck: { imp: 2, spirit: 2, wolf: 2, golem: 2, archer: 3, guardian: 2, geardraw: 2, ember: 1 } },
   // 3차: 시작 덱으로 2단계 진입 완화 — 영웅 HP 14→12, 골렘 1장 → 정령·그림자 도적 (시작 덱 승률 5.0%→약 13%)
   { name: '숲의 수호자', hp: 12, deck: { imp: 3, spirit: 3, wolf: 3, archer: 1, golem: 1, guardian: 3, boar: 1, shade: 1 } },
-  // 5차(GrokBot): 기계 유닛 편입(드레이크·기어 골렘) + 새 카드 반영 후 재조정 — 옛/새 시뮬 AI 모두 단조 감소
-  { name: '화염 술사', deck: { imp: 3, wolf: 2, guardian: 1, drake: 2, knight: 1, fireblast: 2, boar: 1, geargolem: 1, darkbolt: 1, flameling: 1, phoenix: 1 } },
+  // 8차: 영웅 HP 14→15. 새 AI 2단계 84.3%와 3단계 82.7% 간격이 1.6%p라 한 칸만 올림
+  { name: '화염 술사', hp: 15, deck: { imp: 3, wolf: 2, guardian: 1, drake: 2, knight: 1, fireblast: 2, boar: 1, geargolem: 1, darkbolt: 1, flameling: 1, phoenix: 1 } },
   { name: '용의 군주', hp: 22, deck: { guardian: 1, knight: 3, drake: 1, phoenix: 3, ogre: 1, geargolem: 2, ember: 1, archer: 1, lich: 1, roar: 1, minorblast: 1 } },
   // 5단계(하드): 4단계 첫 승 후 해금. 큰 수치 대신 화염 견제 + 암흑 흡혈 + 대상 주문 조합
   // GrokBot 5차: ai:'smart' = 사람 근사 AI(src/smartai.js)로 둠 (다른 단계는 기존 규칙 AI)
