@@ -60,6 +60,9 @@ grep -rho "\"/[a-z_][^\"]*\"" play/prism-muse/index.html | grep -v "^\"/game-hub
 
 2026-10-26 [GrokBot] 갱신: 원본 `90a10a1`에서 기존 패치가 적용되지 않아 같은 원칙으로 다시 만든 패치로 교체(`git apply --check` 90a10a1 통과). 차이: 원본이 10-22부터 `/api/save` 실패 시 `prism-muse-backup`(변경마다 기록)으로 게스트 플레이하므로, 가짜 fetch의 GET이 `prism-muse-static-save`(3분 주기)보다 `prism-muse-backup`을 우선 반환 → 더 최신 진행이 덮이지 않음. Node 22 + `npm install` + `npx next build` 성공.
 
+2026-10-26 [GrokBot] 이미지 최적화(선택, 복사 후 실행): `python3 tools/optimize_prism_images.py play/prism-muse` — `muses*.png`, `fusion-*.png` 8장(합계 20.5MB)을 같은 해상도의 WebP q90(합계 2.5MB, PSNR 37~42dB)으로 만들고 `_next/static/chunks/*.css|js`의 참조를 `.webp`로 바꾼다. 원본 PNG는 지우지 않는다(이전 캐시 청크·롤백 호환). 재빌드하면 참조가 다시 .png가 되므로 이 단계를 다시 돌린다.
+
+
 ## 4) 마무리
 ```bash
 # games.json 해당 항목 "commit" 을 복사한 원본 커밋 7자리로 갱신
