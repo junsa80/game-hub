@@ -9,7 +9,7 @@
 |CACHE-03|beauty-deck|P1|sw.js의 k!==CACHE만으로 전체 캐시 삭제|낮음/소|sw.js, index.html, test/cache-isolation.cjs|자기 구버전 정리·타 게임 보존, 캐시 CORE 쿼리 일치·라이브 확인|수정·자동검사·라이브 파일 확인 완료 `81322d5`; 실기 오프라인 미검증|
 |AP-01|Arcana Pocket|P0|손상 active battle의 log 누락이 검증 통과 후 부팅 TypeError 발생; 정상 저장 재작성까지 진행됨|중간/소|play/arcana-pocket/app.js, tests/ui-smoke.cjs|손상 active battle 부팅/가져오기 실패를 원본 보존으로 처리; 정상/legacy 세이브 유지|완료: 135adc8; 손상14종/정상376상태/legacy 및 모바일3규격 실제 브라우저 복구 통과; 공개4파일 HTTP200·바이트 일치|
 |RT-01|룬 영토|P1|과거 모바일 증거 이후 현 요청 3크기 회귀 미실행|중간/중|tools/mobile-regression.cjs, src/app.js/style.css|360×800/390×844/412×915 주사위·한 화면·자동스크롤·터치·저장 통과|자동 모바일 검증 완료 b7357a3: 요청3+기존2규격 주사위/터치/스크롤/업데이트/2탭 PASS, pageerror0; 실물폰 미검증|
-|RT-02|룬 영토|P1|성장 fixture는 검증되나 공략 덱 효과 재측정 필요|중간/중|tools/compare-hints.mjs, progression-model.mjs|동일 소유 카드/held-out paired seeds로 S4/S6 일반·어려움 비교; 사람 승률로 오인 금지|대기|
+|RT-02|룬 영토|P1|기존 비교는 현재단계 보상 포함 재도전/스타터 기준; 성장 첫 돌파와 구분 필요|중간/중|tools/growth-hints.mjs, hint-deck.mjs, tests/hint-deck.test.mjs|이전단계 보유풀·held-out paired seeds로 S4/S6 일반/어려움 비교|측정·도구 수정 완료 828b8b9; S4 개선, S6 유의미한 개선 근거 없음;62테스트 PASS|
 |JR-01|경계의 서약|P1|자동장비·유니크·연계 던전 코드 확인, 최신 통합 실전 미검증|중간/중|src/native/, systems/EquipmentSystem.ts, tools/test-game.ts|실제 전투→보상→자동장비→영입정보 던전→저장 재로드; 유니크 재지급 없음|통합자동71/71 PASS; 인계2092c6c. 실제 엔진 경로 검증, 수동 플레이/실기 미검증|
 |ACT-01|아스터/헌트|P1|성장·영입은 코드 존재; 묵직한 전투의 실기 GL/입력 미검증|높음/중|dist/game.js, motion.js, tests/tempo.mjs; hunt main.js|구형 저장→강화/정화 유지, 입력 지연·부위 타격시점/프레임 측정|대기|
 |QA-01|전 게임|P1|일부 검사가 환경 자산/구 git 이력/Godot 부재로 중단|중간/중|각 tools/verify/tests, CI|불완전 소스 수신과 제품 결함 분리; 정확한 원본/의존성으로 재실행|부분 검증|
@@ -20,4 +20,6 @@
 
 이번 실행 순서: CACHE-01 → CACHE-02 → CACHE-03. 공유 origin 결함이므로 세 곳 모두 수정해야 재발하지 않는다. 같은 게임의 동시 변경은 원격 HEAD 검사로 충돌 감지하며, 강제 푸시하지 않는다.
 
-다음 3개: RT-02 S4/S6 paired seed 공략 덱 비교 → ACT-01 아스터/헌트 저장·전투 회귀 → DEP-01 Sites/복사본 배포 일치 확인. 사용자 요청으로 사용량 확인은 작업 중단 조건에서 제외.
+다음 3개: ACT-01 아스터/헌트 저장·전투 회귀 → DEP-01 Sites/복사본 배포 일치 확인 → RT-03 S6 선택 효용. 사용자 요청으로 사용량 확인은 작업 중단 조건에서 제외.
+
+|RT-03|룬 영토|P1|S6 자동 공략 교체가 성장 덱을 일관되게 개선하지 못함(RT-02 원시결과)|중간/중|tools/progression-model.mjs, hint-deck.mjs, HARD_HINTS|수입부족/침략실패/영토손실 계측 및 정상성장 수동 흐름 확인 후 선택 효용 개선; 신규 검증 시드 사용|대기; 적 약화/카드 수치 변경은 아직 근거 부족|
