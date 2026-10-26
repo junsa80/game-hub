@@ -1,5 +1,6 @@
 # 아르카나 포켓 Alpha 0.1
 
+
 Small standalone single-player TCG prototype. Do not fold into or replace other games without a user request.
 
 - Static app: dist/index.html, dist/style.css, dist/app.js
@@ -51,3 +52,7 @@ Observe human play before adding content. Prioritize meaningful attack/tempo dec
 - 증거: docs/qa/portfolio-20261026/{arcana-browser,arcana-save,rune-mobile,rune-unit,chronicle-integration}.txt 및 arcana-live.json.
 - 환경 보완: 공식 Playwright CDN 바이너리 수신 실패 후 npm @sparticuz/chromium153 패키지 사용. tar 소유권 설정 EINVAL은 임시 검사환경의 소유권 보존 없는 압축해제로 해결. 누락 소스/의존성/cwd 오류는 제품 결함과 분리함.
 - 남은 미검증: 실물 스마트폰, 사람 정상성장 클리어율, 모든 Sites 최신 배포 일치, 장시간 음향·전투 감각. 다음 우선순위 RT-02 → ACT-01 → DEP-01. 사용량 확인은 사용자 담당.
+
+## 2026-10-26 — 그림·소리
+- 카드 16장 그림 `art/<id>.jpg`. 능력·덱·보상 수치 그대로. 벡터 문양은 그림으로 교체.
+- `sfx/` 효과음 10 + 배경음. 헤더 「소리」는 `localStorage` `arcana-sfx`. 대전 저장과 분리.

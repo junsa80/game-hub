@@ -7,3 +7,8 @@
 .cover-hero{position:relative;isolation:isolate;margin:14px 0 20px;border:1px solid #8f845f;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#10232b}.cover-hero img{width:100%;height:100%;display:block;object-fit:cover}.cover-hero::after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#07151ed9);z-index:0}.cover-title{position:absolute;left:0;right:0;bottom:6%;text-align:center;z-index:1;text-shadow:0 3px 15px #000}.cover-title span{font-family:Georgia,serif;letter-spacing:7px;color:#eed9a6;font-size:15px}.cover-title h1{font-family:system-ui,sans-serif;font-weight:800;font-size:clamp(26px,5vw,54px);letter-spacing:3px;color:#fff2d4;margin:5px 0}.cover-title p{font-size:15px;margin:0;color:#e8e6d8}.cover-hero>small{position:absolute;right:10px;top:8px;z-index:1;background:#0b1929b8;padding:4px 7px;border-radius:4px;font-size:10px;letter-spacing:0}@media(max-width:600px){.cover-title span{font-size:10px;letter-spacing:4px}.cover-title h1{font-size:27px;letter-spacing:1px}.cover-title p{font-size:12px}.cover-title{bottom:5%}.cover-hero{margin:12px 0}.cover-hero>small{font-size:9px}}
 /* Keep paired combat stats on one line in narrow five-column boards. */
 .combat span{white-space:nowrap}.board .combat{gap:1px}.board .combat span{letter-spacing:-.4px}@media(max-width:600px){.board .combat{font-size:14px}.hand .combat{font-size:13px}.board .card{justify-content:center}.hand .card{min-height:116px}.hand-title{line-height:18px}}
+
+.card>.art{height:124px;overflow:hidden;border-radius:8px}
+.art img.paint{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
+.rewardchoices .art{height:72px}
+#snd{min-width:72px;margin-left:8px}
