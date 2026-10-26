@@ -1,0 +1,2 @@
+UI/save regression checks passed: corrupt-save preservation, incomplete deck guidance, retry, deliberate card use, victory pack CTA, already-decked reward retry, reload, legacy migration.
+Structured-save recovery: 14 corruptions rejected; 376 engine-generated active states preserved; imported log escaped.

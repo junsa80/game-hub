@@ -42,3 +42,12 @@ Observe human play before adding content. Prioritize meaningful attack/tempo dec
 - 저장/가져오기 공통 validate에서 대전 기록, 자원, 피로, 턴/승자, 유닛 종류·체력·UID·준비 상태, 전장/손패 상한, 성장 보상을 검사. 잘못된 값은 기존 원본 보존·복구 안내 경로로 처리. 전투 기록은 HTML이 아닌 텍스트로 표시.
 - 자동검사: 손상14종 거절/원문 보존, 고정 시드 실제 엔진 활성 대전376개 동일 복원, 기존12장 저장 이관·미완성 덱·보상·재도전 회귀 통과. 규칙/성장 및 AI300판 종료 통과. 사람 승률 자료가 아님.
 - 저장 키/버전/카드 능력/보상/정상 데이터는 변경하지 않음. 실물 폰 및 이번 변경의 실제 브라우저 복구 조작은 미검증.
+
+## 2026-10-26 — AP-01 / RT-01 / JR-01 후속 검증·인계
+- Arcana 실제 수정 커밋 135adc82568c5958bdb5ec9f1196ba5f090ff87f. 이번 후속 커밋에 tests/browser-save.cjs 추가. 360×800/390×844/412×915 Chromium153 터치 에뮬레이션에서 상세창, 활성 대전 재로드, 손상 원본 보존, 잘못된 가져오기 거절, 정상 백업 복구, 가로 넘침 없음, pageerror0 PASS.
+- Arcana 손상14종+고정 시드 정상376상태+기존 회귀 PASS. 공개 app.js?v=0.3.2 / Arcana index / hub sw / hub index HTTP200 및 바이트 일치. 초기 CDN 응답은 구버전이었으며 후속 확인 완료(arcana-live.json).
+- Rune 테스트 확장/자체3종 문서 커밋 b7357a3c9376eff7f0ad629aec2e582fe5756432. 요청3규격+기존2규격, 주사위/터치/전투스크롤, AI4조건, 명시적 업데이트/2탭 충돌 PASS. 단위61/61. 원본 eb23040 기준 art140파일 Git blob SHA 일치; 로컬 빌드 패키징 성공. 런타임 변경 없으므로 재배포 없음.
+- Chronicle 통합검사71/71, 자체 인계2092c6c2d2ef0d61e36e905c8583052582bbcd56. 자동장비/유니크/연계의뢰/저장 보존 통과. 원본e7315fa 제품 코드 수정 없음. 고공격력/직접 fixture 검사를 인간 난도 검증으로 해석하면 안 됨.
+- 증거: docs/qa/portfolio-20261026/{arcana-browser,arcana-save,rune-mobile,rune-unit,chronicle-integration}.txt 및 arcana-live.json.
+- 환경 보완: 공식 Playwright CDN 바이너리 수신 실패 후 npm @sparticuz/chromium153 패키지 사용. tar 소유권 설정 EINVAL은 임시 검사환경의 소유권 보존 없는 압축해제로 해결. 누락 소스/의존성/cwd 오류는 제품 결함과 분리함.
+- 남은 미검증: 실물 스마트폰, 사람 정상성장 클리어율, 모든 Sites 최신 배포 일치, 장시간 음향·전투 감각. 다음 우선순위 RT-02 → ACT-01 → DEP-01. 사용량 확인은 사용자 담당.

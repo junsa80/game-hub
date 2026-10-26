@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-26T13:06:26.562351+00:00",
+  "files": [
+    {
+      "path": "play/arcana-pocket/app.js?v=0.3.2",
+      "status": 200,
+      "match": true,
+      "sha256": "8b67392dd924c2d20edad98b1f672700962480b462688e5783633a975d48e2fe"
+    },
+    {
+      "path": "play/arcana-pocket/index.html?qa=135adc8",
+      "status": 200,
+      "match": true,
+      "sha256": "737f8f39cc67307314d30a6630dc6292ff499a7c9a7b75633464bb79fa017adb"
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "match": true,
+      "sha256": "293efe632bd285b9620f01630d95e2d9825535d001ebd27c38b5243765d6feed"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "match": true,
+      "sha256": "b8304c3b04d3c5ade1da5c0d6531cd99b5499141b62c6402454c617347a5676a"
+    }
+  ]
+}

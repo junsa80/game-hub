@@ -1,0 +1,17 @@
+AI chain 100 false PASS
+AI chain 100 true PASS
+AI chain 101 false PASS
+AI chain 101 true PASS
+dice/touch 360 800 PASS
+layout/touch 360 800 PASS
+dice/touch 390 844 PASS
+layout/touch 390 844 PASS
+dice/touch 412 915 PASS
+layout/touch 412 915 PASS
+dice/touch 360 640 PASS
+layout/touch 360 640 PASS
+dice/touch 412 740 PASS
+layout/touch 412 740 PASS
+explicit update/save PASS
+two-tab conflict/reload PASS
+browser errors 0

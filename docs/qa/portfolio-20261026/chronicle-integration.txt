@@ -1,0 +1,72 @@
+PASS 8 distinct returning identities, 12 connected regions
+PASS Korean visible data, all dialogue branches and actions retained
+PASS Every region has a quest, regional enemies and real boss
+PASS Only first region unlocked; first victory unlocks neighbors, final gate requires all 11
+PASS Party capacity four, no duplicates and hero cannot leave
+PASS New namespace isolates upstream records; save/load retains party, flags, gear and progress
+PASS Corrupted saves rejected without replacing live state
+PASS Backup validates format, rejects foreign keys and malformed payloads
+PASS Quest completion rewards exactly once
+PASS Baseline normal encounter can resolve to victory and grant actual EXP
+PASS Healing skill and equipment identity preserved
+PASS Equipment rejects unowned items, returns old item and cannot duplicate
+PASS Mobile reading exposes full dialogue and hides invisible canvas text
+PASS Mobile selection delegates to the existing handler once
+PASS Mobile world list exposes only accessible regions
+PASS Room exits connect, distance changes encounter risk, and routes finish
+PASS Battle interrupts a route once and resumes only its remaining distance
+PASS Room and chest flags survive the unchanged save format
+PASS Touch targets exclude KO, dispatch once, and stale taps are cancelled
+PASS Native battle target choices call the scene handler, not a synthetic battle
+PASS Fixed dungeon recruits require meeting, recovered record and liberation
+PASS A present same-world companion changes encounter conversation
+PASS Native new game preserves existing journeys with distinct save names
+PASS Native controller reads old field checkpoints and preserves the room/chest flags
+PASS Native destination travel gives one chest reward and prevents duplicate arrival
+PASS Native battle dispatches real commands, rejects stale taps and awards once
+PASS Native boss victory opens the region but does not auto-grant a recruit
+PASS Native dungeon meeting records dialogue completion and respects recruitment gates
+PASS Native battle returns to the unconsumed destination distance
+PASS Chapter 2: all room routes valid and party-specific dialogue is conditional
+PASS Chapter 2: entrance, meaningful choices, boss gate, reunion, unlock and save
+PASS Chapter 2: both choices persist once and completed legacy records keep eligibility
+PASS Chapter 3: all room routes valid and party-specific dialogue is conditional
+PASS Chapter 3: entrance, meaningful choices, boss gate, reunion, unlock and save
+PASS Chapter 3: both choices persist once and completed legacy records keep eligibility
+PASS Chapter 4: all room routes valid and party-specific dialogue is conditional
+PASS Chapter 4: entrance, meaningful choices, boss gate, reunion, unlock and save
+PASS Chapter 4: both choices persist once and completed legacy records keep eligibility
+PASS Chapter 5: all room routes valid and party-specific dialogue is conditional
+PASS Chapter 5: entrance, meaningful choices, boss gate, reunion, unlock and save
+PASS Chapter 5: both choices persist once and completed legacy records keep eligibility
+PASS Stage 5 relief costs cannot soft-lock, consume once, and survive interrupted dialogue/reload
+PASS Native effects wait for a gesture, cap voices and leave all BGM scheduling to GameScore
+PASS Companion quest lost_signal: ownership, chained clue, complete briefing and route gates
+PASS Companion quest lost_signal: actual guardian commands, epilogue reload, one reward, next link
+PASS Companion quest shield_roll: ownership, chained clue, complete briefing and route gates
+PASS Companion quest shield_roll: actual guardian commands, epilogue reload, one reward, next link
+PASS Companion quest cinder_well: ownership, chained clue, complete briefing and route gates
+PASS Companion quest cinder_well: actual guardian commands, epilogue reload, one reward, next link
+PASS Companion quest last_lamp: ownership, chained clue, complete briefing and route gates
+PASS Companion quest last_lamp: actual guardian commands, epilogue reload, one reward, next link
+PASS Companion quest defeat returns to main refuge without unlocking main regions or losing discovered routes
+PASS Auto equip distributes strongest owned copies to active party, preserves reserves and inventory counts
+PASS Auto equip swaps one owned copy without duplication; stat clamp and KO remain valid
+PASS Recovery equipment heals living wearer once on victory, caps at maxHP and reports actual recovery
+PASS Recovery effects stack only to ten percent and do not heal KO, fleeing or defeated characters
+PASS New recovery gear is buyable by progression and survives existing save/JSON format
+PASS Treasure pools have twelve eligible regional entries, meaningful stats, no unique random rewards
+PASS Random bonus rates use exact thresholds and uniformly reach each regional candidate
+PASS Relic duplicates convert to gold while rare equipment can drop for multiple party members
+PASS Unique rewards enforce every source condition, one lifetime claim, sale protection and old-record eligibility
+PASS Unique equipment stays singular through auto-equip, manual removal and repeated claims
+PASS Two owned relics can activate; third is rejected and compass raises only bonus chance
+PASS Active relics recover actual HP/MP on living party only and respect shared cap
+PASS Relics, active flags, equipped unique and claimed flags survive unchanged save/load
+PASS Actual chest/battle entry points roll once and unique rewards unlock through real campaign progression
+PASS Forty added regional gear and five cave uniques cover slots and real stat tradeoffs
+PASS Every region offers four expansion shop pieces with correct prices and only its level band
+PASS Loot targeting preserves 75/25 gear/relic split and restricts every regional equipment drop to selected slot
+PASS Loot focus and expanded equipped items survive save/load; new uniques integrate auto-equip safely
+PASS Cave guardian victory grants matching unique once and legacy defeated flag qualifies without replay
+Completed 71 integration checks.
