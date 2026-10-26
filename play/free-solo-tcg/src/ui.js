@@ -1,6 +1,7 @@
 // 화면(DOM) 담당. 규칙은 game.js, 데이터는 data.js, 저장은 save.js.
 import { CARDS, TAGS, RULES, POINT_VALUES, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS, HARD_DAILY_BONUS } from './data.js';
 import { artSVG } from './art.js';
+import { encodeDeck, importDeckCode } from './deckcode.js';
 import * as G from './game.js';
 import { loadProfile, saveProfile, SAVE_KEY } from './save.js';
 
@@ -108,7 +109,7 @@ function home() {
       ${P.pendingPacks > 0 ? `<button class="primary big" data-act="openpack">🎁 미개봉 팩 ${P.pendingPacks}개 열기</button>` : ''}
       <button class="${P.pendingPacks > 0 ? '' : 'primary '}big" data-act="battle" ${v.ok ? '' : 'disabled'}>⚔️ 대전 시작</button>
       ${v.ok ? '' : '<p class="err">덱을 먼저 맞춰 주세요.</p>'}
-      <div class="row"><button class="grow" data-act="go" data-to="deck" data-id="homedeck">🗂️ ${esc(P.decks[P.activeDeck].name)} (${P.deck.length}/${RULES.deckSize})</button>
+      <div class="row"><button class="grow homedeck" data-act="go" data-to="deck" data-id="homedeck">🗂️ <span class="dn">${esc(P.decks[P.activeDeck].name)}</span> (${P.deck.length}/${RULES.deckSize})</button>
       <button class="grow" data-act="go" data-to="shop">🛒 카드 구매</button></div>
       <div class="row"><button class="grow" data-act="go" data-to="collection">📖 도감 ${col.owned}/${col.total}</button>
       <button class="ghost" data-act="go" data-to="settings" aria-label="설정">⚙️ 설정</button><button class="ghost" data-act="howto" aria-label="규칙">ℹ️ 규칙</button></div>
@@ -143,7 +144,7 @@ function deckScreen() {
     <div class="slots" role="group" aria-label="덱 슬롯">${P.decks.map((d, i) => {
       const cards = i === P.activeDeck ? P.deck : d.cards; const okd = G.validateDeck(cards, P.collection).ok;
       return `<button class="chip slotchip${i === P.activeDeck ? ' on' : ''}" data-act="slot" data-i="${i}" aria-pressed="${i === P.activeDeck}" aria-label="${esc(d.name)} ${cards.length}장${okd ? '' : ' (미완성)'}"><span class="sn">${esc(d.name)}</span><span class="sc">${cards.length}${okd ? '' : '!'}</span></button>`;
-    }).join('')}<button class="chip ghost" data-act="rename" aria-label="덱 이름 바꾸기">✏️</button></div>
+    }).join('')}<button class="chip ghost" data-act="rename" aria-label="덱 이름 바꾸기">✏️</button><button class="chip ghost" data-act="codeopen" aria-label="덱 코드 공유">🔗</button></div>
     ${deckStats(P.deck)}
     ${filterBar()}
     <div class="list">${ids.filter(passFilter).map(id => {
@@ -154,7 +155,24 @@ function deckScreen() {
     }).join('')}</div>
     <div class="sticky stack">${v.ok ? '' : `<p class="err">${esc(v.errors[0])}</p>`}
       <div class="row"><button class="grow" data-act="auto">자동 편성</button><button class="grow" data-act="clear">비우기</button>
-      <button class="primary grow" data-act="go" data-to="home" ${v.ok ? '' : 'disabled'}>완료</button></div></div>`;
+      <button class="primary grow" data-act="go" data-to="home" ${v.ok ? '' : 'disabled'}>완료</button></div></div>${ui.code ? codeBox(v.ok) : ''}`;
+}
+// 덱 코드 창: 지금 덱 코드 복사 + 코드 붙여 넣어 가져오기(슬롯 선택)
+function codeBox(valid) {
+  const c = ui.code; const name = esc(P.decks[P.activeDeck].name);
+  return `<div class="overlay" data-act="codeclose"><div class="box codebox" role="dialog" aria-label="덱 코드">
+    <h2>덱 코드</h2>
+    ${valid ? `<p class="muted">${name}의 코드 — 복사해서 다른 기기나 친구에게 보내세요.</p>
+      <input class="codeout" data-id="codeout" readonly value="${esc(encodeDeck(P.deck))}" aria-label="내 덱 코드">
+      <button class="big" data-act="copycode">📋 코드 복사</button>`
+    : `<p class="err">${name}이(가) ${RULES.deckSize}장이 아니라 코드를 만들 수 없어요.</p>`}
+    <hr>
+    <p class="muted">받은 코드 붙여 넣기 → 가져올 슬롯 선택</p>
+    <input class="codein" data-id="codein" value="${esc(c.input || '')}" placeholder="FST1-…" aria-label="가져올 덱 코드" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <div class="slots" role="group" aria-label="가져올 슬롯">${P.decks.map((d, i) => `<button class="chip slotchip${i === c.slot ? ' on' : ''}" data-act="codeslot" data-i="${i}" aria-pressed="${i === c.slot}"><span class="sn">${esc(d.name)}</span></button>`).join('')}</div>
+    ${c.msg ? `<p class="${c.err ? 'err' : 'okmsg'}" data-id="codemsg" role="status">${c.msg}</p>` : ''}
+    <div class="row"><button class="grow" data-act="codeclose">닫기</button><button class="primary grow" data-act="importcode">가져오기</button></div>
+  </div></div>`;
 }
 
 function shopScreen() {
@@ -351,6 +369,27 @@ app.addEventListener('click', e => {
     case 'dec': { const k = P.deck.indexOf(id); if (k >= 0) { P.deck.splice(k, 1); persist(); } break; }
     case 'auto': P.deck = G.autoDeck(P.collection); persist(); break;
     case 'clear': P.deck = []; persist(); break;
+    case 'codeopen': ui.code = { slot: P.activeDeck, input: '', msg: '', err: false }; break;
+    case 'codeclose': if (e.target.closest('.box') && el.classList.contains('overlay')) return; ui.code = null; break;
+    case 'codeslot': ui.code.input = (app.querySelector('[data-id=codein]') || {}).value || ''; ui.code.slot = Number(i); break;
+    case 'copycode': {
+      const inp = app.querySelector('[data-id=codeout]'); const text = inp.value;
+      const fallback = () => { inp.focus(); inp.select(); let done = false; try { done = document.execCommand('copy'); } catch (_) {}
+        toast(done ? '덱 코드를 복사했어요' : '코드를 길게 눌러 직접 복사해 주세요 (선택됨)'); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => toast('덱 코드를 복사했어요'), fallback); else fallback();
+      return;
+    }
+    case 'importcode': {
+      const code = (app.querySelector('[data-id=codein]') || {}).value || '';
+      const r = importDeckCode(P, code, ui.code.slot);
+      ui.code.input = code;
+      if (!r.ok) { ui.code.msg = r.errors.map(esc).join('<br>'); ui.code.err = true; break; }
+      persist();
+      const nm = esc(P.decks[r.slot].name);
+      if (r.complete) { ui.code = null; toast(`${P.decks[r.slot].name}에 덱을 가져왔어요`); }
+      else { ui.code.msg = `${nm}에 보유한 ${r.cards.length}장만 넣었어요. 없는 카드: ${r.missing.map(m => `${esc(m.name)} ×${m.need}`).join(', ')} — 다른 카드로 채워 주세요.`; ui.code.err = true; ui.code.input = ''; }
+      break;
+    }
     case 'slot': if (G.switchDeck(P, Number(i))) { persist(); toast(`${P.decks[P.activeDeck].name} 불러옴`); } break;
     case 'rename': {
       const cur = P.decks[P.activeDeck].name;
