@@ -306,3 +306,4 @@
 
 - User approved main publication. Published via GitHub connector (shell push had no credentials); final source tree verified byte-for-byte. Bumped Pages asset queries0.3.1/hub1.5.22 to bypass cached incomplete first upload. Sites remains Alpha0.3; Pages query-only changes do not affect saves/rules.
 - 2026-10-26 13:40 CET (GrokBot): hunt-now `0213d32` v6.1.0 동료 레벨 체감 · beauty-deck `e3271b9` dist 단일 파일 경로 · fantasy-collab source `7ae8500` play `a884c03` (사냥꾼 부적 · 하르트만 · 승천 6+ · 붕대 14%). GrokBot only touched these three entries.
+- 2026-10-26 13:42 CET (GrokBot): fantasy-collab source `ac6a14e` play `75eea95` (승천 6 적 HP −18%, Grok 리뷰 FCB-ASC-06). GrokBot only touched this entry.
