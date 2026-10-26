@@ -217,8 +217,8 @@
 
 | id | 원본 저장소 | 반영 커밋 | 종류 | 저장 방식 |
 |---|---|---|---|---|
-| hunt-now | junsa80/hunt-now | `15df7e2` | GrokBot v6.0.2 (PR #2) | 로컬 저장(이 브라우저 localStorage) |
-| beauty-deck | junsa80/beauty-deck | `426496a` | GrokBot v1.5.1 · 링크 | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
+| hunt-now | junsa80/hunt-now | `0213d32` | GrokBot v6.1.0 (PR #4) | 로컬 저장(이 브라우저 localStorage) |
+| beauty-deck | junsa80/beauty-deck | `e3271b9` | GrokBot v1.5.1 · 링크 | 로컬 저장(localStorage) · 계정 동기화 없음, JSON 백업 가능 |
 | srpg-prototype | junsa80/srpg-prototype | `9afee37` | GrokBot 허브 표기(잿빛 왕관) | 로컬 저장(브라우저 IndexedDB) · 클라우드 미지원 |
 | rose-spire | junsa80/rose-spire | `6bf8f6f` | 선택기 안 복사본(public/) | 로컬 전용(이 브라우저 localStorage) · 계정 저장 없음 |
 | aster-hunt | junsa80/aster-hunt | `25836fb` | 링크(Sites 배포본 · 배포 커밋 미확인, 저장소 main 기준) | 로컬 저장(저장소에 서버 저장 코드 없음) |
@@ -305,3 +305,4 @@
 - Publication state: Sites Alpha0.3 deployed; GitHub main merge/push blocked by automatic approval review pending explicit user confirmation. Local review branch gpt/arcana-ui-cover-alpha03. Narrow-board stat wrapping fixed after 360x640 QA; screenshot docs/qa/arcana-mobile-alpha03.jpg.
 
 - User approved main publication. Published via GitHub connector (shell push had no credentials); final source tree verified byte-for-byte. Bumped Pages asset queries0.3.1/hub1.5.22 to bypass cached incomplete first upload. Sites remains Alpha0.3; Pages query-only changes do not affect saves/rules.
+- 2026-10-26 13:40 CET (GrokBot): hunt-now `0213d32` v6.1.0 동료 레벨 체감 · beauty-deck `e3271b9` dist 단일 파일 경로 · fantasy-collab source `7ae8500` play `a884c03` (사냥꾼 부적 · 하르트만 · 승천 6+ · 붕대 14%). GrokBot only touched these three entries.
