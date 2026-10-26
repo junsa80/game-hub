@@ -1,6 +1,6 @@
 # GrokBot 열린 PR 색인 — 2026-10-26 (GPT Astra 인계용)
 
-기준 시각: 2026-10-26 13:55 (Europe/Berlin). 대상: `grokbot/` 브랜치의 열린 PR, 7개 저장소 37개.
+기준 시각: 2026-10-26 13:55 (Europe/Berlin). 대상: `grokbot/` 브랜치의 열린 PR, 7개 저장소 37개 + 이 색인 이후 추가 3개(fogbound #16, aster-hunt #8, ember-tactics #8) = 40개, 그리고 이 색인 PR(game-hub #22).
 (game-hub #11·#12·#15·#17·#19·#20은 이미 병합됨, 제외.) GrokBot은 병합하지 않음 — 병합·sw.js·CACHE는 GPT 담당.
 
 확인 방법
@@ -20,8 +20,10 @@
 | #14 | #12 | 밀도 5 적 체력 보정 +10→+8 | dist/engine.mjs |
 | #15 | main | 휴대폰 터치 44px(거점·전투) | dist/mobile-fit.css |
 
-- 권장 순서: #11 → #10 → #12 → (#13, #14 base를 main으로 바꾼 뒤) #13 → #14 → #15. 충돌 없음.
-- 캐시(병합 후 한 번에, GPT): `dist/sw.js`의 `CACHE` 이름 올리기(#11이 `fogbound-v0.9.4-swsync-20261026`로 올림). #10이 index의 `app.mjs?v=0.9.0-tabs`로 바꾸므로 sw `FILES`의 `./app.mjs?v=0.9.0`도 맞춰야 함(#11의 sw-sync 테스트는 ignoreSearch 폴백이라 통과하지만 정확히 맞추는 게 안전). tactics.mjs·engine.mjs는 `?v` 없는 import라 CACHE 이름 변경으로만 갱신됨. `mobile-fit.css?v=0.7.4` → 새 값(index·sw 둘 다).
+| #16 | main | 후반 화면 점검: 상단 제목 링크 `a.brand` 31→44px | dist/mobile-fit.css(맨 위) |
+
+- 권장 순서: #11 → #10 → #12 → (#13, #14 base를 main으로 바꾼 뒤) #13 → #14 → #15 → #16. 충돌 없음(#16은 파일 맨 위, #15는 끝).
+- 캐시(병합 후 한 번에, GPT): `dist/sw.js`의 `CACHE` 이름 올리기(#11이 `fogbound-v0.9.4-swsync-20261026`로 올림). #10이 index의 `app.mjs?v=0.9.0-tabs`로 바꾸므로 sw `FILES`의 `./app.mjs?v=0.9.0`도 맞춰야 함(#11의 sw-sync 테스트는 ignoreSearch 폴백이라 통과하지만 정확히 맞추는 게 안전). tactics.mjs·engine.mjs는 `?v` 없는 import라 CACHE 이름 변경으로만 갱신됨. `mobile-fit.css?v=0.7.4` → 새 값(index·sw 둘 다, #15·#16).
 
 ## last-archive (7)
 | PR | base | 한 줄 목적 | 런타임 파일 |
@@ -56,9 +58,11 @@
 | #6 | main | 원정 핵심 루프 퍼즈(패배→재도전·기록·새로고침) | — |
 | #7 | main | 휴대폰 터치 44px | public/css/style.css |
 
-- 권장 순서: #5 → #6 → #7.
+| #8 | main | 중·후반 화면: 전투·결과 펼침(summary) 34~38→44px | public/css/style.css(맨 위) |
+
+- 권장 순서: #5 → #6 → #7 → #8. #8은 #7과 충돌 없음.
 - **충돌**: #5 × #6 — `tools/verify.mjs` 테스트 목록. 해결: 합치기(`tests/cloud-tabs.test.cjs` + `tests/core-loop-fuzz.test.cjs`). 풀고 verify 통과 확인.
-- 캐시: #5가 `cloud-save.js?v=5`로 올림. `css/style.css?v=0.17.1`(#7) 올려야 함.
+- 캐시: #5가 `cloud-save.js?v=5`로 올림. `css/style.css?v=0.17.1`(#7·#8) 올려야 함.
 
 ## aster-hunt (3)
 | PR | base | 한 줄 목적 | 런타임 파일 |
@@ -67,8 +71,10 @@
 | #6 | main | 오래된 탭 덮어쓰기 방지(AH-TABS) | dist/game.js, dist/index.html |
 | #7 | main | 휴대폰 터치 44px(선택 상자·전투 HUD) | dist/style.css |
 
-- 권장 순서: #5 → #6 → #7. 충돌 없음. 동료 중복 병합 동작은 어느 PR도 바꾸지 않음.
-- 캐시: #6이 `game.js?v=20261026-tabs`로 올림. `style.css?v=5`(#7) 올려야 함.
+| #8 | main | 중·후반 화면: 전투 HUD 체력 줄 10px·결과 동료 안내 10.8px → 12px | dist/style.css(맨 위) |
+
+- 권장 순서: #5 → #6 → #7 → #8. 충돌 없음. 동료 중복 병합 동작은 어느 PR도 바꾸지 않음.
+- 캐시: #6이 `game.js?v=20261026-tabs`로 올림. `style.css?v=5`(#7·#8) 올려야 함.
 
 ## rune-territories (7)
 | PR | base | 한 줄 목적 | 런타임 파일 |
@@ -184,5 +190,26 @@
 
 ---
 
+## 중·후반 화면 점검 (배치 6, 브라우저 에뮬레이션 360×800 / 390×844 / 412×915)
+기준: 44px 미만 터치, 12px 미만 글자, 가로 넘침, 한 화면 맞춤. 각 게임의 터치 PR(fogbound #15, aster #7, ember #7, rune #10) 적용 상태에서 측정.
+
+| 게임 | 본 화면 | 새로 찾은 것 | 조치 |
+|---|---|---|---|
+| fogbound | 봇 진행 저장으로 전투 1·2·3 진행 중, 보상, 경로, 승리, 패배 + 동료 선택·도움말·설정·전투 기록 창 | `a.brand` 31px | #16. 글자·넘침 0. 전투 지도+턴 종료는 첫 화면 안(360×800: 721px까지). 미검증: 적 선택 후 공격 예측 창 |
+| aster-hunt | 후반 저장(Lv30·12개 해금·동료 3)으로 메뉴 4개, 사냥 준비, 전투, 일시정지, 결과 | HUD 체력 줄 10px, 결과 안내 10.8px | #8. 터치 남은 것은 #7 범위. 넘침·잘린 버튼 0 |
+| ember-tactics | 연습 원정 → 편성 → 첫 전투 → 야영지 → 결과 | 펼침 34~38px | #8. **한 화면 맞춤 미달(수정 안 함)**: 전투 지도가 671px부터 시작 → 360×800 첫 화면에 지도 약 130px, 412×915 약 290px. 상단 제목 카드(0~207)와 명령 패널이 위에 있음. 전투 중 상단 카드 접기/지도·명령 순서 변경은 설계 판단이라 제안만 |
+| rune-territories | 일반 대전 자동 진행(최대 300단계): 주사위 후 판, 배치, 수비·공격 대결 창, 결과 시트, 강화, 보급 시트 | 대결 창 위 축소 판 타일 33×33(탭 = 칸 정보), 판 타일 글자 10px | 수정 안 함: 타일 10px는 CSS에 의도적으로 따로 지정됨(12px 규칙 뒤 예외). 축소 판 타일을 44px로 키우면 대결 창이 360×800 밖으로 밀림 — 설계 판단. 손패가 화면 오른쪽 밖(644~671px)으로 나가 닿지 않음 → #8(손패 스와이프)이 해결 대상 |
+
 ## 라이브 플레이 사이트 회귀 점검
-(아래 섹션은 점검 후 채움)
+읽기 전용, 클릭 없음. 390×844 브라우저 에뮬레이션, 로드 후 6초 대기, 콘솔 오류·페이지 오류·4xx/5xx·빈 화면 확인. 2026-10-26 오후(Europe/Berlin).
+
+| 사이트 | 결과 |
+|---|---|
+| game-hub, hunt-now, beauty-deck, srpg-prototype(캔버스 화면, 정상 표시), fantasy-collab-battle-play, aster-hunt, last-archive, fogbound-tactics, hub play/world-breaker·chronicle-crossing·free-solo-tcg·arcana-pocket | 오류 0, 요청 실패 0, 가로 넘침 0 |
+| rune-territories-play | 콘솔 404 1건 = `/favicon.ico`(github.io 루트). 기능 영향 없음. 배포 버전 = 원본 main(`app.js?v=0.1.53`, `style.css?v=0.1.52`) |
+| rose-spire, companion-guild, ember-tactics, prism-muse, muse-studio (chatgpt.site) | 로그인 안 한 상태라 `/api/cloud-save`(prism은 `/api/save`) 401 — 예상 동작. rose-spire·companion-guild는 `/favicon.ico` 404도 |
+
+- 페이지 오류(JS 예외) 0, 빈 화면 0.
+- 배포본과 원본 main의 `?v=` 비교: fogbound, last-archive, aster-hunt, companion-guild, ember-tactics, rune 모두 같음 — 열린 PR은 아직 배포 안 됨(병합 후 배포 필요).
+- fogbound 라이브는 #11 이전 sw.js라 프리캐시 `?v` 불일치가 그대로(#11 병합·배포로 해결).
+- 사소: favicon 404 3곳(rune-play, rose-spire, companion-guild) — 원하면 favicon 링크 추가로 콘솔 정리.
