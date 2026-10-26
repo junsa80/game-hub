@@ -1,6 +1,7 @@
 // localStorage 저장 (버전 키 + 안전 로드). 키를 바꾸지 말고, 구조가 바뀌면 migrate()에 단계 추가.
 import { CARD, newProfile, validateDeck, autoDeck, newRecords, newDeckSlots, deckSlotName, syncDeck, DECK_NAME_MAX } from './game.js';
 import { RULES, STARTER, POINT_VALUES, AI_DECKS } from './data.js';
+import { claimChallenges, emptyChallenges } from './challenges.js';
 
 export const SAVE_KEY = 'freeSoloTcg.save.v1';
 // [Grok] 단일 파일판(43441d7)이 쓰던 키. v1 저장이 없으면 여기서 컬렉션·포인트를 가져옴 (원본은 지우지 않음)
@@ -10,7 +11,9 @@ export const LEGACY_KEYS = ['fstcg'];
 // v3 (GrokBot 3차): settings{aiStep}, collectionRewards{complete, tags{}}, pickTier(재도전 상대 단계 | null) 추가.
 // v4 (GrokBot 5차): records{streak, bestStreak, hardDaily, tiers[{wins, streak, bestStreak, best{turns,hp}|null}]},
 //   decks[{name, cards}] (RULES.deckSlots개) + activeDeck. 기존 deck → 슬롯 1. profile.deck은 지금 쓰는 덱으로 계속 유지.
-export const SAVE_VERSION = 4;
+// v5 (GrokBot 7차): records.tiers[t].challenges { turns, hp } (단계별 도전 과제 1회 플래그).
+//   v4 이하에서 올라올 때: 저장된 최고 기록(best)이 목표를 이미 증명하면 그 과제를 1회 소급 지급 (loadProfile → retro).
+export const SAVE_VERSION = 5;
 const nat = (v, d = 0) => (Number.isFinite(v) && v >= 0 ? Math.floor(v) : d);
 
 function sanitize(raw) {
@@ -56,6 +59,8 @@ function sanitize(raw) {
     T.wins = nat(x.wins); T.streak = nat(x.streak); T.bestStreak = Math.max(nat(x.bestStreak), T.streak);
     const b = x.best;
     T.best = b && Number.isFinite(b.turns) && b.turns >= 1 && Number.isFinite(b.hp) && b.hp >= 0 ? { turns: Math.floor(b.turns), hp: Math.floor(b.hp) } : null;
+    const c = x.challenges && typeof x.challenges === 'object' ? x.challenges : {};
+    T.challenges = emptyChallenges(); for (const k of Object.keys(T.challenges)) T.challenges[k] = c[k] === true;
   });
   // 덱 슬롯: 저장된 슬롯이 없으면(v3 이하) 기존 deck을 슬롯 1로
   const legacyDeck = Array.isArray(raw.deck) ? raw.deck.filter(id => CARD[id]) : [];
@@ -90,7 +95,17 @@ function migrate(raw) {
   if (raw.version < 3) raw = { ...raw, version: 3, settings: { aiStep: true }, collectionRewards: { complete: false, tags: {} }, pickTier: null };
   // v3 → v4: 기록은 0부터 (과거 판은 턴 수를 몰라 소급 없음), 기존 덱 → 슬롯 1 (sanitize에서 decks 없으면 처리)
   if (raw.version < 4) { const { decks, activeDeck, records, ...rest } = raw; raw = { ...rest, version: 4 }; }
+  // v4 → v5: 도전 과제 플래그 없음으로 시작 (소급 지급은 loadProfile에서 sanitize 후 retroChallenges)
+  if (raw.version < 5) raw = { ...raw, version: 5 };
   return raw;
+}
+
+// v4 이하 저장: 단계별 최고 기록이 이미 목표를 만족하면 그 과제를 1회 지급 (포인트 가산, 목록 반환)
+export function retroChallenges(p) {
+  const out = [];
+  p.records.tiers.forEach((T, t) => { if (T.best) out.push(...claimChallenges(T, t, T.best)); });
+  p.points += out.reduce((a, c) => a + c.points, 0);
+  return out;
 }
 
 export function loadProfile(storage = globalThis.localStorage) {
@@ -106,10 +121,12 @@ export function loadProfile(storage = globalThis.localStorage) {
       }
       return { profile: newProfile(), status: 'new' };
     }
-    const raw = migrate(JSON.parse(txt));
-    const p = sanitize(raw);
+    const parsed = JSON.parse(txt);
+    const fromV = parsed && typeof parsed === 'object' ? parsed.version : undefined;
+    const p = sanitize(migrate(parsed));
     if (!p) throw new Error('bad save');
-    return { profile: p, status: 'loaded' };
+    const retro = fromV >= 5 ? [] : retroChallenges(p);
+    return { profile: p, status: 'loaded', retro };
   } catch (e) {
     try { storage && storage.setItem(SAVE_KEY + '.broken', storage.getItem(SAVE_KEY) || ''); } catch (_) {}
     return { profile: newProfile(), status: 'reset' };

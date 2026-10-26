@@ -96,6 +96,15 @@ export const FIRST_WIN_BONUS = [
 export const DAILY_FIRST_WIN = { packs: 1 };
 // GrokBot 5차: 하드(5단계, AI_DECKS의 hard) 반복 보상 — 로컬 날짜 기준 하루 1회 승리 시 (첫 승 보너스와 별개)
 export const HARD_DAILY_BONUS = { packs: 1, points: 30 };
+// GrokBot 7차: 단계별 도전 과제 (각 1회, index = AI 단계). underTurns = 이 턴 수 이내 승리, highHp = 남은 내 HP가 이 값 이상으로 승리.
+// 목표 도출(HANDOFF "도전 과제"): sim 조건(N=300, 진행 덱)에서 새(사람 근사) AI 승리 판의 턴 하위 25% 값, 남은 HP 상위 25% 값.
+export const CHALLENGES = [
+  { underTurns: 10, highHp: 11, points: 10 },
+  { underTurns: 7, highHp: 13, points: 15 },
+  { underTurns: 6, highHp: 12, points: 20 },
+  { underTurns: 7, highHp: 13, points: 25 },
+  { underTurns: 6, highHp: 6, points: 30 }
+];
 
 // 시작 보유 카드 (18장 → 16장 덱을 고를 여지가 있음)
 export const STARTER = {
