@@ -1,0 +1,23 @@
+[
+  {
+    "repo": "game-hub",
+    "before": 1,
+    "after": 0,
+    "output": "PASS cache isolation, foreign payload retention, current cache, cleanup, claim, idempotence; storage untouched\n",
+    "cacheVersion": "1.5.23"
+  },
+  {
+    "repo": "hunt-now",
+    "before": 1,
+    "after": 0,
+    "output": "PASS cache isolation, foreign payload retention, current cache, cleanup, claim, idempotence; storage untouched\n",
+    "cacheVersion": "6.1.1"
+  },
+  {
+    "repo": "beauty-deck",
+    "before": 1,
+    "after": 0,
+    "output": "PASS cache isolation, foreign payload retention, current cache, cleanup, claim, idempotence; storage untouched\n",
+    "cacheVersion": "1.5.2"
+  }
+]

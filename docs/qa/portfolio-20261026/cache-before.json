@@ -1,0 +1,17 @@
+[
+  {
+    "repo": "game-hub",
+    "exit": 1,
+    "output": "delete only own stale version\n+ actual - expected\n\n  [\n    'hub-vold',\n+   'hunt-now-v0',\n+   'beautydeck-v0',\n+   'fogbound-v0',\n+   'unrelated-cache'\n  ]\n\n"
+  },
+  {
+    "repo": "hunt-now",
+    "exit": 1,
+    "output": "delete only own stale version\n+ actual - expected\n\n  [\n    'hunt-now-vold',\n+   'hub-v0',\n+   'beautydeck-v0',\n+   'fogbound-v0',\n+   'unrelated-cache'\n  ]\n\n"
+  },
+  {
+    "repo": "beauty-deck",
+    "exit": 1,
+    "output": "delete only own stale version\n+ actual - expected\n\n  [\n    'beautydeck-vold',\n+   'hub-v0',\n+   'hunt-now-v0',\n+   'fogbound-v0',\n+   'unrelated-cache'\n  ]\n\n"
+  }
+]

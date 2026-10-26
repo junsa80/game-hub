@@ -1,0 +1,96 @@
+[
+  {
+    "id": "hunt-now",
+    "url": "https://junsa80.github.io/hunt-now/",
+    "status": 200,
+    "bytes": 2406
+  },
+  {
+    "id": "beauty-deck",
+    "url": "https://junsa80.github.io/beauty-deck/",
+    "status": 200,
+    "bytes": 1233
+  },
+  {
+    "id": "srpg-prototype",
+    "url": "https://junsa80.github.io/srpg-prototype/",
+    "status": 200,
+    "bytes": 5023
+  },
+  {
+    "id": "fantasy-collab",
+    "url": "https://junsa80.github.io/fantasy-collab-battle-play/",
+    "status": 200,
+    "bytes": 12276
+  },
+  {
+    "id": "rune-territories",
+    "url": "https://junsa80.github.io/rune-territories-play/",
+    "status": 200,
+    "bytes": 1169
+  },
+  {
+    "id": "rose-spire",
+    "url": "https://rose-spire-deck.sajuyoon.chatgpt.site",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "aster-hunt",
+    "url": "https://aster-hunt.sajuyoon.chatgpt.site",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "last-archive",
+    "url": "https://last-archive-alpha.sajuyoon.chatgpt.site",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "companion-guild",
+    "url": "https://companion-guild.sajuyoon.chatgpt.site",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "ember-tactics",
+    "url": "https://ember-tactics.sajuyoon.chatgpt.site",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "prism-muse",
+    "url": "https://prism-muse-match.sajuyoon.chatgpt.site",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "muse-studio",
+    "url": "https://muse-studio-clicker.sajuyoon.chatgpt.site",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "fogbound-tactics",
+    "url": "https://fogbound-tactics-remake.sajuyoon.chatgpt.site",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "id": "world-breaker",
+    "url": "https://junsa80.github.io/game-hub/play/world-breaker/",
+    "status": 200,
+    "bytes": 9479
+  },
+  {
+    "id": "chronicle-crossing",
+    "url": "https://junsa80.github.io/game-hub/play/chronicle-crossing/",
+    "status": 200,
+    "bytes": 1274
+  },
+  {
+    "id": "free-solo-tcg",
+    "url": "https://junsa80.github.io/game-hub/play/free-solo-tcg/",
+    "status": 200,
+    "bytes": 680
+  },
+  {
+    "id": "arcana-pocket",
+    "url": "https://junsa80.github.io/game-hub/play/arcana-pocket/",
+    "status": 200,
+    "bytes": 1027
+  }
+]

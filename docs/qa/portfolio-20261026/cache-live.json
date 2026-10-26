@@ -1,0 +1,56 @@
+{
+  "checkedAtUTC": "2026-10-26T12:55:12.930555+00:00",
+  "results": [
+    {
+      "repo": "game-hub",
+      "checks": [
+        {
+          "file": "sw.js",
+          "status": 200,
+          "matches": true,
+          "sha256": "ebf2855a4ca3efeb4074b2247d2eab653bc3e868d4915c3ba52a24d7068eb2c1"
+        },
+        {
+          "file": "index.html",
+          "status": 200,
+          "matches": true,
+          "sha256": "048fd883c4f7a536adb770e5bb0c827453c6d545af3f403e8e561fc895f73594"
+        }
+      ]
+    },
+    {
+      "repo": "hunt-now",
+      "checks": [
+        {
+          "file": "sw.js",
+          "status": 200,
+          "matches": true,
+          "sha256": "878927ede4091d544d463dcd65baee8c20e43df84759839255bbb6ee23e02a5f"
+        },
+        {
+          "file": "index.html",
+          "status": 200,
+          "matches": true,
+          "sha256": "1437dabe85febfe46c8c1f1bb14fdd734411f29860428110f22146b8415df4d2"
+        }
+      ]
+    },
+    {
+      "repo": "beauty-deck",
+      "checks": [
+        {
+          "file": "sw.js",
+          "status": 200,
+          "matches": true,
+          "sha256": "8ee88f73e1b3a7db823ce6ec1d2e24bea878aaa19398fdb3247963f8e24a868f"
+        },
+        {
+          "file": "index.html",
+          "status": 200,
+          "matches": true,
+          "sha256": "c97f31922e8d2dfa7765fe9714c9019a8bda4136d32ca618974e3951e0b6d5db"
+        }
+      ]
+    }
+  ]
+}
