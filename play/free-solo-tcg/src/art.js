@@ -41,7 +41,6 @@ export const ART = {
   flameling: { a: '#ffe27a', d: flame(24, 20, .9) + '<circle class="a" cx="15" cy="11" r="1.6"/><circle class="a" cx="33" cy="9" r="1.2"/>' },
   nightshade: { a: '#c9b6ff', d: '<path class="m" d="M24 3c7 3 10 9 10 16 0 4-2 8-4 10H18c-2-2-4-6-4-10 0-7 3-13 10-16z"/><path class="k" d="M18 17c2-2 4-2 6 0 2-2 4-2 6 0-2 3-10 3-12 0z"/><path class="a" d="M24 22l1.5 5h-3z"/>' },
   minorblast: { a: '#ffe27a', d: '<path class="m" d="M24 6l3 6 6-2-2 6 6 3-6 2 2 6-6-2-3 6-3-6-6 2 2-6-6-2 6-3-2-6 6 2z"/><circle class="a" cx="24" cy="17" r="3"/>' },
-  // 제안 카드(태엽 쥐, HANDOFF 'GrokBot 5차 제안') — data.js에 들어오면 바로 쓰임
   cogmouse: { a: '#ffd166', d: '<path class="m" d="M10 24c0-7 6-11 13-11s11 4 13 9c-6 3-18 4-26 2z"/><circle class="m" cx="17" cy="12" r="3.5"/><circle class="m" cx="25" cy="11" r="3.5"/><circle class="k" cx="13" cy="20" r="1.2"/>' + gear(38, 13, 3, 'a') + '<path class="k" d="M36 22c3 1 6 0 7-3" fill="none" stroke-width="1.4"/>' }
 };
 export function artSVG(id, tag, spell, fallback = '') {

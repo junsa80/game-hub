@@ -35,7 +35,9 @@ export const CARDS = [
   { id: 'geargolem', name: '기어 골렘', cost: 3, atk: 2, hp: 5, rarity: 'common', tag: '기계' },
   { id: 'flameling', name: '화염 새끼', cost: 1, atk: 1, hp: 1, rarity: 'common', tag: '화염' },
   { id: 'nightshade', name: '밤그늘 도적', cost: 3, atk: 3, hp: 3, rarity: 'rare', tag: '암흑' },
-  { id: 'minorblast', kw: '전체 1', name: '소규모 폭발', type: 'spell', cost: 2, rarity: 'common', tag: '화염', effect: { aoe: 1 }, power: 4, text: '상대 유닛 전체에 1 피해' }
+  { id: 'minorblast', kw: '전체 1', name: '소규모 폭발', type: 'spell', cost: 2, rarity: 'common', tag: '화염', effect: { aoe: 1 }, power: 4, text: '상대 유닛 전체에 1 피해' },
+  // 6차(사용자 승인, GrokBot 5차 제안 반영): 1마나 기계 — 손패가 마른 후반에 내면 정비로 1장 보충. 일반 유닛이라 kw/text 없음(태그 kw '정비' 표시)
+  { id: 'cogmouse', name: '태엽 쥐', cost: 1, atk: 1, hp: 2, rarity: 'common', tag: '기계' }
 ];
 
 // 태그 효과 (유닛만). 수치는 RULES의 burnOnSummon / lifesteal 참고. kw = 카드 앞면에 보이는 한 단어 (카드에 kw가 있으면 그것 우선)

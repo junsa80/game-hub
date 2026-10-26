@@ -45,6 +45,14 @@ button.ghost{background:rgba(255,255,255,.06);border:1px solid var(--line)}
 .slotchip{flex:1;min-width:0;gap:4px;padding:6px 8px}
 .slotchip .sn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .slotchip .sc{font-size:14px;opacity:.9;flex:none}
+/* 6차: 덱 코드 창, 홈 덱 버튼 한 줄 */
+.codebox{display:flex;flex-direction:column;gap:8px;text-align:left;max-height:92vh;overflow-y:auto}
+.codebox input{width:100%;min-height:48px;font:inherit;font-size:16px;border-radius:12px;border:1px solid var(--line);background:#1b1733;color:#fff;padding:8px 10px}
+.codebox .codeout{font-family:ui-monospace,Menlo,monospace;font-size:14px}
+.codebox hr{border:0;border-top:1px solid var(--line);width:100%;margin:4px 0}
+.okmsg{color:var(--good);font-size:14px}
+.homedeck{display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;min-width:0;overflow:hidden}
+.homedeck .dn{overflow:hidden;text-overflow:ellipsis;min-width:0}
 /* ---------- 카드 앞면 ---------- */
 .card{--frame:#c9c3e3;container-type:inline-size;position:relative;width:100%;aspect-ratio:3/4;min-height:100px;border-radius:12px;padding:4px;background:linear-gradient(170deg,var(--c) 0%,color-mix(in srgb,var(--c) 45%,#2a2446) 55%,#2a2446 100%);border:3px solid var(--frame);display:flex;flex-direction:column;align-items:stretch;color:#fff;overflow:hidden;box-shadow:inset 0 0 0 1px #0006,0 2px 6px #0005}
 .card.rare{--frame:var(--gold);box-shadow:inset 0 0 0 1px #0006,inset 0 0 12px #ffd16666,0 0 8px #ffd16677}
