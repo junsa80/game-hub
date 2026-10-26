@@ -2,11 +2,12 @@
 import { CARDS, TAGS, RULES, POINT_VALUES, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS, HARD_DAILY_BONUS } from './data.js';
 import { artSVG } from './art.js';
 import { encodeDeck, importDeckCode } from './deckcode.js';
+import { challengeStatus } from './challenges.js';
 import * as G from './game.js';
 import { loadProfile, saveProfile, SAVE_KEY } from './save.js';
 
 const app = document.getElementById('app');
-const { profile: P, status } = loadProfile();
+const { profile: P, status, retro = [] } = loadProfile();
 let rng = G.makeRng(P.seed);
 const ui = { screen: 'home', battle: null, sel: null, aim: null, replay: null, filter: 'all', lastPack: null, lastResult: null, deckErr: [], showLog: false };
 const STEP_MS = 520; // AI 턴 단계별 보기: 행동 사이 간격
@@ -78,7 +79,9 @@ function recordPanel(bt) {
   return `<div class="recs" data-id="records">
     <div><span class="muted">${bt + 1}단계 최고</span><b data-id="recbest">${recText(T.best)}</b></div>
     <div><span class="muted">${bt + 1}단계 연승</span><b data-id="rectier">${T.streak}<small> / 최고 ${T.bestStreak}</small></b></div>
-    <div><span class="muted">전체 연승</span><b data-id="recall">${R.streak}<small> / 최고 ${R.bestStreak}</small></b></div></div>`;
+    <div><span class="muted">전체 연승</span><b data-id="recall">${R.streak}<small> / 최고 ${R.bestStreak}</small></b></div></div>
+    <div class="chall" data-id="chall" aria-label="${bt + 1}단계 도전 과제">${challengeStatus(P, bt).map(c =>
+      `<div class="${c.done ? 'done' : ''}" data-id="ch-${c.key}" aria-label="${esc(c.text)} ${c.done ? '달성' : '미달성'}"><span>${c.done ? '✔' : '🎯'} ${esc(c.text)}</span><small>${c.done ? '달성' : `+${c.points}P`}</small></div>`).join('')}</div>`;
 }
 
 let toastTimer;
@@ -248,7 +251,8 @@ function resultRecord(r) {
     : `<div><span class="muted">${name} 최고</span> <b>${recText(x.best)}</b>${r.won && r.info ? ` <span class="muted">· 이번 ${recText(r.info)}</span>` : ''}</div>`;
   const streak = r.won ? `<div data-id="resstreak">🔥 연승 <b>${x.streak}</b> <span class="muted">(최고 ${x.bestStreak} · ${name} ${x.tierStreak}연승)</span></div>`
     : `<div data-id="resstreak">${x.lostStreak ? `연승 ${x.lostStreak}에서 멈춤 · ` : ''}<span class="muted">최고 연승 ${x.bestStreak}</span></div>`;
-  return `<div class="resrec" data-id="resrec">${best}${streak}</div>`;
+  const ch = (r.challenges || []).map(c => `<div class="newbest" data-id="reschall">🎯 도전 달성: ${esc(c.text)} · +${c.points}P</div>`).join('');
+  return `<div class="resrec" data-id="resrec">${ch}${best}${streak}</div>`;
 }
 
 function packScreen() {
@@ -349,7 +353,7 @@ function finishBattle() {
   const won = ui.battle.winner === 'p';
   const info = { turns: ui.battle.turn, hp: Math.max(0, ui.battle.p.hp) };
   const r = G.recordResult(P, won, !!ui.battle.forfeit, ui.battle.tier ?? G.aiTier(P), G.localDay(), won ? info : null);
-  ui.lastResult = { won, points: r.points, packs: r.packs, bonuses: r.bonuses, record: r.record, info: won ? info : null };
+  ui.lastResult = { won, points: r.points, packs: r.packs, bonuses: r.bonuses, record: r.record, info: won ? info : null, challenges: r.challenges || [] };
   ui.showLog = false;
   ui.battle = null; ui.sel = null; ui.screen = 'result';
   persist();
@@ -452,3 +456,4 @@ render();
 if (loadRewards.length) setTimeout(() => announce(loadRewards), 50);
 if (status === 'reset') toast('저장 데이터를 읽지 못해 새로 시작했어요.');
 if (status === 'migrated') toast('이전 버전 컬렉션과 포인트를 가져왔어요.');
+if (retro.length) { persist(); setTimeout(() => toast(`🎯 기존 최고 기록으로 도전 과제 ${retro.length}개 달성 · +${retro.reduce((a, c) => a + c.points, 0)}P`), 80); }

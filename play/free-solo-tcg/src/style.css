@@ -45,6 +45,12 @@ button.ghost{background:rgba(255,255,255,.06);border:1px solid var(--line)}
 .slotchip{flex:1;min-width:0;gap:4px;padding:6px 8px}
 .slotchip .sn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .slotchip .sc{font-size:14px;opacity:.9;flex:none}
+/* 7차: 도전 과제 */
+.chall{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:0 0 6px}
+.chall div{display:flex;flex-direction:column;align-items:center;gap:1px;background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:5px 4px;font-size:14px;text-align:center;min-width:0}
+.chall div span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.chall small{font-size:14px;color:var(--gold)}
+.chall .done{background:#2f6b3f;border:1px solid var(--good)}.chall .done small{color:#c9ffd9}
 /* 6차: 덱 코드 창, 홈 덱 버튼 한 줄 */
 .codebox{display:flex;flex-direction:column;gap:8px;text-align:left;max-height:92vh;overflow-y:auto}
 .codebox input{width:100%;min-height:48px;font:inherit;font-size:16px;border-radius:12px;border:1px solid var(--line);background:#1b1733;color:#fff;padding:8px 10px}

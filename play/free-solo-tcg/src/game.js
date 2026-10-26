@@ -5,6 +5,7 @@
 // 승리 시 팩 1개(3장) + 단계 첫 승·일일 첫 승 보너스 팩, 보유 3장 초과분은 포인트로 전환, 포인트로 카드 구매.
 import { CARDS, TAGS, POINT_VALUES, BUY_COST, RULES, STARTER, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS, HARD_DAILY_BONUS } from './data.js';
 import { smartTurn } from './smartai.js';
+import { claimChallenges, emptyChallenges } from './challenges.js';
 
 export const CARD = Object.fromEntries(CARDS.map(c => [c.id, c]));
 export const isSpell = id => CARD[id] && CARD[id].type === 'spell';
@@ -46,7 +47,7 @@ export function newProfile(seed = Date.now()) {
 }
 // v4: 재도전 기록 — 단계별 최고 기록(적은 턴 → 남은 HP 많은 순)·연승(현재/최고, 단계별·전체)·하드 일일 보너스 날짜
 export function newRecords() {
-  return { streak: 0, bestStreak: 0, hardDaily: '', tiers: AI_DECKS.map(() => ({ wins: 0, streak: 0, bestStreak: 0, best: null })) };
+  return { streak: 0, bestStreak: 0, hardDaily: '', tiers: AI_DECKS.map(() => ({ wins: 0, streak: 0, bestStreak: 0, best: null, challenges: emptyChallenges() })) };
 }
 // v4: 덱 슬롯. profile.deck = 지금 쓰는 덱(편집 대상), decks[activeDeck].cards 와는 저장·전환 때 맞춤 (syncDeck)
 export const deckSlotName = i => `덱 ${i + 1}`;
@@ -202,10 +203,10 @@ export const betterRecord = (a, b) => !b || a.turns < b.turns || (a.turns === b.
 export const hardDailyAvailable = (profile, day = localDay()) => !((profile.records || {}).hardDaily === day);
 export function recordResult(profile, won, forfeit = false, tier = battleTier(profile), day = localDay(), info = null) {
   const R = profile.records = profile.records || newRecords();
-  while (R.tiers.length < AI_DECKS.length) R.tiers.push({ wins: 0, streak: 0, bestStreak: 0, best: null });
+  while (R.tiers.length < AI_DECKS.length) R.tiers.push({ wins: 0, streak: 0, bestStreak: 0, best: null, challenges: emptyChallenges() });
   const T = R.tiers[tier];
   if (won) {
-    const r = { points: RULES.winPoints, packs: 1, bonuses: [] };
+    const r = { points: RULES.winPoints, packs: 1, bonuses: [], challenges: [] };
     if (!Array.isArray(profile.tierFirstWins)) profile.tierFirstWins = AI_DECKS.map(() => false);
     if (!profile.tierFirstWins[tier]) {
       const b = FIRST_WIN_BONUS[tier] || { packs: 0, points: 0 };
@@ -230,6 +231,9 @@ export function recordResult(profile, won, forfeit = false, tier = battleTier(pr
     if (info && Number.isFinite(info.turns) && Number.isFinite(info.hp)) {
       const rec = { turns: Math.max(1, Math.floor(info.turns)), hp: Math.max(0, Math.floor(info.hp)) };
       if (betterRecord(rec, T.best)) { T.best = rec; newBest = true; }
+      // 7차: 단계별 도전 과제 (각 1회 포인트)
+      r.challenges = claimChallenges(T, tier, rec);
+      r.points += r.challenges.reduce((a, c) => a + c.points, 0);
     }
     r.record = { tier, newBest, prevBest, best: T.best, streak: R.streak, bestStreak: R.bestStreak, tierStreak: T.streak, tierBestStreak: T.bestStreak };
     profile.wins++; profile.points += r.points;
