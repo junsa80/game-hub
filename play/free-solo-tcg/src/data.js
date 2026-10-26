@@ -30,7 +30,12 @@ export const CARDS = [
   { id: 'geardraw', kw: '드로우 2', name: '기계 드로우', type: 'spell', cost: 2, rarity: 'common', tag: '기계', effect: { draw: 2 }, power: 5, text: '카드 2장 드로우' },
   // GrokBot 3차: 대상 지정 주문 2장 (레어 1, 일반 1). target: 'enemy' | 'ally' = 사용 시 유닛 1기를 골라야 함
   { id: 'darkbolt', kw: '단일 4', name: '암흑 화살', type: 'spell', cost: 2, rarity: 'rare', tag: '암흑', target: 'enemy', effect: { dmgUnit: 4 }, power: 6, text: '상대 유닛 1기에 4 피해' },
-  { id: 'roar', kw: '공격 +2', name: '야성의 포효', type: 'spell', cost: 2, rarity: 'common', tag: '야생', target: 'ally', effect: { buffAtk: 2 }, power: 3, text: '내 유닛 1기 공격력 +2 (이번 턴)' }
+  { id: 'roar', kw: '공격 +2', name: '야성의 포효', type: 'spell', cost: 2, rarity: 'common', tag: '야생', target: 'ally', effect: { buffAtk: 2 }, power: 3, text: '내 유닛 1기 공격력 +2 (이번 턴)' },
+  // Grok 5차: 컨텐츠 추가 — 기계 시너지 강화 + 화염/암흑 다양화 (일반 2, 레어 1, 주문 1)
+  { id: 'geargolem', name: '기어 골렘', cost: 3, atk: 2, hp: 5, rarity: 'common', tag: '기계' },
+  { id: 'flameling', name: '화염 새끼', cost: 1, atk: 1, hp: 1, rarity: 'common', tag: '화염' },
+  { id: 'nightshade', name: '밤그늘 도적', cost: 3, atk: 3, hp: 3, rarity: 'rare', tag: '암흑' },
+  { id: 'minorblast', kw: '전체 1', name: '소규모 폭발', type: 'spell', cost: 2, rarity: 'common', tag: '화염', effect: { aoe: 1 }, power: 4, text: '상대 유닛 전체에 1 피해' }
 ];
 
 // 태그 효과 (유닛만). 수치는 RULES의 burnOnSummon / lifesteal 참고. kw = 카드 앞면에 보이는 한 단어 (카드에 kw가 있으면 그것 우선)
@@ -65,6 +70,7 @@ export const RULES = {
   burnOnSummon: 1,    // 화염 유닛 소환 시 상대 영웅 피해
   lifesteal: 1,       // 암흑 유닛 공격 시 내 영웅 회복 (시작 HP를 넘지 않음)
   rushHitsHero: false, // 야생 돌진: 소환한 턴에는 유닛만 공격 (true면 영웅도 가능)
+  deckSlots: 3,       // GrokBot 5차: 저장 덱 슬롯 수 (기존 덱 → 슬롯 1)
   mechDrawHand: 2     // 기계(정비): 소환 후 손패가 이 값 이하면 1장 드로우. 카드 고유 fx.summonDraw가 있으면 대신 그것만 적용(중복 없음)
 };
 
@@ -86,6 +92,8 @@ export const FIRST_WIN_BONUS = [
 ];
 // 일일 첫 승: 기기 날짜(로컬) 기준 하루 첫 승리에 팩 추가
 export const DAILY_FIRST_WIN = { packs: 1 };
+// GrokBot 5차: 하드(5단계, AI_DECKS의 hard) 반복 보상 — 로컬 날짜 기준 하루 1회 승리 시 (첫 승 보너스와 별개)
+export const HARD_DAILY_BONUS = { packs: 1, points: 30 };
 
 // 시작 보유 카드 (18장 → 16장 덱을 고를 여지가 있음)
 export const STARTER = {
@@ -99,8 +107,10 @@ export const AI_DECKS = [
   { name: '견습 소환사', hp: 13, deck: { imp: 2, spirit: 2, wolf: 2, golem: 2, archer: 3, guardian: 2, geardraw: 2, ember: 1 } },
   // 3차: 시작 덱으로 2단계 진입 완화 — 영웅 HP 14→12, 골렘 1장 → 정령·그림자 도적 (시작 덱 승률 5.0%→약 13%)
   { name: '숲의 수호자', hp: 12, deck: { imp: 3, spirit: 3, wolf: 3, archer: 1, golem: 1, guardian: 3, boar: 1, shade: 1 } },
-  { name: '화염 술사', deck: { imp: 3, wolf: 2, archer: 2, blaze: 3, guardian: 2, drake: 2, knight: 1, fireblast: 1 } },
-  { name: '용의 군주', hp: 19, deck: { guardian: 3, knight: 2, wolf: 2, drake: 2, phoenix: 2, lich: 1, ogre: 1, fireblast: 1, golem: 2 } },
+  // 5차(GrokBot): 기계 유닛 편입(드레이크·기어 골렘) + 새 카드 반영 후 재조정 — 옛/새 시뮬 AI 모두 단조 감소
+  { name: '화염 술사', deck: { imp: 3, wolf: 2, guardian: 1, drake: 2, knight: 1, fireblast: 2, boar: 1, geargolem: 1, darkbolt: 1, flameling: 1, phoenix: 1 } },
+  { name: '용의 군주', hp: 22, deck: { guardian: 1, knight: 3, drake: 1, phoenix: 3, ogre: 1, geargolem: 2, ember: 1, archer: 1, lich: 1, roar: 1, minorblast: 1 } },
   // 5단계(하드): 4단계 첫 승 후 해금. 큰 수치 대신 화염 견제 + 암흑 흡혈 + 대상 주문 조합
-  { name: '심연의 마녀왕', hard: true, hp: 15, deck: { imp: 3, shade: 3, blaze: 2, darkbolt: 2, phoenix: 2, boar: 1, fireblast: 2, knight: 1 } }
+  // GrokBot 5차: ai:'smart' = 사람 근사 AI(src/smartai.js)로 둠 (다른 단계는 기존 규칙 AI)
+  { name: '심연의 마녀왕', hard: true, ai: 'smart', hp: 16, deck: { imp: 3, shade: 3, blaze: 3, darkbolt: 1, phoenix: 2, fireblast: 2, knight: 1, geargolem: 1 } }
 ];

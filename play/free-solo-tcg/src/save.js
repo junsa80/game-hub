@@ -1,5 +1,5 @@
 // localStorage 저장 (버전 키 + 안전 로드). 키를 바꾸지 말고, 구조가 바뀌면 migrate()에 단계 추가.
-import { CARD, newProfile, validateDeck, autoDeck } from './game.js';
+import { CARD, newProfile, validateDeck, autoDeck, newRecords, newDeckSlots, deckSlotName, syncDeck, DECK_NAME_MAX } from './game.js';
 import { RULES, STARTER, POINT_VALUES, AI_DECKS } from './data.js';
 
 export const SAVE_KEY = 'freeSoloTcg.save.v1';
@@ -8,7 +8,10 @@ export const LEGACY_KEYS = ['fstcg'];
 // v2 (GrokBot 2차): pendingPacks(미개봉 보상 팩), tierFirstWins(단계별 첫 승), lastDailyWin(YYYY-MM-DD) 추가.
 // 키는 그대로 v1 이름을 씀. v1 저장은 기본값으로 채워 그대로 이어짐.
 // v3 (GrokBot 3차): settings{aiStep}, collectionRewards{complete, tags{}}, pickTier(재도전 상대 단계 | null) 추가.
-export const SAVE_VERSION = 3;
+// v4 (GrokBot 5차): records{streak, bestStreak, hardDaily, tiers[{wins, streak, bestStreak, best{turns,hp}|null}]},
+//   decks[{name, cards}] (RULES.deckSlots개) + activeDeck. 기존 deck → 슬롯 1. profile.deck은 지금 쓰는 덱으로 계속 유지.
+export const SAVE_VERSION = 4;
+const nat = (v, d = 0) => (Number.isFinite(v) && v >= 0 ? Math.floor(v) : d);
 
 function sanitize(raw) {
   if (!raw || typeof raw !== 'object') return null;
@@ -43,8 +46,34 @@ function sanitize(raw) {
   p.collectionRewards = { complete: cr.complete === true, tags: {} };
   if (cr.tags && typeof cr.tags === 'object') for (const [t, v] of Object.entries(cr.tags)) if (v === true) p.collectionRewards.tags[t] = true;
   p.pickTier = Number.isInteger(raw.pickTier) && raw.pickTier >= 0 && raw.pickTier < AI_DECKS.length ? raw.pickTier : null;
-  p.deck = Array.isArray(raw.deck) ? raw.deck.filter(id => CARD[id]) : [];
-  if (!validateDeck(p.deck, p.collection).ok) p.deck = autoDeck(p.collection);
+  // v4 필드: 기록·연승
+  const rr = raw.records && typeof raw.records === 'object' ? raw.records : {};
+  p.records = newRecords();
+  p.records.streak = nat(rr.streak); p.records.bestStreak = Math.max(nat(rr.bestStreak), p.records.streak);
+  p.records.hardDaily = typeof rr.hardDaily === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(rr.hardDaily) ? rr.hardDaily : '';
+  p.records.tiers.forEach((T, t) => {
+    const x = Array.isArray(rr.tiers) && rr.tiers[t] && typeof rr.tiers[t] === 'object' ? rr.tiers[t] : {};
+    T.wins = nat(x.wins); T.streak = nat(x.streak); T.bestStreak = Math.max(nat(x.bestStreak), T.streak);
+    const b = x.best;
+    T.best = b && Number.isFinite(b.turns) && b.turns >= 1 && Number.isFinite(b.hp) && b.hp >= 0 ? { turns: Math.floor(b.turns), hp: Math.floor(b.hp) } : null;
+  });
+  // 덱 슬롯: 저장된 슬롯이 없으면(v3 이하) 기존 deck을 슬롯 1로
+  const legacyDeck = Array.isArray(raw.deck) ? raw.deck.filter(id => CARD[id]) : [];
+  p.decks = newDeckSlots();
+  p.decks.forEach((d, i) => {
+    const x = Array.isArray(raw.decks) ? raw.decks[i] : null;
+    if (x && typeof x === 'object') {
+      d.name = typeof x.name === 'string' && x.name.trim() ? x.name.trim().slice(0, DECK_NAME_MAX) : deckSlotName(i);
+      d.cards = Array.isArray(x.cards) ? x.cards.filter(id => CARD[id]).slice(0, RULES.deckSize) : [];
+    }
+  });
+  p.activeDeck = Number.isInteger(raw.activeDeck) && raw.activeDeck >= 0 && raw.activeDeck < p.decks.length ? raw.activeDeck : 0;
+  // 지금 덱 = 저장된 deck(편집 중 최신본). 없으면 활성 슬롯 내용
+  p.deck = Array.isArray(raw.deck) ? legacyDeck : p.decks[p.activeDeck].cards.slice();
+  if (!Array.isArray(raw.decks)) p.decks[0].cards = legacyDeck.slice();
+  // 슬롯 1(또는 v3 이하)의 덱이 깨졌으면 자동 편성. 다른 슬롯은 편집 중일 수 있으니 그대로 둠 (편성 화면에서 채움, 대전은 막힘)
+  if (!validateDeck(p.deck, p.collection).ok && p.activeDeck === 0) p.deck = autoDeck(p.collection);
+  syncDeck(p);
   return p;
 }
 
@@ -59,6 +88,8 @@ function migrate(raw) {
   }
   // v2 → v3: 설정 기본값, 도감 보상은 플래그 없이 시작 → 다음 checkCollection()에서 조건 충족분 1회 지급
   if (raw.version < 3) raw = { ...raw, version: 3, settings: { aiStep: true }, collectionRewards: { complete: false, tags: {} }, pickTier: null };
+  // v3 → v4: 기록은 0부터 (과거 판은 턴 수를 몰라 소급 없음), 기존 덱 → 슬롯 1 (sanitize에서 decks 없으면 처리)
+  if (raw.version < 4) { const { decks, activeDeck, records, ...rest } = raw; raw = { ...rest, version: 4 }; }
   return raw;
 }
 
@@ -86,6 +117,6 @@ export function loadProfile(storage = globalThis.localStorage) {
 }
 
 export function saveProfile(p, storage = globalThis.localStorage) {
-  try { storage.setItem(SAVE_KEY, JSON.stringify({ version: SAVE_VERSION, savedAt: Date.now(), ...p })); return true; }
+  try { syncDeck(p); storage.setItem(SAVE_KEY, JSON.stringify({ version: SAVE_VERSION, savedAt: Date.now(), ...p })); return true; }
   catch (e) { return false; }
 }

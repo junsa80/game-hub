@@ -1,5 +1,6 @@
 // 화면(DOM) 담당. 규칙은 game.js, 데이터는 data.js, 저장은 save.js.
-import { CARDS, TAGS, RULES, POINT_VALUES, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS } from './data.js';
+import { CARDS, TAGS, RULES, POINT_VALUES, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS, HARD_DAILY_BONUS } from './data.js';
+import { artSVG } from './art.js';
 import * as G from './game.js';
 import { loadProfile, saveProfile, SAVE_KEY } from './save.js';
 
@@ -33,7 +34,7 @@ function cardHTML(id, unit, extra = '') {
     : `<div class="st"><span class="atk${unit && unit.buff ? ' up' : ''}" aria-label="공격 ${atk}">${atk}</span><span class="hp${unit && hp < unit.maxHp ? ' hurt' : ''}" aria-label="체력 ${hp}">${hp}</span></div>`;
   return `<div class="card ${c.rarity}${spell ? ' spell' : ''}" style="--c:${t.color}" title="${esc(c.name)}">
     <div class="top"><span class="cost" aria-label="비용 ${c.cost}">${c.cost}</span>${c.rarity === 'rare' ? '<span class="gem" aria-label="레어">★</span>' : ''}<span class="tbadge">${icon(c.tag)}</span></div>${extra}
-    <div class="art">${icon(spell ? 'spell' : c.tag, 'big')}</div>
+    <div class="art">${artSVG(id, c.tag, spell, `<g class="m" transform="translate(14 6) scale(.83)">${SVG[spell ? 'spell' : c.tag] || ''}</g>`)}</div>
     <div class="name">${esc(c.name)}</div>
     ${kw ? `<div class="kw">${esc(kw)}</div>` : '<div class="kw blank"></div>'}
     ${st}</div>`;
@@ -65,7 +66,19 @@ function deckStats(deck) {
     <div class="tagsum"><div>${top.map(([t, n]) => `<span class="pill">${TAGS[t].icon}${n}</span>`).join(' ') || '<span class="muted">비어 있음</span>'}${spells ? ` <span class="pill">✨주문 ${spells}</span>` : ''}</div>
     ${main ? `<div class="muted">주력 ${TAGS[main].icon}${esc(main)} — ${esc((TAGS[main].text || '').split(': ').pop())}</div>` : ''}</div></div>`;
 }
-const bonusText = b => b.kind === 'daily' ? `🌞 오늘의 첫 승: 팩 +${b.packs}` : `⭐ ${b.name} 첫 승: 팩 +${b.packs}${b.points ? ` · +${b.points}P` : ''}`;
+const bonusText = b => b.kind === 'daily' ? `🌞 오늘의 첫 승: 팩 +${b.packs}`
+  : b.kind === 'hard' ? `🔥 하드 오늘의 승리: 팩 +${b.packs} · +${b.points}P`
+  : `⭐ ${b.name} 첫 승: 팩 +${b.packs}${b.points ? ` · +${b.points}P` : ''}`;
+// 최고 기록 한 줄: "7턴 · HP 5"
+const recText = b => (b ? `${b.turns}턴 · HP ${b.hp}` : '기록 없음');
+// 홈: 선택한 단계의 최고 기록·연승 + 전체 연승
+function recordPanel(bt) {
+  const R = P.records; const T = R.tiers[bt];
+  return `<div class="recs" data-id="records">
+    <div><span class="muted">${bt + 1}단계 최고</span><b data-id="recbest">${recText(T.best)}</b></div>
+    <div><span class="muted">${bt + 1}단계 연승</span><b data-id="rectier">${T.streak}<small> / 최고 ${T.bestStreak}</small></b></div>
+    <div><span class="muted">전체 연승</span><b data-id="recall">${R.streak}<small> / 최고 ${R.bestStreak}</small></b></div></div>`;
+}
 
 let toastTimer;
 function toast(msg) {
@@ -88,12 +101,14 @@ function home() {
     <div class="bonus" data-id="bonus">
       <div class="${G.dailyAvailable(P) ? 'on' : 'off'}" data-id="daily">${G.dailyAvailable(P) ? `🌞 오늘의 첫 승 보너스 가능 · 팩 +${DAILY_FIRST_WIN.packs}` : '🌞 오늘의 첫 승 보너스 받음 · 내일 다시'}</div>
       ${G.tierFirstAvailable(P, bt) ? `<div class="on" data-id="tierbonus">⭐ ${esc(tier.name)} 첫 승 보너스 · 팩 +${FIRST_WIN_BONUS[bt].packs} · +${FIRST_WIN_BONUS[bt].points}P</div>` : ''}
+      ${tier.hard ? `<div class="${G.hardDailyAvailable(P) ? 'on' : 'off'}" data-id="harddaily">${G.hardDailyAvailable(P) ? `🔥 하드 오늘의 승리 보너스 가능 · 팩 +${HARD_DAILY_BONUS.packs} · +${HARD_DAILY_BONUS.points}P` : '🔥 하드 오늘의 승리 보너스 받음 · 내일 다시'}</div>` : ''}
     </div>
+    ${recordPanel(bt)}
     <div class="stack" style="margin-top:auto">
       ${P.pendingPacks > 0 ? `<button class="primary big" data-act="openpack">🎁 미개봉 팩 ${P.pendingPacks}개 열기</button>` : ''}
       <button class="${P.pendingPacks > 0 ? '' : 'primary '}big" data-act="battle" ${v.ok ? '' : 'disabled'}>⚔️ 대전 시작</button>
       ${v.ok ? '' : '<p class="err">덱을 먼저 맞춰 주세요.</p>'}
-      <div class="row"><button class="grow" data-act="go" data-to="deck">🗂️ 덱 편성 (${P.deck.length}/${RULES.deckSize})</button>
+      <div class="row"><button class="grow" data-act="go" data-to="deck" data-id="homedeck">🗂️ ${esc(P.decks[P.activeDeck].name)} (${P.deck.length}/${RULES.deckSize})</button>
       <button class="grow" data-act="go" data-to="shop">🛒 카드 구매</button></div>
       <div class="row"><button class="grow" data-act="go" data-to="collection">📖 도감 ${col.owned}/${col.total}</button>
       <button class="ghost" data-act="go" data-to="settings" aria-label="설정">⚙️ 설정</button><button class="ghost" data-act="howto" aria-label="규칙">ℹ️ 규칙</button></div>
@@ -125,6 +140,10 @@ function deckScreen() {
   const v = G.validateDeck(P.deck, P.collection);
   const ids = CARDS.filter(c => P.collection[c.id]).map(c => c.id);
   return `<div class="bar"><h2>덱 편성</h2><span class="pill" data-id="deckcount">${P.deck.length}/${RULES.deckSize}장</span></div>
+    <div class="slots" role="group" aria-label="덱 슬롯">${P.decks.map((d, i) => {
+      const cards = i === P.activeDeck ? P.deck : d.cards; const okd = G.validateDeck(cards, P.collection).ok;
+      return `<button class="chip slotchip${i === P.activeDeck ? ' on' : ''}" data-act="slot" data-i="${i}" aria-pressed="${i === P.activeDeck}" aria-label="${esc(d.name)} ${cards.length}장${okd ? '' : ' (미완성)'}"><span class="sn">${esc(d.name)}</span><span class="sc">${cards.length}${okd ? '' : '!'}</span></button>`;
+    }).join('')}<button class="chip ghost" data-act="rename" aria-label="덱 이름 바꾸기">✏️</button></div>
     ${deckStats(P.deck)}
     ${filterBar()}
     <div class="list">${ids.filter(passFilter).map(id => {
@@ -197,10 +216,21 @@ function resultScreen() {
   return `<div class="hero-title result ${r.won ? 'win' : 'lose'}"><div class="logo">${r.won ? '🏆' : '💫'}</div><h1>${r.won ? '승리!' : '패배'}</h1>
     <p>${r.won ? `보상 팩 <b data-id="respacks">${r.packs}</b>개${r.points ? ` · 보너스 <b>+${r.points}P</b>` : ''}` : `${r.points ? `위로 포인트 +${r.points}. ` : ''}덱을 바꿔 다시 도전해 보세요.`}</p></div>
     ${bonus}
+    ${resultRecord(r)}
     <div class="stack" style="margin-top:auto">
     ${r.won ? `<button class="primary big" data-act="openpack">🎁 팩 열기 (${P.pendingPacks}개)</button>` : `<button class="primary big" data-act="battle">⚔️ 다시 대전</button>
       <div class="row"><button class="grow" data-act="go" data-to="deck">덱 편성</button><button class="grow" data-act="go" data-to="shop">카드 구매</button></div>
       <button class="ghost" data-act="go" data-to="home">홈</button>`}</div>`;
+}
+
+function resultRecord(r) {
+  const x = r.record; if (!x) return '';
+  const name = `${x.tier + 1}단계`;
+  const best = r.won && x.newBest ? `<div class="newbest" data-id="newbest">🏅 ${name} 새 최고 기록! ${recText(x.best)}${x.prevBest ? ` <span class="muted">(이전 ${recText(x.prevBest)})</span>` : ''}</div>`
+    : `<div><span class="muted">${name} 최고</span> <b>${recText(x.best)}</b>${r.won && r.info ? ` <span class="muted">· 이번 ${recText(r.info)}</span>` : ''}</div>`;
+  const streak = r.won ? `<div data-id="resstreak">🔥 연승 <b>${x.streak}</b> <span class="muted">(최고 ${x.bestStreak} · ${name} ${x.tierStreak}연승)</span></div>`
+    : `<div data-id="resstreak">${x.lostStreak ? `연승 ${x.lostStreak}에서 멈춤 · ` : ''}<span class="muted">최고 연승 ${x.bestStreak}</span></div>`;
+  return `<div class="resrec" data-id="resrec">${best}${streak}</div>`;
 }
 
 function packScreen() {
@@ -299,8 +329,9 @@ function showFx(events) {
 
 function finishBattle() {
   const won = ui.battle.winner === 'p';
-  const r = G.recordResult(P, won, !!ui.battle.forfeit, ui.battle.tier ?? G.aiTier(P));
-  ui.lastResult = { won, points: r.points, packs: r.packs, bonuses: r.bonuses };
+  const info = { turns: ui.battle.turn, hp: Math.max(0, ui.battle.p.hp) };
+  const r = G.recordResult(P, won, !!ui.battle.forfeit, ui.battle.tier ?? G.aiTier(P), G.localDay(), won ? info : null);
+  ui.lastResult = { won, points: r.points, packs: r.packs, bonuses: r.bonuses, record: r.record, info: won ? info : null };
   ui.showLog = false;
   ui.battle = null; ui.sel = null; ui.screen = 'result';
   persist();
@@ -320,6 +351,13 @@ app.addEventListener('click', e => {
     case 'dec': { const k = P.deck.indexOf(id); if (k >= 0) { P.deck.splice(k, 1); persist(); } break; }
     case 'auto': P.deck = G.autoDeck(P.collection); persist(); break;
     case 'clear': P.deck = []; persist(); break;
+    case 'slot': if (G.switchDeck(P, Number(i))) { persist(); toast(`${P.decks[P.activeDeck].name} 불러옴`); } break;
+    case 'rename': {
+      const cur = P.decks[P.activeDeck].name;
+      const n = window.prompt(`덱 이름 (최대 ${G.DECK_NAME_MAX}자)`, cur);
+      if (n != null && G.renameDeck(P, P.activeDeck, n)) persist();
+      break;
+    }
     case 'buy': if (G.buyCard(P, id)) { persist(); toast(`${G.CARD[id].name} 구매!`); announce(P.lastRewards); delete P.lastRewards; } break;
     case 'battle':
       if (!G.validateDeck(P.deck, P.collection).ok) { ui.screen = 'deck'; break; }

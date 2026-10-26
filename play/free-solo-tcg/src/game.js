@@ -3,7 +3,8 @@
 // 유닛은 소환된 턴에 공격 불가(야생=돌진 예외), 공격은 턴당 1회, 수호 유닛이 있으면 수호부터 공격,
 // 화염 유닛 소환 시 상대 영웅 1 피해, 암흑 유닛 공격 시 내 영웅 +1. 주문은 필드 칸을 쓰지 않음.
 // 승리 시 팩 1개(3장) + 단계 첫 승·일일 첫 승 보너스 팩, 보유 3장 초과분은 포인트로 전환, 포인트로 카드 구매.
-import { CARDS, TAGS, POINT_VALUES, BUY_COST, RULES, STARTER, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS } from './data.js';
+import { CARDS, TAGS, POINT_VALUES, BUY_COST, RULES, STARTER, AI_DECKS, FIRST_WIN_BONUS, DAILY_FIRST_WIN, COLLECTION_BONUS, HARD_DAILY_BONUS } from './data.js';
+import { smartTurn } from './smartai.js';
 
 export const CARD = Object.fromEntries(CARDS.map(c => [c.id, c]));
 export const isSpell = id => CARD[id] && CARD[id].type === 'spell';
@@ -37,9 +38,20 @@ export const expand = (counts) => Object.entries(counts).flatMap(([id, n]) => Ar
 // ---------- 컬렉션 / 덱 ----------
 export function newProfile(seed = Date.now()) {
   const collection = { ...STARTER };
-  return { collection, deck: autoDeck(collection), points: 0, wins: 0, losses: 0, seed: seed >>> 0, packsOpened: 0,
+  const deck = autoDeck(collection);
+  return { collection, deck, points: 0, wins: 0, losses: 0, seed: seed >>> 0, packsOpened: 0,
     pendingPacks: 0, tierFirstWins: AI_DECKS.map(() => false), lastDailyWin: '',
-    pickTier: null, settings: { aiStep: true }, collectionRewards: { complete: false, tags: {} } };
+    pickTier: null, settings: { aiStep: true }, collectionRewards: { complete: false, tags: {} },
+    records: newRecords(), decks: newDeckSlots(deck), activeDeck: 0 };
+}
+// v4: 재도전 기록 — 단계별 최고 기록(적은 턴 → 남은 HP 많은 순)·연승(현재/최고, 단계별·전체)·하드 일일 보너스 날짜
+export function newRecords() {
+  return { streak: 0, bestStreak: 0, hardDaily: '', tiers: AI_DECKS.map(() => ({ wins: 0, streak: 0, bestStreak: 0, best: null })) };
+}
+// v4: 덱 슬롯. profile.deck = 지금 쓰는 덱(편집 대상), decks[activeDeck].cards 와는 저장·전환 때 맞춤 (syncDeck)
+export const deckSlotName = i => `덱 ${i + 1}`;
+export function newDeckSlots(first = []) {
+  return Array.from({ length: RULES.deckSlots }, (_, i) => ({ name: deckSlotName(i), cards: i === 0 ? [...first] : [] }));
 }
 
 export function validateDeck(deck, collection) {
@@ -69,6 +81,27 @@ export function autoDeck(collection) {
 const TAG_SCORE = { '화염': 0.5, '야생': 0.5, '암흑': 0.5 };
 const score = c => (c.type === 'spell' ? c.power : c.atk + c.hp) - c.cost * 1.5 + (c.rarity === 'rare' ? 0.5 : 0)
   + (c.type === 'spell' ? 0 : (TAG_SCORE[c.tag] || 0)) + (c.fx && c.fx.summonDraw ? 1.5 * c.fx.summonDraw : 0);
+
+export function syncDeck(profile) {
+  if (!Array.isArray(profile.decks) || !profile.decks.length) profile.decks = newDeckSlots(profile.deck || []);
+  const i = Number.isInteger(profile.activeDeck) && profile.decks[profile.activeDeck] ? profile.activeDeck : 0;
+  profile.activeDeck = i; profile.decks[i].cards = [...(profile.deck || [])];
+  return profile;
+}
+// 슬롯 전환: 지금 덱을 저장하고 다른 슬롯을 불러옴 (빈 슬롯이면 빈 덱 → 편성 화면에서 채우기)
+export function switchDeck(profile, i) {
+  syncDeck(profile);
+  if (!profile.decks[i] || i === profile.activeDeck) return false;
+  profile.activeDeck = i; profile.deck = profile.decks[i].cards.filter(id => CARD[id]);
+  return true;
+}
+export const DECK_NAME_MAX = 12;
+export function renameDeck(profile, i, name) {
+  if (!profile.decks || !profile.decks[i]) return false;
+  const n = String(name ?? '').replace(/[\u0000-\u001f<>&"']/g, '').trim().slice(0, DECK_NAME_MAX);
+  profile.decks[i].name = n || deckSlotName(i);
+  return true;
+}
 
 export function canAddToDeck(profile, id) {
   return profile.deck.length < RULES.deckSize && countOf(profile.deck, id) < Math.min(RULES.maxCopies, profile.collection[id] || 0);
@@ -163,7 +196,14 @@ export const tierFirstAvailable = (profile, tier = aiTier(profile)) => !(profile
 // 대전 결과 기록. 승리: 기본 팩 1개 + 보너스 팩은 pendingPacks에 쌓임(새로고침해도 유지) → openPack으로 개봉.
 // 패배: 위로 포인트. 항복(forfeit)은 위로 포인트 없음 (포인트 파밍 방지).
 // tier: 대전 시작 시점의 AI 단계 (승리로 승수가 올라 단계가 바뀌기 전 값)
-export function recordResult(profile, won, forfeit = false, tier = battleTier(profile), day = localDay()) {
+// info: { turns, hp } = 이긴 판의 턴 수·남은 내 HP (최고 기록용, 없으면 기록 안 함)
+export const hardTier = () => AI_DECKS.findIndex(d => d.hard);
+export const betterRecord = (a, b) => !b || a.turns < b.turns || (a.turns === b.turns && a.hp > b.hp);
+export const hardDailyAvailable = (profile, day = localDay()) => !((profile.records || {}).hardDaily === day);
+export function recordResult(profile, won, forfeit = false, tier = battleTier(profile), day = localDay(), info = null) {
+  const R = profile.records = profile.records || newRecords();
+  while (R.tiers.length < AI_DECKS.length) R.tiers.push({ wins: 0, streak: 0, bestStreak: 0, best: null });
+  const T = R.tiers[tier];
   if (won) {
     const r = { points: RULES.winPoints, packs: 1, bonuses: [] };
     if (!Array.isArray(profile.tierFirstWins)) profile.tierFirstWins = AI_DECKS.map(() => false);
@@ -178,12 +218,29 @@ export function recordResult(profile, won, forfeit = false, tier = battleTier(pr
       r.packs += DAILY_FIRST_WIN.packs;
       r.bonuses.push({ kind: 'daily', packs: DAILY_FIRST_WIN.packs, points: 0 });
     }
+    // 하드(5단계) 반복 보상: 로컬 날짜 기준 하루 1회
+    if (tier === hardTier() && R.hardDaily !== day) {
+      R.hardDaily = day;
+      r.packs += HARD_DAILY_BONUS.packs; r.points += HARD_DAILY_BONUS.points;
+      r.bonuses.push({ kind: 'hard', tier, packs: HARD_DAILY_BONUS.packs, points: HARD_DAILY_BONUS.points });
+    }
+    T.wins++; T.streak++; T.bestStreak = Math.max(T.bestStreak, T.streak);
+    R.streak++; R.bestStreak = Math.max(R.bestStreak, R.streak);
+    let newBest = false; const prevBest = T.best ? { ...T.best } : null;
+    if (info && Number.isFinite(info.turns) && Number.isFinite(info.hp)) {
+      const rec = { turns: Math.max(1, Math.floor(info.turns)), hp: Math.max(0, Math.floor(info.hp)) };
+      if (betterRecord(rec, T.best)) { T.best = rec; newBest = true; }
+    }
+    r.record = { tier, newBest, prevBest, best: T.best, streak: R.streak, bestStreak: R.bestStreak, tierStreak: T.streak, tierBestStreak: T.bestStreak };
     profile.wins++; profile.points += r.points;
     profile.pendingPacks = (profile.pendingPacks || 0) + r.packs;
     return r;
   }
+  const lost = { streak: R.streak, tierStreak: T.streak };
+  T.streak = 0; R.streak = 0;
   const pts = forfeit ? 0 : RULES.lossPoints;
-  profile.losses++; profile.points += pts; return { points: pts, packs: 0, bonuses: [] };
+  profile.losses++; profile.points += pts;
+  return { points: pts, packs: 0, bonuses: [], record: { tier, newBest: false, best: T.best, streak: 0, bestStreak: R.bestStreak, tierStreak: 0, tierBestStreak: T.bestStreak, lostStreak: lost.streak } };
 }
 
 // 쌓인 보상 팩 1개 개봉 (없으면 null)
@@ -216,7 +273,7 @@ function log(st, msg) { st.log.push(msg); if (st.log.length > 30) st.log.shift()
 // 피해/회복 연출용 이벤트 (UI가 읽고 비움). at: 'hero' | 슬롯 번호
 function fx(st, side, at, amount, kind = 'dmg') { if (st.fx) { st.fx.push({ side, at, amount, kind }); if (st.fx.length > 40) st.fx.shift(); } }
 // AI 턴 단계별 보기: st.recording이 켜져 있으면 행동마다 화면용 스냅샷(프레임)을 남김. 규칙에는 영향 없음.
-function frame(st) {
+export function frame(st) {
   if (!st.recording) return;
   const { frames, recording, ...rest } = st;
   const snap = JSON.parse(JSON.stringify(rest)); snap.fx = st.fx.splice(0);
@@ -379,9 +436,12 @@ export function attack(st, side, from, target) {
 export function endTurn(st) {
   if (st.winner || st.active !== 'p') return;
   startTurn(st, 'a'); frame(st);
-  if (!st.winner) aiTurn(st, 'a');
+  if (!st.winner) aiBrain(st.tier)(st, 'a');
   if (!st.winner) startTurn(st, 'p');
 }
+
+// 상대 AI 선택: data.js AI_DECKS[t].ai === 'smart' 이면 사람 근사 AI(smartai.js), 아니면 기존 규칙 AI
+export const aiBrain = t => ((AI_DECKS[t] || {}).ai === 'smart' ? smartTurn : aiTurn);
 
 // ---------- AI (합법적이고 무난한 수) ----------
 export function aiTurn(st, side) {
