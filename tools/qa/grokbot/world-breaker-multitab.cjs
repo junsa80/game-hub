@@ -1,0 +1,10 @@
+const {chromium}=require(process.env.PW||'playwright-core');const URL_='http://localhost:8960/game-hub/play/world-breaker/',KEY='world-breaker-forest-alpha-v1';
+(async()=>{const b=await chromium.launch({executablePath:process.env.BROWSER_EXECUTABLE||'/usr/bin/google-chrome',args:['--no-sandbox']});const c=await b.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+const open=async()=>{const p=await c.newPage();p.on('dialog',d=>d.accept());await p.goto(URL_);await p.waitForTimeout(1500);return p};
+const st=p=>p.evaluate(k=>{const s=JSON.parse(localStorage.getItem(k)||'null');if(!s)return null;const o={};for(const [k,v] of Object.entries(s))if(typeof v==='number')o[k]=Math.round(v*10)/10;return o},KEY);
+const bk=p=>p.evaluate(k=>{const s=JSON.parse(localStorage.getItem(k+'-backup')||'null');return s&&Object.fromEntries(Object.entries(s).filter(([k,v])=>typeof v==='number').slice(0,6))},KEY);
+const A=await open();await A.evaluate(()=>window.dispatchEvent(new Event('pagehide')));const B=await open();await B.bringToFront();
+await B.waitForTimeout(20000);await B.evaluate(()=>window.dispatchEvent(new Event('pagehide')));const afterB=await st(B);await B.close({runBeforeUnload:true});
+await A.close({runBeforeUnload:true});await new Promise(r=>setTimeout(r,500));
+const C=await open();const reopened=await st(C);const backup=await bk(C);
+console.log(JSON.stringify({afterB,reopened,backup}));await b.close()})();

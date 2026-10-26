@@ -1,0 +1,11 @@
+const {chromium}=require(process.env.PW||'playwright-core');const URL_='http://localhost:8960/game-hub/play/prism-muse/';
+(async()=>{const b=await chromium.launch({executablePath:process.env.BROWSER_EXECUTABLE||'/usr/bin/google-chrome',args:['--no-sandbox']});const c=await b.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+const open=async()=>{const p=await c.newPage();p.on('dialog',d=>d.accept());await p.goto(URL_);await p.waitForTimeout(4000);return p};
+const click=async(p,t)=>{await p.evaluate(t=>{const el=[...document.querySelectorAll('button')].find(b=>b.offsetParent&&b.textContent.includes(t));if(!el)throw Error('no '+t);el.click()},t);await p.waitForTimeout(900)};
+const st=p=>p.evaluate(()=>{const s=JSON.parse(localStorage.getItem('prism-muse-backup')||'null');return s&&{keys:Object.keys(s).slice(0,30),run:!!(s.run||s.stageRun||s.board),json:JSON.stringify(s).length}});
+const A=await open(),B=await open();await B.bringToFront();
+await click(B,'도전 시작');await B.waitForTimeout(1500);const afterB=await st(B);
+await A.bringToFront();await click(A,'터치형');await A.waitForTimeout(800);const afterA=await st(A);
+await B.close({runBeforeUnload:true});await A.close({runBeforeUnload:true});await new Promise(r=>setTimeout(r,500));
+const C=await open();const reopened=await st(C);const inRun=await C.evaluate(()=>!![...document.querySelectorAll('button')].find(b=>b.offsetParent&&/이어|계속|포기|메뉴/.test(b.textContent)));
+console.log(JSON.stringify({afterB,afterStaleTabAction:afterA,reopened,inRun}).slice(0,1500));await b.close()})();
