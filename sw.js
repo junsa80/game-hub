@@ -1,7 +1,7 @@
-const V='hub-v1.5.22';
+const V='hub-v1.5.23';
 const A=['./','index.html','app.js','games.json','manifest.webmanifest','icon-192.png','thumbs/hunt-now.webp','thumbs/beauty-deck.webp','thumbs/srpg-prototype.webp','thumbs/rune-territories.webp','sfx/bgm.mp3'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(A)));self.skipWaiting()});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))));self.clients.claim()});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x.startsWith('hub-v')&&x!==V).map(x=>caches.delete(x)))));self.clients.claim()});
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(u.origin!==location.origin||u.pathname.includes('/play/'))return;
  e.respondWith(fetch(e.request).then(r=>{const c=r.clone();caches.open(V).then(x=>x.put(e.request,c));return r}).catch(()=>caches.match(e.request)))});
 
