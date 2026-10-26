@@ -58,6 +58,8 @@ grep -rho "\"/[a-z_][^\"]*\"" play/prism-muse/index.html | grep -v "^\"/game-hub
 주의: 패치는 원본 `5f7e28e`(내용상 `a479cdd`) 기준. 원본 `app/page.tsx`가 크게 바뀌면 `git apply`가 실패할 수 있다 → 같은 원칙(저장 fetch를 localStorage로, 경로에 `/prism-muse` 접두어)으로 손으로 다시 적용. 이 빌드는 원본 저장소에 커밋하지 않는다(로컬 클론만 수정).
 `next build`가 vinext 관련 오류를 내면 `package.json`의 `next` 버전(16.x)을 그대로 쓰고 `npx next build`만 실행(`npm run build`는 vinext/Cloudflare 빌드라 쓰지 않음).
 
+2026-10-26 [GrokBot] 갱신: 원본 `90a10a1`에서 기존 패치가 적용되지 않아 같은 원칙으로 다시 만든 패치로 교체(`git apply --check` 90a10a1 통과). 차이: 원본이 10-22부터 `/api/save` 실패 시 `prism-muse-backup`(변경마다 기록)으로 게스트 플레이하므로, 가짜 fetch의 GET이 `prism-muse-static-save`(3분 주기)보다 `prism-muse-backup`을 우선 반환 → 더 최신 진행이 덮이지 않음. Node 22 + `npm install` + `npx next build` 성공.
+
 ## 4) 마무리
 ```bash
 # games.json 해당 항목 "commit" 을 복사한 원본 커밋 7자리로 갱신
