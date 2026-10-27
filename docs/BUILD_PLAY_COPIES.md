@@ -21,10 +21,12 @@ cd game-hub
 
 ## 1) rose-spire, muse-studio (정적 public/)
 ```bash
-python3 tools/make_static_copy.py ../src-rose-spire/public play/rose-spire
-python3 tools/make_static_copy.py ../src-muse-studio/public play/muse-studio
+python3 tools/make_static_copy.py ../src-rose-spire/public ../rose-spire-staged
+python3 tools/make_static_copy.py ../src-muse-studio/public ../muse-studio-staged
 ```
-스크립트가 하는 일: `cloud-save.js`·`package.json` 제외, `<script type="text/cloud-pending" data-cloud-src="X">` → `<script src="X">`, `/cloud-save.js` 스크립트 제거, `/visual.*`·`url('/visual/...')` 루트 절대경로 → 상대경로.
+2026-10-27 안전 변경: 출력 폴더가 이미 있으면 거절한다. 기존 play 폴더를 삭제하지 말고 새 staging을 만들어 원본·허브 전용 변경을 비교한 뒤 게시한다. 원본 부재·UTF-8 해석 실패에도 기존 공개 파일은 보존되고 부분 출력은 남지 않는다. `python3 tools/test-static-copy.py`로 회귀 확인.
+
+스크립트가 하는 일: `cloud-save.js`·`package.json` 제외, `<script type="text/cloud-pending" data-cloud-src="X">` → `<script src="X">`, `/cloud-save.js` 스크립트 제거, `/visual.*`·`url('/visual/...')` 루트 절대경로 → 상대경로. 뮤즈 설정의 계정 저장 설명도 Pages의 브라우저 저장·백업 이전 안내로 바꾼다.
 2026-10-21 검증: rose-spire `6bf8f6f` public/로 돌리면 현재 `play/rose-spire`와 바이트 단위로 같음. muse-studio는 주석 한 줄만 다름.
 **새 그림 확인**: rose-spire 그림이 바뀌면 `public/art`를 먼저 눈으로 확인(실사·실존 인물 닮음·노출 없음, 0바이트 파일 없음: `find play/rose-spire -size 0`).
 
