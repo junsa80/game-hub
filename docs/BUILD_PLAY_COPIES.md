@@ -28,14 +28,23 @@ python3 tools/make_static_copy.py ../src-muse-studio/public play/muse-studio
 2026-10-21 검증: rose-spire `6bf8f6f` public/로 돌리면 현재 `play/rose-spire`와 바이트 단위로 같음. muse-studio는 주석 한 줄만 다름.
 **새 그림 확인**: rose-spire 그림이 바뀌면 `public/art`를 먼저 눈으로 확인(실사·실존 인물 닮음·노출 없음, 0바이트 파일 없음: `find play/rose-spire -size 0`).
 
-## 2) world-breaker (빌드 없음)
-```bash
-rm -rf play/world-breaker && mkdir -p play/world-breaker
-cp ../src-world-breaker/index.html ../src-world-breaker/styles.css play/world-breaker/
-cp -r ../src-world-breaker/src play/world-breaker/src
-cp -r ../src-world-breaker/visual play/world-breaker/visual   # 타이틀 키아트 (0.7 UI 이후)
-```
-(2026-10-21 검증: 현재 복사본과 main `5bb0b6c` 파일이 모두 같음.)
+## 2) world-breaker — 원본 + 검증된 허브 개선 (2026-10-27)
+
+원본 main a48859f의 규칙·성장·연구 도전은 유지되지만, 허브 a217903에 새 그림·샘플 효과음과 이를 읽는 코드가 추가되었다. **이전의 폴더 삭제 후 단순 복사 명령은 사용하지 않는다.** 그림·효과음과 game-score.js까지 잃을 수 있다.
+
+~~~bash
+python3 tools/build_world_breaker_copy.py ../src-world-breaker ../world-breaker-staged
+# 새 staging만 생성. 기존 출력 폴더가 있으면 중단.
+python3 tools/test-world-breaker-copy.py ../src-world-breaker
+diff -qr play/world-breaker ../world-breaker-staged
+# 원본 게임 테스트 및 변경 차이를 검토한 뒤 승인된 범위에서 staging을 복사·게시한다.
+~~~
+
+- tools/patches/world-breaker-overlays.json: 원본 커밋, 허브 개선 커밋, 원본 파일 Git blob, 유지할 허브 파일 SHA256.
+- 원본 index/main/art/audio가 변경되었으면 자동으로 구버전을 덮어씌우지 않고 충돌로 중단한다. 새 원본에 같은 자산 경로가 생기거나 허브 개선 파일이 바뀐 경우도 중단한다. 해당 변경을 검토·통합하고 manifest를 갱신한 뒤 재실행한다.
+- 원본 소스/기존 공개 파일은 읽기 전용. 필수 파일과 충돌 검증 후에만 새 staging 생성. 캐시나 사용자 저장에 접근하지 않음.
+- 2026-10-27 기준 canonical10파일 + hub overlay38파일 → 중복 교체4개를 반영한 최종44파일. 현재 공개 복사본과 전부 바이트 동일 재생성 확인. 게임 규칙3파일(data/engine/trials), styles, game-score는 원본과 동일.
+- PRIVATE 원본에 허브 전용 그림·효과음을 자동 역이식하지 않는다. Sites와 Pages 실행본은 별개이며 사용자 저장도 origin별이다.
 
 ## 3) prism-muse (Next.js → 정적 export, basePath)
 원본은 ChatGPT Sites용(vinext/Cloudflare, `/api/save` 서버 저장). 정적 빌드를 위해 `tools/patches/prism-muse-static.patch`를 적용한다. 패치 내용:

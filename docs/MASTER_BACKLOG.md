@@ -26,3 +26,5 @@
 
 |HN-SAVE-01|헌트 나우|P0|손상 JSON catch 후 freshSave 즉시 persist로 원문 삭제 재현|중/소|main.js, 복구 UI, test/save-recovery.mjs|원문 보존/내보내기/정상 백업 복원/기존 이관·전투 회귀|완료 cb919e5; 모바일3규격·14+6회귀 PASS·공개파일 일치|
 |AP-AUDIO-01|Arcana|P1|신규 sound.js에 hidden/pagehide 정지 없음|낮음/소|sound.js, tests/sound.cjs|숨김 소리 차단·복귀 BGM만 재개·음소거 유지|완료 fd88c2c; 자동검사 PASS·공개36파일 일치; 실제 청취 미검증|
+
+|DEP-WB-01|월드 브레이커|P1|허브전용 그림·소리 a217903; 기존 단순 복사 절차가 개선 및 BGM 파일 유실 가능|중/소|tools/build_world_breaker_copy.py, overlay manifest, BUILD_PLAY_COPIES|최종44파일 동일 재생성, 원본/기존출력 보존, 코드·자산 충돌시 중단|구현·회귀 PASS; 본 커밋|

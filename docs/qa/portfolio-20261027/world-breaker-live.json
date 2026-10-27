@@ -1,0 +1,269 @@
+{
+  "checkedAt": "2026-10-27T05:17:01.873494+00:00",
+  "files": [
+    {
+      "path": "field-preview.html",
+      "status": 200,
+      "match": true,
+      "sha256": "de37d98b2389322a8723f355d839b61c22e5a5f13f592e1d28999ed7bc30c00c"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "match": true,
+      "sha256": "c3f7c1860ad41da272f74f0d23ca9993f7839d4922cb3dcd2517e0a268e0c369"
+    },
+    {
+      "path": "styles.css",
+      "status": 200,
+      "match": true,
+      "sha256": "27f89b75604fb30373b8562a2b015eecde7299b80ee26c8090a6022fc257b8d5"
+    },
+    {
+      "path": "game-score.js",
+      "status": 200,
+      "match": true,
+      "sha256": "01d7cfe2cff1154cd0f6111f4d382f5f8cc7de02e09a3d93d97a07e47521c824"
+    },
+    {
+      "path": "src/engine.js",
+      "status": 200,
+      "match": true,
+      "sha256": "e37ce396fc6341866df9ea391a9ad49026e26fc4dd215e6204055c636ba4fff2"
+    },
+    {
+      "path": "src/audio.js",
+      "status": 200,
+      "match": true,
+      "sha256": "dc51d0f7e521f9ca27bf935540b456ce8f0cc096ceb8490d01357438e73feca2"
+    },
+    {
+      "path": "src/boar-motion.js",
+      "status": 200,
+      "match": true,
+      "sha256": "c8faf0253e9275d595931e6c39b906cd6c2768e3893a26eea85b02e96e91acdf"
+    },
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "match": true,
+      "sha256": "dc69393b6cdc9c454247efa35a0be03b2e16a9461664ab098625b6ce6d2e85bb"
+    },
+    {
+      "path": "src/field-scene-preview.js",
+      "status": 200,
+      "match": true,
+      "sha256": "6d1195e9cb754e3fc7fe47f04804abdf9d03f3c3490f93a9d0bc4d0fb4d5da48"
+    },
+    {
+      "path": "src/trials.js",
+      "status": 200,
+      "match": true,
+      "sha256": "5d4120059113b5aacecaa4946cea0514f4d540b978e9e11fd938d793f052675e"
+    },
+    {
+      "path": "src/art.js",
+      "status": 200,
+      "match": true,
+      "sha256": "e03a5e4cc22c6d5508f909d0b02fb8303645c24b51c15aad3546f0b87d5e55c1"
+    },
+    {
+      "path": "src/data.js",
+      "status": 200,
+      "match": true,
+      "sha256": "62ca77473173adc1cec18f179764e29e1c10574bde5dc1bef8aa164aecfd1973"
+    },
+    {
+      "path": "visual/boss-4.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "3b012496c7392d8b6f35bab30439022b8ae51e26b3ffa0dc30aa9ec9591c474e"
+    },
+    {
+      "path": "visual/ground-2.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "e1d7d9d344123166358fa8f55685e2c93de87c27fff709facd34c3bb31fba32c"
+    },
+    {
+      "path": "visual/rock.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "ca21090a74ca8e4386f626834b51b348d9e054dc24ec38ecebbacf50f9cc8d8f"
+    },
+    {
+      "path": "visual/shaman.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "cf5bafc5daa9b150567e58b83b86e5d3866d64383c27d47afee769660865e7a2"
+    },
+    {
+      "path": "visual/scrap.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "3b8045d22d12c5327a24cd60759508ed6ae57d751baefc2d8eaa59c6ccd8a023"
+    },
+    {
+      "path": "visual/boss-3.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "e202a3fb39a7d1ca2418cc1804b08870b045b661eb6af4fc465717778be7fff1"
+    },
+    {
+      "path": "visual/shroom.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "3f098ab7cdaaada54cbebeaa8519164cf26012cf7f68c94949d80d55958bfdaa"
+    },
+    {
+      "path": "visual/cover.webp",
+      "status": 200,
+      "match": true,
+      "sha256": "7c7ef832208a564b06a4fc4331698a5c4d15d59595a9461e12ab057b2a09a3a1"
+    },
+    {
+      "path": "visual/shell.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "c8bb0bd26d63066cd15b5414cc1d13dac73092fd320e90ddbb739ef9053b6184"
+    },
+    {
+      "path": "visual/bomber.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "01a235f3c0feab0646534fac40c5963e802d2f17ff8ce705fb56498eca4d6087"
+    },
+    {
+      "path": "visual/rusher.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "ccbd32aeacf810918d5c513678a653aeb3204b4881752ea4fb0c1703570f2203"
+    },
+    {
+      "path": "visual/ground-1.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "bf9a084b84d3a072e9392943db7fa6a6d99caf96862aff2f7c44fe0412bd74ac"
+    },
+    {
+      "path": "visual/ground-4.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "16e8fa7678afae6f54747c790fd1573c30324c2b0fc96bf4f6167875f06de8db"
+    },
+    {
+      "path": "visual/boss-2.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "d81e0b9adc52ae44e98265800b76c8a20c10ac15b65dfeed2cb9802e43c44911"
+    },
+    {
+      "path": "visual/repair.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "4849fde9ec363c6c67193259f77a2126b51f4ed2f439e43cb050196ab5794b89"
+    },
+    {
+      "path": "visual/tree.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "7add016a7d79bd5200d678985d89af9b210335657677ee061c67fe1293e9f4cb"
+    },
+    {
+      "path": "visual/boss-1.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "24a5da768b84c36d2c9bbb8674a8ee5fbec00a6d3f10c0c7c85ec8c675f85cf2"
+    },
+    {
+      "path": "visual/ground-3.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "97eb9c586a21fb19040744733ddfd898f27d331e04911a8587c35a74cefbf180"
+    },
+    {
+      "path": "sfx/kill.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "9c678acce67703bb444fc126dc8ec83867f80daa0c2171706eea075b3df8177a"
+    },
+    {
+      "path": "sfx/upgrade.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "181b904698c4badfe4f8aa0dc4cd2f1418c0835461249ce8424acdcfb1bd107f"
+    },
+    {
+      "path": "sfx/purify.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "4aa7272d59f409785db924f5a3bb319b70dca0ccb65d43f21e6a18edcaa2ec9f"
+    },
+    {
+      "path": "sfx/mine.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "a8fe793f72dbead2856f982bd2d77e1555b8d6c0540e3eedb8e0437d6094bcf7"
+    },
+    {
+      "path": "sfx/swamp.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "b93e63d220a37a446f85e2ddb5ee4a1ad81cf4e8258e6c2313de7a3890c1c4e2"
+    },
+    {
+      "path": "sfx/fall.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "213c689afbd53b774fa44599fb001b278d558ebe245428beb870f738d00e8c4c"
+    },
+    {
+      "path": "sfx/skill.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "15c945d75e94c1676d81d66aaaf912f3d9ccc82cccfe4cf3b375bc14e8bee646"
+    },
+    {
+      "path": "sfx/clear.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "41e624994aef5ccc4f22d7fb9a9e584bba8961c81bd63547353ea48f56201af1"
+    },
+    {
+      "path": "sfx/hit.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "d49084ff6eca4220542fee95d3a2750ed645394970ac89e995467540020dfd40"
+    },
+    {
+      "path": "sfx/city.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "895e6f567766bfcc757df704f3c89553f8dc61ccdebab6c08df8d042d1a22e50"
+    },
+    {
+      "path": "sfx/fail.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "6ccd05f38a6f2cdc71a245f119fb7fc778187e20bc42c197faf5bae781764b70"
+    },
+    {
+      "path": "sfx/overload.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "42f50214fe8d330f0b54f1c3f1afcdb1aa2feb0a90c1bb57204f45e5e0c05514"
+    },
+    {
+      "path": "sfx/attack.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "caf9c4ca2421f4ee32950ac076080e414af237e6619fe5cca0606b9a42e021de"
+    },
+    {
+      "path": "sfx/enemy.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "bcad1fbc12725ad8d649efe7dd86de1dcee7401b0485f63b67aa3fde8f74c428"
+    }
+  ]
+}

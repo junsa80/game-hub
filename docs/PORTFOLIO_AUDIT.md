@@ -77,3 +77,10 @@ CACHE-01/02/03 수정 전 재현 3/3 실패 → 수정 후 3/3 통과. 실제 SW
 - Arcana 새 그림·소리144490d 이후 저장14손상/376정상상태·규칙/300판 다시 PASS. 새 소리 모듈에 숨김/pagehide 정지 누락 발견, 자동 검사 실패 재현 후 보완. 진행 중 효과음 정지, 숨김 AI 소리 차단, 복귀 시 이전에 재생 중이던 BGM만 재개, 음소거 유지. 게임 저장 미변경.
 - AP-AUDIO-01 Node Audio 대역 검사 PASS. 실제 오디오 청취·모바일 앱 전환은 미검증. sound query0.3.4, 허브 캐시1.5.25. 이전 그림/소리 자산은 그대로 재사용.
 - 기록: docs/qa/portfolio-20261027. 다음 DEP-01 배포 일치 확대 → RT-03 S6 선택 효용 → ACT-02 실기 조작감/성능 확인. 사용량 중단 조건 없음.
+
+## 2026-10-27 — DEP-WB-01 월드 브레이커 재생성 시 개선 유실 방지
+- 원본 a48859f와 hub a217903 비교: data/engine/trials/styles/game-score 동일. index/main/art/audio4파일 다름; 그림·샘플 소리 등은 hub 전용. 기존 BUILD_PLAY_COPIES의 rm+cp는 이 개선과 game-score를 누락할 수 있음.
+- tools/build_world_breaker_copy.py + 명시적 overlay manifest 추가. 원본 편집 없이 새 staging 생성, 기존 출력 거부, 원본4파일 충돌·새 원본 자산 충돌·허브 해시 변경은 출력 전에 중단. 자동으로 최신 원본 변경을 옛 허브 코드로 덮지 않음.
+- 원본 Git blob 대조10파일, 최종44파일 전체 바이트 동등 재생성 PASS. test-world-breaker-copy.py: 원본 비변이/기존 출력 보호/4코드 충돌/새 자산 충돌 PASS.
+- 게임 런타임 수정·저장 변경·재배포 없음. 실제 브라우저 조작/실기 성능/소리 청취를 이 재생성 검사로 완료 처리하지 않음. 공개 HTTP 결과는 docs/qa/portfolio-20261027/world-breaker-live.json 참조.
+- 다음: 다른 허브 복사본/Sites 원본 일치 확인 → RT-03 S6 선택 효용 → ACT-02 실기 입력/성능. Grok 변경이 계속될 수 있으므로 원격 HEAD 확인 후 진행.

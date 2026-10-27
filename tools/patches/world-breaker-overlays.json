@@ -1,0 +1,170 @@
+{
+  "sourceCommit": "a48859f6489681b14d5f07001a9b502722c60e4c",
+  "overlayCommit": "a217903106cad0f94e757938b2670d0bfe10745b",
+  "sourceFiles": [
+    "game-score.js",
+    "index.html",
+    "src/art.js",
+    "src/audio.js",
+    "src/data.js",
+    "src/engine.js",
+    "src/main.js",
+    "src/trials.js",
+    "styles.css",
+    "visual/cover.webp"
+  ],
+  "overlays": {
+    "field-preview.html": {
+      "sourceBlob": null,
+      "overlaySha256": "de37d98b2389322a8723f355d839b61c22e5a5f13f592e1d28999ed7bc30c00c"
+    },
+    "index.html": {
+      "sourceBlob": "6d2b4278f7f9b4b78ceae7b224211f33e20bfeee",
+      "overlaySha256": "c3f7c1860ad41da272f74f0d23ca9993f7839d4922cb3dcd2517e0a268e0c369"
+    },
+    "src/audio.js": {
+      "sourceBlob": "8e921c549e1bcdfca1411c5f241308b1fada6bd8",
+      "overlaySha256": "dc51d0f7e521f9ca27bf935540b456ce8f0cc096ceb8490d01357438e73feca2"
+    },
+    "src/boar-motion.js": {
+      "sourceBlob": null,
+      "overlaySha256": "c8faf0253e9275d595931e6c39b906cd6c2768e3893a26eea85b02e96e91acdf"
+    },
+    "src/main.js": {
+      "sourceBlob": "cc1d803cc8546040a721e89817e501fa16e4c510",
+      "overlaySha256": "dc69393b6cdc9c454247efa35a0be03b2e16a9461664ab098625b6ce6d2e85bb"
+    },
+    "src/field-scene-preview.js": {
+      "sourceBlob": null,
+      "overlaySha256": "6d1195e9cb754e3fc7fe47f04804abdf9d03f3c3490f93a9d0bc4d0fb4d5da48"
+    },
+    "src/art.js": {
+      "sourceBlob": "804c844ac5f1739618d6f3a8038d9ad9a2db7e4a",
+      "overlaySha256": "e03a5e4cc22c6d5508f909d0b02fb8303645c24b51c15aad3546f0b87d5e55c1"
+    },
+    "visual/boss-4.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "3b012496c7392d8b6f35bab30439022b8ae51e26b3ffa0dc30aa9ec9591c474e"
+    },
+    "visual/ground-2.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "e1d7d9d344123166358fa8f55685e2c93de87c27fff709facd34c3bb31fba32c"
+    },
+    "visual/rock.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "ca21090a74ca8e4386f626834b51b348d9e054dc24ec38ecebbacf50f9cc8d8f"
+    },
+    "visual/shaman.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "cf5bafc5daa9b150567e58b83b86e5d3866d64383c27d47afee769660865e7a2"
+    },
+    "visual/scrap.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "3b8045d22d12c5327a24cd60759508ed6ae57d751baefc2d8eaa59c6ccd8a023"
+    },
+    "visual/boss-3.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "e202a3fb39a7d1ca2418cc1804b08870b045b661eb6af4fc465717778be7fff1"
+    },
+    "visual/shroom.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "3f098ab7cdaaada54cbebeaa8519164cf26012cf7f68c94949d80d55958bfdaa"
+    },
+    "visual/shell.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "c8bb0bd26d63066cd15b5414cc1d13dac73092fd320e90ddbb739ef9053b6184"
+    },
+    "visual/bomber.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "01a235f3c0feab0646534fac40c5963e802d2f17ff8ce705fb56498eca4d6087"
+    },
+    "visual/rusher.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "ccbd32aeacf810918d5c513678a653aeb3204b4881752ea4fb0c1703570f2203"
+    },
+    "visual/ground-1.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "bf9a084b84d3a072e9392943db7fa6a6d99caf96862aff2f7c44fe0412bd74ac"
+    },
+    "visual/ground-4.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "16e8fa7678afae6f54747c790fd1573c30324c2b0fc96bf4f6167875f06de8db"
+    },
+    "visual/boss-2.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "d81e0b9adc52ae44e98265800b76c8a20c10ac15b65dfeed2cb9802e43c44911"
+    },
+    "visual/repair.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "4849fde9ec363c6c67193259f77a2126b51f4ed2f439e43cb050196ab5794b89"
+    },
+    "visual/tree.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "7add016a7d79bd5200d678985d89af9b210335657677ee061c67fe1293e9f4cb"
+    },
+    "visual/boss-1.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "24a5da768b84c36d2c9bbb8674a8ee5fbec00a6d3f10c0c7c85ec8c675f85cf2"
+    },
+    "visual/ground-3.jpg": {
+      "sourceBlob": null,
+      "overlaySha256": "97eb9c586a21fb19040744733ddfd898f27d331e04911a8587c35a74cefbf180"
+    },
+    "sfx/kill.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "9c678acce67703bb444fc126dc8ec83867f80daa0c2171706eea075b3df8177a"
+    },
+    "sfx/upgrade.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "181b904698c4badfe4f8aa0dc4cd2f1418c0835461249ce8424acdcfb1bd107f"
+    },
+    "sfx/purify.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "4aa7272d59f409785db924f5a3bb319b70dca0ccb65d43f21e6a18edcaa2ec9f"
+    },
+    "sfx/mine.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "a8fe793f72dbead2856f982bd2d77e1555b8d6c0540e3eedb8e0437d6094bcf7"
+    },
+    "sfx/swamp.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "b93e63d220a37a446f85e2ddb5ee4a1ad81cf4e8258e6c2313de7a3890c1c4e2"
+    },
+    "sfx/fall.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "213c689afbd53b774fa44599fb001b278d558ebe245428beb870f738d00e8c4c"
+    },
+    "sfx/skill.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "15c945d75e94c1676d81d66aaaf912f3d9ccc82cccfe4cf3b375bc14e8bee646"
+    },
+    "sfx/clear.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "41e624994aef5ccc4f22d7fb9a9e584bba8961c81bd63547353ea48f56201af1"
+    },
+    "sfx/hit.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "d49084ff6eca4220542fee95d3a2750ed645394970ac89e995467540020dfd40"
+    },
+    "sfx/city.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "895e6f567766bfcc757df704f3c89553f8dc61ccdebab6c08df8d042d1a22e50"
+    },
+    "sfx/fail.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "6ccd05f38a6f2cdc71a245f119fb7fc778187e20bc42c197faf5bae781764b70"
+    },
+    "sfx/overload.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "42f50214fe8d330f0b54f1c3f1afcdb1aa2feb0a90c1bb57204f45e5e0c05514"
+    },
+    "sfx/attack.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "caf9c4ca2421f4ee32950ac076080e414af237e6619fe5cca0606b9a42e021de"
+    },
+    "sfx/enemy.wav": {
+      "sourceBlob": null,
+      "overlaySha256": "bcad1fbc12725ad8d649efe7dd86de1dcee7401b0485f63b67aa3fde8f74c428"
+    }
+  }
+}

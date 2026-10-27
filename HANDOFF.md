@@ -351,3 +351,10 @@
 - AP-AUDIO-01 수정 fd88c2c4197bd51400cb56907121deb401462172. 후속 Grok a217903은 world-breaker만 변경하며 이 수정을 포함. Pages run40450865167 success. 초기36중32일치→배포 후36/36 HTTP200·바이트 일치. docs/qa/portfolio-20261027/arcana-live.json(초기 응답은 initial 파일).
 - Hunt 저장 보호 cb919e5 공개3파일 일치; 자체 배포 기록5f5a599. Aster 실제 엔진 회귀 인계3fd2670. 실물폰 청취/조작/성능 미검증.
 - 다음 우선순위: DEP-01 Sites/원본·허브복사본 일치(최근 World Breaker 변경도 포함) → RT-03 S6 선택 효용 → ACT-02 실기 조작감/성능. 최신 원격 HEAD를 다시 읽고 다른 AI 변경을 보존할 것.
+
+## 2026-10-27 — DEP-WB-01 월드 브레이커 재생성 시 개선 유실 방지
+- 원본 a48859f와 hub a217903 비교: data/engine/trials/styles/game-score 동일. index/main/art/audio4파일 다름; 그림·샘플 소리 등은 hub 전용. 기존 BUILD_PLAY_COPIES의 rm+cp는 이 개선과 game-score를 누락할 수 있음.
+- tools/build_world_breaker_copy.py + 명시적 overlay manifest 추가. 원본 편집 없이 새 staging 생성, 기존 출력 거부, 원본4파일 충돌·새 원본 자산 충돌·허브 해시 변경은 출력 전에 중단. 자동으로 최신 원본 변경을 옛 허브 코드로 덮지 않음.
+- 원본 Git blob 대조10파일, 최종44파일 전체 바이트 동등 재생성 PASS. test-world-breaker-copy.py: 원본 비변이/기존 출력 보호/4코드 충돌/새 자산 충돌 PASS.
+- 게임 런타임 수정·저장 변경·재배포 없음. 실제 브라우저 조작/실기 성능/소리 청취를 이 재생성 검사로 완료 처리하지 않음. 공개 HTTP 결과는 docs/qa/portfolio-20261027/world-breaker-live.json 참조.
+- 다음: 다른 허브 복사본/Sites 원본 일치 확인 → RT-03 S6 선택 효용 → ACT-02 실기 입력/성능. Grok 변경이 계속될 수 있으므로 원격 HEAD 확인 후 진행.
