@@ -1,0 +1,5 @@
+edited /tmp/tmp_pc9lfa7/.static-copy-js5xxn9e/payload/visual.css
+edited /tmp/tmp_pc9lfa7/.static-copy-js5xxn9e/payload/index.html
+edited /tmp/tmp_pc9lfa7/.static-copy-m3o8a4km/payload/visual.css
+edited /tmp/tmp_pc9lfa7/.static-copy-m3o8a4km/payload/index.html
+PASS existing output/source preserved; missing source, nested output and decode failure refused; hosting transforms and local-save notice; no partial output

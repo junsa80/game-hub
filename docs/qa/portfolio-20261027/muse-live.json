@@ -1,0 +1,150 @@
+{
+  "commit": "1086c2e76cba0b4503d063e019d99686a272740e",
+  "checkedAt": "2026-10-27T10:56:48.782350+00:00",
+  "files": [
+    {
+      "path": "play/muse-studio/style.css",
+      "status": 200,
+      "match": true,
+      "sha256": "ede3ff9cecc1b8142b8fa81ce3af9dc16ff48518f12c62f2c2041d40b0515c73"
+    },
+    {
+      "path": "play/muse-studio/favicon.svg",
+      "status": 200,
+      "match": true,
+      "sha256": "e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7"
+    },
+    {
+      "path": "play/muse-studio/interaction.js",
+      "status": 200,
+      "match": true,
+      "sha256": "3542cdf10164c2b1adba500cc45f433eb3de0c1b89909246d211555d362c5beb"
+    },
+    {
+      "path": "play/muse-studio/relationships.js",
+      "status": 200,
+      "match": true,
+      "sha256": "a49e556eaa326f822f2b81757df96ee193be5f77b589634b0b221431e8eae922"
+    },
+    {
+      "path": "play/muse-studio/mobile.css",
+      "status": 200,
+      "match": true,
+      "sha256": "2e4f359cf75da339da1809b7e9e053835e7afa876af96cc7f3cd28bdbd024f26"
+    },
+    {
+      "path": "play/muse-studio/visual.js",
+      "status": 200,
+      "match": true,
+      "sha256": "c0afbf4b75f697f205893a27f13c592a6186f58995fa7388b67083bebb8644b1"
+    },
+    {
+      "path": "play/muse-studio/audio.js",
+      "status": 200,
+      "match": true,
+      "sha256": "416b35938a40bf1d8fcbb8c5e4889a8f69a97df4832a7c0f9d4e54f751db1553"
+    },
+    {
+      "path": "play/muse-studio/visual.css",
+      "status": 200,
+      "match": true,
+      "sha256": "28f7c0c5eb14da6cecbd429a3826c5032b34e08e7f03ecabf32095d3cdfc0c22"
+    },
+    {
+      "path": "play/muse-studio/globe.svg",
+      "status": 200,
+      "match": true,
+      "sha256": "d051a8c47936990a9085693d307bb7cea1bc1b6d7ed956bcbaacf674f4ec96b9"
+    },
+    {
+      "path": "play/muse-studio/data.js",
+      "status": 200,
+      "match": true,
+      "sha256": "c5d0d1c32b9d585c0949419043bd893f865b2a5763f75cb3d508b7df9ae8143f"
+    },
+    {
+      "path": "play/muse-studio/quality.css",
+      "status": 200,
+      "match": true,
+      "sha256": "d9d48f7119236100995800b0c3deffb7630552096c274c07a5a4b64b58e51143"
+    },
+    {
+      "path": "play/muse-studio/game.js",
+      "status": 200,
+      "match": true,
+      "sha256": "53bfc1b8dc218057e2953acfb27e32c6cbe2dac4f75932ce71682b8d768b145c"
+    },
+    {
+      "path": "play/muse-studio/engine.js",
+      "status": 200,
+      "match": true,
+      "sha256": "130156278862cc5664ecafbe36b3bde645f7b9aa53723ef950f38fab5eb93200"
+    },
+    {
+      "path": "play/muse-studio/window.svg",
+      "status": 200,
+      "match": true,
+      "sha256": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66"
+    },
+    {
+      "path": "play/muse-studio/index.html",
+      "status": 200,
+      "match": true,
+      "sha256": "f97f8ba8b131d22b4e395014d14447894b3c2f00262d2a99650762ddee0feab0"
+    },
+    {
+      "path": "play/muse-studio/bonuses.js",
+      "status": 200,
+      "match": true,
+      "sha256": "aa32dac498ab3405159433305162e163d675ae7e3dc98fbc040050ce06f98fee"
+    },
+    {
+      "path": "play/muse-studio/audio-ui.js",
+      "status": 200,
+      "match": true,
+      "sha256": "e18324e475ef03d251fec07962976cc230df8ec6c78afbbacd44ae922570dfc1"
+    },
+    {
+      "path": "play/muse-studio/studio.js",
+      "status": 200,
+      "match": true,
+      "sha256": "6ad2b6db6f0c350036f72faacfe67cc2550a37e325a9d14ed1adc1321f7ed1a5"
+    },
+    {
+      "path": "play/muse-studio/quality.js",
+      "status": 200,
+      "match": true,
+      "sha256": "797db788063c05eb0ac36eeaa4f096b5f717936ef7f02c2fb055afd61a5f04d9"
+    },
+    {
+      "path": "play/muse-studio/file.svg",
+      "status": 200,
+      "match": true,
+      "sha256": "1e0ae4d1a1ddfa36752988647b731e4abf150c414d069ec83c96fb0aaeff0307"
+    },
+    {
+      "path": "play/muse-studio/mobile.js",
+      "status": 200,
+      "match": true,
+      "sha256": "477db35aff9863f453c8815da5ca65a93f5937d964eb1a9848696282e1f49566"
+    },
+    {
+      "path": "play/muse-studio/visual/cover.webp",
+      "status": 200,
+      "match": true,
+      "sha256": "ee33adf8c50429fc161a9670b2cf5db82244d30a38a38f2d20aeb365d3583db3"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "match": true,
+      "sha256": "6683af35e24314616e1ebcdeac453c113fe4a8749966aaa7dcda34379777196d"
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "match": true,
+      "sha256": "99b96efd3505e78d043d01c7804d71da74e8f1053c8d023756f98e77d6bff180"
+    }
+  ]
+}

@@ -27,8 +27,8 @@
 |HN-SAVE-01|헌트 나우|P0|손상 JSON catch 후 freshSave 즉시 persist로 원문 삭제 재현|중/소|main.js, 복구 UI, test/save-recovery.mjs|원문 보존/내보내기/정상 백업 복원/기존 이관·전투 회귀|완료 cb919e5; 모바일3규격·14+6회귀 PASS·공개파일 일치|
 |AP-AUDIO-01|Arcana|P1|신규 sound.js에 hidden/pagehide 정지 없음|낮음/소|sound.js, tests/sound.cjs|숨김 소리 차단·복귀 BGM만 재개·음소거 유지|완료 fd88c2c; 자동검사 PASS·공개36파일 일치; 실제 청취 미검증|
 
-|DEP-WB-01|월드 브레이커|P1|허브전용 그림·소리 a217903; 기존 단순 복사 절차가 개선 및 BGM 파일 유실 가능|중/소|tools/build_world_breaker_copy.py, overlay manifest, BUILD_PLAY_COPIES|최종44파일 동일 재생성, 원본/기존출력 보존, 코드·자산 충돌시 중단|구현·회귀 PASS; 본 커밋|
+|DEP-WB-01|월드 브레이커|P1|허브전용 그림·소리 a217903; 기존 단순 복사 절차가 개선 및 BGM 파일 유실 가능|중/소|tools/build_world_breaker_copy.py, overlay manifest, BUILD_PLAY_COPIES|최종44파일 동일 재생성, 원본/기존출력 보존, 코드·자산 충돌시 중단|구현·회귀 PASS; b37fb68|
 
-|DEP-STATIC-01|허브 정적 복사 도구|P1|없는 원본 경로를 입력하면 rmtree(dst) 이후 실패해 기존 공개 폴더 삭제 재현|낮음/소|tools/make_static_copy.py, test-static-copy.py, BUILD_PLAY_COPIES|기존 출력/원본 보존, 변환 실패 시 부분 출력 없음, 정상 변환 유지|구현·회귀 PASS; 본 커밋|
+|DEP-STATIC-01|허브 정적 복사 도구|P1|없는 원본 경로를 입력하면 rmtree(dst) 이후 실패해 기존 공개 폴더 삭제 재현|낮음/소|tools/make_static_copy.py, test-static-copy.py, BUILD_PLAY_COPIES|기존 출력/원본 보존, 변환 실패 시 부분 출력 없음, 정상 변환 유지|구현·회귀 PASS; b37fb68|
 
-|DEP-MUSE-01|뮤즈 스튜디오 Pages 사본|P1|원본 모바일2파일·표지 누락,390×844에서 nav y1512.5/문서2568px; 밝은 패널 옅은 안내색|중/소|play/muse-studio CSS/index/mobile.js/cover, tools/test-muse-mobile.cjs|요청3크기 한 화면·6탭 터치·촬영·진행 재로드·자산로드·가독색; 원본/Pages 구분|원본 PR4 병합 c30c4fc; 사본256파일 재생성·자동검사 PASS; 본 커밋 배포 확인 후 로그 갱신|
+|DEP-MUSE-01|뮤즈 스튜디오 Pages 사본|P1|원본 모바일2파일·표지 누락,390×844에서 nav y1512.5/문서2568px; 밝은 패널 옅은 안내색|중/소|play/muse-studio CSS/index/mobile.js/cover, tools/test-muse-mobile.cjs|요청3크기 한 화면·6탭 터치·촬영·진행 재로드·자산로드·가독색; 원본/Pages 구분|원본 PR4 병합 c30c4fc; 사본256파일 재생성·모바일 자동검사 PASS; 허브1086c2e; 공개 결과 WORKLOG 참조|

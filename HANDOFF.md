@@ -367,3 +367,10 @@
 - tools/test-muse-mobile.cjs 및 docs/qa/portfolio-20261027/muse-mobile.txt에 실행 근거. 실물폰·한글 글리프 시각검수(컨테이너 한국어 글꼴 부재)·음향 청취·Sites 계정 동기화 미검증.
 - 기본 허브 카드 URL은 기존 Sites 유지. 이번 Pages 사본 갱신은 Sites 재배포가 아님. Pages 설정의 계정저장 오안내를 브라우저 저장/백업으로 정정. 허브 cache1.5.26.
 - 다음: Sites CSS 배포 일치/장미·프리즘 복사본 차이 → 룬 RT-03 S6 선택효용 → ACT-02 실기 입력·성능. 사용량 중단 조건 없음.
+
+## 2026-10-27 — DEP-MUSE-01 공개 확인/다음 인계
+- 원본 가독성 수정68d94bed → PR4 병합 c30c4fc. 허브 복사 도구 b37fb68, 모바일 복사본1086c2e. 동시 Grok928021b의 장미 효과음/games.json은 보존함.
+- Pages run40492205416 success. 첫 확인24중21일치(CSS2구버전/새 CSS404) → 배포 후24/24 HTTP200·바이트 일치. muse-live-initial.json/muse-live.json에 둘 다 기록. 확인 범위는 루트 실행파일21개+cover+hub index/sw이며 사진 자산 전체 HTTP 검사는 아님.
+- 최종 사본 모바일3규격 자동검사 다시 PASS(muse-mobile.txt), static-copy 실패 보존 및 hub1.5.26 캐시격리 PASS. GitHub 소스256개 blob 동일 복원 확인. 임시 작업환경 자동정리 후 GitHub 원본에서 재구성했으며 사용자 데이터는 읽거나 옮기지 않음.
+- 미검증: 실제 폰/한글 글리프 시각검수/청취, Sites에 새 CSS 배포. 기본 카드 URL은 기존 Sites이므로 Pages 수정과 구분할 것.
+- 다음 우선순위 1) Sites/남은 복사본의 배포 차이(장미 최신928021b, 프리즘a155dc9)와 재생성 시 보존 검증 2) 룬 RT-03 S6 선택 효용 계측 3) ACT-02 액션 실제 스마트폰 조작감/성능. 실물폰이 없으면 자동검증 범위만 진행/기록.
