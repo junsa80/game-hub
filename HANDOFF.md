@@ -395,3 +395,9 @@
 - Chromium153 모바일5규격(필수3개 포함) 주사위·터치·전투 스크롤·AI 복귀·업데이트 저장 보존·2탭 충돌 PASS, pageerror0. 실제 폰/사람 승률 아님. Rune docs/qa/S6_DIAGNOSTICS_20261027.md, s6-diagnostics-20261027.json, s6-mobile-20261027.txt 참조. 런타임 UI0.1.53, 도구만 변경하여 재배포 불필요.
 - Rose: 2f7af73의 최초 Pages run40517359874는 cancelled, 이를 포함한 e68ee8d 후속 run40517580203 success. 공개 index/sw/Rose index/game 및 WAV5개 총9개 바이트 동일. 증거 docs/qa/portfolio-20261027/rose-live-confirmed.json. hub1.5.27, Rose game.js?v=20261027-audio2 반영 확인. 청취/실기기 미검증.
 - 다음 순서: RT-04 유닛 수·비용·방어 가중치 단일요인 공략 비교(학습과 새 평가 분리, 개선 없으면 성장 덱 유지) → DEP-01 Prism 및 Sites/Pages 재생성 시 자산 보존 → ACT-02 기기 확보 전 자동 입력/성능 검증 범위 확대. RT-03 계측만 완료이며 S6 선택 효용 개선/인간 플레이는 미완료.
+
+## 2026-10-27 — RT-04 S6 공략 평가 개선 완료
+- 비공개 Rune main bed45dc8fa74b91320b3e2cb29e1bdd91ff7fca5. growth-factors/compare-growth-factors 신규, 기존 growth-hints S6 탐색을 단일요인8변형+기준덱 유지로 교체. 유닛 수/비용/체력 비중만 분리 변경. S4 정책 유지.
+- 학습200/평가400판,5보유풀·2난도. 첫 평가 선택정책 일반48.50→60.40%,어려움38.30→46.15%. 같은 선택의 두 번째 미사용 평가에서48.35→57.80%,37.15→44.10%. 총80,000대전 실행(중복 학습 포함). 카드·적 약화 없이 자동 공략 후보 개선. 모든 풀의 유의한 개선이나 인간 승률을 주장하지 않음.
+- 전체65검사/모바일5규격 PASS,pageerror0. 실제 폰·인간 조작 미검증. 근거 Rune docs/qa/GROWTH_FACTORS_20261027.md 및 원시2JSON/rt04-tests/rt04-mobile. 런타임·저장·UI0.1.53 불변, 재배포 불필요. 게임 내 추천 UI는 미구현.
+- 다음 우선순위: DEP-01 프리즘 복사본 재생성 시 추가 자산/기능 보존 → RT-05 S6 실제 덱 편성·저장·재도전 흐름 확인 → ACT-02 액션 자동 입력/성능. 도구의 수치 개선과 실제 플레이 체감은 구분한다.
