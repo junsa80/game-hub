@@ -1,8 +1,14 @@
-// Original Canvas artwork. Cosmetic randomness is a hash, never the game's RNG.
+// Original Canvas artwork. Painted plates live in visual/. Cosmetic randomness is a hash, never the game's RNG.
+const PAINT={};
+function paint(name){
+ const img=PAINT[name]||(PAINT[name]=Object.assign(new Image(),{decoding:'async',src:'visual/'+name+'.jpg'}));
+ return img.complete&&img.naturalWidth?img:null;
+}
 const artHash=n=>{const v=Math.sin(n*127.1+311.7)*43758.5453;return v-Math.floor(v);};
 export class FieldArt {
  constructor(){this.seen=new WeakSet();this.particles=[];this.falls=[];this.impacts=new Map();this.stage=0;this.elapsed=-1;}
  ellipse(c,x,y,rx,ry,color){c.fillStyle=color;c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fill();}
+ stamp(c,name,r){const img=paint(name);if(!img)return false;c.save();c.beginPath();c.arc(0,-r*.05,r,0,Math.PI*2);c.clip();c.drawImage(img,-r*1.05,-r*1.15,r*2.1,r*2.1);c.restore();return true;}
  polygon(c,points,fill,stroke='#183d35',width=1.5){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}}
  update(game,dt){
   if(this.game!==game||this.stage!==game.stage||game.roundElapsed<this.elapsed){this.particles=[];this.falls=[];this.impacts.clear();this.seen=new WeakSet();}
@@ -24,7 +30,9 @@ export class FieldArt {
  }
  ground(c,game,map){
   const x=map.x*50,y=map.y*50,w=map.width*50,h=map.height*50;
-  const palettes={1:['#587d48','#65894e','#3a603b'],2:['#343f58','#3c4863','#222d43'],3:['#405c4e','#496654','#293f3c'],4:['#46555c','#4d5d64','#303e49']},p=palettes[game.stage];
+  const img=paint('ground-'+game.stage);
+  if(img){c.drawImage(img,x,y,w,h);c.fillStyle='#07141c66';c.fillRect(x,y,w,h);}
+  else{const palettes={1:['#587d48','#65894e','#3a603b'],2:['#343f58','#3c4863','#222d43'],3:['#405c4e','#496654','#293f3c'],4:['#46555c','#4d5d64','#303e49']},p=palettes[game.stage];
   c.fillStyle=p[0];c.fillRect(x,y,w,h);
   // Broken soil patches and blades avoid a checkerboard while preserving tile positions.
   for(const cell of game.cells){if(cell.x<map.x||cell.y<map.y||cell.x>=map.x+map.width||cell.y>=map.y+map.height)continue;
@@ -34,8 +42,8 @@ export class FieldArt {
     if(game.stage===4){c.strokeStyle='#68808944';c.lineWidth=1;c.strokeRect(px+5,py+5,39,39);break;}
     c.strokeStyle=p[2];c.lineWidth=1.3;c.beginPath();c.moveTo(bx-2,by);c.lineTo(bx-3,by-3);c.moveTo(bx,by);c.lineTo(bx+2,by-4);c.stroke();
    }
-  }
-  c.lineWidth=6;c.strokeStyle=p[2];c.strokeRect(x+3,y+3,w-6,h-6);
+  }}
+  c.lineWidth=6;c.strokeStyle=game.stage===1?'#3a603b':game.stage===2?'#222d43':game.stage===3?'#293f3c':'#303e49';c.strokeRect(x+3,y+3,w-6,h-6);
   c.strokeStyle=game.stage===1?'#a4bc70':'#8fa6a2';c.lineWidth=2;c.beginPath();c.moveTo(x+5,y+h-7);c.lineTo(x+5,y+5);c.lineTo(x+w-5,y+5);c.stroke();
   c.fillStyle='#142d3055';c.fillRect(x+5,y+h-8,w-10,5);
  }
@@ -45,10 +53,13 @@ export class FieldArt {
   const growth=.67+Math.min(1,Math.log2(1+mass)/3)*.33;
   c.save();c.translate(x,y+size*.28);c.rotate(kick*.18*(seed%2?1:-1));c.scale(growth*(1+kick*.08),growth*(1-kick*.1));
   this.ellipse(c,1,1,size*.49,size*.17,'#142e3277');
+  const sprite=['','tree','rock','shroom','scrap'][game.stage];
+  if(!this.stamp(c,sprite,size*.62)){
   if(game.stage===1)this.tree(c,size,seed,mass);
   else if(game.stage===2)this.rock(c,size,seed,game.weakOpen());
   else if(game.stage===3)this.mushroom(c,size,seed,game.bloomActive());
   else this.scrap(c,size,seed);
+  }
   if(kick>.15){c.globalAlpha=kick*.8;this.polygon(c,[[-8,-14],[0,-23],[8,-14],[0,-7]],'#fff5bc',null);c.globalAlpha=1;}
   if(mass>=10){const tier=Math.floor(Math.log10(mass));c.fillStyle='#142e38dd';c.beginPath();c.roundRect(-14,4,28,13,4);c.fill();c.fillStyle='#f7edc8';c.font='bold 9px system-ui';c.textAlign='center';c.fillText('×'+10**tier,0,14);}
   c.restore();
@@ -111,6 +122,7 @@ export class FieldArt {
   const shift=windup?Math.sin(game.time*24)*3:Math.sin(game.time*3)*2;c.translate(shift,0);
   this.ellipse(c,0,28,48,13,'#12202b88');
   if(windup){c.strokeStyle='#ff9b7b';c.lineWidth=3;c.beginPath();c.arc(0,0,57,-Math.PI/2,-Math.PI/2+(game.hitClock-5.5)/1.5*Math.PI*2);c.stroke();}
+  if(this.stamp(c,'boss-'+game.stage,58)){c.restore();return;}
   if(game.stage===1){
    for(const side of [-1,1])this.polygon(c,[[side*20,7],[side*47,20],[side*51,5],[side*35,-21],[side*24,-13]],'#5c6e3f','#253c32',3);
    this.polygon(c,[[-27,28],[-31,-12],[-18,-43],[15,-45],[32,-15],[27,28]],'#7c6240','#293b31',3);

@@ -1,5 +1,5 @@
-import {FieldArt} from './art.js';
-import {GameAudio} from './audio.js?v=20261025-audio';
+import {FieldArt} from './art.js?v=20261027-paint';
+import {GameAudio} from './audio.js?v=20261027-paint';
 import {ForestGame} from './engine.js';
 import {TrialGame,TRIAL_CARDS,TRIAL_STYLES,TRIAL_RELICS,TRIAL_BOONS,TRIAL_LEVELS,trialProfile,unlockedRelics,unlockedCards,buildCost,recordTrial} from './trials.js';
 import {UPGRADES,GROUPS,fmt,W,H,STAGES,SKILLS,MONSTERS} from './data.js';
@@ -108,6 +108,7 @@ function drawMonster(b,w,h){
  const x=b.x*w+Math.cos(angle)*shift,y=b.y*h+Math.sin(angle)*shift;
  ctx.save();ctx.translate(x,y);ctx.fillStyle='#071b2399';ctx.beginPath();ctx.ellipse(0,12,22,7,0,0,Math.PI*2);ctx.fill();
  if(windup){ctx.strokeStyle=game.time<game.stasisUntil?'#93ddff':'#ff6d73';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,25+Math.sin(game.time*16)*3,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#ffb7a1';ctx.font='bold 18px system-ui';ctx.textAlign='center';ctx.fillText(game.time<game.stasisUntil?'❄':'!',0,-33);}
+ if(fieldArt.stamp(ctx,b.kind,b.kind==='shell'?24:20)){ctx.fillStyle='#171d2b';ctx.fillRect(-22,-29,44,5);ctx.fillStyle=windup?'#ff796e':'#bdf0cf';ctx.fillRect(-22,-29,44*Math.max(0,b.hp/b.maxHp),5);ctx.restore();return;}
  ctx.strokeStyle=game.time<game.stasisUntil?'#93ddff':windup?'#ff686a':def.color;ctx.lineWidth=2.5;if(game.stage===4){ctx.fillStyle='#334f60';ctx.fillRect(-23,-11,46,22);ctx.strokeRect(-23,-11,46,22);ctx.fillStyle='#a7c8d4';for(const side of [-1,1]){ctx.fillRect(side*22-4,6,8,13);ctx.fillRect(side*22-4,-21,8,13);}}
  if(b.kind==='rusher'){for(let k=-1;k<=1;k++){const move=Math.sin(game.time*12+k)*4;ctx.beginPath();ctx.moveTo(-12,k*7);ctx.lineTo(-25,k*10+move);ctx.moveTo(12,k*7);ctx.lineTo(25,k*10-move);ctx.stroke();}}
  if(b.kind==='bomber'){ctx.fillStyle='#efffa333';for(const sign of [-1,1]){ctx.beginPath();ctx.ellipse(sign*16,-7,12,6,sign*Math.sin(game.time*24),0,Math.PI*2);ctx.fill();}}

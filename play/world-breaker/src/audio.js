@@ -1,4 +1,4 @@
-// Procedural Web Audio: no downloads, samples, or external dependencies.
+// Sampled effects in sfx/. The procedural tones stay as a fallback if a file will not play.
 export class GameAudio {
  constructor(){this.enabled=true;this.context=null;this.master=null;this.lastHit=-1;this.note=0;this.beat=0;this.musicTime=0;}
  async unlock(){
@@ -24,6 +24,12 @@ export class GameAudio {
   source.connect(filter);filter.connect(gain);gain.connect(this.master);source.start(now);source.stop(now+duration+.02);
  }
  effect(kind){
+  if(!this.enabled)return;
+  const file={upgrade:'upgrade',clear:'clear',fail:'fail',kill:'kill',fall:'fall',mine:'mine',city:'city',overload:'overload',swamp:'swamp',attack:'attack',enemy:'enemy',purify:'purify',skill:'skill'}[kind]||'hit';
+  try{const a=new Audio('sfx/'+file+'.wav');a.volume=(file==='hit'||file==='mine'||file==='city'||file==='swamp')?.32:.55;const p=a.play();if(p&&p.catch)p.catch(()=>this.beep(kind));}
+  catch(e){this.beep(kind);}
+ }
+ beep(kind){
   if(kind==='upgrade'){this.tone(523,.1,'triangle');this.tone(784,.18,'triangle',.4,.08);}
   else if(kind==='clear'){[523,659,784,1047].forEach((n,i)=>this.tone(n,.3,'triangle',.4,i*.1));}
   else if(kind==='fail'){this.tone(220,.2,'sine');this.tone(147,.3,'sine',.4,.15);}
