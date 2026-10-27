@@ -93,3 +93,12 @@ CACHE-01/02/03 수정 전 재현 3/3 실패 → 수정 후 3/3 통과. 실제 SW
 - tools/test-muse-mobile.cjs 및 docs/qa/portfolio-20261027/muse-mobile.txt에 실행 근거. 실물폰·한글 글리프 시각검수(컨테이너 한국어 글꼴 부재)·음향 청취·Sites 계정 동기화 미검증.
 - 기본 허브 카드 URL은 기존 Sites 유지. 이번 Pages 사본 갱신은 Sites 재배포가 아님. Pages 설정의 계정저장 오안내를 브라우저 저장/백업으로 정정. 허브 cache1.5.26.
 - 다음: Sites CSS 배포 일치/장미·프리즘 복사본 차이 → 룬 RT-03 S6 선택효용 → ACT-02 실기 입력·성능. 사용량 중단 조건 없음.
+
+## 2026-10-27 — ROSE-AUDIO-01 Pages 효과음 수명 관리
+- hub13c42d2 기준928021b가 도입한 샘플 효과음 검토. tone의 재생 거절 콜백이 hidden 이후 beep를 호출해 대체음을 시작함을 Node VM으로 재현(수정 전 contexts1, 기대0). 재생 중 샘플/대체음도 숨김·음소거에서 정지하지 않았음.
+- game.js: 샘플/oscillator 추적·종료 정리, hidden/pagehide 정지, AudioContext suspend, 음소거 즉시 정지. 세대 번호로 정지 이전 재생 실패 콜백을 무효화. pageshow는 잠금만 풀며 지난 효과음을 재생하지 않음. 새 사용자 행동에서만 소리 재생.
+- 기존 sfx5종 그대로 사용. 덱·카드·성장·보상·저장 코드 미변경. Pages 전용 개선이므로 private 원본/Sites에 적용했다고 주장하지 않음.
+- tools/test-rose-audio.cjs: 수정 전 FAIL → 후 PASS. hidden 지연 실패, 재생 중 정지, pagehide/pageshow, 음소거, 정상 실패 fallback, ended 정리. node --check와 허브 캐시격리 PASS.
+- tools/test-rose-browser.cjs: Chromium153 360×800/390×844/412×915에서 새 원정·음소거·합성 pagehide·재접속 시 starter/hp/deck 유지, pageerror0 PASS. Audio 대역 사용; 실제 음향 청취·폰 앱전환·기기성능 미검증. 원시 결과 docs/qa/portfolio-20261027/rose-*.txt.
+- 캐시 hub1.5.27 / Rose game.js?v=20261027-audio2. 공개 확인은 후속 로그 참조.
+- 다음 우선순위: RT-03 룬 S6 선택 효용 계측 → DEP-01 남은 Sites/원본 배포 차이 → ACT-02 실제 기기 입력/성능. 장미 그림/효과음은 재생성 시 보존 필요.

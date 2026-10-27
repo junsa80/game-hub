@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: hidden delayed failure must not start fallback audio
+
+1 !== 0
+
+    at /workspace/scratch/259d4c838905/game-hub/tools/test-rose-audio.cjs:10:165 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

@@ -1,4 +1,4 @@
-const V='hub-v1.5.26';
+const V='hub-v1.5.27';
 const A=['./','index.html','app.js','games.json','manifest.webmanifest','icon-192.png','thumbs/hunt-now.webp','thumbs/beauty-deck.webp','thumbs/srpg-prototype.webp','thumbs/rune-territories.webp','sfx/bgm.mp3'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(A)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x.startsWith('hub-v')&&x!==V).map(x=>caches.delete(x)))));self.clients.claim()});
