@@ -22,7 +22,7 @@
 
 다음 3개: ACT-01 아스터/헌트 저장·전투 회귀 → DEP-01 Sites/복사본 배포 일치 확인 → RT-03 S6 선택 효용. 사용자 요청으로 사용량 확인은 작업 중단 조건에서 제외.
 
-|RT-03|룬 영토|P1|S6 자동 공략 교체가 성장 덱을 일관되게 개선하지 못함(RT-02 원시결과)|중간/중|tools/progression-model.mjs, hint-deck.mjs, HARD_HINTS|수입부족/침략실패/영토손실 계측 및 정상성장 수동 흐름 확인 후 선택 효용 개선; 신규 검증 시드 사용|대기; 적 약화/카드 수치 변경은 아직 근거 부족|
+|RT-03|룬 영토|P1|S6 자동 공략 교체가 성장 덱을 일관되게 개선하지 못함(RT-02 원시결과)|중간/중|tools/progression-model.mjs, hint-deck.mjs, HARD_HINTS|수입부족/침략실패/영토손실 계측 및 정상성장 수동 흐름 확인 후 선택 효용 개선; 신규 검증 시드 사용|계측 구현1b65af3·4,000판 및 재현/63검사/모바일5규격 PASS. 선택 효용 개선 미완료; RT-04로 후속|
 
 |HN-SAVE-01|헌트 나우|P0|손상 JSON catch 후 freshSave 즉시 persist로 원문 삭제 재현|중/소|main.js, 복구 UI, test/save-recovery.mjs|원문 보존/내보내기/정상 백업 복원/기존 이관·전투 회귀|완료 cb919e5; 모바일3규격·14+6회귀 PASS·공개파일 일치|
 |AP-AUDIO-01|Arcana|P1|신규 sound.js에 hidden/pagehide 정지 없음|낮음/소|sound.js, tests/sound.cjs|숨김 소리 차단·복귀 BGM만 재개·음소거 유지|완료 fd88c2c; 자동검사 PASS·공개36파일 일치; 실제 청취 미검증|
@@ -33,4 +33,6 @@
 
 |DEP-MUSE-01|뮤즈 스튜디오 Pages 사본|P1|원본 모바일2파일·표지 누락,390×844에서 nav y1512.5/문서2568px; 밝은 패널 옅은 안내색|중/소|play/muse-studio CSS/index/mobile.js/cover, tools/test-muse-mobile.cjs|요청3크기 한 화면·6탭 터치·촬영·진행 재로드·자산로드·가독색; 원본/Pages 구분|원본 PR4 병합 c30c4fc; 사본256파일 재생성·모바일 자동검사 PASS; 허브1086c2e; 공개 결과 WORKLOG 참조|
 
-|ROSE-AUDIO-01|장미의 첨탑 Pages|P1|숨김 후 샘플 실패 콜백이 대체음 시작 재현; 음소거/숨김에 기존 소리 정지 없음|낮음/소|play/rose-spire/game.js, audio/browser 회귀|지연 실패 취소·숨김/음소거 정지·정상 소리 유지·저장 회귀|구현2f7af73·Node/모바일3규격 자동검사 PASS; 공개 결과 WORKLOG 참조, 실제 청취 미검증|
+|ROSE-AUDIO-01|장미의 첨탑 Pages|P1|숨김 후 샘플 실패 콜백이 대체음 시작 재현; 음소거/숨김에 기존 소리 정지 없음|낮음/소|play/rose-spire/game.js, audio/browser 회귀|지연 실패 취소·숨김/음소거 정지·정상 소리 유지·저장 회귀|구현2f7af73·Node/모바일3규격 자동검사 PASS; 공개9파일 일치·후속 Pages40517580203 성공; 실제 청취 미검증|
+
+|RT-04|룬 영토|P1|RT-03 강제 공략 교체 시 일반47.8→42.2%, 보유풀별 원인이 다름|중간/중|tools/hint-deck.mjs, 새 단일요인 비교 도구, tests|유닛 수/비용/방어 가중치 각각 비교; 기존 덱 포함; 별도 학습 및 미사용 평가 시드; 40장/보유/복제한도 검증; 개선 없는 풀 유지; 제품 추천 전 수동 흐름 확인|대기. RT-03 근거1b65af3, 적 약화/카드 수치 변경 미승인 가정 금지|

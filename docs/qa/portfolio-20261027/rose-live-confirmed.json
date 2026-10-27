@@ -1,0 +1,47 @@
+[
+  {
+    "path": "index.html",
+    "match": true,
+    "sha256": "fe8588e936d7a7ca6225e030547f8b7b15bc38a539cb94dc51154543bc7ce808"
+  },
+  {
+    "path": "sw.js",
+    "match": true,
+    "sha256": "54c13e9ab2a51f6437196169e842bb304808da1aeeabac596aeb013b16f82909"
+  },
+  {
+    "path": "play/rose-spire/index.html",
+    "match": true,
+    "sha256": "ddf27a0f30a528ac5279cce40cfd321722906fbba77e6120af8bb68cf1d11184"
+  },
+  {
+    "path": "play/rose-spire/game.js",
+    "match": true,
+    "sha256": "42a5ba889b465476c0249310761d7b0a23dd841a9d6f91b15c45d04f3a20b894"
+  },
+  {
+    "path": "play/rose-spire/sfx/hit.wav",
+    "match": true,
+    "sha256": "0936055bd3ebca859be6af95bd71506b5f1ce788699f29d8dffff82b6564f602"
+  },
+  {
+    "path": "play/rose-spire/sfx/play.wav",
+    "match": true,
+    "sha256": "41603231cd102e61271887b1760c4cd55001d7165c5403cbfe744d1a27bcd414"
+  },
+  {
+    "path": "play/rose-spire/sfx/turn.wav",
+    "match": true,
+    "sha256": "c27551de0a465cfaf754a31ca5e829fc3baceb6a9b60553c49a46b16a6e50624"
+  },
+  {
+    "path": "play/rose-spire/sfx/lose.wav",
+    "match": true,
+    "sha256": "909b4692bc493a6217bc2cbda1815886f0e226eb0c031cbe6cc14d23098122b0"
+  },
+  {
+    "path": "play/rose-spire/sfx/win.wav",
+    "match": true,
+    "sha256": "730c92697614807e7df0a5481d676db1a36e76ac97e78085587c4abdf148bdb9"
+  }
+]

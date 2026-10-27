@@ -102,3 +102,10 @@ CACHE-01/02/03 수정 전 재현 3/3 실패 → 수정 후 3/3 통과. 실제 SW
 - tools/test-rose-browser.cjs: Chromium153 360×800/390×844/412×915에서 새 원정·음소거·합성 pagehide·재접속 시 starter/hp/deck 유지, pageerror0 PASS. Audio 대역 사용; 실제 음향 청취·폰 앱전환·기기성능 미검증. 원시 결과 docs/qa/portfolio-20261027/rose-*.txt.
 - 캐시 hub1.5.27 / Rose game.js?v=20261027-audio2. 공개 확인은 후속 로그 참조.
 - 다음 우선순위: RT-03 룬 S6 선택 효용 계측 → DEP-01 남은 Sites/원본 배포 차이 → ACT-02 실제 기기 입력/성능. 장미 그림/효과음은 재생성 시 보존 필요.
+
+## 2026-10-27 — RT-03 진단 구현 및 Rose 공개 반영 확인
+- Rune private main `1b65af3d95780e6f86fbdb23407b62e70f9a6322`: 실제 autoTurn 전후 영토/침략/통행료 계측 도구 구현. 기존 play와100판 결과 동등·입력 불변 테스트. 전체63/63 통과. 최초 부분 체크아웃 CSS 누락 실패는 원본 복원 후 해소.
+- 별도 평가 시드6400000,5보유풀×2난도×2덱×200=4,000판. 원시결과 재실행4,000판도 바이트 동일. 성장→과거 강제 공략 평균 일반47.8→42.2%, 어려움38.3→36.6%. 보유풀별 유닛 부재·영토손실 차이가 달라 원인 단정 금지. 현재 성장 덱 유지 후보 정책 유지, 제품 카드/난도/세이브 불변.
+- Chromium153 모바일5규격(필수3개 포함) 주사위·터치·전투 스크롤·AI 복귀·업데이트 저장 보존·2탭 충돌 PASS, pageerror0. 실제 폰/사람 승률 아님. Rune docs/qa/S6_DIAGNOSTICS_20261027.md, s6-diagnostics-20261027.json, s6-mobile-20261027.txt 참조. 런타임 UI0.1.53, 도구만 변경하여 재배포 불필요.
+- Rose: 2f7af73의 최초 Pages run40517359874는 cancelled, 이를 포함한 e68ee8d 후속 run40517580203 success. 공개 index/sw/Rose index/game 및 WAV5개 총9개 바이트 동일. 증거 docs/qa/portfolio-20261027/rose-live-confirmed.json. hub1.5.27, Rose game.js?v=20261027-audio2 반영 확인. 청취/실기기 미검증.
+- 다음 순서: RT-04 유닛 수·비용·방어 가중치 단일요인 공략 비교(학습과 새 평가 분리, 개선 없으면 성장 덱 유지) → DEP-01 Prism 및 Sites/Pages 재생성 시 자산 보존 → ACT-02 기기 확보 전 자동 입력/성능 검증 범위 확대. RT-03 계측만 완료이며 S6 선택 효용 개선/인간 플레이는 미완료.
