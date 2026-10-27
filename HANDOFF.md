@@ -358,3 +358,12 @@
 - 원본 Git blob 대조10파일, 최종44파일 전체 바이트 동등 재생성 PASS. test-world-breaker-copy.py: 원본 비변이/기존 출력 보호/4코드 충돌/새 자산 충돌 PASS.
 - 게임 런타임 수정·저장 변경·재배포 없음. 실제 브라우저 조작/실기 성능/소리 청취를 이 재생성 검사로 완료 처리하지 않음. 공개 HTTP 결과는 docs/qa/portfolio-20261027/world-breaker-live.json 참조.
 - 다음: 다른 허브 복사본/Sites 원본 일치 확인 → RT-03 S6 선택 효용 → ACT-02 실기 입력/성능. Grok 변경이 계속될 수 있으므로 원격 HEAD 확인 후 진행.
+
+## 2026-10-27 — DEP-MUSE-01 모바일 개선 누락 복구
+- 원본 muse-studio 1d40d29와 Pages 복사본 비교: 동일249파일, mobile.js/mobile.css/cover 누락 및 CSS/index 차이. 원본의 모바일 개선을 정적 호스팅 변환으로 복구. 기존 표지 재사용; 새 인물/외부 자산 없음.
+- 추가 가독성 수정: 밝은 패널에 남은 옅은 진행도/안내/통화 글자색 보완. private PR4 https://github.com/junsa80/muse-studio/pull/4 병합 c30c4fc9351da5d1667a886274e4f636ad1afb68 (수정68d94bed). source public runtime256파일 Git blob 검증 후 재생성. 게임 JS/규칙/저장 키/계정 권한 보존.
+- 이전390×844: 문서 높이2568px, nav y1512.5px. 이후 요청3규격: 문서 높이=화면높이, 촬영 버튼53px/하단7버튼44px. 6탭 터치·닫기·촬영·진행 재로드·자산로드·어두운 안내색 PASS, pageerror/HTTP오류0.
+- 원본 node tools/verify.mjs 7 suite PASS. 처음 TypeScript 부재/비호환 최신 패키지 실패 후5.9.3으로 PASS. 작업경로 오입력1회 재실행 해결. 임시환경 오류와 제품 결함 구분.
+- tools/test-muse-mobile.cjs 및 docs/qa/portfolio-20261027/muse-mobile.txt에 실행 근거. 실물폰·한글 글리프 시각검수(컨테이너 한국어 글꼴 부재)·음향 청취·Sites 계정 동기화 미검증.
+- 기본 허브 카드 URL은 기존 Sites 유지. 이번 Pages 사본 갱신은 Sites 재배포가 아님. Pages 설정의 계정저장 오안내를 브라우저 저장/백업으로 정정. 허브 cache1.5.26.
+- 다음: Sites CSS 배포 일치/장미·프리즘 복사본 차이 → 룬 RT-03 S6 선택효용 → ACT-02 실기 입력·성능. 사용량 중단 조건 없음.

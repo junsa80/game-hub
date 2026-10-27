@@ -87,3 +87,8 @@ git add -A && git commit -m "[GrokBot] refresh play/<name> from <repo>@<sha>" &&
 - Copy dist/index.html, engine.js, progression.js, app.js, style.css byte-for-byte to play/arcana-pocket/. No root asset path adjustments needed. Pure source is preserved in this GitHub folder as well; tests/test.cjs runs with node.
 - Keep localStorage key arcana-pocket-v1; JSON export/import moves data between origins. Do not replace the unrelated play/free-solo-tcg. Update catalog source commit and cache on refresh.
 - Alpha0.3 source f7f0c8a2f121baef0a82699be511512ba354db3d additionally requires dist/art.js and dist/cover-art-v2.webp. Copy all seven dist assets; retain legacy files when no longer referenced. UI/save regression test is play/arcana-pocket/tests/ui-smoke.cjs. Cover prompt: original adult ivory/gold legion knight and navy celestial oracle duel using sun-dragon/crystal-sentinel/meteor collectible cards, painterly fantasy, teal/gold, wide16:9, no text; generated with built-in ImageGen, title typeset separately in hub SVG and game HTML. Thumbnail thumbs/arcana-pocket-cover-v2.svg embeds compressed WebP; original runtime image play/arcana-pocket/cover-art-v2.webp (1600x900).
+
+## 2026-10-27 뮤즈 스튜디오 재생성 검증
+- 원본 c30c4fc public256개(제외 cloud-save.js/package.json)에서 생성. 모바일 CSS/JS 및 visual/cover.webp도 반드시 포함한다.
+- tools/test-muse-mobile.cjs [staging 경로]: Playwright 및 CHROME 환경변수 필요. 360×800/390×844/412×915 실제 브라우저 자동 검사.
+- play/muse-studio는 Pages 사본이고 현재 games.json의 기본 URL은 Sites이다. 기본 URL/저장 origin을 임의 교체하지 않는다.
