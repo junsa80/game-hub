@@ -11,7 +11,7 @@
 |RT-01|룬 영토|P1|과거 모바일 증거 이후 현 요청 3크기 회귀 미실행|중간/중|tools/mobile-regression.cjs, src/app.js/style.css|360×800/390×844/412×915 주사위·한 화면·자동스크롤·터치·저장 통과|자동 모바일 검증 완료 b7357a3: 요청3+기존2규격 주사위/터치/스크롤/업데이트/2탭 PASS, pageerror0; 실물폰 미검증|
 |RT-02|룬 영토|P1|기존 비교는 현재단계 보상 포함 재도전/스타터 기준; 성장 첫 돌파와 구분 필요|중간/중|tools/growth-hints.mjs, hint-deck.mjs, tests/hint-deck.test.mjs|이전단계 보유풀·held-out paired seeds로 S4/S6 일반/어려움 비교|측정·도구 수정 완료 828b8b9; S4 개선, S6 유의미한 개선 근거 없음;62테스트 PASS|
 |JR-01|경계의 서약|P1|자동장비·유니크·연계 던전 코드 확인, 최신 통합 실전 미검증|중간/중|src/native/, systems/EquipmentSystem.ts, tools/test-game.ts|실제 전투→보상→자동장비→영입정보 던전→저장 재로드; 유니크 재지급 없음|통합자동71/71 PASS; 인계2092c6c. 실제 엔진 경로 검증, 수동 플레이/실기 미검증|
-|ACT-01|아스터/헌트|P1|성장·영입은 코드 존재; 묵직한 전투의 실기 GL/입력 미검증|높음/중|dist/game.js, motion.js, tests/tempo.mjs; hunt main.js|구형 저장→강화/정화 유지, 입력 지연·부위 타격시점/프레임 측정|대기|
+|ACT-01|아스터/헌트|P1|성장·영입은 코드 존재; 묵직한 전투의 실기 GL/입력 미검증|높음/중|dist/game.js, motion.js, tests/tempo.mjs; hunt main.js|구형 저장→강화/정화 유지, 입력 지연·부위 타격시점/프레임 측정|자동 회귀 통과; Hunt cb919e5 저장손실 수정·공개확인, Aster 통제 전투/저장 PASS; 실기 GL/입력 미검증|
 |QA-01|전 게임|P1|일부 검사가 환경 자산/구 git 이력/Godot 부재로 중단|중간/중|각 tools/verify/tests, CI|불완전 소스 수신과 제품 결함 분리; 정확한 원본/의존성으로 재실행|부분 검증|
 |DEP-01|복사본/Sites|P1|원본 커밋이 라이브 배포와 동일하다는 보장 없음|중간/중|games.json, build/publish scripts|런타임 해시·누락 자산·HTTP·SW 버전 확인, 401은 게임 오류로 단정 금지|부분 검증|
 |DOC-01|SRPG/Rune/Chronicle|P2|STORY 장수·초기 TASKS·과거 소스부재 설명과 최신 코드 불일치|낮음/소|각 STORY/TASKS/HANDOFF|과거 이력 보존, 현재 상태 단일 상단 요약|대기|
@@ -23,3 +23,6 @@
 다음 3개: ACT-01 아스터/헌트 저장·전투 회귀 → DEP-01 Sites/복사본 배포 일치 확인 → RT-03 S6 선택 효용. 사용자 요청으로 사용량 확인은 작업 중단 조건에서 제외.
 
 |RT-03|룬 영토|P1|S6 자동 공략 교체가 성장 덱을 일관되게 개선하지 못함(RT-02 원시결과)|중간/중|tools/progression-model.mjs, hint-deck.mjs, HARD_HINTS|수입부족/침략실패/영토손실 계측 및 정상성장 수동 흐름 확인 후 선택 효용 개선; 신규 검증 시드 사용|대기; 적 약화/카드 수치 변경은 아직 근거 부족|
+
+|HN-SAVE-01|헌트 나우|P0|손상 JSON catch 후 freshSave 즉시 persist로 원문 삭제 재현|중/소|main.js, 복구 UI, test/save-recovery.mjs|원문 보존/내보내기/정상 백업 복원/기존 이관·전투 회귀|완료 cb919e5; 모바일3규격·14+6회귀 PASS·공개파일 일치|
+|AP-AUDIO-01|Arcana|P1|신규 sound.js에 hidden/pagehide 정지 없음|낮음/소|sound.js, tests/sound.cjs|숨김 소리 차단·복귀 BGM만 재개·음소거 유지|수정·자동검사 PASS; 실제 청취 미검증|

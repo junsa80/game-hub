@@ -56,3 +56,11 @@ Observe human play before adding content. Prioritize meaningful attack/tempo dec
 ## 2026-10-26 — 그림·소리
 - 카드 16장 그림 `art/<id>.jpg`. 능력·덱·보상 수치 그대로. 벡터 문양은 그림으로 교체.
 - `sfx/` 효과음 10 + 배경음. 헤더 「소리」는 `localStorage` `arcana-sfx`. 대전 저장과 분리.
+
+## 2026-10-27 — ACT-01 / HN-SAVE-01 / AP-AUDIO-01
+- Hunt cb919e538e849ad0598291c830d82019b6d789d5: 손상 저장 원본 보존/복구 UI. 이전 세션 모바일3규격 복구, 기존14/14+첫실행6/6+저장/캐시 회귀 통과. 오늘 공개 main.js/index/sw HTTP200 및 바이트 일치 확인. 실물폰 미검증.
+- Aster1017edd: 현재 원본의 node tools/verify.mjs 다시 PASS. 무기6종/차지/적/동료 180초 실제 루프 DPS 차이 -0.77~+1.13%, 공격횟수 감소. 30/60/120FPS 회피 접촉, 영입/파티/강화/보상/저장 회귀 PASS. Node 모형/통제 조건이며 실제 화면 FPS·음향·폰 체감은 미검증.
+- Aster 누락 vendor는 Hunt의 동일 Git blob0bcc7a286da2c115853ceec9deea19923e10ddc1로 복원. 코드가 없는 제품 오류가 아니라 임시 체크아웃 누락이었음. 게임 코드 변경 없음.
+- Arcana 새 그림·소리144490d 이후 저장14손상/376정상상태·규칙/300판 다시 PASS. 새 소리 모듈에 숨김/pagehide 정지 누락 발견, 자동 검사 실패 재현 후 보완. 진행 중 효과음 정지, 숨김 AI 소리 차단, 복귀 시 이전에 재생 중이던 BGM만 재개, 음소거 유지. 게임 저장 미변경.
+- AP-AUDIO-01 Node Audio 대역 검사 PASS. 실제 오디오 청취·모바일 앱 전환은 미검증. sound query0.3.4, 허브 캐시1.5.25. 이전 그림/소리 자산은 그대로 재사용.
+- 기록: docs/qa/portfolio-20261027. 다음 DEP-01 배포 일치 확대 → RT-03 S6 선택 효용 → ACT-02 실기 조작감/성능 확인. 사용량 중단 조건 없음.

@@ -1,0 +1,1 @@
+PASS no autoplay, hidden pause, hidden AI silence, foreground music-only resume, page lifecycle, mute persistence and game-save isolation

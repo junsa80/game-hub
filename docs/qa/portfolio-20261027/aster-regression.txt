@@ -1,0 +1,122 @@
+PASS: beast phase poses finite; zero frame mesh growth; root/save isolation; both part breaks; death/reset; progressed save roundtrip; party/forge preserved; other guardians intact
+PASS: actual stage victory/reward and failed hunt return to results
+PASS: grounded resting feet and portrait guardian framing
+PASS: 5 distinct combo clips; finite pose samples; contact-only damage; swept dash/sweep/blast collision; one-hit policy; predicted perfect contact; 30/60/120 FPS dodge equivalence; recovery-to-sheath; iai; fade slash; immediate swipe; bounded buffers; six weapon simulations; unique companion rules; focus save isolation; static pose export
+[
+  {
+    "weapon": 0,
+    "charge": 0,
+    "before": 55.12,
+    "after": 55.52,
+    "change": 0.73,
+    "actions": [
+      270,
+      225
+    ]
+  },
+  {
+    "weapon": 1,
+    "charge": 0,
+    "before": 63.19,
+    "after": 63.25,
+    "change": 0.09,
+    "actions": [
+      193,
+      162
+    ]
+  },
+  {
+    "weapon": 1,
+    "charge": 1.65,
+    "before": 60.84,
+    "after": 60.67,
+    "change": -0.29,
+    "actions": [
+      65,
+      60
+    ]
+  },
+  {
+    "weapon": 2,
+    "charge": 0,
+    "before": 41.77,
+    "after": 42.25,
+    "change": 1.13,
+    "actions": [
+      292,
+      246
+    ]
+  },
+  {
+    "weapon": 2,
+    "charge": 1.35,
+    "before": 33.72,
+    "after": 33.84,
+    "change": 0.35,
+    "actions": [
+      91,
+      86
+    ]
+  },
+  {
+    "weapon": 3,
+    "charge": 0,
+    "before": 51.9,
+    "after": 51.67,
+    "change": -0.46,
+    "actions": [
+      450,
+      373
+    ]
+  },
+  {
+    "weapon": 4,
+    "charge": 0,
+    "before": 47.96,
+    "after": 47.87,
+    "change": -0.2,
+    "actions": [
+      367,
+      305
+    ]
+  },
+  {
+    "weapon": 5,
+    "charge": 0,
+    "before": 50.59,
+    "after": 50.56,
+    "change": -0.06,
+    "actions": [
+      202,
+      168
+    ]
+  },
+  {
+    "weapon": 5,
+    "charge": 1.4,
+    "before": 37.99,
+    "after": 37.84,
+    "change": -0.38,
+    "actions": [
+      74,
+      69
+    ]
+  },
+  {
+    "enemy": true,
+    "before": 6.066666666666666,
+    "after": 6.02000001139111,
+    "change": -0.7692305814652189,
+    "hits": [
+      52,
+      43
+    ]
+  },
+  {
+    "ally": true,
+    "before": 4.919097278515498,
+    "after": 4.93740130994055,
+    "change": 0.37210143220782754
+  }
+]
+PASS: 180s combat-loop DPS within 5% across six weapons, charged greatsword/bow/hammer and enemy; all attack counts lower
