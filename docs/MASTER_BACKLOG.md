@@ -33,4 +33,4 @@
 
 |DEP-MUSE-01|뮤즈 스튜디오 Pages 사본|P1|원본 모바일2파일·표지 누락,390×844에서 nav y1512.5/문서2568px; 밝은 패널 옅은 안내색|중/소|play/muse-studio CSS/index/mobile.js/cover, tools/test-muse-mobile.cjs|요청3크기 한 화면·6탭 터치·촬영·진행 재로드·자산로드·가독색; 원본/Pages 구분|원본 PR4 병합 c30c4fc; 사본256파일 재생성·모바일 자동검사 PASS; 허브1086c2e; 공개 결과 WORKLOG 참조|
 
-|ROSE-AUDIO-01|장미의 첨탑 Pages|P1|숨김 후 샘플 실패 콜백이 대체음 시작 재현; 음소거/숨김에 기존 소리 정지 없음|낮음/소|play/rose-spire/game.js, audio/browser 회귀|지연 실패 취소·숨김/음소거 정지·정상 소리 유지·저장 회귀|구현·Node/모바일3규격 자동검사 PASS; 본 커밋, 실제 청취 미검증|
+|ROSE-AUDIO-01|장미의 첨탑 Pages|P1|숨김 후 샘플 실패 콜백이 대체음 시작 재현; 음소거/숨김에 기존 소리 정지 없음|낮음/소|play/rose-spire/game.js, audio/browser 회귀|지연 실패 취소·숨김/음소거 정지·정상 소리 유지·저장 회귀|구현2f7af73·Node/모바일3규격 자동검사 PASS; 공개 결과 WORKLOG 참조, 실제 청취 미검증|

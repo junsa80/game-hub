@@ -1,0 +1,60 @@
+{
+  "commit": "2f7af734aa702fc435fbd52675e0341877dca967",
+  "checkedAt": "2026-10-27T14:02:43.517290+00:00",
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "match": false,
+      "sha256": "6683af35e24314616e1ebcdeac453c113fe4a8749966aaa7dcda34379777196d"
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "match": false,
+      "sha256": "99b96efd3505e78d043d01c7804d71da74e8f1053c8d023756f98e77d6bff180"
+    },
+    {
+      "path": "play/rose-spire/index.html",
+      "status": 200,
+      "match": false,
+      "sha256": "95c1c8165037f45b303ccde9ae00822d5135e467848ed78f43a6e525a467dfcd"
+    },
+    {
+      "path": "play/rose-spire/game.js",
+      "status": 200,
+      "match": false,
+      "sha256": "1307729e39cda6cbb9e08b86618419006df7541f692bc05332a4134dcdb8b73f"
+    },
+    {
+      "path": "play/rose-spire/sfx/win.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "730c92697614807e7df0a5481d676db1a36e76ac97e78085587c4abdf148bdb9"
+    },
+    {
+      "path": "play/rose-spire/sfx/turn.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "c27551de0a465cfaf754a31ca5e829fc3baceb6a9b60553c49a46b16a6e50624"
+    },
+    {
+      "path": "play/rose-spire/sfx/hit.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "0936055bd3ebca859be6af95bd71506b5f1ce788699f29d8dffff82b6564f602"
+    },
+    {
+      "path": "play/rose-spire/sfx/play.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "41603231cd102e61271887b1760c4cd55001d7165c5403cbfe744d1a27bcd414"
+    },
+    {
+      "path": "play/rose-spire/sfx/lose.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "909b4692bc493a6217bc2cbda1815886f0e226eb0c031cbe6cc14d23098122b0"
+    }
+  ]
+}

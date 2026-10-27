@@ -102,3 +102,8 @@
 - tools/test-rose-browser.cjs: Chromium153 360×800/390×844/412×915에서 새 원정·음소거·합성 pagehide·재접속 시 starter/hp/deck 유지, pageerror0 PASS. Audio 대역 사용; 실제 음향 청취·폰 앱전환·기기성능 미검증. 원시 결과 docs/qa/portfolio-20261027/rose-*.txt.
 - 캐시 hub1.5.27 / Rose game.js?v=20261027-audio2. 공개 확인은 후속 로그 참조.
 - 다음 우선순위: RT-03 룬 S6 선택 효용 계측 → DEP-01 남은 Sites/원본 배포 차이 → ACT-02 실제 기기 입력/성능. 장미 그림/효과음은 재생성 시 보존 필요.
+
+## 2026-10-27 — ROSE-AUDIO-01 게시·인계
+- 수정 커밋 2f7af734aa702fc435fbd52675e0341877dca967 main 반영 확인. 카드/성장/저장 로직과 기존5개 WAV 자산 보존.
+- Pages run40517359874는 마지막 확인에서 queued. 첫 공개 조회9개 모두 HTTP200이나 새 코드4개는 구버전, 효과음5개만 바이트 동일. rose-live-initial.json/rose-live.json에 결과 기록. 배포 완료 또는 공개 수정 반영 완료로 처리하지 않음.
+- 다음 시작 시 해당 커밋을 포함한 최신 Pages 배포와 game.js?v=20261027-audio2/hub-v1.5.27을 다시 확인. 이후 RT-03 룬 S6 경제/침략/영토손실 계측 → 남은 배포 차이 → 액션 실기 입력 순서. 실제 폰/음향 청취 미검증.
