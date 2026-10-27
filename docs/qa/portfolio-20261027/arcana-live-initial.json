@@ -1,0 +1,221 @@
+{
+  "checkedAt": "2026-10-27T04:38:48.596543+00:00",
+  "files": [
+    {
+      "path": "sw.js",
+      "status": 200,
+      "match": false,
+      "sha256": "293efe632bd285b9620f01630d95e2d9825535d001ebd27c38b5243765d6feed"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "match": false,
+      "sha256": "b8304c3b04d3c5ade1da5c0d6531cd99b5499141b62c6402454c617347a5676a"
+    },
+    {
+      "path": "play/arcana-pocket/engine.js",
+      "status": 200,
+      "match": true,
+      "sha256": "838d3b592736a7bb970cbbe164ecf81c1bba7b008125c0485a303324b8edc29d"
+    },
+    {
+      "path": "play/arcana-pocket/style.css",
+      "status": 200,
+      "match": true,
+      "sha256": "951fc59d814632872cd247d4ccc59cc0fbb2f6b425ae4c096de077a27bbe38b0"
+    },
+    {
+      "path": "play/arcana-pocket/index.html",
+      "status": 200,
+      "match": false,
+      "sha256": "2946a07a1bfe41438f829b2d428c4a0a630d3befbac2c9765f7e06f34226dbe3"
+    },
+    {
+      "path": "play/arcana-pocket/app.js",
+      "status": 200,
+      "match": true,
+      "sha256": "5e6693f99b4393a8eaf9b35953bef78538518d023dcf994b4dc62e1588f72aa7"
+    },
+    {
+      "path": "play/arcana-pocket/sound.js",
+      "status": 200,
+      "match": false,
+      "sha256": "73f14e8d10045cf19cbdefeb4f9162f888b779d66d6580337aa6bc8b6eff5c79"
+    },
+    {
+      "path": "play/arcana-pocket/progression.js",
+      "status": 200,
+      "match": true,
+      "sha256": "8b8f5f446c4d45b2fb600eab97d48d9b3dafd70bf7e4c05c4b875ee2792ea21b"
+    },
+    {
+      "path": "play/arcana-pocket/art.js",
+      "status": 200,
+      "match": true,
+      "sha256": "daf85b2e5e59d3578f5c1b05282ae039b9db19e28939c33c562dcfa3e09b0640"
+    },
+    {
+      "path": "play/arcana-pocket/art/spark.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "150922939e2d8fa5d868131814aff68a97d0442fcdff3ba00e677b4be4e5471b"
+    },
+    {
+      "path": "play/arcana-pocket/art/sage.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "d81b327a182886db6ce659fe616f6273832f3d4654321308e631c3586e1e56f7"
+    },
+    {
+      "path": "play/arcana-pocket/art/wolf.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "b961d268f2c8ace82bd2de265abced894e8e54743a858ff1f2bdd00a9bff976e"
+    },
+    {
+      "path": "play/arcana-pocket/art/mage.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "7830680431ea47ff1952bad329f139f436ba95a3d29681291c80799f464670f2"
+    },
+    {
+      "path": "play/arcana-pocket/art/sentinel.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "cdffc18ee2dd1c34c3e29d9eedf4dd04f0eb39816cb1fd90f8d17526bab117e4"
+    },
+    {
+      "path": "play/arcana-pocket/art/scout.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "f6dee6b1890cd33c80575a65c03a84a96ea55ab03e5275ba5a6c8282262109bf"
+    },
+    {
+      "path": "play/arcana-pocket/art/knight.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "96734d58974c7ba95b37042bcc30f4291938397d58fcc8e110d9e09e43e5b959"
+    },
+    {
+      "path": "play/arcana-pocket/art/guard.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "869b4b927c35ccd22abe51e5c268c3fb2b192d434601f7148b929ce8132eaa99"
+    },
+    {
+      "path": "play/arcana-pocket/art/captain.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "e94316d43877c8e61267f66ce68bd7a0d2b67cf17032ae419ec6138a56c50b21"
+    },
+    {
+      "path": "play/arcana-pocket/art/drake.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "129aa259022670663ae7f66c6050300ab1b9e7231b70d371c613b9fe249be6bd"
+    },
+    {
+      "path": "play/arcana-pocket/art/medic.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "6d9e80af8f683302e4fb7b4755e1f55a7fc07bbefe35d5633504f4234d402803"
+    },
+    {
+      "path": "play/arcana-pocket/art/oracle.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "eae8f5f93b2c1996d363b2829c4ad5d08eaf148da493ee5e0fd8d3fe813af7c5"
+    },
+    {
+      "path": "play/arcana-pocket/art/renew.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "d7e35c3cd767361eda5a5eb4cdf723f494d1dd2aedb1dcc665edb63d4bb1375a"
+    },
+    {
+      "path": "play/arcana-pocket/art/nova.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "bae47ae69913cfe9aa952dace1e0498257213849be066c477e91d54b531ff211"
+    },
+    {
+      "path": "play/arcana-pocket/art/study.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "c4706ba15ade65bf357b28057f03fa05af45521bd273cef49804849b1d4621dd"
+    },
+    {
+      "path": "play/arcana-pocket/art/giant.jpg",
+      "status": 200,
+      "match": true,
+      "sha256": "44a814cc407ee0c0bf18fdd461742a3b35c4e2d676b7d01bd788278322795492"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/draw.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "9806daba9e0d516d84350adf3148a13d9fe59cebb6fed7e6dbe7643805f10d4c"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/bgm.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "7a423b58cbdccf170c7e14fee80aea78cf5e5ca99d6f8b8d49c94b51fa0f0509"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/pack.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "53ebf2849b260d0a33454d5ab458a033e18aec8c24f6fa2d1deedfbc58b1c3bc"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/summon.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "a1af612c71413ba60e076130e33d97a26c5582aa012e40136381f4ea22925b06"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/rare.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "d990ad311c5b33b46e151abc40f5e464ff4df8d56174bb3230fef642ad320f84"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/heal.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "37e806191867b2a41982635ecf3447442d5da496d48c5ee9b4235c3668fcc656"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/lose.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "995c755d6904dba43cb265bd851753b8f49e4962a393d78fba4a29e1f7c2d2a4"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/spell.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "30d6ee86c9820cfca9135a83cfcff7f1ff4381a39134abc33a0c0efa80a8aef7"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/hit.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "cc47656ebdb936c542e4197c577de4c381bcd96a6919c145456b892d6ebc93b5"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/click.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "bc624696d4f90233ec07b2d4ca0cd8737b21324d852389f7d399bfa55ec8ea3a"
+    },
+    {
+      "path": "play/arcana-pocket/sfx/win.wav",
+      "status": 200,
+      "match": true,
+      "sha256": "e4bb5e16a8b5a65c359a2a2343a70a2b87b8969e69a0591d7c1fab7e991b8c23"
+    }
+  ]
+}

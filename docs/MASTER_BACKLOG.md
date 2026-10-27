@@ -25,4 +25,4 @@
 |RT-03|룬 영토|P1|S6 자동 공략 교체가 성장 덱을 일관되게 개선하지 못함(RT-02 원시결과)|중간/중|tools/progression-model.mjs, hint-deck.mjs, HARD_HINTS|수입부족/침략실패/영토손실 계측 및 정상성장 수동 흐름 확인 후 선택 효용 개선; 신규 검증 시드 사용|대기; 적 약화/카드 수치 변경은 아직 근거 부족|
 
 |HN-SAVE-01|헌트 나우|P0|손상 JSON catch 후 freshSave 즉시 persist로 원문 삭제 재현|중/소|main.js, 복구 UI, test/save-recovery.mjs|원문 보존/내보내기/정상 백업 복원/기존 이관·전투 회귀|완료 cb919e5; 모바일3규격·14+6회귀 PASS·공개파일 일치|
-|AP-AUDIO-01|Arcana|P1|신규 sound.js에 hidden/pagehide 정지 없음|낮음/소|sound.js, tests/sound.cjs|숨김 소리 차단·복귀 BGM만 재개·음소거 유지|수정·자동검사 PASS; 실제 청취 미검증|
+|AP-AUDIO-01|Arcana|P1|신규 sound.js에 hidden/pagehide 정지 없음|낮음/소|sound.js, tests/sound.cjs|숨김 소리 차단·복귀 BGM만 재개·음소거 유지|완료 fd88c2c; 자동검사 PASS·공개36파일 일치; 실제 청취 미검증|
