@@ -130,3 +130,11 @@
 - runtime44파일은 변경하지 않았고 재배포 불필요. BUILD_PLAY_COPIES의 파괴적 게시 예시를 staging/충돌 검토 절차로 교체. 루트 캐시/주소/게임목록/저장 키 그대로.
 - 다음: DEP-PRISM-02 최신 private 소스의 별도 임시 빌드와 허브 개선 소스 이식 검토 → RT-05 실제 덱 편성·저장·재도전 → ACT-02 입력·성능. Rune main 확인은 bed45dc8; 이전 시뮬 결과는 그 코드 기준임.
 - 후속: 복사 중 예외를 주입해 부분 staging 정리/기존공개본 보존도 PASS. 공개 URL44개 HTTP200·SHA256 일치, 오류0(prism-live.json). 게임 실행/청취를 HTTP 검사로 대체하지 않음.
+
+## 2026-10-29 — DEP-PRISM-02 원본 통합 · 공개 배포는 다음 단계
+- private prism-muse90a10a1 기준 작업3a731410af0829d32f959fa766dcc70b2448b475 → PR6 https://github.com/junsa80/prism-muse/pull/6 → main 병합1c67dfb423c184e58e19b7113dd8c290dfacb2c5.
+- 허브 번들 전용 배경3/JPG·효과음3/WAV를 원본 public에 바이트 동일 이식, globals.css 및 lib/effects.mjs 연결. 숨김/pagehide/음소거 정지·재생실패 합성음 fallback·늦은 콜백 차단·현재 mute ref 구현. 기존 규칙/성장/보상/저장API·키·스키마/BGM 유지.
+- verify6개 검사 파일 PASS(게임39+익명3 및 효과음/음악/제스처/저장간격). vinext build PASS. Chromium153 개발서버 모바일360×800/390×844/412×915 새런/7×7판/재접속 파티·HP·보드/6자산HTTP200/가로넘침 없음/pageerror0 PASS.
+- 테스트 API401 대역으로 익명경로 검사. 실제 계정D1/실물폰/청취/Next 정적 export/공개 배포 미검증. 빌드와 모바일 원시 로그는 private docs/qa/20261029. 임시 환경 실행권한/서버잠금·초기36칸 가정 오류와 복구 이력은 private HANDOFF에 기록.
+- 공개 Pages44파일은 수정하지 않음. Sites도 이번 소스 배포 아님. 지금의 공개본에서 음향 개선이 반영됐다고 주장하지 않는다. 원본 이식 완료/공개 배포 미완료로 구분.
+- 다음 DEP-PRISM-03: 최신main 별도 체크아웃→Next 정적export(기존 root경로·Pages저장키 prism-muse-static-save 보존)→모바일/저장 회귀→허브 단위 게시·공개 검증. 기존 stage_prism_copy 해시를 무조건 갱신하거나 구번들로 덮지 말 것. 이어 RT-05 덱 편성·재도전 → ACT-02 입력/성능.

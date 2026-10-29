@@ -40,4 +40,6 @@
 |RT-05|룬 영토|P1|RT-04 자동 후보 개선은 확인됐지만 실제 덱 편성·재도전/전략 이해는 미검증|중간/중|src/app.js 덱/대전 흐름, QA 도구|RT-04 보유풀로 덱 편성→저장→재시작→S6→패배/보상→재도전 실제 브라우저 흐름 검증; 추천 UI 필요성 판단; 실물폰과 구분|대기, bed45dc8 근거. 자동 승률을 인간 승률로 표시하지 않음|
 
 |DEP-PRISM-01|프리즘 Pages|P1|a155dc9/e508195의 JS/CSS/index·WAV3·JPG3가 기존 삭제+복사 절차에서 유실 가능|중간/소|stage_prism_copy.py, manifest, BUILD_PLAY_COPIES|원본/공개본 비변이,44파일 동일 재구성,새 빌드/기존출력 충돌 거절|구현·9검사 PASS; 현재 source 신규 빌드는 DEP-PRISM-02|
-|DEP-PRISM-02|프리즘 원본/Pages|P1|private90a10a1과 번들 직접 수정본의 소스 빌드 재현 미검증|높음/중|private app/page.tsx, styles/audio, static export patch|별도 브랜치에서 허브 개선 소스 통합 검토; 새 Next 빌드;저장·런·모바일3규격 확인 후 단계적 배포|대기. 기존 동작/세이브 보존; Sites 배포와 구분|
+|DEP-PRISM-02|프리즘 원본/Pages|P1|private90a10a1과 번들 직접 수정본의 소스 빌드 재현 미검증|높음/중|private app/page.tsx, styles/audio, static export patch|별도 브랜치에서 허브 개선 소스 통합 검토; 새 Next 빌드;저장·런·모바일3규격 확인 후 단계적 배포|원본통합 PR6/main1c67dfb·verify6파일·vinext빌드·모바일3규격 PASS. Next정적export/공개배포 DEP-PRISM-03 미완료|
+
+|DEP-PRISM-03|프리즘 Pages|P1|원본1c67dfb 효과음 수명관리/자산통합은 공개본에 미반영|중간/중|Next export용 임시변환·Pages 저장어댑터·play/prism-muse·cache|새 소스로 정적빌드; 기존 prism-muse-static-save/backup 보존;모바일3규격·런/재접속·샘플중단·공개 바이트 확인|대기. PR6 원본 병합을 공개 배포로 간주하지 않음|
