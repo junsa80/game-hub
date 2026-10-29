@@ -120,3 +120,13 @@
 - 학습200/평가400판,5보유풀·2난도. 첫 평가 선택정책 일반48.50→60.40%,어려움38.30→46.15%. 같은 선택의 두 번째 미사용 평가에서48.35→57.80%,37.15→44.10%. 총80,000대전 실행(중복 학습 포함). 카드·적 약화 없이 자동 공략 후보 개선. 모든 풀의 유의한 개선이나 인간 승률을 주장하지 않음.
 - 전체65검사/모바일5규격 PASS,pageerror0. 실제 폰·인간 조작 미검증. 근거 Rune docs/qa/GROWTH_FACTORS_20261027.md 및 원시2JSON/rt04-tests/rt04-mobile. 런타임·저장·UI0.1.53 불변, 재배포 불필요. 게임 내 추천 UI는 미구현.
 - 다음 우선순위: DEP-01 프리즘 복사본 재생성 시 추가 자산/기능 보존 → RT-05 S6 실제 덱 편성·저장·재도전 흐름 확인 → ACT-02 액션 자동 입력/성능. 도구의 수치 개선과 실제 플레이 체감은 구분한다.
+
+## 2026-10-29 — DEP-PRISM-01 배포 개선 유실 방지
+- 확인 기준 hub8f5bb77 / private prism90a10a1. private AGENTS 및 docs/CURRENT_STATE/HANDOFF/ROADMAP/DECISIONS 확인. private 소스·Sites·사용자 세이브 수정 없음.
+- huba155dc9가 Next 번들 JS/CSS에 효과음과 배경 연결을 직접 수정했고 WAV3/JPG3 추가. e508195는 index 자산 쿼리 갱신. 기존 BUILD_PLAY_COPIES의 폴더삭제+out복사는9개 변경을 잃을 수 있음.
+- tools/stage_prism_copy.py 및 manifest 구현: 검토된 export 전체38파일과 현재44파일의 경로/해시 확인 후 새 staging에9개 변경 보존. 기존 출력/누락/새 빌드 또는 허브 변경/자산 충돌/심볼릭 링크 거절. 소스와 공개 폴더 읽기 전용, staging 전체44파일이 현재 공개 저장소와 동일한지 최종 확인.
+- test-prism-copy.py 9/9 PASS:44파일 재구성·입력 비변이·기존출력보호·원본누락·번들변경·자산충돌·허브변경·내부출력·심볼릭링크 경로 검증(일부 한 테스트 내 복수 assertion). 원시 docs/qa/portfolio-20261029/prism-copy-tests.txt.
+- 중요한 범위: 과거 정적 export에서 현재 복사본 재구성 검증이다. 최신 private source의 새 Next 빌드 재현/모바일 브라우저/실물폰/음향 청취/Sites 동기화는 미검증. 새 빌드 해시가 다르면 거절하고 소스 수준 통합 검토 필요. 기존 번들을 새 코드에 강제 덮지 않는다.
+- runtime44파일은 변경하지 않았고 재배포 불필요. BUILD_PLAY_COPIES의 파괴적 게시 예시를 staging/충돌 검토 절차로 교체. 루트 캐시/주소/게임목록/저장 키 그대로.
+- 다음: DEP-PRISM-02 최신 private 소스의 별도 임시 빌드와 허브 개선 소스 이식 검토 → RT-05 실제 덱 편성·저장·재도전 → ACT-02 입력·성능. Rune main 확인은 bed45dc8; 이전 시뮬 결과는 그 코드 기준임.
+- 후속: 복사 중 예외를 주입해 부분 staging 정리/기존공개본 보존도 PASS. 공개 URL44개 HTTP200·SHA256 일치, 오류0(prism-live.json). 게임 실행/청취를 HTTP 검사로 대체하지 않음.

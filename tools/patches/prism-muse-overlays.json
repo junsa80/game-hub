@@ -1,0 +1,130 @@
+{
+  "baselineCommit": "1a610a41bac1585c39ed88a5a117d9f25645d2b8",
+  "reviewedHubCommit": "8f5bb77b669d39f71836d4697ccbc63fc825c188",
+  "canonicalSourceInspected": "90a10a104d92a4fdba528de616e302bb2e84fa97",
+  "note": "Reviewed historical static export only. This is not proof of a fresh build from current private source. Different build requires review; never overwrite new chunks with old overlays.",
+  "baselineFiles": {
+    "404/index.html": "9727856e643b7c3c653e8ca01816777fbb5abea30c19f769bcb8ab00ac3b141d",
+    "404.html": "9727856e643b7c3c653e8ca01816777fbb5abea30c19f769bcb8ab00ac3b141d",
+    "__next.__PAGE__.txt": "a2599ae85799332e33e64b846fa67fe4b01a6eeacea899d1da90920c6740946b",
+    "__next._full.txt": "7c251c46a799d489ec6f7bd852a71f7d3cf603404c242417c123a13dcac37efb",
+    "__next._tree.txt": "ebcca7873f28ab0246469e064f30143376650056f247932c9f6ed0edea6a361a",
+    "_next/static/ZmX3t3Bumk_UetEbVuMWf/_buildManifest.js": "9476e0afd3f9da68a64e6ec58631191fd3eaca62c9f5a377e7517fe9a89e59ea",
+    "_next/static/ZmX3t3Bumk_UetEbVuMWf/_clientMiddlewareManifest.js": "5483e3295dc35dfe29ea932efc85341c916f10ff78ff5b0e965e003710893a4a",
+    "_next/static/ZmX3t3Bumk_UetEbVuMWf/_ssgManifest.js": "678f6ce2cb80b1fe72fc67e7412be6e2ab6ada083111b64f7c40d35e3cba5e00",
+    "_next/static/chunks/0cz1d0mv5g_q7.js": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+    "_next/static/chunks/0kqxdu0kwouy_.js": "a19353cd3bed9175b496b5733c4a934bd98c88c9aa71332cdc7cada6b4e73828",
+    "_next/static/chunks/1inwntv0b4r-7.js": "16e13d0688dd3bd6daf7e4720d6cce666bc08886ab3e3ba1064bad8cee967b4c",
+    "_next/static/chunks/1mh6a-0e61pyc.js": "c0930af826f989eea00dbaca15c1e4b3d3609b7b0bc5416a661a4948d8c26515",
+    "_next/static/chunks/2od7m8hwn_lso.js": "c32b4ca9ba41e1c1bee2744a52bc607476bf81f117f9bb6cd15986e0ebc599d1",
+    "_next/static/chunks/39b9jxmr_1k-k.css": "3e61e9118f887231098382b6d689d75f67ee865584381a5dfd898965ead8c3c3",
+    "_next/static/chunks/3fntmmi971322.js": "34ed6abf4c6d0d1bb3dc56d3f133d2a5dbc3a3c89c791deab314e27143ac14ce",
+    "_next/static/chunks/turbopack-09pxx8p78rxua.js": "6eb2b2dd93fa6692c00adf6a503198681d460703edfd4dd38fbfb42479017f3d",
+    "_not-found/__next._full.txt": "47ef61ac67e53f1bd658fd480cef3bae508befcc5d430d8ff411cd387c92413e",
+    "_not-found/__next._not-found.__PAGE__.txt": "f4fc9332574cb1ab3bc9136d65d1c0a54777344fe7102f8c94d60981dc7aef9f",
+    "_not-found/__next._tree.txt": "ca26503d315915a840742c974395fef149850b54d977d0855610d7a888c8aa79",
+    "_not-found/index.html": "9727856e643b7c3c653e8ca01816777fbb5abea30c19f769bcb8ab00ac3b141d",
+    "_not-found/index.txt": "47ef61ac67e53f1bd658fd480cef3bae508befcc5d430d8ff411cd387c92413e",
+    "favicon.svg": "16c266e40084a225f6130be62b7f5dba1b3b9180f898c87f048ad2f87d6b6489",
+    "file.svg": "1e0ae4d1a1ddfa36752988647b731e4abf150c414d069ec83c96fb0aaeff0307",
+    "fusion-lumi-serin.png": "e80781d4719d163304ad3798ef538d93edbf5a34d64c5d75dc3d5efd302aa405",
+    "fusion-seoa-jia.png": "a19145d0ca85781136482d74c486820a15fbc669aa985fa8be17ba4657707d72",
+    "fusion-yuna-harin.png": "b22aaa46c6e4c987b1fcaf1967b3a5af421eb8c266153b4cf05c91d3a03a37bd",
+    "fusion-yuna-seoa.png": "8d0339dbf1e297b5f2c01f0ace5b4142013ca04fe951f6d33136cb28cd8a3adb",
+    "globe.svg": "d051a8c47936990a9085693d307bb7cea1bc1b6d7ed956bcbaacf674f4ec96b9",
+    "index.html": "b5f864b396fa1deef10ae39b5b44cef2e8bda6e350dd29ff89e58621768f51c1",
+    "index.txt": "7c251c46a799d489ec6f7bd852a71f7d3cf603404c242417c123a13dcac37efb",
+    "muses-extra-special.png": "fe7841503e43ff6f768cfc3a9be89c3622f0c24c957a4bdaf5b8dcee58b3c8cb",
+    "muses-extra.png": "b72db2381dfb8af5a026349ee16671535310bd3e8f0d8e4c30655f48fef3377b",
+    "muses-special.png": "ef24e33d690fc28ac56ea2329df1c3c25f72823ffa69ffcaadf4fe61804d63f4",
+    "muses.png": "81e3bef51aacac4cb25555cd0c1cbfc884236017a126793ee2a1cbfd886307b0",
+    "visual/scene.webp": "b76232b71cda359d450e8a59cee6303f8259edc6ee5229acd28b15d248d9c66e",
+    "visual.css": "2e6c8f88c0a97410aced382dae4e544936bbb3a6d9ab7ca7f18570cdfb1473dd",
+    "visual.js": "c0afbf4b75f697f205893a27f13c592a6186f58995fa7388b67083bebb8644b1",
+    "window.svg": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66"
+  },
+  "publishedFiles": {
+    "404/index.html": "9727856e643b7c3c653e8ca01816777fbb5abea30c19f769bcb8ab00ac3b141d",
+    "404.html": "9727856e643b7c3c653e8ca01816777fbb5abea30c19f769bcb8ab00ac3b141d",
+    "__next.__PAGE__.txt": "a2599ae85799332e33e64b846fa67fe4b01a6eeacea899d1da90920c6740946b",
+    "__next._full.txt": "7c251c46a799d489ec6f7bd852a71f7d3cf603404c242417c123a13dcac37efb",
+    "__next._tree.txt": "ebcca7873f28ab0246469e064f30143376650056f247932c9f6ed0edea6a361a",
+    "_next/static/ZmX3t3Bumk_UetEbVuMWf/_buildManifest.js": "9476e0afd3f9da68a64e6ec58631191fd3eaca62c9f5a377e7517fe9a89e59ea",
+    "_next/static/ZmX3t3Bumk_UetEbVuMWf/_clientMiddlewareManifest.js": "5483e3295dc35dfe29ea932efc85341c916f10ff78ff5b0e965e003710893a4a",
+    "_next/static/ZmX3t3Bumk_UetEbVuMWf/_ssgManifest.js": "678f6ce2cb80b1fe72fc67e7412be6e2ab6ada083111b64f7c40d35e3cba5e00",
+    "_next/static/chunks/0cz1d0mv5g_q7.js": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+    "_next/static/chunks/0kqxdu0kwouy_.js": "db397a5c0e2cfdee373bbcc4f5ae9c61b3d7f7b3a244adf200ccd191c49a2e62",
+    "_next/static/chunks/1inwntv0b4r-7.js": "16e13d0688dd3bd6daf7e4720d6cce666bc08886ab3e3ba1064bad8cee967b4c",
+    "_next/static/chunks/1mh6a-0e61pyc.js": "c0930af826f989eea00dbaca15c1e4b3d3609b7b0bc5416a661a4948d8c26515",
+    "_next/static/chunks/2od7m8hwn_lso.js": "c32b4ca9ba41e1c1bee2744a52bc607476bf81f117f9bb6cd15986e0ebc599d1",
+    "_next/static/chunks/39b9jxmr_1k-k.css": "c290fa747886068af98c1cfabfbf1cd89a6e1f86be6aa677d60231767157f71a",
+    "_next/static/chunks/3fntmmi971322.js": "34ed6abf4c6d0d1bb3dc56d3f133d2a5dbc3a3c89c791deab314e27143ac14ce",
+    "_next/static/chunks/turbopack-09pxx8p78rxua.js": "6eb2b2dd93fa6692c00adf6a503198681d460703edfd4dd38fbfb42479017f3d",
+    "_not-found/__next._full.txt": "47ef61ac67e53f1bd658fd480cef3bae508befcc5d430d8ff411cd387c92413e",
+    "_not-found/__next._not-found.__PAGE__.txt": "f4fc9332574cb1ab3bc9136d65d1c0a54777344fe7102f8c94d60981dc7aef9f",
+    "_not-found/__next._tree.txt": "ca26503d315915a840742c974395fef149850b54d977d0855610d7a888c8aa79",
+    "_not-found/index.html": "9727856e643b7c3c653e8ca01816777fbb5abea30c19f769bcb8ab00ac3b141d",
+    "_not-found/index.txt": "47ef61ac67e53f1bd658fd480cef3bae508befcc5d430d8ff411cd387c92413e",
+    "favicon.svg": "16c266e40084a225f6130be62b7f5dba1b3b9180f898c87f048ad2f87d6b6489",
+    "file.svg": "1e0ae4d1a1ddfa36752988647b731e4abf150c414d069ec83c96fb0aaeff0307",
+    "fusion-lumi-serin.png": "e80781d4719d163304ad3798ef538d93edbf5a34d64c5d75dc3d5efd302aa405",
+    "fusion-seoa-jia.png": "a19145d0ca85781136482d74c486820a15fbc669aa985fa8be17ba4657707d72",
+    "fusion-yuna-harin.png": "b22aaa46c6e4c987b1fcaf1967b3a5af421eb8c266153b4cf05c91d3a03a37bd",
+    "fusion-yuna-seoa.png": "8d0339dbf1e297b5f2c01f0ace5b4142013ca04fe951f6d33136cb28cd8a3adb",
+    "globe.svg": "d051a8c47936990a9085693d307bb7cea1bc1b6d7ed956bcbaacf674f4ec96b9",
+    "index.html": "f096e2c9b134ec26bab0d2ca1e721901365fd4d9349c9359d65af2e804e36598",
+    "index.txt": "7c251c46a799d489ec6f7bd852a71f7d3cf603404c242417c123a13dcac37efb",
+    "muses-extra-special.png": "fe7841503e43ff6f768cfc3a9be89c3622f0c24c957a4bdaf5b8dcee58b3c8cb",
+    "muses-extra.png": "b72db2381dfb8af5a026349ee16671535310bd3e8f0d8e4c30655f48fef3377b",
+    "muses-special.png": "ef24e33d690fc28ac56ea2329df1c3c25f72823ffa69ffcaadf4fe61804d63f4",
+    "muses.png": "81e3bef51aacac4cb25555cd0c1cbfc884236017a126793ee2a1cbfd886307b0",
+    "sfx/arcade.wav": "642ad30d06163bcc555c999b707b8653907f5b2b527fe9ec87a4be73a0864802",
+    "sfx/crystal.wav": "93100b5039b80c00af083a146f090397640c6a3e3ee7ea579bbebe812b3073bf",
+    "sfx/soft.wav": "a0a2730ed67ae90df58c84f3acd92729d63eb152cb00f56e77977f24e7791e14",
+    "visual/night.jpg": "fbcf8dfcf4c87c3509be0a1838aec71359b707c7f2c3f940c174675c795e1af8",
+    "visual/ocean.jpg": "4415ac1b4a81304f6b023ddbd8eb6fc43387386022ab97bea271303fdcddbf6e",
+    "visual/scene.webp": "b76232b71cda359d450e8a59cee6303f8259edc6ee5229acd28b15d248d9c66e",
+    "visual/sunset.jpg": "965eabf5be074adfc269d4e9d2a35349bf9d6ec471968aacd69db4c9587aec91",
+    "visual.css": "2e6c8f88c0a97410aced382dae4e544936bbb3a6d9ab7ca7f18570cdfb1473dd",
+    "visual.js": "c0afbf4b75f697f205893a27f13c592a6186f58995fa7388b67083bebb8644b1",
+    "window.svg": "decf1cf7bb22b5c99c4857cfcd5718ce5465c4454166317589c83fc73df74b66"
+  },
+  "overlays": {
+    "_next/static/chunks/0kqxdu0kwouy_.js": {
+      "baseline": "a19353cd3bed9175b496b5733c4a934bd98c88c9aa71332cdc7cada6b4e73828",
+      "overlay": "db397a5c0e2cfdee373bbcc4f5ae9c61b3d7f7b3a244adf200ccd191c49a2e62"
+    },
+    "_next/static/chunks/39b9jxmr_1k-k.css": {
+      "baseline": "3e61e9118f887231098382b6d689d75f67ee865584381a5dfd898965ead8c3c3",
+      "overlay": "c290fa747886068af98c1cfabfbf1cd89a6e1f86be6aa677d60231767157f71a"
+    },
+    "index.html": {
+      "baseline": "b5f864b396fa1deef10ae39b5b44cef2e8bda6e350dd29ff89e58621768f51c1",
+      "overlay": "f096e2c9b134ec26bab0d2ca1e721901365fd4d9349c9359d65af2e804e36598"
+    },
+    "sfx/arcade.wav": {
+      "baseline": null,
+      "overlay": "642ad30d06163bcc555c999b707b8653907f5b2b527fe9ec87a4be73a0864802"
+    },
+    "sfx/crystal.wav": {
+      "baseline": null,
+      "overlay": "93100b5039b80c00af083a146f090397640c6a3e3ee7ea579bbebe812b3073bf"
+    },
+    "sfx/soft.wav": {
+      "baseline": null,
+      "overlay": "a0a2730ed67ae90df58c84f3acd92729d63eb152cb00f56e77977f24e7791e14"
+    },
+    "visual/night.jpg": {
+      "baseline": null,
+      "overlay": "fbcf8dfcf4c87c3509be0a1838aec71359b707c7f2c3f940c174675c795e1af8"
+    },
+    "visual/ocean.jpg": {
+      "baseline": null,
+      "overlay": "4415ac1b4a81304f6b023ddbd8eb6fc43387386022ab97bea271303fdcddbf6e"
+    },
+    "visual/sunset.jpg": {
+      "baseline": null,
+      "overlay": "965eabf5be074adfc269d4e9d2a35349bf9d6ec471968aacd69db4c9587aec91"
+    }
+  }
+}

@@ -54,20 +54,30 @@ diff -qr play/world-breaker ../world-breaker-staged
 - `app/page.tsx`: `/api/save` fetch를 localStorage(`prism-muse-static-save`) 가짜 fetch로 대체, 그림 경로 `/x.png` → `/prism-muse/x.png`
 - `app/layout.tsx`, `app/globals.css`: 아이콘·배경 경로 같은 방식
 - 삭제: `app/api/save/route.ts`, `app/chatgpt-auth.ts` (정적 export에서 API 라우트 불가), `pnpm-lock.yaml`, `pnpm-workspace.yaml` (npm 사용)
+**2026-10-29: 기존 `rm -rf play/prism-muse && cp ...` 게시 절차는 폐기한다.** a155dc9/e508195에서 번들 JS·CSS·index 및 배경3개/효과음3개를 직접 수정했다. 원본 단순 재빌드는 이 변경을 잃는다.
+
+새 정적 빌드는 원본의 **별도 임시 체크아웃**에서 기존 static.patch 적용과 Next export를 수행한다. 원본 체크아웃/공개 폴더를 삭제하지 않는다. 생성한 out의 경로 보정까지 끝낸 뒤 아래 도구에 전달한다.
+
 ```bash
-cd ../src-prism-muse
-git apply ../game-hub/tools/patches/prism-muse-static.patch
-git rm -q --cached app/api/save/route.ts app/chatgpt-auth.ts 2>/dev/null; rm -f app/api/save/route.ts app/chatgpt-auth.ts pnpm-lock.yaml pnpm-workspace.yaml
-npm install
-npx next build            # 결과: out/
-# 빌드 후 그림 경로 보정(커밋 baec038과 같은 처리): '/prism-muse/' → '/game-hub/play/prism-muse/'
-grep -rlZ "/prism-muse/" out | xargs -0 sed -i -E "s#([\"'(])/prism-muse/#\1/game-hub/play/prism-muse/#g"
-cd ../game-hub && rm -rf play/prism-muse && cp -r ../src-prism-muse/out play/prism-muse
-grep -rho "\"/[a-z_][^\"]*\"" play/prism-muse/index.html | grep -v "^\"/game-hub/" | head   # 남은 루트 경로가 없어야 함
+python3 tools/stage_prism_copy.py ../prism-export ../prism-staged
+# 새 staging만 생성한다. 기존 출력 폴더/입력 내부 출력은 거절한다.
+# 바이트 해시가 다르면 게시 중단: 새 소스와 허브 개선을 검토하여 통합한다.
 ```
-2026-10-21 검증: 패치가 `5f7e28e`에 `git apply --check` 통과, 작업 상자의 기존 빌드 결과 `out/`에 위 sed를 돌리면 현재 `play/prism-muse`와 파일이 모두 같음 (빌드 자체를 새 환경에서 다시 돌려 보지는 않음).
-주의: 패치는 원본 `5f7e28e`(내용상 `a479cdd`) 기준. 원본 `app/page.tsx`가 크게 바뀌면 `git apply`가 실패할 수 있다 → 같은 원칙(저장 fetch를 localStorage로, 경로에 `/prism-muse` 접두어)으로 손으로 다시 적용. 이 빌드는 원본 저장소에 커밋하지 않는다(로컬 클론만 수정).
-`next build`가 vinext 관련 오류를 내면 `package.json`의 `next` 버전(16.x)을 그대로 쓰고 `npx next build`만 실행(`npm run build`는 vinext/Cloudflare 빌드라 쓰지 않음).
+
+- `tools/patches/prism-muse-overlays.json`: 검토된 정적 기준38파일, 현재44파일, 교체/추가9파일의 SHA256. 현재 private main90a10a1 확인. 정적 기준은 hub1a610a4의 실행본이며 최신 private 소스를 새로 빌드했다는 의미가 아니다.
+- `stage_prism_copy.py`는 **빌드 도구가 아닌 호환성 검사·보존 staging 도구**다. 입력의 파일 집합/내용이 기준과 다르면 최신 소스를 구번들로 덮지 않고 중단한다. 변경된 허브 파일, 새 원본 자산 충돌, 누락 파일, 심볼릭 링크도 중단한다.
+- hashed chunk명·모듈 참조가 바뀐 새 Next 빌드에 구번들을 자동 이식하지 않는다. 변경을 소스 수준에서 통합하고 게임/저장/모바일 검증을 거친 후 manifest를 갱신해야 한다. 검사를 통과시키기 위해 해시만 새로 찍지 않는다.
+- 검토된 과거 export에서 현재44파일 전체 재구성 및 입력 비변이 검증 완료. **현재 private 소스의 새 Next 빌드/배포와 Sites 동기화는 미검증**. 이 보존 검사를 게임 동작 테스트로 보고하지 않는다.
+
+회귀 fixture 복원(공개 Git 이력만 사용):
+```bash
+git fetch origin 1a610a41bac1585c39ed88a5a117d9f25645d2b8
+mkdir ../prism-baseline
+git archive 1a610a41bac1585c39ed88a5a117d9f25645d2b8 play/prism-muse | tar -x -C ../prism-baseline --strip-components=2
+python3 tools/test-prism-copy.py ../prism-baseline
+```
+
+검토 후 게시 시에만 기존 배포 절차로 게임 단위 diff와 저장 호환을 확인한다. 이 도구는 Git push, Pages 게시, 개인 세이브 접근을 하지 않는다.
 
 ## 4) 마무리
 ```bash
